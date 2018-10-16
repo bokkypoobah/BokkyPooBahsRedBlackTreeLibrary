@@ -135,9 +135,10 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint y = self.nodes[x].rightKey;
         uint parent = self.nodes[x].parentKey;
         // emit Log("rotateLeft", "x", x, parent, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
-        self.nodes[x].rightKey = self.nodes[y].leftKey;
-        if (self.nodes[y].leftKey != NULL) {
-            self.nodes[self.nodes[y].leftKey].parentKey = x;
+        uint yLeftKey = self.nodes[y].leftKey;
+        self.nodes[x].rightKey = yLeftKey;
+        if (yLeftKey != NULL) {
+            self.nodes[yLeftKey].parentKey = x;
         }
         self.nodes[y].parentKey = parent;
         if (parent == NULL) {
@@ -154,9 +155,10 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint y = self.nodes[x].leftKey;
         uint parent = self.nodes[x].parentKey;
         // emit Log("rotateRight", "x", x, parent, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
-        self.nodes[x].leftKey = self.nodes[y].rightKey;
-        if (self.nodes[y].rightKey != NULL) {
-            self.nodes[self.nodes[y].rightKey].parentKey = x;
+        uint yRightKey = self.nodes[y].rightKey;
+        self.nodes[x].leftKey = yRightKey;
+        if (yRightKey != NULL) {
+            self.nodes[yRightKey].parentKey = x;
         }
         self.nodes[y].parentKey = parent;
         if (parent == NULL) {
@@ -203,45 +205,48 @@ library BokkyPooBahsRedBlackTreeLibrary {
         // emit Log("insertFixup", "grandparent", g, self.nodes[g].parentKey, self.nodes[g].leftKey, self.nodes[g].rightKey, self.nodes[g].red);
 
         while (z != self.root && self.nodes[self.nodes[z].parentKey].red) {
-            if (self.nodes[z].parentKey == self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].leftKey) {
+            uint zParentKey = self.nodes[z].parentKey;
+            if (zParentKey == self.nodes[self.nodes[zParentKey].parentKey].leftKey) {
                 // emit Log("insertFixup", "l1", 0, 0, 0, 0, false);
-                y = self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].rightKey;
+                y = self.nodes[self.nodes[zParentKey].parentKey].rightKey;
                 // emit Log("insertFixup", "l1 y", y, self.nodes[y].parentKey, self.nodes[y].leftKey, self.nodes[y].rightKey, self.nodes[y].red);
                 if (self.nodes[y].red) {
                     // emit Log("insertFixup", "l1a", 0, 0, 0, 0, false);
-                    self.nodes[self.nodes[z].parentKey].red = false;
+                    self.nodes[zParentKey].red = false;
                     self.nodes[y].red = false;
-                    self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].red = true;
-                    z = self.nodes[self.nodes[z].parentKey].parentKey;
+                    self.nodes[self.nodes[zParentKey].parentKey].red = true;
+                    z = self.nodes[zParentKey].parentKey;
                 } else {
-                    if (z == self.nodes[self.nodes[z].parentKey].rightKey) {
+                    if (z == self.nodes[zParentKey].rightKey) {
                       // emit Log("insertFixup", "l1b", 0, 0, 0, 0, false);
-                      z = self.nodes[z].parentKey;
+                      z = zParentKey;
                       rotateLeft(self, z);
                     }
-                    self.nodes[self.nodes[z].parentKey].red = false;
-                    self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].red = true;
-                    rotateRight(self, self.nodes[self.nodes[z].parentKey].parentKey);
+                    zParentKey = self.nodes[z].parentKey;
+                    self.nodes[zParentKey].red = false;
+                    self.nodes[self.nodes[zParentKey].parentKey].red = true;
+                    rotateRight(self, self.nodes[zParentKey].parentKey);
                 }
             } else {
                 // emit Log("insertFixup", "r1", 0, 0, 0, 0, false);
-                y = self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].leftKey;
+                y = self.nodes[self.nodes[zParentKey].parentKey].leftKey;
                 // emit Log("insertFixup", "r1 y", y, self.nodes[y].parentKey, self.nodes[y].leftKey, self.nodes[y].rightKey, self.nodes[y].red);
                 if (self.nodes[y].red) {
                     // emit Log("insertFixup", "r1a", 0, 0, 0, 0, false);
-                    self.nodes[self.nodes[z].parentKey].red = false;
+                    self.nodes[zParentKey].red = false;
                     self.nodes[y].red = false;
-                    self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].red = true;
-                    z = self.nodes[self.nodes[z].parentKey].parentKey;
+                    self.nodes[self.nodes[zParentKey].parentKey].red = true;
+                    z = self.nodes[zParentKey].parentKey;
                 } else {
-                    if (z == self.nodes[self.nodes[z].parentKey].leftKey) {
+                    if (z == self.nodes[zParentKey].leftKey) {
                       // emit Log("insertFixup", "r1b", 0, 0, 0, 0, false);
-                      z = self.nodes[z].parentKey;
+                      z = zParentKey;
                       rotateRight(self, z);
                     }
-                    self.nodes[self.nodes[z].parentKey].red = false;
-                    self.nodes[self.nodes[self.nodes[z].parentKey].parentKey].red = true;
-                    rotateLeft(self, self.nodes[self.nodes[z].parentKey].parentKey);
+                    zParentKey = self.nodes[z].parentKey;
+                    self.nodes[zParentKey].red = false;
+                    self.nodes[self.nodes[zParentKey].parentKey].red = true;
+                    rotateLeft(self, self.nodes[zParentKey].parentKey);
                 }
             }
         }
@@ -253,22 +258,23 @@ library BokkyPooBahsRedBlackTreeLibrary {
         // emit Log("replaceParent before", "self.root", self.root, self.nodes[self.root].parentKey, self.nodes[self.root].leftKey, self.nodes[self.root].rightKey, self.nodes[self.root].red);
         // emit Log("replaceParent before", "a", a, self.nodes[a].parentKey, self.nodes[a].leftKey, self.nodes[a].rightKey, self.nodes[a].red);
         // emit Log("replaceParent before", "b", b, self.nodes[b].parentKey, self.nodes[b].leftKey, self.nodes[b].rightKey, self.nodes[b].red);
-        self.nodes[a].parentKey = self.nodes[b].parentKey;
-        if (self.nodes[b].parentKey == NULL) {
+        uint bParentKey = self.nodes[b].parentKey;
+        self.nodes[a].parentKey = bParentKey;
+        if (bParentKey == NULL) {
             self.root = a;
         } else {
             // uint bParent = self.nodes[b].parentKey;
-            if (b == self.nodes[self.nodes[b].parentKey].leftKey) {
+            if (b == self.nodes[bParentKey].leftKey) {
                 // emit Log("replaceParent aaa", "a", a, self.nodes[a].parentKey, self.nodes[a].leftKey, self.nodes[a].rightKey, self.nodes[a].red);
                 // emit Log("replaceParent aaa", "b", b, self.nodes[b].parentKey, self.nodes[b].leftKey, self.nodes[b].rightKey, self.nodes[b].red);
                 // emit Log("replaceParent aaa before", "bParent", bParent, self.nodes[bParent].parentKey, self.nodes[bParent].leftKey, self.nodes[bParent].rightKey, self.nodes[bParent].red);
-                self.nodes[self.nodes[b].parentKey].leftKey = a;
+                self.nodes[bParentKey].leftKey = a;
                 // emit Log("replaceParent aaa after", "bParent", bParent, self.nodes[bParent].parentKey, self.nodes[bParent].leftKey, self.nodes[bParent].rightKey, self.nodes[bParent].red);
             } else {
                 // emit Log("replaceParent bbb", "a", a, self.nodes[a].parentKey, self.nodes[a].leftKey, self.nodes[a].rightKey, self.nodes[a].red);
                 // emit Log("replaceParent bbb", "b", b, self.nodes[b].parentKey, self.nodes[b].leftKey, self.nodes[b].rightKey, self.nodes[b].red);
                 // emit Log("replaceParent bbb before", "bParent", bParent, self.nodes[bParent].parentKey, self.nodes[bParent].leftKey, self.nodes[bParent].rightKey, self.nodes[bParent].red);
-                self.nodes[self.nodes[b].parentKey].rightKey = a;
+                self.nodes[bParentKey].rightKey = a;
                 // emit Log("replaceParent bbb after", "bParent", bParent, self.nodes[bParent].parentKey, self.nodes[bParent].leftKey, self.nodes[bParent].rightKey, self.nodes[bParent].red);
             }
         }
@@ -306,16 +312,17 @@ library BokkyPooBahsRedBlackTreeLibrary {
             // emit Log("remove two 2", "x", x, self.nodes[x].parentKey, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
         }
 
-        self.nodes[x].parentKey = self.nodes[y].parentKey;
+        uint yParentKey = self.nodes[y].parentKey;
+        self.nodes[x].parentKey = yParentKey;
         // emit Log("remove two after", "x", x, self.nodes[x].parentKey, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
 
         // emit Log("remove three before", "x", x, self.nodes[x].parentKey, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
         // emit Log("remove three before", "y", y, self.nodes[y].parentKey, self.nodes[y].leftKey, self.nodes[y].rightKey, self.nodes[y].red);
-        if (self.nodes[y].parentKey != NULL) {
-            if (y == self.nodes[self.nodes[y].parentKey].leftKey) {
-                self.nodes[self.nodes[y].parentKey].leftKey = x;
+        if (yParentKey != NULL) {
+            if (y == self.nodes[yParentKey].leftKey) {
+                self.nodes[yParentKey].leftKey = x;
             } else {
-                self.nodes[self.nodes[y].parentKey].rightKey = x;
+                self.nodes[yParentKey].rightKey = x;
             }
         } else {
             self.root = x;
