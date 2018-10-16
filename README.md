@@ -1,6 +1,6 @@
 # BokkyPooBahs Red-Black Tree Library
 
-Status: **Tidying, testing, documenting before getting audits**
+Status: **Tidying, testing, documenting before getting audits - don't use yet**
 
 A gas-efficient Solidity data structure to maintain a sorted index for your data.
 
