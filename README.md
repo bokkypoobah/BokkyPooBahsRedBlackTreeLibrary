@@ -1,5 +1,7 @@
 # BokkyPooBahs Red-Black Tree Library
 
+Status: **Tidying, testing, documenting before getting audits**
+
 A gas-efficient Solidity data structure to maintain a sorted index for your data.
 
 This library will store `uint`s (equivalent to `uint256`) as the key. Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
