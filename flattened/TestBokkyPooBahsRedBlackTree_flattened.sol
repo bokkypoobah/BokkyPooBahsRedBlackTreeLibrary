@@ -195,7 +195,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
         // emit Log("insert", "z", z, self.nodes[z].parent, self.nodes[z].left, self.nodes[z].right, self.nodes[z].red);
         insertFixup(self, z);
     }
-
     function insertFixup(Tree storage self, uint z) private {
         uint y;
 
@@ -283,7 +282,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
         // emit Log("replaceParent after", "a", a, self.nodes[a].parent, self.nodes[a].left, self.nodes[a].right, self.nodes[a].red);
         // emit Log("replaceParent after", "b", b, self.nodes[b].parent, self.nodes[b].left, self.nodes[b].right, self.nodes[b].red);
     }
-
     function remove(Tree storage self, uint z) internal {
         uint x;
         uint y;
@@ -354,7 +352,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             // emit Log("remove after key[z] := key[y]", "z", z, self.nodes[z].parent, self.nodes[z].left, self.nodes[z].right, self.nodes[z].red);
         }
         if (doFixup) {
-            deleteFixup(self, x);
+            removeFixup(self, x);
         }
 
         // emit Log("remove last", "0", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
@@ -363,12 +361,11 @@ library BokkyPooBahsRedBlackTreeLibrary {
         delete self.nodes[0];
         delete self.nodes[y];
     }
-
-    function deleteFixup(Tree storage self, uint x) private {
+    function removeFixup(Tree storage self, uint x) private {
         uint w;
-        // emit Log("deleteFixup start", "x", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
+        // emit Log("removeFixup start", "x", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
         while (x != self.root && !self.nodes[x].red) {
-            // emit Log("deleteFixup in loop", "x", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
+            // emit Log("removeFixup in loop", "x", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
             uint xParentKey = self.nodes[x].parent;
             if (x == self.nodes[xParentKey].left) {
                 w = self.nodes[xParentKey].right;
