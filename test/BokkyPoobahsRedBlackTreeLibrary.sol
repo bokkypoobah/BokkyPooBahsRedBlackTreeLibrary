@@ -78,95 +78,95 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    function parentKey(Tree storage self, uint key) internal view returns (uint _parentKey) {
-        _parentKey = self.nodes[key].parentKey;
+    function parent(Tree storage self, uint key) internal view returns (uint _parent) {
+        _parent = self.nodes[key].parentKey;
     }
-    function parentNode(Tree storage self, uint key) internal view returns (Node _parent) {
-        _parent = self.nodes[self.nodes[key].parentKey];
+    function parentNode(Tree storage self, uint key) internal view returns (Node _parentNode) {
+        _parentNode = self.nodes[self.nodes[key].parentKey];
     }
-    function grandparentKey(Tree storage self, uint key) internal view returns (uint _grandparentKey) {
-        uint _parentKey = self.nodes[key].parentKey;
-        if (_parentKey != NULL) {
-            _grandparentKey = self.nodes[_parentKey].parentKey;
+    function grandparent(Tree storage self, uint key) internal view returns (uint _grandparent) {
+        uint _parent = self.nodes[key].parentKey;
+        if (_parent != NULL) {
+            _grandparent = self.nodes[_parent].parentKey;
         }
     }
-    function grandparentNode(Tree storage self, uint key) internal view returns (Node _grandparent) {
-        uint _parentKey = self.nodes[key].parentKey;
-        if (_parentKey != NULL) {
-            _grandparent = self.nodes[self.nodes[_parentKey].parentKey];
+    function grandparentNode(Tree storage self, uint key) internal view returns (Node _grandparentNode) {
+        uint _parent = self.nodes[key].parentKey;
+        if (_parent != NULL) {
+            _grandparentNode = self.nodes[self.nodes[_parent].parentKey];
         }
     }
-    function siblingKey(Tree storage self, uint key) internal view returns (uint _siblingKey) {
-        uint _parentKey = self.nodes[key].parentKey;
-        if (_parentKey != NULL) {
-            if (key == self.nodes[_parentKey].leftKey) {
-                _siblingKey = self.nodes[_parentKey].rightKey;
+    function sibling(Tree storage self, uint key) internal view returns (uint _sibling) {
+        uint _parent = self.nodes[key].parentKey;
+        if (_parent != NULL) {
+            if (key == self.nodes[_parent].leftKey) {
+                _sibling = self.nodes[_parent].rightKey;
             } else {
-                _siblingKey = self.nodes[_parentKey].leftKey;
+                _sibling = self.nodes[_parent].leftKey;
             }
         }
     }
-    function siblingNode(Tree storage self, uint key) internal view returns (Node _sibling) {
-        uint _parentKey = self.nodes[key].parentKey;
-        if (_parentKey != NULL) {
-            if (key == self.nodes[_parentKey].leftKey) {
-                _sibling = self.nodes[self.nodes[_parentKey].rightKey];
+    function siblingNode(Tree storage self, uint key) internal view returns (Node _siblingNode) {
+        uint _parent = self.nodes[key].parentKey;
+        if (_parent != NULL) {
+            if (key == self.nodes[_parent].leftKey) {
+                _siblingNode = self.nodes[self.nodes[_parent].rightKey];
             } else {
-                _sibling = self.nodes[self.nodes[_parentKey].leftKey];
+                _siblingNode = self.nodes[self.nodes[_parent].leftKey];
             }
         }
     }
-    function uncleKey(Tree storage self, uint key) internal view returns (uint _uncleKey) {
-        uint _grandParentKey = grandparentKey(self, key);
-        if (_grandParentKey != NULL) {
-            uint _parentKey = self.nodes[key].parentKey;
-            _uncleKey = siblingKey(self, _parentKey);
+    function uncle(Tree storage self, uint key) internal view returns (uint _uncle) {
+        uint _grandParent = grandparent(self, key);
+        if (_grandParent != NULL) {
+            uint _parent = self.nodes[key].parentKey;
+            _uncle = sibling(self, _parent);
         }
     }
-    function uncle(Tree storage self, uint key) internal view returns (Node _uncle) {
-        uint _grandParentKey = grandparentKey(self, key);
-        if (_grandParentKey != NULL) {
-            uint _parentKey = self.nodes[key].parentKey;
-            _uncle = siblingNode(self, _parentKey);
+    function uncleNode(Tree storage self, uint key) internal view returns (Node _uncleNode) {
+        uint _grandParent = grandparent(self, key);
+        if (_grandParent != NULL) {
+            uint _parent = self.nodes[key].parentKey;
+            _uncleNode = siblingNode(self, _parent);
         }
     }
 
     function rotateLeft(Tree storage self, uint x) private {
         uint y = self.nodes[x].rightKey;
-        uint parent = self.nodes[x].parentKey;
+        uint _parent = self.nodes[x].parentKey;
         // emit Log("rotateLeft", "x", x, parent, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
         uint yLeftKey = self.nodes[y].leftKey;
         self.nodes[x].rightKey = yLeftKey;
         if (yLeftKey != NULL) {
             self.nodes[yLeftKey].parentKey = x;
         }
-        self.nodes[y].parentKey = parent;
-        if (parent == NULL) {
+        self.nodes[y].parentKey = _parent;
+        if (_parent == NULL) {
             self.root = y;
-        } else if (x == self.nodes[parent].leftKey) {
-            self.nodes[parent].leftKey = y;
+        } else if (x == self.nodes[_parent].leftKey) {
+            self.nodes[_parent].leftKey = y;
         } else {
-            self.nodes[parent].rightKey = y;
+            self.nodes[_parent].rightKey = y;
         }
         self.nodes[y].leftKey = x;
         self.nodes[x].parentKey = y;
     }
     function rotateRight(Tree storage self, uint x) private {
         uint y = self.nodes[x].leftKey;
-        uint parent = self.nodes[x].parentKey;
+        uint _parent = self.nodes[x].parentKey;
         // emit Log("rotateRight", "x", x, parent, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
         uint yRightKey = self.nodes[y].rightKey;
         self.nodes[x].leftKey = yRightKey;
         if (yRightKey != NULL) {
             self.nodes[yRightKey].parentKey = x;
         }
-        self.nodes[y].parentKey = parent;
-        if (parent == NULL) {
+        self.nodes[y].parentKey = _parent;
+        if (_parent == NULL) {
             self.root = y;
-        } else if (x == self.nodes[parent].rightKey) {
-            self.nodes[parent].rightKey = y;
+        } else if (x == self.nodes[_parent].rightKey) {
+            self.nodes[_parent].rightKey = y;
         } else {
-            self.nodes[parent].leftKey = y;
+            self.nodes[_parent].leftKey = y;
         }
         self.nodes[y].rightKey = x;
         self.nodes[x].parentKey = y;
