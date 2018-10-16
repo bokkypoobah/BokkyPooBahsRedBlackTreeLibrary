@@ -9,7 +9,7 @@ contract TestBokkyPooBahsRedBlackTree {
     mapping(uint => uint) values;
 
     // Copied here from the library so the event is generated in the ABI
-    event Log(string where, string action, uint key, uint parentKey, uint leftKey, uint rightKey, bool red);
+    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     constructor() public {
     }
@@ -26,7 +26,7 @@ contract TestBokkyPooBahsRedBlackTree {
         require(_key != 0);
         if (tree.keyExists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
-            (key, parent, left, right, red) = (_key, node.parentKey, node.leftKey, node.rightKey, node.red);
+            (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
         }
     }
