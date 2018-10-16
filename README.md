@@ -24,9 +24,9 @@ If you find this library useful for your project, **especially commercial projec
 * [History](#history)
 * [Deployment](#deployment)
 * [Questions And Answers](#questions-and-answers)
-* [Conventions](#conventions)
 * [Functions](#functions)
-  * [_daysFromDate](#_daysfromdate)
+  * [insert](#insert)
+  * [remove](#remove)
 * [Gas Cost](#gas-cost)
 * [Algorithm](#algorithm)
 * [Testing](#testing)
@@ -36,6 +36,41 @@ If you find this library useful for your project, **especially commercial projec
 
 <hr />
 
+## History
+
+<br />
+
+<hr />
+
+## Deployment
+
+This library has been designed to be automatically compiled into your Ethereum Solidity contract or library, instead of having to deploy this library and then linking your contract or library to this library.
+
+<br />
+
+<hr />
+
+## Questions And Answers
+
+<br />
+
+<hr />
+
+## Functions
+
+### insert
+
+```javascript
+function insert(Tree storage self, uint z) internal;
+```
+
+<br />
+
+### remove
+
+```javascript
+function remove(Tree storage self, uint z) internal;
+```
 
 <br />
 
