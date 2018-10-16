@@ -22,8 +22,16 @@ contract TestBokkyPooBahsRedBlackTree {
     function last() public view returns (uint _key) {
         _key = tree.last();
     }
+    function next(uint key) public view returns (uint _key) {
+        _key = tree.next(key);
+    }
+    function prev(uint key) public view returns (uint _key) {
+        _key = tree.prev(key);
+    }
+    function exists(uint key) public view returns (bool _exists) {
+        _exists = tree.exists(key);
+    }
     function getNode(uint _key) public view returns (uint key, uint parent, uint left, uint right, bool red, uint value) {
-        require(_key != 0);
         if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
             (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
@@ -31,12 +39,10 @@ contract TestBokkyPooBahsRedBlackTree {
         }
     }
     function insert(uint _key, uint _value) public {
-        require(_key != 0);
         tree.insert(_key);
         values[_key] = _value;
     }
     function remove(uint _key) public {
-        require(_key != 0);
         tree.remove(_key);
         delete values[_key];
     }
