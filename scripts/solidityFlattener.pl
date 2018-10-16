@@ -13,7 +13,7 @@ use File::Basename;
 use File::Spec::Functions;
 
 my $DEFAULTCONTRACTSDIR = "./contracts";
-my $VERSION = "v1.0.2";
+my $VERSION = "v1.0.3";
 
 my $helptext = qq\
 Solidity Flattener $VERSION
@@ -118,8 +118,8 @@ sub processSol {
     chomp $line;
     if ($line =~ /^import/) {
       my $importfile = $line;
-      $importfile =~ s/import \"//;
-      $importfile =~ s/\";.*$//;
+      $importfile =~ s/import [\"\']//;
+      $importfile =~ s/[\"\'];.*$//;
       $file = basename($importfile);
       if ($seen{$file}) {
         printf "%s    Already Imported %s\n", "    " x $level, catfile($dir, $importfile)
