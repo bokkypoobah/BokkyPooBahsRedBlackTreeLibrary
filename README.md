@@ -10,7 +10,9 @@ This library uses an iterative (rather than recursive) Red-Black Tree to maintai
 
 A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
-But wtf is a Red-Black Tree? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 20. The root of the tree is 7, `k` represents the key numbers, `p` the parent, `l` the left node, `r` the right node, and the red-black coloring of each node:
+But wtf is a [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 20. The RBT algorithm maintains a self-balancing tree.
+
+The root of the tree is 7, `k` represents the key numbers, `p` the parent, `l` the left node, `r` the right node, and the red-black coloring of each node is used to maintain the tree balance. Nodes with `l0 r0` are the leaves of the tree:
 
 ```
             [k1 p2 l0 r0 red]
