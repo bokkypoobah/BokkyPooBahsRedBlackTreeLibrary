@@ -351,15 +351,15 @@ function printTestRedBlackTreeContractDetails() {
     var latestBlock = eth.blockNumber;
     var i;
 
-    var logEvents = contract.Log({}, { fromBlock: testRedBlackTreeFromBlock, toBlock: latestBlock });
-    i = 0;
-    logEvents.watch(function (error, result) {
-      console.log("RESULT: Log " + i++ + " #" + result.blockNumber + " \"" + result.args.where +
-        "\", \"" + result.args.action + "\", " +
-        " key=" + result.args.key + " p=" + result.args.parentKey + " l=" + result.args.leftKey +
-        " r=" + result.args.rightKey + " " + (result.args.red ? "red" : "black"));
-    });
-    logEvents.stopWatching();
+    // var logEvents = contract.Log({}, { fromBlock: testRedBlackTreeFromBlock, toBlock: latestBlock });
+    // i = 0;
+    // logEvents.watch(function (error, result) {
+    //   console.log("RESULT: Log " + i++ + " #" + result.blockNumber + " \"" + result.args.where +
+    //     "\", \"" + result.args.action + "\", " +
+    //     " key=" + result.args.key + " p=" + result.args.parentKey + " l=" + result.args.leftKey +
+    //     " r=" + result.args.rightKey + " " + (result.args.red ? "red" : "black"));
+    // });
+    // logEvents.stopWatching();
 
     testRedBlackTreeFromBlock = latestBlock + 1;
   }

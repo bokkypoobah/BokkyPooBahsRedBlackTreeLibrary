@@ -8,9 +8,6 @@ contract TestBokkyPooBahsRedBlackTree {
     BokkyPooBahsRedBlackTreeLibrary.Tree tree;
     mapping(uint => uint) values;
 
-    // Copied here from the library so the event is generated in the ABI
-    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
-
     constructor() public {
     }
     function root() public view returns (uint _key) {

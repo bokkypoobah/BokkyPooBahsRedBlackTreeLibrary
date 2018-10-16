@@ -157,13 +157,12 @@ items=[97,1,26,99,32,56,21,83,42,88,49,8,69,9,78,18,20,17,39,87,25,7,5,91,73,15,
 // items = [4, 3];
 console.log("RESULT: remove=" + JSON.stringify(items));
 var tx = [];
-for (var i = 0; i < items.length /*&& i < 75*/; i++) {
+for (var i = 0; i < items.length; i++) {
   var item = items[i];
   console.log("RESULT: removing " + item);
   tx.push(test.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
   expected = listMinusItem(expected, item);
   if ((i + 1) % BATCHSIZE == 0) {
-  // if (i > 72) {
     while (txpool.status.pending > 0) {
     }
     console.log("RESULT: expected=" + JSON.stringify(expected));
@@ -175,16 +174,15 @@ for (var i = 0; i < items.length /*&& i < 75*/; i++) {
       console.log("RESULT: comparison ERROR !!!!!!!!!!!!!!");
     }
     printTestRedBlackTreeContractDetails();
-  // }
   }
 }
 
-for (var i = 0; i < items.length /*&& i < 75*/; i++) {
+for (var i = 0; i < items.length; i++) {
   var item = items[i];
   failIfTxStatusError(tx[i], setup_Message + " - test.remove(" + item + ")");
 }
 var totalGasUsed = new BigNumber(0);
-for (var i = 0; i < items.length /*&& i < 75*/; i++) {
+for (var i = 0; i < items.length; i++) {
   var item = items[i];
   var itemValue = parseInt(item) + 10000;
   printTxData("setup_1Tx[" + i + "]", tx[i]);
