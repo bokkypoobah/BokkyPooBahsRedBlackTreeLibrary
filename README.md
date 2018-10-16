@@ -2,9 +2,11 @@
 
 A gas-efficient Solidity data structure to maintain a sorted index for your data.
 
-This library will store `uint` (short form of `uint256`) as the key. Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
+This library will store `uint`s (equivalent to `uint256`) as the key. Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
 
 This library uses an iterative (rather than recursive) Red-Black Tree to maintain the sorted keys.
+
+A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
 <br />
 
