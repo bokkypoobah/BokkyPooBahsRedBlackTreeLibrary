@@ -27,8 +27,8 @@ If you find this library useful for your project, **especially commercial projec
 * [Functions](#functions)
   * [insert](#insert)
   * [remove](#remove)
-* [Gas Cost](#gas-cost)
 * [Algorithm](#algorithm)
+* [Gas Cost](#gas-cost)
 * [Testing](#testing)
 * [References](#references)
 
@@ -73,6 +73,35 @@ function insert(Tree storage self, uint z) internal;
 ```javascript
 function remove(Tree storage self, uint z) internal;
 ```
+
+<br />
+
+<hr />
+
+## Algorithm
+
+<br />
+
+<hr />
+
+## Gas Cost
+
+TODO:
+
+* [ ] Min, Max, Average for 10, 100, 1000, 10000 entries
+
+<br />
+
+<hr />
+
+## Testing
+
+TODO:
+
+* [ ] Test random insertions 10, 1000, 10000
+* [ ] Test random insertions and deletions
+* [ ] Test repeated random insertions and deletions
+* [ ] Test the `view` functions, including what happens when an invalid key is passed
 
 <br />
 
