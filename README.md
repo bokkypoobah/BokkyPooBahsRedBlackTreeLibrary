@@ -10,6 +10,31 @@ This library uses an iterative (rather than recursive) Red-Black Tree to maintai
 
 A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
+But wtf is a Red-Black Tree? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 20. The root of the tree is 7, `k` represents the key numbers, `p` the parent, `l` the left node, `r` the right node, and the red-black coloring of each node:
+
+```
+            [k1 p2 l0 r0 red]
+        [k2 p3 l1 r0 black]
+    [k3 p7 l2 r5 black]
+            [k4 p5 l0 r0 red]
+        [k5 p3 l4 r6 black]
+            [k6 p5 l0 r0 red]
+[k7 p0 l3 r15 black]
+                [k8 p9 l0 r0 red]
+            [k9 p11 l8 r10 black]
+                [k10 p9 l0 r0 red]
+        [k11 p15 l9 r13 red]
+                [k12 p13 l0 r0 red]
+            [k13 p11 l12 r14 black]
+                [k14 p13 l0 r0 red]
+    [k15 p7 l11 r18 black]
+            [k16 p18 l0 r17 black]
+                [k17 p16 l0 r0 red]
+        [k18 p15 l16 r20 red]
+                [k19 p20 l0 r0 red]
+            [k20 p18 l19 r0 black]
+```
+
 <br />
 
 <hr />
