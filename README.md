@@ -58,7 +58,7 @@ This library has been designed to be automatically compiled into your Ethereum S
 
 ## Functions
 
-See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) for an example contract that uses this library.
+See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) (or the [flattened](flattened/TestBokkyPooBahsRedBlackTree.sol) version) for an example contract that uses this library.
 
 ### insert
 
