@@ -11,10 +11,7 @@ pragma solidity ^0.4.25;
 // https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
 //
 //
-// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018.
-//
-// GNU Lesser General Public License 3.0
-// https://www.gnu.org/licenses/lgpl-3.0.en.html
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
 library BokkyPooBahsRedBlackTreeLibrary {
@@ -31,6 +28,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
     }
 
     uint private constant NULL = 0;
+
+    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
@@ -392,11 +391,26 @@ library BokkyPooBahsRedBlackTreeLibrary {
     }
 }
 
+// ----------------------------------------------------------------------------
+// BokkyPooBah's RedBlackTree Library v0.90 - Contract for testing
+//
+// A Solidity Red-Black Tree library to store and maintain a sorted data
+// structure in a Red-Black binary search tree, with O(log n) insert, remove
+// and search time (and gas, approximately)
+//
+// https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
+//
+//
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
+// ----------------------------------------------------------------------------
+
 contract TestBokkyPooBahsRedBlackTree {
     using BokkyPooBahsRedBlackTreeLibrary for BokkyPooBahsRedBlackTreeLibrary.Tree;
 
     BokkyPooBahsRedBlackTreeLibrary.Tree tree;
     mapping(uint => uint) values;
+
+    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     constructor() public {
     }

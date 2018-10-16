@@ -132,6 +132,7 @@ TODO:
 * [ ] Test repeated random insertions and deletions
 * [ ] Test the `view` functions, including what happens when a non-existent key is passed
 * [ ] Test deleting a non-existent key
+* [ ] Insert duplicate
 * [ ] Test adding sequentially increasing and decreasing keys
 * [ ] Test whether `nodes[0]` is used now (was used when the algorithm was not quite working correctly)
 
@@ -170,4 +171,4 @@ https://www.geeksforgeeks.org/red-black-tree-set-3-delete-2/
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Oct 16 2018. [GNU Lesser General Public License 3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Oct 16 2018. The MIT Licence.

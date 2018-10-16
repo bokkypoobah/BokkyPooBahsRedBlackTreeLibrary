@@ -2,11 +2,26 @@ pragma solidity ^0.4.25;
 
 import "BokkyPooBahsRedBlackTreeLibrary.sol";
 
+// ----------------------------------------------------------------------------
+// BokkyPooBah's RedBlackTree Library v0.90 - Contract for testing
+//
+// A Solidity Red-Black Tree library to store and maintain a sorted data
+// structure in a Red-Black binary search tree, with O(log n) insert, remove
+// and search time (and gas, approximately)
+//
+// https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
+//
+//
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
+// ----------------------------------------------------------------------------
+
 contract TestBokkyPooBahsRedBlackTree {
     using BokkyPooBahsRedBlackTreeLibrary for BokkyPooBahsRedBlackTreeLibrary.Tree;
 
     BokkyPooBahsRedBlackTreeLibrary.Tree tree;
     mapping(uint => uint) values;
+
+    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     constructor() public {
     }

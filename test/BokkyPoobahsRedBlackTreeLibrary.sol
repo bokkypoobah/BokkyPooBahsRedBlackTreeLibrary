@@ -10,10 +10,7 @@ pragma solidity ^0.4.25;
 // https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
 //
 //
-// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018.
-//
-// GNU Lesser General Public License 3.0
-// https://www.gnu.org/licenses/lgpl-3.0.en.html
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
 
 library BokkyPooBahsRedBlackTreeLibrary {
@@ -30,6 +27,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
     }
 
     uint private constant NULL = 0;
+
+    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;

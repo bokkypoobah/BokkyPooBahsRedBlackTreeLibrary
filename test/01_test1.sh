@@ -83,6 +83,9 @@ var test = testContract.new({from: deployer, data: testBin, gas: 6000000, gasPri
       } else {
         testAddress = contract.address;
         addAccount(testAddress, "Test");
+        console.log("DATA: var testAddress=\"" + testAddress + "\";");
+        console.log("DATA: var testAbi=" + JSON.stringify(testAbi) + ";");
+        console.log("DATA: var test=eth.contract(testAbi).at(testAddress);");
         addTestRedBlackTreeContractAddressAndAbi(testAddress, testAbi);
         console.log("DATA: testAddress=" + testAddress);
       }
