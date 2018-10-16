@@ -101,7 +101,10 @@ TODO:
 * [ ] Test random insertions 10, 1000, 10000
 * [ ] Test random insertions and deletions
 * [ ] Test repeated random insertions and deletions
-* [ ] Test the `view` functions, including what happens when an invalid key is passed
+* [ ] Test the `view` functions, including what happens when a non-existent key is passed
+* [ ] Test deleting a non-existent key
+* [ ] Test adding sequentially increasing and decreasing keys
+* [ ] Test whether `nodes[0]` is used now (was used when the algorithm was not quite working correctly)
 
 <br />
 

@@ -261,12 +261,12 @@ library BokkyPooBahsRedBlackTreeLibrary {
         }
         if (doFixup) {
             removeFixup(self, x);
+            // TODO Check if required delete self.nodes[0];
         }
 
         // emit Log("remove last", "0", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
         // emit Log("remove last", "z", z, self.nodes[z].parent, self.nodes[z].left, self.nodes[z].right, self.nodes[z].red);
         // emit Log("remove last", "y", y, self.nodes[y].parent, self.nodes[y].left, self.nodes[y].right, self.nodes[y].red);
-        delete self.nodes[0];
         delete self.nodes[y];
     }
 
