@@ -368,52 +368,53 @@ library BokkyPooBahsRedBlackTreeLibrary {
         // emit Log("deleteFixup start", "x", x, self.nodes[x].parentKey, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
         while (x != self.root && !self.nodes[x].red) {
             // emit Log("deleteFixup in loop", "x", x, self.nodes[x].parentKey, self.nodes[x].leftKey, self.nodes[x].rightKey, self.nodes[x].red);
-            if (x == self.nodes[self.nodes[x].parentKey].leftKey) {
-                w = self.nodes[self.nodes[x].parentKey].rightKey;
+            uint xParentKey = self.nodes[x].parentKey;
+            if (x == self.nodes[xParentKey].leftKey) {
+                w = self.nodes[xParentKey].rightKey;
                 if (self.nodes[w].red) {
                     self.nodes[w].red = false;
-                    self.nodes[self.nodes[x].parentKey].red = true;
-                    rotateLeft(self, self.nodes[x].parentKey);
-                    w = self.nodes[self.nodes[x].parentKey].rightKey;
+                    self.nodes[xParentKey].red = true;
+                    rotateLeft(self, xParentKey);
+                    w = self.nodes[xParentKey].rightKey;
                 }
                 if (!self.nodes[self.nodes[w].leftKey].red && !self.nodes[self.nodes[w].rightKey].red) {
                     self.nodes[w].red = true;
-                    x = self.nodes[x].parentKey;
+                    x = xParentKey;
                 } else {
                     if (!self.nodes[self.nodes[w].rightKey].red) {
                         self.nodes[self.nodes[w].leftKey].red = false;
                         self.nodes[w].red = true;
                         rotateRight(self, w);
-                        w = self.nodes[self.nodes[x].parentKey].rightKey;
+                        w = self.nodes[xParentKey].rightKey;
                     }
-                    self.nodes[w].red = self.nodes[self.nodes[x].parentKey].red;
-                    self.nodes[self.nodes[x].parentKey].red = false;
+                    self.nodes[w].red = self.nodes[xParentKey].red;
+                    self.nodes[xParentKey].red = false;
                     self.nodes[self.nodes[w].rightKey].red = false;
-                    rotateLeft(self, self.nodes[x].parentKey);
+                    rotateLeft(self, xParentKey);
                     x = self.root;
                 }
             } else {
-                w = self.nodes[self.nodes[x].parentKey].leftKey;
+                w = self.nodes[xParentKey].leftKey;
                 if (self.nodes[w].red) {
                     self.nodes[w].red = false;
-                    self.nodes[self.nodes[x].parentKey].red = true;
-                    rotateRight(self, self.nodes[x].parentKey);
-                    w = self.nodes[self.nodes[x].parentKey].leftKey;
+                    self.nodes[xParentKey].red = true;
+                    rotateRight(self, xParentKey);
+                    w = self.nodes[xParentKey].leftKey;
                 }
                 if (!self.nodes[self.nodes[w].rightKey].red && !self.nodes[self.nodes[w].leftKey].red) {
                     self.nodes[w].red = true;
-                    x = self.nodes[x].parentKey;
+                    x = xParentKey;
                 } else {
                     if (!self.nodes[self.nodes[w].leftKey].red) {
                         self.nodes[self.nodes[w].rightKey].red = false;
                         self.nodes[w].red = true;
                         rotateLeft(self, w);
-                        w = self.nodes[self.nodes[x].parentKey].leftKey;
+                        w = self.nodes[xParentKey].leftKey;
                     }
-                    self.nodes[w].red = self.nodes[self.nodes[x].parentKey].red;
-                    self.nodes[self.nodes[x].parentKey].red = false;
+                    self.nodes[w].red = self.nodes[xParentKey].red;
+                    self.nodes[xParentKey].red = false;
                     self.nodes[self.nodes[w].leftKey].red = false;
-                    rotateRight(self, self.nodes[x].parentKey);
+                    rotateRight(self, xParentKey);
                     x = self.root;
                 }
             }
