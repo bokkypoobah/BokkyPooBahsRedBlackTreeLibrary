@@ -41,23 +41,23 @@ library BokkyPooBahsRedBlackTreeLibrary {
 
     event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
-    function getFirstKey(Tree storage self) internal view returns (uint _key) {
+    function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
         while (_key != 0 && self.nodes[_key].left != 0) {
             _key = self.nodes[_key].left;
         }
     }
-    function getLastKey(Tree storage self) internal view returns (uint _key) {
+    function last(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
         while (_key != 0 && self.nodes[_key].right != 0) {
             _key = self.nodes[_key].right;
         }
     }
-    function keyExists(Tree storage self, uint key) internal view returns (bool exists) {
+    function exists(Tree storage self, uint key) internal view returns (bool _exists) {
         uint _key = self.root;
         while (_key != NULL) {
             if (key == _key) {
-                exists = true;
+                _exists = true;
             }
             if (key < _key) {
                 _key = self.nodes[_key].left;
@@ -435,15 +435,15 @@ contract TestBokkyPooBahsRedBlackTree {
     function root() public view returns (uint _key) {
         _key = tree.root;
     }
-    function getFirstKey() public view returns (uint _key) {
-        _key = tree.getFirstKey();
+    function first() public view returns (uint _key) {
+        _key = tree.first();
     }
-    function getLastKey() public view returns (uint _key) {
-        _key = tree.getLastKey();
+    function last() public view returns (uint _key) {
+        _key = tree.last();
     }
     function getNode(uint _key) public view returns (uint key, uint parent, uint left, uint right, bool red, uint value) {
         require(_key != 0);
-        if (tree.keyExists(_key)) {
+        if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
             (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];

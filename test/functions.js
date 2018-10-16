@@ -326,8 +326,8 @@ function printTestRedBlackTreeContractDetails() {
     var contract = eth.contract(testRedBlackTreeContractAbi).at(testRedBlackTreeContractAddress);
     console.log("RESULT: --------------------------------------------------------------------------------");
     console.log("RESULT: testRedBlackTree.root=" + contract.root());
-    console.log("RESULT: testRedBlackTree.getFirstKey=" + contract.getFirstKey());
-    console.log("RESULT: testRedBlackTree.getLastKey=" + contract.getLastKey());
+    console.log("RESULT: testRedBlackTree.first=" + contract.first());
+    console.log("RESULT: testRedBlackTree.last=" + contract.last());
 
     var latestBlock = eth.blockNumber;
     var i;

@@ -16,15 +16,15 @@ contract TestBokkyPooBahsRedBlackTree {
     function root() public view returns (uint _key) {
         _key = tree.root;
     }
-    function getFirstKey() public view returns (uint _key) {
-        _key = tree.getFirstKey();
+    function first() public view returns (uint _key) {
+        _key = tree.first();
     }
-    function getLastKey() public view returns (uint _key) {
-        _key = tree.getLastKey();
+    function last() public view returns (uint _key) {
+        _key = tree.last();
     }
     function getNode(uint _key) public view returns (uint key, uint parent, uint left, uint right, bool red, uint value) {
         require(_key != 0);
-        if (tree.keyExists(_key)) {
+        if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
             (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
