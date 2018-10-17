@@ -5,12 +5,12 @@
 # Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2017. The MIT Licence.
 # ----------------------------------------------------------------------------------------------
 
-MODE=${1:-test}
+MODE=${1:-full}
 
 source settings
-echo "---------- Settings ----------" | tee $TEST1OUTPUT
-cat ./settings | tee -a $TEST1OUTPUT
-echo "" | tee -a $TEST1OUTPUT
+echo "---------- Settings ----------" | tee $TEST2OUTPUT
+cat ./settings | tee -a $TEST2OUTPUT
+echo "" | tee -a $TEST2OUTPUT
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`date -r $CURRENTTIME -u`
@@ -19,9 +19,9 @@ START_DATE_S=`date -r $START_DATE -u`
 END_DATE=`echo "$CURRENTTIME+60*4" | bc`
 END_DATE_S=`date -r $END_DATE -u`
 
-printf "CURRENTTIME = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
-printf "START_DATE  = '$START_DATE' '$START_DATE_S'\n" | tee -a $TEST1OUTPUT
-printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
+printf "CURRENTTIME = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST2OUTPUT
+printf "START_DATE  = '$START_DATE' '$START_DATE_S'\n" | tee -a $TEST2OUTPUT
+printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST2OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 # `cp modifiedContracts/*.sol .`
@@ -32,26 +32,26 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 #`perl -pi -e "s/endDate \= 1513872000;.*$/endDate \= $END_DATE; \/\/ $END_DATE_S/" $CROWDSALESOL`
 
 #DIFFS1=`diff $SOURCEDIR/$LIBSOL $LIBSOL`
-#echo "--- Differences $SOURCEDIR/$LIBSOL $LIBSOL ---" | tee -a $TEST1OUTPUT
-#echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#echo "--- Differences $SOURCEDIR/$LIBSOL $LIBSOL ---" | tee -a $TEST2OUTPUT
+#echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
 #DIFFS1=`diff $SOURCEDIR/$TESTSOL $TESTSOL`
-#echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST1OUTPUT
-#echo "$DIFFS1" | tee -a $TEST1OUTPUT
+#echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST2OUTPUT
+#echo "$DIFFS1" | tee -a $TEST2OUTPUT
 
-solc_0.4.25 --version | tee -a $TEST1OUTPUT
+solc_0.4.25 --version | tee -a $TEST2OUTPUT
 
 # echo "var libOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
 echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTSOL`;" > $TESTJS
 
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTSOL --outputsol=$TESTFLATTENED --verbose | tee -a $TEST1OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTSOL --outputsol=$TESTFLATTENED --verbose | tee -a $TEST2OUTPUT
 
 if [ "$MODE" = "compile" ]; then
   echo "Compiling only"
   exit 1;
 fi
 
-geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
+geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT
 loadScript("$TESTJS");
 loadScript("functions.js");
 
@@ -104,13 +104,72 @@ console.log("RESULT: ");
 var failureDetected = false;
 var expected;
 var result;
+var section;
+var message;
+var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false,\"0\"]";
 
 if ("$MODE" == "full") {
-  console.log("RESULT: ---------- Test isLeapYear ----------");
-  timestamp = testDateTime.timestampFromDateTime(2000, 5, 24, 1, 2, 3);
-  if (!assert(test.first() == "0", ".first() should return 0")) {
+  section = "[Empty List]";
+  console.log("RESULT: ---------- Test Basics - " + section + " ----------");
+  if (!assert(test.root() == "0", section + " test.root() should return 0")) {
     failureDetected = true;
   }
+  if (!assert(test.first() == "0", section + " test.first() should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.last() == "0", section + " test.last() should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(123) == "0", section + " test.next(123) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(123) == "0", section + " test.prev(123) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.exists(123) == false, section + " test.exists(123) should return false")) {
+    failureDetected = true;
+  }
+
+  var nodeResult = test.getNode(123);
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.getNode(123) should return " + NULLNODERESULT)) {
+    failureDetected = true;
+  }
+
+  if (!assert(test.parent(123) == "0", section + " test.parent(123) should return 0")) {
+    failureDetected = true;
+  }
+  var nodeResult = test.parentNode(123);
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.parentNode(123) should return " + NULLNODERESULT)) {
+    failureDetected = true;
+  }
+
+  if (!assert(test.grandparent(123) == "0", section + " test.grandparent(123) should return 0")) {
+    failureDetected = true;
+  }
+  var nodeResult = test.grandparentNode(123);
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.grandparentNode(123) should return " + NULLNODERESULT)) {
+    failureDetected = true;
+  }
+
+  if (!assert(test.sibling(123) == "0", section + " test.sibling(123) should return 0")) {
+    failureDetected = true;
+  }
+  var nodeResult = test.siblingNode(123);
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.siblingNode(123) should return " + NULLNODERESULT)) {
+    failureDetected = true;
+  }
+
+  if (!assert(test.uncle(123) == "0", section + " test.uncle(123) should return 0")) {
+    failureDetected = true;
+  }
+  var nodeResult = test.uncleNode(123);
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.uncleNode(123) should return " + NULLNODERESULT)) {
+    failureDetected = true;
+  }
+  // TODO: Test next, prev
+
+
+
   // timestamp = testDateTime.timestampFromDateTime(2100, 5, 24, 1, 2, 3);
   // if (!assert(!testDateTime.isLeapYear(timestamp), testDateTime.timestampToDateTime(timestamp) + " is a not leap year")) {
   //   failureDetected = true;
@@ -123,15 +182,26 @@ if ("$MODE" == "full") {
 }
 
 
+if (!failureDetected) {
+  console.log("RESULT: ---------- PASS - no failures detected ----------");
+} else {
+  console.log("RESULT: ---------- FAIL - some failures detected ----------");
+}
+
+
 exit;
 
+// -----------------------------------------------------------------------------
+var test2A_Message = "Test 2A - Empty List";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + test2A_Message + " -----");
+
+
 
 
 // -----------------------------------------------------------------------------
 var setup_Message = "Setup";
-var setup_Message = "Setup";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + setup_Message + " -----");
 console.log("RESULT: ----- " + setup_Message + " -----");
 // var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
 var NUMBEROFITEMS = 100;
@@ -161,7 +231,6 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 0; i < items.length; i++) {
   var item = items[i];
-  failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
   failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
 }
 var totalGasUsed = new BigNumber(0);
@@ -211,7 +280,6 @@ for (var i = 0; i < items.length; i++) {
 
 for (var i = 0; i < items.length; i++) {
   var item = items[i];
-  failIfTxStatusError(tx[i], setup_Message + " - test.remove(" + item + ")");
   failIfTxStatusError(tx[i], setup_Message + " - test.remove(" + item + ")");
 }
 var totalGasUsed = new BigNumber(0);
@@ -299,8 +367,8 @@ printTestRedBlackTreeContractDetails();
 
 
 EOF
-grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
+grep "DATA: " $TEST2OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
-grep "RESULT: " $TEST1OUTPUT | sed "s/RESULT: //" > $TEST1RESULTS
-cat $TEST1RESULTS
-grep average $TEST1RESULTS
+grep "RESULT: " $TEST2OUTPUT | sed "s/RESULT: //" > $TEST2RESULTS
+cat $TEST2RESULTS
+grep average $TEST2RESULTS
