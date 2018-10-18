@@ -101,37 +101,9 @@ printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 
 
-var failureDetected = false;
-var expected;
-var result;
-
-if ("$MODE" == "full") {
-  console.log("RESULT: ---------- Test isLeapYear ----------");
-  timestamp = testDateTime.timestampFromDateTime(2000, 5, 24, 1, 2, 3);
-  if (!assert(test.first() == "0", ".first() should return 0")) {
-    failureDetected = true;
-  }
-  // timestamp = testDateTime.timestampFromDateTime(2100, 5, 24, 1, 2, 3);
-  // if (!assert(!testDateTime.isLeapYear(timestamp), testDateTime.timestampToDateTime(timestamp) + " is a not leap year")) {
-  //   failureDetected = true;
-  // }
-  // timestamp = testDateTime.timestampFromDateTime(2104, 5, 24, 1, 2, 3);
-  // if (!assert(testDateTime.isLeapYear(timestamp), testDateTime.timestampToDateTime(timestamp) + " is a leap year")) {
-  //   failureDetected = true;
-  // }
-  console.log("RESULT: ");
-}
-
-
-exit;
-
-
-
 // -----------------------------------------------------------------------------
 var setup_Message = "Setup";
-var setup_Message = "Setup";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + setup_Message + " -----");
 console.log("RESULT: ----- " + setup_Message + " -----");
 // var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
 var NUMBEROFITEMS = 100;
@@ -141,8 +113,8 @@ for (var i = 1; i <= NUMBEROFITEMS; i++) {
     items.push(i);
 }
 // items = shuffle(items);
-items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64,83,14,38,81,100,78,12,36,62,99,84,92,60,32,53,24,97,4,87,26,93,25,56,63,5,67,51,76,59,66,69,65,48,39,18,3,45,50,8,71,95,19,28,52,82,1,20,6,75,27,9,88,23,17,42,85,44,13,80,37,94,40,2,21,15,90,61,91,73,29];
-// items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
+// items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64,83,14,38,81,100,78,12,36,62,99,84,92,60,32,53,24,97,4,87,26,93,25,56,63,5,67,51,76,59,66,69,65,48,39,18,3,45,50,8,71,95,19,28,52,82,1,20,6,75,27,9,88,23,17,42,85,44,13,80,37,94,40,2,21,15,90,61,91,73,29];
+items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
 // items = [4, 3, 1, 2, 6, 7, 5, 8, 9];
 // items = [4, 3, 1, 2, 6];
 // items = [4, 3, 1];
@@ -151,8 +123,12 @@ console.log("RESULT: insert=" + JSON.stringify(items));
 var tx = [];
 for (var i = 0; i < items.length; i++) {
   var item = items[i];
+  console.log("RESULT: inserting " + item);
   var itemValue = parseInt(item) + 10000;
   tx.push(test.insert(item, itemValue, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  while (txpool.status.pending > 0) {
+  }
+  printTestRedBlackTreeContractDetails();
 }
 while (txpool.status.pending > 0) {
 }
@@ -178,6 +154,9 @@ console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
+
+
+exit;
 
 
 items = shuffle(items);

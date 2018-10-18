@@ -181,6 +181,57 @@ if ("$MODE" == "full") {
   console.log("RESULT: ");
 }
 
+// -----------------------------------------------------------------------------
+var insert1_Message = "Insert Record #1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insert1_Message + " -----");
+// var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
+var NUMBEROFITEMS = 100;
+var BATCHSIZE = NUMBEROFITEMS / 4;
+var items = [];
+for (var i = 1; i <= NUMBEROFITEMS; i++) {
+    items.push(i);
+}
+// items = shuffle(items);
+// items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64,83,14,38,81,100,78,12,36,62,99,84,92,60,32,53,24,97,4,87,26,93,25,56,63,5,67,51,76,59,66,69,65,48,39,18,3,45,50,8,71,95,19,28,52,82,1,20,6,75,27,9,88,23,17,42,85,44,13,80,37,94,40,2,21,15,90,61,91,73,29];
+items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64];
+// items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
+// items = [4, 3, 1, 2, 6, 7, 5, 8, 9];
+// items = [4, 3, 1, 2, 6];
+// items = [4, 3, 1];
+var expected = items;
+console.log("RESULT: insert=" + JSON.stringify(items));
+var tx = [];
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+  var itemValue = parseInt(item) + 10000;
+  tx.push(test.insert(item, itemValue, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+}
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+  failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
+}
+var totalGasUsed = new BigNumber(0);
+for (var i = 0; i < items.length; i++) {
+  var item = items[i];
+  var itemValue = parseInt(item) + 10000;
+  printTxData("setup_1Tx[" + i + "]", tx[i]);
+  totalGasUsed = totalGasUsed.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+}
+var averageGasUsed = totalGasUsed.div(items.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsed);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsed);
+console.log("RESULT: ");
+
+printTestRedBlackTreeContractDetails();
+console.log("RESULT: ");
+}
+
 
 if (!failureDetected) {
   console.log("RESULT: ---------- PASS - no failures detected ----------");

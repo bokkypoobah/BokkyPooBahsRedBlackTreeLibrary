@@ -23,9 +23,9 @@ TEST3RESULTS=test3results.txt
 TEST4OUTPUT=test4output.txt
 TEST4RESULTS=test4results.txt
 
-CURRENTTIME = '1539763321' 'Wed 17 Oct 2018 08:02:01 UTC'
-START_DATE  = '1539763471' 'Wed 17 Oct 2018 08:04:31 UTC'
-END_DATE    = '1539763561' 'Wed 17 Oct 2018 08:06:01 UTC'
+CURRENTTIME = '1539838229' 'Thu 18 Oct 2018 04:50:29 UTC'
+START_DATE  = '1539838379' 'Thu 18 Oct 2018 04:52:59 UTC'
+END_DATE    = '1539838469' 'Thu 18 Oct 2018 04:54:29 UTC'
 solc, the solidity compiler commandline interface
 Version: 0.4.25+commit.59dbf8f1.Darwin.appleclang
 contractsdir: ../contracts
@@ -39,7 +39,7 @@ Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.8.17-stable-8bbe7207/darwin-amd64/go1.11.1
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 55837 (Wed, 17 Oct 2018 19:02:02 AEDT)
+at block: 1230 (Thu, 18 Oct 2018 15:50:29 AEDT)
  datadir: /Users/bok/Projects/BokkyPooBahsRedBlackTreeLibrary/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
@@ -125,10 +125,10 @@ undefined
 ... 
 undefined
 > 
-DATA: var testAddress="0x724bd535a169af822dd78631a1ae7a19ed1d9c6e";
+DATA: var testAddress="0xae62c7f15d5b7181f1eb7f436e80f61e877b364f";
 DATA: var testAbi=[{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"uncleNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"},{"name":"_value","type":"uint256"}],"name":"insert","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"siblingNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"prev","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"first","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"last","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"parent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"getNode","outputs":[{"name":"key","type":"uint256"},{"name":"parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"exists","outputs":[{"name":"_exists","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"sibling","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"uncle","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"parentNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"grandparentNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"grandparent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"root","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"next","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"where","type":"string"},{"indexed":false,"name":"action","type":"string"},{"indexed":false,"name":"key","type":"uint256"},{"indexed":false,"name":"parent","type":"uint256"},{"indexed":false,"name":"left","type":"uint256"},{"indexed":false,"name":"right","type":"uint256"},{"indexed":false,"name":"red","type":"bool"}],"name":"Log","type":"event"}];
 DATA: var test=eth.contract(testAbi).at(testAddress);
-DATA: testAddress=0x724bd535a169af822dd78631a1ae7a19ed1d9c6e
+DATA: testAddress=0xae62c7f15d5b7181f1eb7f436e80f61e877b364f
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003353272000000000           0.000000000000000000 Miner
@@ -137,7 +137,7 @@ RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.00000000000000000
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
 RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0x724bd535a169af822dd78631a1ae7a19ed1d9c6e        0.000000000000000000           0.000000000000000000 Test
+RESULT:  6 0xae62c7f15d5b7181f1eb7f436e80f61e877b364f        0.000000000000000000           0.000000000000000000 Test
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                                     0.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -147,7 +147,7 @@ undefined
 RESULT: PASS Deploy Test
 1
 > 
-RESULT: testTx status=0x1 Success gas=6000000 gasUsed=1676636 costETH=0.003353272 costUSD=0.66787118424 @ ETH/USD=199.17 gasPrice=2 gwei block=55843 txIx=0 txId=0x0e3056d72e62355d2a4d1f13722254d5c17023d0e5fa3bf002084f8cb24aa255 @ 1539763328 Wed, 17 Oct 2018 08:02:08 UTC
+RESULT: testTx status=0x1 Success gas=6000000 gasUsed=1676636 costETH=0.003353272 costUSD=0.66787118424 @ ETH/USD=199.17 gasPrice=2 gwei block=1236 txIx=0 txId=0x7d239c234215c929b65e43e86ebc6905e03c59a20c8c9db904b66f7cbf613e1c @ 1539838235 Thu, 18 Oct 2018 04:50:35 UTC
 undefined
 > 
 RESULT: --------------------------------------------------------------------------------
@@ -267,6 +267,202 @@ RESULT: PASS [Empty List] test.uncle(123) should return 0
 RESULT: PASS [Empty List] test.uncleNode(123) should return ["0","0","0","0",false,"0"]
 RESULT: 
 undefined
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Record #1 -----
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+... 
+100
+> 
+undefined
+> 
+undefined
+> 
+[11, 35, 22, 70, 57, 54, 49, 58, 33, 74, 46, 41, 68, 16, 10, 34, 31, 96, 43, 30, 98, 79, 55, 47, 77, 7, 72, 86, 89, 64]
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: insert=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64]
+undefined
+> 
+undefined
+> 
+... 
+... 
+... 
+... 
+30
+> 
+... 
+undefined
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=49
+RESULT: testRedBlackTree.first=7
+RESULT: testRedBlackTree.last=98
+RESULT: --------------------------------------------------------------------------------
+RESULT:                     [41m[k7 p10 l0 r0 red][0m
+RESULT:                 [k10 p11 l7 r0 black]
+RESULT:             [41m[k11 p22 l10 r16 red][0m
+RESULT:                 [k16 p11 l0 r0 black]
+RESULT:         [k22 p33 l11 r31 black]
+RESULT:                 [41m[k30 p31 l0 r0 red][0m
+RESULT:             [k31 p22 l30 r0 black]
+RESULT:     [41m[k33 p49 l22 r35 red][0m
+RESULT:             [k34 p35 l0 r0 black]
+RESULT:         [k35 p33 l34 r43 black]
+RESULT:                 [k41 p43 l0 r0 black]
+RESULT:             [41m[k43 p35 l41 r46 red][0m
+RESULT:                 [k46 p43 l0 r47 black]
+RESULT:                     [41m[k47 p46 l0 r0 red][0m
+RESULT: [k49 p0 l33 r70 black]
+RESULT:             [k54 p57 l0 r55 black]
+RESULT:                 [41m[k55 p54 l0 r0 red][0m
+RESULT:         [k57 p70 l54 r64 black]
+RESULT:                 [41m[k58 p64 l0 r0 red][0m
+RESULT:             [k64 p57 l58 r68 black]
+RESULT:                 [41m[k68 p64 l0 r0 red][0m
+RESULT:     [41m[k70 p49 l57 r96 red][0m
+RESULT:                     [41m[k72 p74 l0 r0 red][0m
+RESULT:                 [k74 p77 l72 r0 black]
+RESULT:             [41m[k77 p96 l74 r86 red][0m
+RESULT:                     [41m[k79 p86 l0 r0 red][0m
+RESULT:                 [k86 p77 l79 r89 black]
+RESULT:                     [41m[k89 p86 l0 r0 red][0m
+RESULT:         [k96 p70 l77 r98 black]
+RESULT:             [k98 p96 l0 r0 black]
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+... 
+ReferenceError: 'setup_Message' is not defined
+    at <anonymous>:3:30
+
+> 
+undefined
+> 
+... 
+... 
+... 
+... 
+... 
+RESULT: setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=88582 costETH=0.000177164 costUSD=0.03528575388 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=0 txId=0xc3143fc30aa97a2388f615590417cdbeab9a94b5e788124fab52f5ca5ca61481 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=119569 costETH=0.000239138 costUSD=0.04762911546 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=1 txId=0xc37a8d7f0d603b632d7c1118e09b9c7b7315378b9a6a5a6c51a5f44c655dd82d @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=186596 costETH=0.000373192 costUSD=0.07432865064 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=2 txId=0x4e590ec55f7efbeac2ad3906ef3291e741ebbf8b8eb0e46df41cabd10bbe3280 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=108132 costETH=0.000216264 costUSD=0.04307330088 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=3 txId=0x313d5753397b7365c3a8fe2d8298a5e657330a6be0769314fb0a48e2116727d9 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=187321 costETH=0.000374642 costUSD=0.07461744714 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=4 txId=0x1d5bedd851399555f7f30575205fd34b151176631a292aff45536cdefc119d7e @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=124040 costETH=0.00024808 costUSD=0.0494100936 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=5 txId=0x5a0ee8e51eea26b22769dd6ae492bed96ff44759ca8bb10c1d9f3ed16089d633 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=187694 costETH=0.000375388 costUSD=0.07476602796 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=6 txId=0xe3fd5e24ee1409fe3ac7b45efd8e6e515a2d192e30d9ffd4cd8897f01e8abf12 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=120289 costETH=0.000240578 costUSD=0.04791592026 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=7 txId=0x44d957b5652392c2fc13707a44b7db22b0c37b95b85bde41d2acd55201c3fd26 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=201242 costETH=0.000402484 costUSD=0.08016273828 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=8 txId=0xc4e3f4eb8822b6821f50acd991916664a451d299da3d69a9cbfb26ffd984bd45 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=120263 costETH=0.000240526 costUSD=0.04790556342 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=9 txId=0x170528c36f2247e71a794eefaef947a4e8a8bb4cb18fd074c53661d47313a54f @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=120276 costETH=0.000240552 costUSD=0.04791074184 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=10 txId=0x0ce11e08ea93217a6d9ba32e62684512cf6a6c06e3ba68360d29f25bba2ceccc @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=112629 costETH=0.000225258 costUSD=0.04486463586 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=11 txId=0x73da152f50f7a886f532da8a082c34bc4fd82a138b17c6d0c54d1d5e45481ca0 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=124387 costETH=0.000248774 costUSD=0.04954831758 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=12 txId=0x702a2ac706831dea4869a198e5281e97a498bacd9876185d95b1d59277b2c250 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=120289 costETH=0.000240578 costUSD=0.04791592026 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=13 txId=0x47936e5d34552bfd4f4b4be0cc85528641292d57bfffc2ace1566d62afe250b7 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=120315 costETH=0.00024063 costUSD=0.0479262771 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=14 txId=0xb16be58dee3c4e35e79298b6d3e4ab9fcbf8eed40370db8e06ee0ba8d31a6e20 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=120636 costETH=0.000241272 costUSD=0.04805414424 @ ETH/USD=199.17 gasPrice=2 gwei block=1238 txIx=15 txId=0xf7d208d25b298bcf55a2f591767a7fa3d7589485fc6a4e544cd5a311d1eaee81 @ 1539838237 Thu, 18 Oct 2018 04:50:37 UTC
+RESULT: setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=120662 costETH=0.000241324 costUSD=0.04806450108 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=0 txId=0xbaf0eaa63c6e714238377f9248201f05f72017a9cce120bbaf46703f460f0816 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=120610 costETH=0.00024122 costUSD=0.0480437874 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=1 txId=0xc2ede737859aa128a9baa44a908f6cbbbefe26fe28e52d82030b7e5bc223d57e @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=188030 costETH=0.00037606 costUSD=0.0748998702 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=2 txId=0x009f1a2005d5428b3c660b7b55e0dd6c445aa0c8ae5a90ccb829ca8f6c5490f4 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=201993 costETH=0.000403986 costUSD=0.08046189162 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=3 txId=0xc879ae56b227e465a74135209a1e977a96693053e0f61567203d8c1e243ad2c5 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[20] status=0x1 Success gas=1000000 gasUsed=161492 costETH=0.000322984 costUSD=0.06432872328 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=4 txId=0x198cfcafcb42327e7256ae86684a3ead5ff7272187eb2b96bf28ffc700212f70 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[21] status=0x1 Success gas=1000000 gasUsed=170350 costETH=0.0003407 costUSD=0.067857219 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=5 txId=0x8ab49138210f7b57eb03f42e99a70bff1473aff90b4ab5ae718ba7f1202bc6f4 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[22] status=0x1 Success gas=1000000 gasUsed=120636 costETH=0.000241272 costUSD=0.04805414424 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=6 txId=0x8f57c78c5323425df83e8250c09d34c9aec1647099f11553540ed112dfc37c01 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[23] status=0x1 Success gas=1000000 gasUsed=128488 costETH=0.000256976 costUSD=0.05118190992 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=7 txId=0xe8cc09144741cc1918954bc814e76f99149de742f9b901ed9f6d41a16fe780de @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[24] status=0x1 Success gas=1000000 gasUsed=188041 costETH=0.000376082 costUSD=0.07490425194 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=8 txId=0xdca97f3e9104ad4de5b8b1c4e74b6f4ae72114ce1cb10e5fd96f0ad0cd79c8da @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[25] status=0x1 Success gas=1000000 gasUsed=124799 costETH=0.000249598 costUSD=0.04971243366 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=9 txId=0x725daa8faf7cefa747c0efb456e19d583a820ce2c4e13ccd044f0487c3e97a56 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[26] status=0x1 Success gas=1000000 gasUsed=128532 costETH=0.000257064 costUSD=0.05119943688 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=10 txId=0xcdb7cab155780796066e8f427ecac3fbc430dd3978e2492f352b5a79d7f4495c @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[27] status=0x1 Success gas=1000000 gasUsed=120970 costETH=0.00024194 costUSD=0.0481871898 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=11 txId=0x6660067d3c47ad6c1307188482603c59ed397dabf66f6e76a5d733ddd76a0677 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[28] status=0x1 Success gas=1000000 gasUsed=161852 costETH=0.000323704 costUSD=0.06447212568 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=12 txId=0x20d72068a3f4e0a2a3ea8cd0b95e7a8c67c90b81a9ebc99d7ea95babc5763d11 @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+RESULT: setup_1Tx[29] status=0x1 Success gas=1000000 gasUsed=188028 costETH=0.000376056 costUSD=0.07489907352 @ ETH/USD=199.17 gasPrice=2 gwei block=1239 txIx=13 txId=0x731fa6cb2eebc9cfd4d7cabf617375b2f27082a970291d7065aee55faa0bde4b @ 1539838238 Thu, 18 Oct 2018 04:50:38 UTC
+4286743
+> 
+undefined
+> 
+RESULT: totalGasUsedInsert=4286743
+undefined
+> 
+RESULT: averageGasUsedInsert=142891.43333333333333333333
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=49
+RESULT: testRedBlackTree.first=7
+RESULT: testRedBlackTree.last=98
+RESULT: --------------------------------------------------------------------------------
+RESULT:                     [41m[k7 p10 l0 r0 red][0m
+RESULT:                 [k10 p11 l7 r0 black]
+RESULT:             [41m[k11 p22 l10 r16 red][0m
+RESULT:                 [k16 p11 l0 r0 black]
+RESULT:         [k22 p33 l11 r31 black]
+RESULT:                 [41m[k30 p31 l0 r0 red][0m
+RESULT:             [k31 p22 l30 r0 black]
+RESULT:     [41m[k33 p49 l22 r35 red][0m
+RESULT:             [k34 p35 l0 r0 black]
+RESULT:         [k35 p33 l34 r43 black]
+RESULT:                 [k41 p43 l0 r0 black]
+RESULT:             [41m[k43 p35 l41 r46 red][0m
+RESULT:                 [k46 p43 l0 r47 black]
+RESULT:                     [41m[k47 p46 l0 r0 red][0m
+RESULT: [k49 p0 l33 r70 black]
+RESULT:             [k54 p57 l0 r55 black]
+RESULT:                 [41m[k55 p54 l0 r0 red][0m
+RESULT:         [k57 p70 l54 r64 black]
+RESULT:                 [41m[k58 p64 l0 r0 red][0m
+RESULT:             [k64 p57 l58 r68 black]
+RESULT:                 [41m[k68 p64 l0 r0 red][0m
+RESULT:     [41m[k70 p49 l57 r96 red][0m
+RESULT:                     [41m[k72 p74 l0 r0 red][0m
+RESULT:                 [k74 p77 l72 r0 black]
+RESULT:             [41m[k77 p96 l74 r86 red][0m
+RESULT:                     [41m[k79 p86 l0 r0 red][0m
+RESULT:                 [k86 p77 l79 r89 black]
+RESULT:                     [41m[k89 p86 l0 r0 red][0m
+RESULT:         [k96 p70 l77 r98 black]
+RESULT:             [k98 p96 l0 r0 black]
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+(anonymous): Line 1:1 Unexpected token }
 > 
 > 
 > 

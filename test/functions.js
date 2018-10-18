@@ -272,7 +272,7 @@ function shuffle(array) {
   return array;
 }
 
-
+var SENTINEL = 0;
 function printAll(tree, node, spacing) {
   var padding = "";
   for (var i = 0; i < spacing * 2; i++) {
@@ -281,15 +281,21 @@ function printAll(tree, node, spacing) {
   var nodeData = tree.getNode(node);
   var leftNode = nodeData[2];
   var rightNode = nodeData[3];
-  if (leftNode != 0) {
+  if (leftNode != SENTINEL) {
     printAll(tree, leftNode, parseInt(spacing) + 1);
   }
-  if (nodeData[0] == 0) {
+  if (nodeData[0] == SENTINEL) {
     console.log("RESULT: " + padding + "(empty)");
   } else {
-    console.log("RESULT: " + padding + "[k" + nodeData[0] + " p" + nodeData[1] + " l" + nodeData[2] + " r" + nodeData[3]  + " " + (nodeData[4] ? "red" : "black") + "]");
+    var ansiStart = "";
+    var ansiEnd = "";
+    if (nodeData[4]) {
+      ansiStart = "\033[41m";
+      ansiEnd = "\033[0m";
+    }
+    console.log("RESULT: " + padding + ansiStart + "[k" + nodeData[0] + " p" + nodeData[1] + " l" + nodeData[2] + " r" + nodeData[3]  + " " + (nodeData[4] ? "red" : "black") + "]" + ansiEnd);
   }
-  if (rightNode != 0) {
+  if (rightNode != SENTINEL) {
     printAll(tree, rightNode, parseInt(spacing) + 1);
   }
 }
@@ -304,13 +310,13 @@ function treeAsListWalker(tree, node, result) {
   var nodeData = tree.getNode(node);
   var leftNode = nodeData[2];
   var rightNode = nodeData[3];
-  if (leftNode != 0) {
+  if (leftNode != SENTINEL) {
     treeAsListWalker(tree, leftNode, result);
   }
-  if (nodeData[0] != 0) {
+  if (nodeData[0] != SENTINEL) {
     result.push(parseInt(nodeData[0]));
   }
-  if (rightNode != 0) {
+  if (rightNode != SENTINEL) {
     treeAsListWalker(tree, rightNode, result);
   }
 }
