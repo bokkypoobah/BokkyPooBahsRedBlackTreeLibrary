@@ -44,51 +44,51 @@ contract TestBokkyPooBahsRedBlackTree {
         _exists = tree.exists(key);
     }
     function getNode(uint _key) public view returns (uint key, uint parent, uint left, uint right, bool red, uint value) {
-        if (tree.exists(_key)) {
+        // if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
             (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
-        }
+        // }
     }
     function parent(uint key) public view returns (uint _parent) {
         _parent = tree.parent(key);
     }
     function parentNode(uint _key) public view returns (uint key, uint _parent, uint left, uint right, bool red, uint value) {
-        if (tree.exists(_key)) {
+        // if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.parentNode(_key);
             (key, _parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
-        }
+        // }
     }
     function grandparent(uint key) public view returns (uint _parent) {
         _parent = tree.grandparent(key);
     }
     function grandparentNode(uint _key) public view returns (uint key, uint _parent, uint left, uint right, bool red, uint value) {
-        if (tree.exists(_key)) {
+        // if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.grandparentNode(_key);
             (key, _parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
-        }
+        // }
     }
     function sibling(uint key) public view returns (uint _parent) {
         _parent = tree.sibling(key);
     }
     function siblingNode(uint _key) public view returns (uint key, uint _parent, uint left, uint right, bool red, uint value) {
-        if (tree.exists(_key)) {
+        // if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.siblingNode(_key);
             (key, _parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
-        }
+        // }
     }
     function uncle(uint key) public view returns (uint _parent) {
         _parent = tree.uncle(key);
     }
     function uncleNode(uint _key) public view returns (uint key, uint _parent, uint left, uint right, bool red, uint value) {
-        if (tree.exists(_key)) {
+        // if (tree.exists(_key)) {
             BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.uncleNode(_key);
             (key, _parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
             value = values[_key];
-        }
+        // }
     }
 
     function insert(uint _key, uint _value) public {

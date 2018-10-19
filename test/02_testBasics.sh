@@ -42,9 +42,9 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST2OUTPUT
 solc_0.4.25 --version | tee -a $TEST2OUTPUT
 
 # echo "var libOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
-echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTSOL`;" > $TESTJS
+echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
 
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTSOL --outputsol=$TESTFLATTENED --verbose | tee -a $TEST2OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST2OUTPUT
 
 if [ "$MODE" = "compile" ]; then
   echo "Compiling only"
@@ -52,11 +52,11 @@ if [ "$MODE" = "compile" ]; then
 fi
 
 geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT
-loadScript("$TESTJS");
+loadScript("$TESTRAWJS");
 loadScript("functions.js");
 
-var testAbi = JSON.parse(testOutput.contracts["$TESTSOL:TestBokkyPooBahsRedBlackTree"].abi);
-var testBin = "0x" + testOutput.contracts["$TESTSOL:TestBokkyPooBahsRedBlackTree"].bin;
+var testAbi = JSON.parse(testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].abi);
+var testBin = "0x" + testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].bin;
 
 // console.log("DATA: testAbi=" + JSON.stringify(testAbi));
 // console.log("DATA: testBin=" + JSON.stringify(testBin));
@@ -106,7 +106,7 @@ var expected;
 var result;
 var section;
 var message;
-var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false,\"0\"]";
+var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false]";
 
 if ("$MODE" == "full") {
   section = "[Empty List]";
@@ -131,6 +131,7 @@ if ("$MODE" == "full") {
   }
 
   var nodeResult = test.getNode(123);
+  // console.log("RESULT: nodeResult=" + nodeResult);
   if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.getNode(123) should return " + NULLNODERESULT)) {
     failureDetected = true;
   }
@@ -138,74 +139,479 @@ if ("$MODE" == "full") {
   if (!assert(test.parent(123) == "0", section + " test.parent(123) should return 0")) {
     failureDetected = true;
   }
-  var nodeResult = test.parentNode(123);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.parentNode(123) should return " + NULLNODERESULT)) {
-    failureDetected = true;
-  }
+  // var nodeResult = test.parentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.parentNode(123) should return " + NULLNODERESULT)) {
+  //   failureDetected = true;
+  // }
 
   if (!assert(test.grandparent(123) == "0", section + " test.grandparent(123) should return 0")) {
     failureDetected = true;
   }
-  var nodeResult = test.grandparentNode(123);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.grandparentNode(123) should return " + NULLNODERESULT)) {
-    failureDetected = true;
-  }
+  // var nodeResult = test.grandparentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.grandparentNode(123) should return " + NULLNODERESULT)) {
+  //   failureDetected = true;
+  // }
 
   if (!assert(test.sibling(123) == "0", section + " test.sibling(123) should return 0")) {
     failureDetected = true;
   }
-  var nodeResult = test.siblingNode(123);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.siblingNode(123) should return " + NULLNODERESULT)) {
-    failureDetected = true;
-  }
+  // var nodeResult = test.siblingNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.siblingNode(123) should return " + NULLNODERESULT)) {
+  //   failureDetected = true;
+  // }
 
   if (!assert(test.uncle(123) == "0", section + " test.uncle(123) should return 0")) {
     failureDetected = true;
   }
-  var nodeResult = test.uncleNode(123);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.uncleNode(123) should return " + NULLNODERESULT)) {
-    failureDetected = true;
-  }
-  // TODO: Test next, prev
-
-
-
-  // timestamp = testDateTime.timestampFromDateTime(2100, 5, 24, 1, 2, 3);
-  // if (!assert(!testDateTime.isLeapYear(timestamp), testDateTime.timestampToDateTime(timestamp) + " is a not leap year")) {
-  //   failureDetected = true;
-  // }
-  // timestamp = testDateTime.timestampFromDateTime(2104, 5, 24, 1, 2, 3);
-  // if (!assert(testDateTime.isLeapYear(timestamp), testDateTime.timestampToDateTime(timestamp) + " is a leap year")) {
+  // var nodeResult = test.uncleNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.uncleNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
   console.log("RESULT: ");
 }
 
+
 // -----------------------------------------------------------------------------
-var insert1_Message = "Insert Record #1";
+var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + insert1_Message + " -----");
-// var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
-var NUMBEROFITEMS = 100;
+console.log("RESULT: ----- " + setupData1_Message + " -----");
+var NUMBEROFITEMS = 32;
 var BATCHSIZE = NUMBEROFITEMS / 4;
-var items = [];
+var insertItems = [];
+var removeItems = [];
 for (var i = 1; i <= NUMBEROFITEMS; i++) {
-    items.push(i);
+    insertItems.push(i);
+    removeItems.push(i);
 }
-// items = shuffle(items);
-// items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64,83,14,38,81,100,78,12,36,62,99,84,92,60,32,53,24,97,4,87,26,93,25,56,63,5,67,51,76,59,66,69,65,48,39,18,3,45,50,8,71,95,19,28,52,82,1,20,6,75,27,9,88,23,17,42,85,44,13,80,37,94,40,2,21,15,90,61,91,73,29];
-items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64];
-// items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
-// items = [4, 3, 1, 2, 6, 7, 5, 8, 9];
-// items = [4, 3, 1, 2, 6];
-// items = [4, 3, 1];
+// insertItems = shuffle(insertItems);
+insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27];
+// TEST next, prev insertItems=[20,22,4,8,12,10,14];
+// insertItems=[20,22,4,8,12,10,14];
+// removeItems = shuffle(removeItems);
+removeItems=[4,14,25,32,2,30,16,31,6,26,18,22,28,23,12,15,19,27,7,13,29,11,3,5,17,1,24,20,9,8,21,10];
+// console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+// console.log("RESULT: removeItems=" + JSON.stringify(removeItems));
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var insertData1_Message = "Insert Data #1";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insertData1_Message + " -----");
+console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+var tx = [];
+for (var i = 0; i < 1; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+}
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+for (var i = 0; i < tx.length; i++) {
+  var item = insertItems[i];
+  failIfTxStatusError(tx[i], insertData1_Message + " - test.insert(" + item + ")");
+}
+var minGasUsedInsert = new BigNumber(0);
+var maxGasUsedInsert = new BigNumber(0);
+var totalGasUsedInsert = new BigNumber(0);
+for (var i = 0; i < tx.length; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  printTxData("setup_1Tx[" + i + "]", tx[i]);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedInsert = gasUsed;
+    maxGasUsedInsert = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedInsert) {
+      minGasUsedInsert = gasUsed;
+    }
+    if (gasUsed > maxGasUsedInsert) {
+      maxGasUsedInsert = gasUsed;
+    }
+  }
+  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+}
+var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+console.log("RESULT: ");
+
+printTestRedBlackTreeContractDetails();
+console.log("RESULT: ");
+
+
+if ("$MODE" == "full") {
+  section = "[Single Item]";
+  console.log("RESULT: ---------- Test Basics - " + section + " ----------");
+  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.first() == "18", section + " test.first() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.last() == "18", section + " test.last() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(18) == "0", section + " test.next(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+    failureDetected = true;
+  }
+
+  var NODE18ONLYRESULT = "[\"18\",\"0\",\"0\",\"0\",false]";
+  var nodeResult = test.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE18ONLYRESULT, section + " test.getNode(18) should return " + NODE18ONLYRESULT)) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+    failureDetected = true;
+  }
+  console.log("RESULT: ");
+}
+
+
+// -----------------------------------------------------------------------------
+var insertData2_Message = "Insert Data #2";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insertData2_Message + " -----");
+console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+for (var i = 1; i < 2; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+}
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+for (var i = 1; i < tx.length; i++) {
+  var item = insertItems[i];
+  failIfTxStatusError(tx[i], insertData2_Message + " - test.insert(" + item + ")");
+}
+var minGasUsedInsert = new BigNumber(0);
+var maxGasUsedInsert = new BigNumber(0);
+var totalGasUsedInsert = new BigNumber(0);
+for (var i = 1; i < tx.length; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  printTxData("setup_1Tx[" + i + "]", tx[i]);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedInsert = gasUsed;
+    maxGasUsedInsert = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedInsert) {
+      minGasUsedInsert = gasUsed;
+    }
+    if (gasUsed > maxGasUsedInsert) {
+      maxGasUsedInsert = gasUsed;
+    }
+  }
+  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+}
+var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+console.log("RESULT: ");
+
+printTestRedBlackTreeContractDetails();
+console.log("RESULT: ");
+
+
+if ("$MODE" == "full") {
+  section = "[Two Items]";
+  console.log("RESULT: ---------- Test Basics - " + section + " ----------");
+  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.first() == "18", section + " test.first() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.last() == "28", section + " test.last() should return 28")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+    failureDetected = true;
+  }
+
+  var NODE1828RESULT = "[\"18\",\"0\",\"0\",\"28\",false]";
+  var nodeResult = test.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE1828RESULT, section + " test.getNode(18) should return " + NODE1828RESULT)) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+    failureDetected = true;
+  }
+  console.log("RESULT: ");
+}
+
+
+// -----------------------------------------------------------------------------
+var insertData3_Message = "Insert Data #3";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insertData3_Message + " -----");
+console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+for (var i = 2; i < 3; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+}
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+for (var i = 2; i < tx.length; i++) {
+  var item = insertItems[i];
+  failIfTxStatusError(tx[i], insertData3_Message + " - test.insert(" + item + ")");
+}
+var minGasUsedInsert = new BigNumber(0);
+var maxGasUsedInsert = new BigNumber(0);
+var totalGasUsedInsert = new BigNumber(0);
+for (var i = 2; i < tx.length; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  printTxData("setup_1Tx[" + i + "]", tx[i]);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedInsert = gasUsed;
+    maxGasUsedInsert = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedInsert) {
+      minGasUsedInsert = gasUsed;
+    }
+    if (gasUsed > maxGasUsedInsert) {
+      maxGasUsedInsert = gasUsed;
+    }
+  }
+  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+}
+var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+console.log("RESULT: ");
+
+printTestRedBlackTreeContractDetails();
+console.log("RESULT: ");
+
+
+if ("$MODE" == "full") {
+  section = "[Three Items]";
+  console.log("RESULT: ---------- Test Basics - " + section + " ----------");
+  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.first() == "17", section + " test.first() should return 17")) {
+    failureDetected = true;
+  }
+  if (!assert(test.last() == "28", section + " test.last() should return 28")) {
+    failureDetected = true;
+  }
+  console.log("RESULT: test.next(17)=" + test.next(17));
+  console.log("RESULT: test.next(18)=" + test.next(18));
+  console.log("RESULT: test.next(20)=" + test.next(20));
+  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+    failureDetected = true;
+  }
+
+  var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
+  var nodeResult = test.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " test.getNode(18) should return " + NODE181728RESULT)) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+    failureDetected = true;
+  }
+  console.log("RESULT: ");
+}
+
+
+// -----------------------------------------------------------------------------
+var insertData4_Message = "Insert Data #3";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insertData3_Message + " -----");
+console.log("RESULT: insertData4_Message=" + JSON.stringify(insertItems));
+for (var i = 3; i < insertItems.length; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+}
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+for (var i = 3; i < tx.length; i++) {
+  var item = insertItems[i];
+  failIfTxStatusError(tx[i], insertData3_Message + " - test.insert(" + item + ")");
+}
+var minGasUsedInsert = new BigNumber(0);
+var maxGasUsedInsert = new BigNumber(0);
+var totalGasUsedInsert = new BigNumber(0);
+for (var i = 3; i < tx.length; i++) {
+  var item = insertItems[i];
+  var itemValue = parseInt(item) + 10000;
+  printTxData("setup_1Tx[" + i + "]", tx[i]);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedInsert = gasUsed;
+    maxGasUsedInsert = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedInsert) {
+      minGasUsedInsert = gasUsed;
+    }
+    if (gasUsed > maxGasUsedInsert) {
+      maxGasUsedInsert = gasUsed;
+    }
+  }
+  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+}
+var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+console.log("RESULT: ");
+
+printTestRedBlackTreeContractDetails();
+console.log("RESULT: ");
+
+
+if ("$MODE" == "full") {
+  section = "[32 Items]";
+  console.log("RESULT: ---------- Test Basics - " + section + " ----------");
+  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.first() == "1", section + " test.first() should return 1")) {
+    failureDetected = true;
+  }
+  if (!assert(test.last() == "32", section + " test.last() should return 32")) {
+    failureDetected = true;
+  }
+
+  console.log("RESULT: test.next(8)=" + test.next(8));
+  console.log("RESULT: test.next(10)=" + test.next(10));
+  console.log("RESULT: test.next(14)=" + test.next(14));
+
+
+  console.log("RESULT: test.next(17)=" + test.next(17));
+  console.log("RESULT: test.next(18)=" + test.next(18));
+  console.log("RESULT: test.next(20)=" + test.next(20));
+  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+    failureDetected = true;
+  }
+
+  var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
+  var nodeResult = test.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " test.getNode(18) should return " + NODE181728RESULT)) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+    failureDetected = true;
+  }
+  console.log("RESULT: ");
+}
+
+exit;
+
+
+
+
 var expected = items;
 console.log("RESULT: insert=" + JSON.stringify(items));
 var tx = [];
 for (var i = 0; i < items.length; i++) {
   var item = items[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, itemValue, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -216,16 +622,32 @@ for (var i = 0; i < items.length; i++) {
   var item = items[i];
   failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
 }
-var totalGasUsed = new BigNumber(0);
+var minGasUsedInsert = new BigNumber(0);
+var maxGasUsedInsert = new BigNumber(0);
+var totalGasUsedInsert = new BigNumber(0);
 for (var i = 0; i < items.length; i++) {
   var item = items[i];
   var itemValue = parseInt(item) + 10000;
   printTxData("setup_1Tx[" + i + "]", tx[i]);
-  totalGasUsed = totalGasUsed.add(eth.getTransactionReceipt(tx[i]).gasUsed);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedInsert = gasUsed;
+    maxGasUsedInsert = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedInsert) {
+      minGasUsedInsert = gasUsed;
+    }
+    if (gasUsed > maxGasUsedInsert) {
+      maxGasUsedInsert = gasUsed;
+    }
+  }
+  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
-var averageGasUsed = totalGasUsed.div(items.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsed);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsed);
+var averageGasUsedInsert = totalGasUsedInsert.div(items.length);
+console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
 console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();

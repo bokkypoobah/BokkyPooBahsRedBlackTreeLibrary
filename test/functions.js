@@ -292,6 +292,9 @@ function printAll(tree, node, spacing) {
     if (nodeData[4]) {
       ansiStart = "\033[41m";
       ansiEnd = "\033[0m";
+    } else {
+      ansiStart = "\033[47m";
+      ansiEnd = "\033[0m";
     }
     console.log("RESULT: " + padding + ansiStart + "[k" + nodeData[0] + " p" + nodeData[1] + " l" + nodeData[2] + " r" + nodeData[3]  + " " + (nodeData[4] ? "red" : "black") + "]" + ansiEnd);
   }

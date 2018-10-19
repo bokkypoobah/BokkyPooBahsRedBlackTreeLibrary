@@ -1,7 +1,6 @@
 GETHATTACHPOINT=ipc:./testchain/geth.ipc
 PASSWORD=
 
-RBTSOURCEDIR=../rbtContracts
 SOURCEDIR=../contracts
 
 LIBSOL=BokkyPooBahsRedBlackTreeLibrary.sol
@@ -9,6 +8,9 @@ LIBJS=BokkyPooBahsRedBlackTreeLibrary.js
 TESTSOL=TestBokkyPooBahsRedBlackTree.sol
 TESTJS=TestBokkyPooBahsRedBlackTree.js
 TESTFLATTENED=../flattened/TestBokkyPooBahsRedBlackTree_flattened.sol
+TESTRAWSOL=TestBokkyPooBahsRedBlackTreeRaw.sol
+TESTRAWJS=TestBokkyPooBahsRedBlackTreeRaw.js
+TESTRAWFLATTENED=../flattened/TestBokkyPooBahsRedBlackTreeRaw_flattened.sol
 
 DEPLOYMENTDATA=deploymentData.js
 
