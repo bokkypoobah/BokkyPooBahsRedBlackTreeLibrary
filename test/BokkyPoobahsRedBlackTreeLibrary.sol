@@ -97,7 +97,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-
     function parent(Tree storage self, uint key) internal view returns (uint _parent) {
         require(key != SENTINEL);
         _parent = self.nodes[key].parent;

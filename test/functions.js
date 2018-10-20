@@ -276,7 +276,7 @@ var SENTINEL = 0;
 function printAll(tree, node, spacing) {
   var padding = "";
   for (var i = 0; i < spacing * 2; i++) {
-    padding = padding + "  ";
+    padding = padding + "      ";
   }
   var nodeData = tree.getNode(node);
   var leftNode = nodeData[2];

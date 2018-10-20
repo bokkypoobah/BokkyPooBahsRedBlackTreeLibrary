@@ -358,7 +358,13 @@ if ("$MODE" == "full") {
   if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
     failureDetected = true;
   }
+  if (!assert(test.next(28) == "0", section + " test.next(28) should return 0")) {
+    failureDetected = true;
+  }
   if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(28) == "18", section + " test.prev(28) should return 18")) {
     failureDetected = true;
   }
   if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
@@ -452,16 +458,19 @@ if ("$MODE" == "full") {
   if (!assert(test.last() == "28", section + " test.last() should return 28")) {
     failureDetected = true;
   }
-  console.log("RESULT: test.next(17)=" + test.next(17));
-  console.log("RESULT: test.next(18)=" + test.next(18));
-  console.log("RESULT: test.next(20)=" + test.next(20));
   if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(17) == "18", section + " test.next(17) should return 18")) {
     failureDetected = true;
   }
   if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+  if (!assert(test.prev(18) == "17", section + " test.prev(18) should return 17")) {
+    failureDetected = true;
+  }
+  if (!assert(test.prev(28) == "18", section + " test.prev(28) should return 18")) {
     failureDetected = true;
   }
   if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
@@ -483,6 +492,12 @@ if ("$MODE" == "full") {
     failureDetected = true;
   }
   if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(17) == "28", section + " test.sibling(17) should return 28")) {
+    failureDetected = true;
+  }
+  if (!assert(test.sibling(28) == "17", section + " test.sibling(28) should return 17")) {
     failureDetected = true;
   }
   if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
@@ -544,7 +559,7 @@ console.log("RESULT: ");
 
 
 if ("$MODE" == "full") {
-  section = "[32 Items]";
+  section = "[All 32 Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
   if (!assert(test.root() == "18", section + " test.root() should return 18")) {
     failureDetected = true;
@@ -555,31 +570,35 @@ if ("$MODE" == "full") {
   if (!assert(test.last() == "32", section + " test.last() should return 32")) {
     failureDetected = true;
   }
-
-  console.log("RESULT: test.next(8)=" + test.next(8));
-  console.log("RESULT: test.next(10)=" + test.next(10));
-  console.log("RESULT: test.next(14)=" + test.next(14));
-
-
-  console.log("RESULT: test.next(17)=" + test.next(17));
-  console.log("RESULT: test.next(18)=" + test.next(18));
-  console.log("RESULT: test.next(20)=" + test.next(20));
-  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+  if (!assert(test.next(8) == "9", section + " test.next(8) should return 9")) {
     failureDetected = true;
   }
-  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+  if (!assert(test.next(10) == "11", section + " test.next(10) should return 11")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+  if (!assert(test.next(14) == "15", section + " test.next(14) should return 15")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(17) == "18", section + " test.next(17) should return 18")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(18) == "19", section + " test.next(18) should return 19")) {
+    failureDetected = true;
+  }
+  if (!assert(test.next(20) == "21", section + " test.next(20) should return 21")) {
+    failureDetected = true;
+  }
+
+  if (!assert(test.prev(18) == "17", section + " test.prev(18) should return 17")) {
     failureDetected = true;
   }
   if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
     failureDetected = true;
   }
 
-  var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
+  var NODE18728RESULT = "[\"18\",\"0\",\"7\",\"28\",false]";
   var nodeResult = test.getNode(18);
-  if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " test.getNode(18) should return " + NODE181728RESULT)) {
+  if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " test.getNode(18) should return " + NODE18728RESULT)) {
     failureDetected = true;
   }
   if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
@@ -599,6 +618,14 @@ if ("$MODE" == "full") {
   }
   console.log("RESULT: ");
 }
+
+
+if (!failureDetected) {
+  console.log("RESULT: ---------- PASS - no failures detected ----------");
+} else {
+  console.log("RESULT: ---------- FAIL - some failures detected ----------");
+}
+
 
 exit;
 
@@ -654,12 +681,6 @@ printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 }
 
-
-if (!failureDetected) {
-  console.log("RESULT: ---------- PASS - no failures detected ----------");
-} else {
-  console.log("RESULT: ---------- FAIL - some failures detected ----------");
-}
 
 
 exit;
