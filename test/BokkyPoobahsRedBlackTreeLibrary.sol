@@ -161,7 +161,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint y;
 
         // z cannot be the root && parent cannot be non-zero
-        require(z != self.root && self.nodes[z].parent != 0);
+        require(z == self.root || (z != self.root && self.nodes[z].parent != 0));
 
         if (self.nodes[z].left == SENTINEL || self.nodes[z].right == SENTINEL) {
             y = z;

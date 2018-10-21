@@ -176,7 +176,7 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 200;
+var NUMBEROFITEMS = 32;
 var BATCHSIZE = NUMBEROFITEMS / 4;
 var insertItems = [];
 var removeItems = [];
@@ -199,7 +199,7 @@ console.log("RESULT: ");
 var insertData1_Message = "Insert Data #1";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData1_Message + " -----");
-console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+console.log("RESULT: insertItems(First Item)=" + JSON.stringify(insertItems));
 var tx = [];
 for (var i = 0; i < 1; i++) {
   var item = insertItems[i];
@@ -236,11 +236,11 @@ for (var i = 0; i < tx.length; i++) {
   }
   totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
-var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
-console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
-console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+// var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+// console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+// console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+// console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+// console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
 console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();
@@ -294,7 +294,7 @@ if ("$MODE" == "full") {
 var insertData2_Message = "Insert Data #2";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData2_Message + " -----");
-console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+console.log("RESULT: insertItems(Second Item)=" + JSON.stringify(insertItems));
 for (var i = 1; i < 2; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -309,9 +309,6 @@ for (var i = 1; i < tx.length; i++) {
   var item = insertItems[i];
   failIfTxStatusError(tx[i], insertData2_Message + " - test.insert(" + item + ")");
 }
-var minGasUsedInsert = new BigNumber(0);
-var maxGasUsedInsert = new BigNumber(0);
-var totalGasUsedInsert = new BigNumber(0);
 for (var i = 1; i < tx.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -330,11 +327,11 @@ for (var i = 1; i < tx.length; i++) {
   }
   totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
-var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
-console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
-console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+// var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+// console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+// console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+// console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+// console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
 console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();
@@ -400,7 +397,7 @@ if ("$MODE" == "full") {
 var insertData3_Message = "Insert Data #3";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData3_Message + " -----");
-console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+console.log("RESULT: insertItems(Third Item)=" + JSON.stringify(insertItems));
 for (var i = 2; i < 3; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -415,9 +412,6 @@ for (var i = 2; i < tx.length; i++) {
   var item = insertItems[i];
   failIfTxStatusError(tx[i], insertData3_Message + " - test.insert(" + item + ")");
 }
-var minGasUsedInsert = new BigNumber(0);
-var maxGasUsedInsert = new BigNumber(0);
-var totalGasUsedInsert = new BigNumber(0);
 for (var i = 2; i < tx.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -436,11 +430,11 @@ for (var i = 2; i < tx.length; i++) {
   }
   totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
-var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
-console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
-console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+// var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+// console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+// console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+// console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+// console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
 console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();
@@ -512,7 +506,7 @@ if ("$MODE" == "full") {
 var insertData4_Message = "Insert Data #4";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData4_Message + " -----");
-console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
+console.log("RESULT: insertItems(Remaining 29 Items)=" + JSON.stringify(insertItems));
 for (var i = 3; i < insertItems.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -527,9 +521,6 @@ for (var i = 3; i < tx.length; i++) {
   var item = insertItems[i];
   failIfTxStatusError(tx[i], insertData4_Message + " - test.insert(" + item + ")");
 }
-var minGasUsedInsert = new BigNumber(0);
-var maxGasUsedInsert = new BigNumber(0);
-var totalGasUsedInsert = new BigNumber(0);
 for (var i = 3; i < tx.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -624,7 +615,6 @@ if ("$MODE" == "full") {
 }
 
 
-
 // -----------------------------------------------------------------------------
 var insertData5_Message = "Insert Data #5 - Cannot Insert Duplicate";
 // -----------------------------------------------------------------------------
@@ -635,7 +625,6 @@ while (txpool.status.pending > 0) {
 }
 printTestRedBlackTreeContractDetails();
 // printBalances();
-
 passIfTxStatusError(insertData5_tx, insertData5_Message + " - test.insert(14)");
 printTxData("insertData5_tx", insertData5_tx);
 console.log("RESULT: ");
@@ -650,7 +639,6 @@ while (txpool.status.pending > 0) {
 }
 printTestRedBlackTreeContractDetails();
 // printBalances();
-
 passIfTxStatusError(removeData1_tx, removeData1_Message + " - test.remove(114)");
 printTxData("removeData1_tx", removeData1_tx);
 console.log("RESULT: ");
@@ -660,141 +648,16 @@ console.log("RESULT: ");
 // console.log("RESULT: ");
 
 
-
-if (!failureDetected) {
-  console.log("RESULT: ---------- PASS - no failures detected ----------");
-} else {
-  console.log("RESULT: ---------- FAIL - some failures detected ----------");
-}
-
-
-exit;
-
-
-
-
-var expected = items;
-console.log("RESULT: insert=" + JSON.stringify(items));
-var tx = [];
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
-}
-while (txpool.status.pending > 0) {
-}
-printTestRedBlackTreeContractDetails();
-// printBalances();
-
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
-}
-var minGasUsedInsert = new BigNumber(0);
-var maxGasUsedInsert = new BigNumber(0);
-var totalGasUsedInsert = new BigNumber(0);
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  printTxData("setup_1Tx[" + i + "]", tx[i]);
-  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
-  if (i == 0) {
-    minGasUsedInsert = gasUsed;
-    maxGasUsedInsert = gasUsed;
-  } else {
-    if (gasUsed < minGasUsedInsert) {
-      minGasUsedInsert = gasUsed;
-    }
-    if (gasUsed > maxGasUsedInsert) {
-      maxGasUsedInsert = gasUsed;
-    }
-  }
-  totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
-}
-var averageGasUsedInsert = totalGasUsedInsert.div(items.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
-console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
-console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
-console.log("RESULT: ");
-
-printTestRedBlackTreeContractDetails();
-console.log("RESULT: ");
-}
-
-
-
-exit;
-
 // -----------------------------------------------------------------------------
-var test2A_Message = "Test 2A - Empty List";
+var removeData2_Message = "Remove Data #2";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + test2A_Message + " -----");
-
-
-
-
-// -----------------------------------------------------------------------------
-var setup_Message = "Setup";
-// -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + setup_Message + " -----");
-// var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
-var NUMBEROFITEMS = 100;
-var BATCHSIZE = NUMBEROFITEMS / 4;
-var items = [];
-for (var i = 1; i <= NUMBEROFITEMS; i++) {
-    items.push(i);
-}
+console.log("RESULT: ----- " + removeData2_Message + " -----");
 // items = shuffle(items);
-items=[11,35,22,70,57,54,49,58,33,74,46,41,68,16,10,34,31,96,43,30,98,79,55,47,77,7,72,86,89,64,83,14,38,81,100,78,12,36,62,99,84,92,60,32,53,24,97,4,87,26,93,25,56,63,5,67,51,76,59,66,69,65,48,39,18,3,45,50,8,71,95,19,28,52,82,1,20,6,75,27,9,88,23,17,42,85,44,13,80,37,94,40,2,21,15,90,61,91,73,29];
-// items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
-// items = [4, 3, 1, 2, 6, 7, 5, 8, 9];
-// items = [4, 3, 1, 2, 6];
-// items = [4, 3, 1];
-var expected = items;
-console.log("RESULT: insert=" + JSON.stringify(items));
+expected = removeItems;
+console.log("RESULT: removeItems=" + JSON.stringify(removeItems));
 var tx = [];
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, itemValue, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
-}
-while (txpool.status.pending > 0) {
-}
-printTestRedBlackTreeContractDetails();
-// printBalances();
-
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  failIfTxStatusError(tx[i], setup_Message + " - test.insert(" + item + ")");
-}
-var totalGasUsed = new BigNumber(0);
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  printTxData("setup_1Tx[" + i + "]", tx[i]);
-  totalGasUsed = totalGasUsed.add(eth.getTransactionReceipt(tx[i]).gasUsed);
-}
-var averageGasUsed = totalGasUsed.div(items.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsed);
-console.log("RESULT: averageGasUsedInsert=" + averageGasUsed);
-console.log("RESULT: ");
-
-printTestRedBlackTreeContractDetails();
-console.log("RESULT: ");
-
-
-items = shuffle(items);
-items=[97,1,26,99,32,56,21,83,42,88,49,8,69,9,78,18,20,17,39,87,25,7,5,91,73,15,52,80,96,61,16,29,55,76,48,37,44,14,98,31,34,85,28,4,72,27,13,43,62,38,40,92,24,60,41,50,22,45,57,70,2,82,75,81,35,74,58,59,10,36,100,68,23,67,11,86,77,90,12,93,54,47,79,63,51,6,33,84,94,19,65,46,30,3,71,95,89,64,53,66];
-// items = [15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13];
-// items = [4, 3, 1, 2, 6, 7, 5, 8, 9];
-// items = [4, 3, 1, 2, 6];
-// items = [4, 3, 1];
-// items = [4, 3];
-console.log("RESULT: remove=" + JSON.stringify(items));
-var tx = [];
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
+for (var i = 0; i < removeItems.length; i++) {
+  var item = removeItems[i];
   console.log("RESULT: removing " + item);
   tx.push(test.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
   expected = listMinusItem(expected, item);
@@ -813,97 +676,48 @@ for (var i = 0; i < items.length; i++) {
   }
 }
 
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  failIfTxStatusError(tx[i], setup_Message + " - test.remove(" + item + ")");
+for (var i = 0; i < removeItems.length; i++) {
+  var item = removeItems[i];
+  failIfTxStatusError(tx[i], removeData2_Message + " - test.remove(" + item + ")");
 }
-var totalGasUsed = new BigNumber(0);
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
+var minGasUsedRemove = new BigNumber(0);
+var maxGasUsedRemove = new BigNumber(0);
+var totalGasUsedRemove = new BigNumber(0);
+for (var i = 0; i < removeItems.length; i++) {
+  var item = removeItems[i];
   var itemValue = parseInt(item) + 10000;
-  printTxData("setup_1Tx[" + i + "]", tx[i]);
-  totalGasUsed = totalGasUsed.add(eth.getTransactionReceipt(tx[i]).gasUsed);
-}
-var averageGasUsed = totalGasUsed.div(items.length);
-console.log("RESULT: totalGasUsedRemove=" + totalGasUsed);
-console.log("RESULT: averageGasUsedRemove=" + averageGasUsed);
-console.log("RESULT: ");
-
-exit;
-
-
-if (false) {
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  // var itemValue = parseInt(item) + 10000;
-  // var find1_id = testRbt.find(itemValue);
-  // console.log("RESULT: find1_id(" + itemValue + ")=" + find1_id);
-  var find1_item = testRbt.getItem(item);
-  console.log("RESULT: find1_item(" + item + ")=" + JSON.stringify(find1_item));
-}
-console.log("RESULT: ");
-}
-
-if (false) {
-items.push(123);
-items.push(123000);
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  var find1_id = testRbt.find(itemValue);
-  console.log("RESULT: find1_id(" + itemValue + ")=" + find1_id);
-  var find1_item = testRbt.getItem(find1_id);
-  console.log("RESULT: find1_item=" + JSON.stringify(find1_item));
-}
-}
-// var find1_id = testRbt.find(10008);
-// console.log("RESULT: find1_id(10008)=" + find1_id);
-// var find1_item = testRbt.getItem(find1_id);
-// console.log("RESULT: find1_item=" + JSON.stringify(find1_item));
-
-printTestRedBlackTreeContractDetails();
-
-var items = [];
-for (var i = 3; i <= 4; i++) {
-    items.push(i);
-}
-// items = shuffle(items);
-console.log("RESULT: remove=" + JSON.stringify(items));
-var tx = [];
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  tx.push(testRbt.remove(item, {from: deployer, gas: 500000, gasPrice: defaultGasPrice}));
-  while (txpool.status.pending > 0) {
+  printTxData("tx[" + i + "]", tx[i]);
+  var gasUsed = eth.getTransactionReceipt(tx[i]).gasUsed;
+  if (i == 0) {
+    minGasUsedRemove = gasUsed;
+    maxGasUsedRemove = gasUsed;
+  } else {
+    if (gasUsed < minGasUsedRemove) {
+      minGasUsedRemove = gasUsed;
+    }
+    if (gasUsed > maxGasUsedRemove) {
+      maxGasUsedRemove = gasUsed;
+    }
   }
-  printTestRedBlackTreeContractDetails();
+  totalGasUsedRemove = totalGasUsedRemove.add(gasUsed);
 }
-printBalances();
-
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  failIfTxStatusError(tx[i], setup_Message + " - testRbt.remove(" + item + ", " + itemValue + ")");
-}
-var totalGasUsed = new BigNumber(0);
-for (var i = 0; i < items.length; i++) {
-  var item = items[i];
-  var itemValue = parseInt(item) + 10000;
-  printTxData("setup_1Tx[" + i + "]", tx[i]);
-  totalGasUsed = totalGasUsed.add(eth.getTransactionReceipt(tx[i]).gasUsed);
-}
-var averageGasUsed = totalGasUsed.div(items.length);
-console.log("RESULT: totalGasUsedRemove=" + totalGasUsed);
-console.log("RESULT: averageGasUsedRemove=" + averageGasUsed);
-
+var averageGasUsedRemove = totalGasUsedRemove.div(removeItems.length);
+console.log("RESULT: totalGasUsedRemove=" + totalGasUsedRemove);
+console.log("RESULT: minGasUsedRemove=" + minGasUsedRemove);
+console.log("RESULT: averageGasUsedRemove=" + averageGasUsedRemove);
+console.log("RESULT: maxGasUsedRemove=" + maxGasUsedRemove);
 console.log("RESULT: ");
 
-printTestRedBlackTreeContractDetails();
 
+if (!failureDetected) {
+  console.log("RESULT: ---------- PASS - no failures detected ----------");
+} else {
+  console.log("RESULT: ---------- FAIL - some failures detected ----------");
+}
 
 EOF
 grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
 grep "RESULT: " $TEST1OUTPUT | sed "s/RESULT: //" > $TEST1RESULTS
 cat $TEST1RESULTS
-grep average $TEST1RESULTS
+grep GasUsed $TEST1RESULTS
