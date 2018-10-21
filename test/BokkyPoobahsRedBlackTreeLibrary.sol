@@ -81,6 +81,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         while (_key != SENTINEL) {
             if (key == _key) {
                 _exists = true;
+                return;
             }
             if (key < _key) {
                 _key = self.nodes[_key].left;
