@@ -626,7 +626,7 @@ if ("$MODE" == "full") {
 
 
 // -----------------------------------------------------------------------------
-var insertData5_Message = "Insert Data #5 - Duplicate";
+var insertData5_Message = "Insert Data #5 - Cannot Insert Duplicate";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData5_Message + " -----");
 console.log("RESULT: insertData5_Message=" + JSON.stringify(insertItems));
@@ -636,8 +636,23 @@ while (txpool.status.pending > 0) {
 printTestRedBlackTreeContractDetails();
 // printBalances();
 
-failIfTxStatusError(insertData5_tx, insertData5_Message + " - test.insert(14)");
+passIfTxStatusError(insertData5_tx, insertData5_Message + " - test.insert(14)");
 printTxData("insertData5_tx", insertData5_tx);
+console.log("RESULT: ");
+
+
+// -----------------------------------------------------------------------------
+var removeData1_Message = "Remove Data #1 - Cannot Remove Non-Existent Key";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + removeData1_Message + " -----");
+var removeData1_tx = test.remove(114, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+passIfTxStatusError(removeData1_tx, removeData1_Message + " - test.remove(114)");
+printTxData("removeData1_tx", removeData1_tx);
 console.log("RESULT: ");
 
 

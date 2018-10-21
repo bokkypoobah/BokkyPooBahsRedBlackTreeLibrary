@@ -131,6 +131,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
 
     function insert(Tree storage self, uint z) internal {
         require(z != SENTINEL);
+        bool duplicateFound = false;
         uint y = SENTINEL;
         uint x = self.root;
         while (x != SENTINEL) {
@@ -138,9 +139,13 @@ library BokkyPooBahsRedBlackTreeLibrary {
             if (z < x) {
                 x = self.nodes[x].left;
             } else {
+                if (z == x) {
+                    duplicateFound = true;
+                }
                 x = self.nodes[x].right;
             }
         }
+        require(!duplicateFound);
         self.nodes[z] = Node(y, SENTINEL, SENTINEL, true);
         if (y == SENTINEL) {
             self.root = z;
@@ -155,6 +160,9 @@ library BokkyPooBahsRedBlackTreeLibrary {
         require(z != SENTINEL);
         uint x;
         uint y;
+
+        // z cannot be the root && parent cannot be non-zero
+        require(z != self.root && self.nodes[z].parent != 0);
 
         if (self.nodes[z].left == SENTINEL || self.nodes[z].right == SENTINEL) {
             y = z;
