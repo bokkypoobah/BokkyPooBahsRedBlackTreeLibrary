@@ -190,8 +190,11 @@ library BokkyPooBahsRedBlackTreeLibrary {
             self.nodes[y].red = self.nodes[z].red;
             (y, z) = (z, y);
         }
+        emit Log("remove", "before doFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
         if (doFixup) {
+            emit Log("remove", "before removeFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
             removeFixup(self, x);
+            emit Log("remove", "after removeFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
             // TODO Check if required delete self.nodes[0];
             // delete self.nodes[0];
         }

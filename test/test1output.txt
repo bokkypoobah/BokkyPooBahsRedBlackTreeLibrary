@@ -2,7 +2,6 @@
 GETHATTACHPOINT=ipc:./testchain/geth.ipc
 PASSWORD=
 
-RBTSOURCEDIR=../rbtContracts
 SOURCEDIR=../contracts
 
 LIBSOL=BokkyPooBahsRedBlackTreeLibrary.sol
@@ -10,6 +9,9 @@ LIBJS=BokkyPooBahsRedBlackTreeLibrary.js
 TESTSOL=TestBokkyPooBahsRedBlackTree.sol
 TESTJS=TestBokkyPooBahsRedBlackTree.js
 TESTFLATTENED=../flattened/TestBokkyPooBahsRedBlackTree_flattened.sol
+TESTRAWSOL=TestBokkyPooBahsRedBlackTreeRaw.sol
+TESTRAWJS=TestBokkyPooBahsRedBlackTreeRaw.js
+TESTRAWFLATTENED=../flattened/TestBokkyPooBahsRedBlackTreeRaw_flattened.sol
 
 DEPLOYMENTDATA=deploymentData.js
 
@@ -23,23 +25,23 @@ TEST3RESULTS=test3results.txt
 TEST4OUTPUT=test4output.txt
 TEST4RESULTS=test4results.txt
 
-CURRENTTIME = '1539837733' 'Thu 18 Oct 2018 04:42:13 UTC'
-START_DATE  = '1539837883' 'Thu 18 Oct 2018 04:44:43 UTC'
-END_DATE    = '1539837973' 'Thu 18 Oct 2018 04:46:13 UTC'
+CURRENTTIME = '1540108656' 'Sun 21 Oct 2018 07:57:36 UTC'
+START_DATE  = '1540108806' 'Sun 21 Oct 2018 08:00:06 UTC'
+END_DATE    = '1540108896' 'Sun 21 Oct 2018 08:01:36 UTC'
 solc, the solidity compiler commandline interface
 Version: 0.4.25+commit.59dbf8f1.Darwin.appleclang
 contractsdir: ../contracts
 remapdir    : (no remapping)
-mainsol     : TestBokkyPooBahsRedBlackTree.sol
-outputsol   : ../flattened/TestBokkyPooBahsRedBlackTree_flattened.sol
-Processing ../contracts/TestBokkyPooBahsRedBlackTree.sol
+mainsol     : TestBokkyPooBahsRedBlackTreeRaw.sol
+outputsol   : ../flattened/TestBokkyPooBahsRedBlackTreeRaw_flattened.sol
+Processing ../contracts/TestBokkyPooBahsRedBlackTreeRaw.sol
     Importing ../contracts/BokkyPooBahsRedBlackTreeLibrary.sol
     Processing ../contracts/BokkyPooBahsRedBlackTreeLibrary.sol
 Welcome to the Geth JavaScript console!
 
 instance: Geth/v1.8.17-stable-8bbe7207/darwin-amd64/go1.11.1
 coinbase: 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e
-at block: 735 (Thu, 18 Oct 2018 15:42:14 AEDT)
+at block: 177398 (Sun, 21 Oct 2018 18:57:37 AEDT)
  datadir: /Users/bok/Projects/BokkyPooBahsRedBlackTreeLibrary/test/testchain
  modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 shh:1.0 txpool:1.0 web3:1.0
 
@@ -125,19 +127,19 @@ undefined
 ... 
 undefined
 > 
-DATA: var testAddress="0x1aa3ebfd892954f32a37b698673505d1dafef4f5";
-DATA: var testAbi=[{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"uncleNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"},{"name":"_value","type":"uint256"}],"name":"insert","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"siblingNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"prev","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"first","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"last","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"parent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"getNode","outputs":[{"name":"key","type":"uint256"},{"name":"parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"exists","outputs":[{"name":"_exists","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"sibling","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"uncle","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"parentNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"grandparentNode","outputs":[{"name":"key","type":"uint256"},{"name":"_parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"},{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"grandparent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"root","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"next","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"where","type":"string"},{"indexed":false,"name":"action","type":"string"},{"indexed":false,"name":"key","type":"uint256"},{"indexed":false,"name":"parent","type":"uint256"},{"indexed":false,"name":"left","type":"uint256"},{"indexed":false,"name":"right","type":"uint256"},{"indexed":false,"name":"red","type":"bool"}],"name":"Log","type":"event"}];
+DATA: var testAddress="0x4ccfea1a837295eec67d3788339c8a5384a092fc";
+DATA: var testAbi=[{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"prev","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"first","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"last","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"}],"name":"remove","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"parent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_key","type":"uint256"}],"name":"getNode","outputs":[{"name":"key","type":"uint256"},{"name":"parent","type":"uint256"},{"name":"left","type":"uint256"},{"name":"right","type":"uint256"},{"name":"red","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"exists","outputs":[{"name":"_exists","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"sibling","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"uncle","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_key","type":"uint256"}],"name":"insert","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"grandparent","outputs":[{"name":"_parent","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"root","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"next","outputs":[{"name":"_key","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"where","type":"string"},{"indexed":false,"name":"action","type":"string"},{"indexed":false,"name":"key","type":"uint256"},{"indexed":false,"name":"parent","type":"uint256"},{"indexed":false,"name":"left","type":"uint256"},{"indexed":false,"name":"right","type":"uint256"},{"indexed":false,"name":"red","type":"bool"}],"name":"Log","type":"event"}];
 DATA: var test=eth.contract(testAbi).at(testAddress);
-DATA: testAddress=0x1aa3ebfd892954f32a37b698673505d1dafef4f5
+DATA: testAddress=0x4ccfea1a837295eec67d3788339c8a5384a092fc
 RESULT:  # Account                                             EtherBalanceChange                          Token Name
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
-RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003353272000000000           0.000000000000000000 Miner
-RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003353272000000000           0.000000000000000000 Deployer
+RESULT:  0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003199420000000000           0.000000000000000000 Miner
+RESULT:  1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003199420000000000           0.000000000000000000 Deployer
 RESULT:  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
 RESULT:  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
 RESULT:  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
 RESULT:  5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
-RESULT:  6 0x1aa3ebfd892954f32a37b698673505d1dafef4f5        0.000000000000000000           0.000000000000000000 Test
+RESULT:  6 0x4ccfea1a837295eec67d3788339c8a5384a092fc        0.000000000000000000           0.000000000000000000 Test
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 RESULT:                                                                                     0.000000000000000000 Total Token Balances
 RESULT: -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
@@ -147,7 +149,7 @@ undefined
 RESULT: PASS Deploy Test
 1
 > 
-RESULT: testTx status=0x1 Success gas=6000000 gasUsed=1676636 costETH=0.003353272 costUSD=0.66787118424 @ ETH/USD=199.17 gasPrice=2 gwei block=741 txIx=0 txId=0x365767b9c271ca29d799c865c430536a03a5f261822b17299e31c1b33f9e1c01 @ 1539837740 Thu, 18 Oct 2018 04:42:20 UTC
+RESULT: testTx status=0x1 Success gas=6000000 gasUsed=1599710 costETH=0.00319942 costUSD=0.6372284814 @ ETH/USD=199.17 gasPrice=2 gwei block=177404 txIx=0 txId=0xbf854547c6145f15946ca01da4fefcb7ad13f856c8bf0d8fb3869d1035d848cc @ 1540108663 Sun, 21 Oct 2018 07:57:43 UTC
 undefined
 > 
 RESULT: --------------------------------------------------------------------------------
@@ -171,7 +173,99 @@ undefined
 > 
 undefined
 > 
-RESULT: ----- Setup -----
+undefined
+> 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+... 
+RESULT: ---------- Test Basics - [Empty List] ----------
+RESULT: PASS [Empty List] test.root() should return 0
+RESULT: PASS [Empty List] test.first() should return 0
+RESULT: PASS [Empty List] test.last() should return 0
+RESULT: PASS [Empty List] test.next(123) should return 0
+RESULT: PASS [Empty List] test.prev(123) should return 0
+RESULT: PASS [Empty List] test.exists(123) should return false
+RESULT: PASS [Empty List] test.getNode(123) should return ["0","0","0","0",false]
+RESULT: PASS [Empty List] test.parent(123) should return 0
+RESULT: PASS [Empty List] test.grandparent(123) should return 0
+RESULT: PASS [Empty List] test.sibling(123) should return 0
+RESULT: PASS [Empty List] test.uncle(123) should return 0
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Setup Data -----
+undefined
+> 
 undefined
 > 
 undefined
@@ -184,15 +278,12 @@ undefined
 > 
 ... 
 ... 
-100
+... 
+200
 > 
 undefined
 > 
-undefined
-> 
-[15, 14, 20, 3, 7, 10, 11, 16, 18, 2, 4, 5, 8, 19, 1, 9, 12, 6, 17, 13]
-> 
-undefined
+[18, 28, 17, 32, 7, 5, 21, 14, 10, 3, 23, 16, 24, 4, 29, 8, 26, 12, 2, 22, 11, 1, 31, 19, 30, 9, 13, 15, 6, 20, 25, 27]
 > 
 undefined
 > 
@@ -200,7 +291,61 @@ undefined
 > 
 undefined
 > 
-RESULT: insert=[15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13]
+[4, 14, 25, 32, 2, 30, 16, 31, 6, 26, 18, 22, 28, 23, 12, 15, 19, 27, 7, 13, 29, 11, 3, 5, 17, 1, 24, 20, 9, 8, 21, 10]
+> 
+undefined
+> 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Data #1 -----
+undefined
+> 
+RESULT: insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+undefined
+> 
+undefined
+> 
+... 
+... 
+... 
+... 
+1
+> 
+... 
+undefined
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=18
+RESULT: testRedBlackTree.last=18
+RESULT: --------------------------------------------------------------------------------
+RESULT: [47m[k18 p0 l0 r0 black][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+... 
+RESULT: PASS Insert Data #1 - test.insert(18)
+1
+> 
+undefined
+> 
 undefined
 > 
 undefined
@@ -211,408 +356,138 @@ undefined
 ... 
 ... 
 ...... 
+...... 
+...... 
+...... 
+......... 
+......... 
+...... 
+......... 
+......... 
+...... 
 ... 
 ... 
-RESULT: inserting 15
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=15
-RESULT: testRedBlackTree.last=15
-RESULT: --------------------------------------------------------------------------------
-RESULT: [k15 p0 l0 r0 black]
-RESULT: --------------------------------------------------------------------------------
+RESULT: setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=68426 costETH=0.000136852 costUSD=0.02725681284 @ ETH/USD=199.17 gasPrice=2 gwei block=177406 txIx=0 txId=0xfdb4ea302644d77df4b39d2b750295e3fb5031d2e647b0e06ceccf90a858ac3b @ 1540108665 Sun, 21 Oct 2018 07:57:45 UTC
+68426
+> 
+undefined
+> 
+RESULT: totalGasUsedInsert=68426
+undefined
+> 
+RESULT: minGasUsedInsert=68426
+undefined
+> 
+RESULT: averageGasUsedInsert=68426
+undefined
+> 
+RESULT: maxGasUsedInsert=68426
+undefined
+> 
 RESULT: 
-RESULT: inserting 14
+undefined
+> 
+> 
 RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=14
-RESULT: testRedBlackTree.last=15
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=18
+RESULT: testRedBlackTree.last=18
 RESULT: --------------------------------------------------------------------------------
-RESULT:     [41m[k14 p15 l0 r0 red][0m
-RESULT: [k15 p0 l14 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 20
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=14
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:     [41m[k14 p15 l0 r0 red][0m
-RESULT: [k15 p0 l14 r20 black]
-RESULT:     [41m[k20 p15 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 3
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [41m[k3 p14 l0 r0 red][0m
-RESULT:     [k14 p15 l3 r0 black]
-RESULT: [k15 p0 l14 r20 black]
-RESULT:     [k20 p15 l0 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 7
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [41m[k3 p7 l0 r0 red][0m
-RESULT:     [k7 p15 l3 r14 black]
-RESULT:         [41m[k14 p7 l0 r0 red][0m
-RESULT: [k15 p0 l7 r20 black]
-RESULT:     [k20 p15 l0 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 10
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k3 p7 l0 r0 black]
-RESULT:     [41m[k7 p15 l3 r14 red][0m
-RESULT:             [41m[k10 p14 l0 r0 red][0m
-RESULT:         [k14 p7 l10 r0 black]
-RESULT: [k15 p0 l7 r20 black]
-RESULT:     [k20 p15 l0 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 11
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k3 p7 l0 r0 black]
-RESULT:     [41m[k7 p15 l3 r11 red][0m
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p7 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT: [k15 p0 l7 r20 black]
-RESULT:     [k20 p15 l0 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 16
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k3 p7 l0 r0 black]
-RESULT:     [41m[k7 p15 l3 r11 red][0m
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p7 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT: [k15 p0 l7 r20 black]
-RESULT:         [41m[k16 p20 l0 r0 red][0m
-RESULT:     [k20 p15 l16 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 18
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=3
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k3 p7 l0 r0 black]
-RESULT:     [41m[k7 p15 l3 r11 red][0m
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p7 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT: [k15 p0 l7 r18 black]
-RESULT:         [41m[k16 p18 l0 r0 red][0m
-RESULT:     [k18 p15 l16 r20 black]
-RESULT:         [41m[k20 p18 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 2
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=2
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k2 p3 l0 r0 red][0m
-RESULT:         [k3 p7 l2 r0 black]
-RESULT:     [41m[k7 p15 l3 r11 red][0m
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p7 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT: [k15 p0 l7 r18 black]
-RESULT:         [41m[k16 p18 l0 r0 red][0m
-RESULT:     [k18 p15 l16 r20 black]
-RESULT:         [41m[k20 p18 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 4
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=15
-RESULT: testRedBlackTree.first=2
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k2 p3 l0 r0 red][0m
-RESULT:         [k3 p7 l2 r4 black]
-RESULT:             [41m[k4 p3 l0 r0 red][0m
-RESULT:     [41m[k7 p15 l3 r11 red][0m
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p7 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT: [k15 p0 l7 r18 black]
-RESULT:         [41m[k16 p18 l0 r0 red][0m
-RESULT:     [k18 p15 l16 r20 black]
-RESULT:         [41m[k20 p18 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 5
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=2
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k2 p3 l0 r0 black]
-RESULT:     [41m[k3 p7 l2 r4 red][0m
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:             [41m[k10 p11 l0 r0 red][0m
-RESULT:         [k11 p15 l10 r14 black]
-RESULT:             [41m[k14 p11 l0 r0 red][0m
-RESULT:     [41m[k15 p7 l11 r18 red][0m
-RESULT:             [41m[k16 p18 l0 r0 red][0m
-RESULT:         [k18 p15 l16 r20 black]
-RESULT:             [41m[k20 p18 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 8
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=2
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k2 p3 l0 r0 black]
-RESULT:     [k3 p7 l2 r4 black]
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p10 l0 r0 red][0m
-RESULT:             [k10 p11 l8 r0 black]
-RESULT:         [41m[k11 p15 l10 r14 red][0m
-RESULT:             [k14 p11 l0 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [41m[k16 p18 l0 r0 red][0m
-RESULT:         [k18 p15 l16 r20 black]
-RESULT:             [41m[k20 p18 l0 r0 red][0m
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 19
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=2
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:         [k2 p3 l0 r0 black]
-RESULT:     [k3 p7 l2 r4 black]
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p10 l0 r0 red][0m
-RESULT:             [k10 p11 l8 r0 black]
-RESULT:         [41m[k11 p15 l10 r14 red][0m
-RESULT:             [k14 p11 l0 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r0 black]
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 1
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r4 black]
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p10 l0 r0 red][0m
-RESULT:             [k10 p11 l8 r0 black]
-RESULT:         [41m[k11 p15 l10 r14 red][0m
-RESULT:             [k14 p11 l0 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r0 black]
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 9
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r4 black]
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r14 red][0m
-RESULT:             [k14 p11 l0 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r0 black]
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 12
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r4 black]
-RESULT:         [k4 p3 l0 r5 black]
-RESULT:             [41m[k5 p4 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r14 red][0m
-RESULT:                 [41m[k12 p14 l0 r0 red][0m
-RESULT:             [k14 p11 l12 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r0 black]
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 6
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r5 black]
-RESULT:             [41m[k4 p5 l0 r0 red][0m
-RESULT:         [k5 p3 l4 r6 black]
-RESULT:             [41m[k6 p5 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r14 red][0m
-RESULT:                 [41m[k12 p14 l0 r0 red][0m
-RESULT:             [k14 p11 l12 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r0 black]
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 17
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r5 black]
-RESULT:             [41m[k4 p5 l0 r0 red][0m
-RESULT:         [k5 p3 l4 r6 black]
-RESULT:             [41m[k6 p5 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r14 red][0m
-RESULT:                 [41m[k12 p14 l0 r0 red][0m
-RESULT:             [k14 p11 l12 r0 black]
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r17 black]
-RESULT:                 [41m[k17 p16 l0 r0 red][0m
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
-RESULT: --------------------------------------------------------------------------------
-RESULT: 
-RESULT: inserting 13
-RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
-RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r5 black]
-RESULT:             [41m[k4 p5 l0 r0 red][0m
-RESULT:         [k5 p3 l4 r6 black]
-RESULT:             [41m[k6 p5 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r13 red][0m
-RESULT:                 [41m[k12 p13 l0 r0 red][0m
-RESULT:             [k13 p11 l12 r14 black]
-RESULT:                 [41m[k14 p13 l0 r0 red][0m
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r17 black]
-RESULT:                 [41m[k17 p16 l0 r0 red][0m
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
+RESULT: [47m[k18 p0 l0 r0 black][0m
 RESULT: --------------------------------------------------------------------------------
 RESULT: 
 undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+RESULT: ---------- Test Basics - [Single Item] ----------
+RESULT: PASS [Single Item] test.root() should return 18
+RESULT: PASS [Single Item] test.first() should return 18
+RESULT: PASS [Single Item] test.last() should return 18
+RESULT: PASS [Single Item] test.next(18) should return 0
+RESULT: PASS [Single Item] test.prev(18) should return 0
+RESULT: PASS [Single Item] test.exists(18) should return true
+RESULT: PASS [Single Item] test.getNode(18) should return ["18","0","0","0",false]
+RESULT: PASS [Single Item] test.parent(18) should return 0
+RESULT: PASS [Single Item] test.grandparent(18) should return 0
+RESULT: PASS [Single Item] test.sibling(18) should return 0
+RESULT: PASS [Single Item] test.uncle(18) should return 0
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Data #2 -----
+undefined
+> 
+RESULT: insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+undefined
+> 
+... 
+... 
+... 
+... 
+2
 > 
 ... 
 undefined
 > 
 RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
-RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=18
+RESULT: testRedBlackTree.last=28
 RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r5 black]
-RESULT:             [41m[k4 p5 l0 r0 red][0m
-RESULT:         [k5 p3 l4 r6 black]
-RESULT:             [41m[k6 p5 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r13 red][0m
-RESULT:                 [41m[k12 p13 l0 r0 red][0m
-RESULT:             [k13 p11 l12 r14 black]
-RESULT:                 [41m[k14 p13 l0 r0 red][0m
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r17 black]
-RESULT:                 [41m[k17 p16 l0 r0 red][0m
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
+RESULT: [47m[k18 p0 l0 r28 black][0m
+RESULT:     [41m[k28 p18 l0 r0 red][0m
 RESULT: --------------------------------------------------------------------------------
 RESULT: 
 undefined
@@ -623,84 +498,47 @@ undefined
 ... 
 ... 
 ... 
-... 
-RESULT: PASS Setup - test.insert(15)
-RESULT: PASS Setup - test.insert(15)
-RESULT: PASS Setup - test.insert(14)
-RESULT: PASS Setup - test.insert(14)
-RESULT: PASS Setup - test.insert(20)
-RESULT: PASS Setup - test.insert(20)
-RESULT: PASS Setup - test.insert(3)
-RESULT: PASS Setup - test.insert(3)
-RESULT: PASS Setup - test.insert(7)
-RESULT: PASS Setup - test.insert(7)
-RESULT: PASS Setup - test.insert(10)
-RESULT: PASS Setup - test.insert(10)
-RESULT: PASS Setup - test.insert(11)
-RESULT: PASS Setup - test.insert(11)
-RESULT: PASS Setup - test.insert(16)
-RESULT: PASS Setup - test.insert(16)
-RESULT: PASS Setup - test.insert(18)
-RESULT: PASS Setup - test.insert(18)
-RESULT: PASS Setup - test.insert(2)
-RESULT: PASS Setup - test.insert(2)
-RESULT: PASS Setup - test.insert(4)
-RESULT: PASS Setup - test.insert(4)
-RESULT: PASS Setup - test.insert(5)
-RESULT: PASS Setup - test.insert(5)
-RESULT: PASS Setup - test.insert(8)
-RESULT: PASS Setup - test.insert(8)
-RESULT: PASS Setup - test.insert(19)
-RESULT: PASS Setup - test.insert(19)
-RESULT: PASS Setup - test.insert(1)
-RESULT: PASS Setup - test.insert(1)
-RESULT: PASS Setup - test.insert(9)
-RESULT: PASS Setup - test.insert(9)
-RESULT: PASS Setup - test.insert(12)
-RESULT: PASS Setup - test.insert(12)
-RESULT: PASS Setup - test.insert(6)
-RESULT: PASS Setup - test.insert(6)
-RESULT: PASS Setup - test.insert(17)
-RESULT: PASS Setup - test.insert(17)
-RESULT: PASS Setup - test.insert(13)
-RESULT: PASS Setup - test.insert(13)
+RESULT: PASS Insert Data #2 - test.insert(28)
 1
 > 
 undefined
 > 
-... 
-... 
-... 
-... 
-... 
-RESULT: setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=88582 costETH=0.000177164 costUSD=0.03528575388 @ ETH/USD=199.17 gasPrice=2 gwei block=743 txIx=0 txId=0x83f56a2b7bf54494f895a01cd915d2113ee1316a570ce3a2b2b5aaf1362c6a36 @ 1539837742 Thu, 18 Oct 2018 04:42:22 UTC
-RESULT: setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=119595 costETH=0.00023919 costUSD=0.0476394723 @ ETH/USD=199.17 gasPrice=2 gwei block=745 txIx=0 txId=0xc7311effca22751a71e1f36dc7cbaed65d7bc9f8114b0bb9983968cec1cd6fc3 @ 1539837744 Thu, 18 Oct 2018 04:42:24 UTC
-RESULT: setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=119569 costETH=0.000239138 costUSD=0.04762911546 @ ETH/USD=199.17 gasPrice=2 gwei block=747 txIx=0 txId=0x4715b6f55b44a2f6d51273f3c9db2ed7decdd6bbb99b14f5507228e5ff32fe93 @ 1539837746 Thu, 18 Oct 2018 04:42:26 UTC
-RESULT: setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=108176 costETH=0.000216352 costUSD=0.04309082784 @ ETH/USD=199.17 gasPrice=2 gwei block=749 txIx=0 txId=0x40ae83ae7bc3a51a5f17d7898af32010739c7d8780bb2afff6dfd4594f04615d @ 1539837748 Thu, 18 Oct 2018 04:42:28 UTC
-RESULT: setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=187329 costETH=0.000374658 costUSD=0.07462063386 @ ETH/USD=199.17 gasPrice=2 gwei block=751 txIx=0 txId=0x360bfcfd609fd51190997f4a3a99056a28e49b68552e009a04a4a40582520763 @ 1539837750 Thu, 18 Oct 2018 04:42:30 UTC
-RESULT: setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=124061 costETH=0.000248122 costUSD=0.04941845874 @ ETH/USD=199.17 gasPrice=2 gwei block=753 txIx=0 txId=0xcc3f2fab5ba3247319703e43e06a6775d538f19d9ac09c064e72cd0a3fb3e8d5 @ 1539837752 Thu, 18 Oct 2018 04:42:32 UTC
-RESULT: setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=187683 costETH=0.000375366 costUSD=0.07476164622 @ ETH/USD=199.17 gasPrice=2 gwei block=755 txIx=0 txId=0xd5b53f7903b96439e29739637a14e56e1d22edff377d0e61cc101849595411ca @ 1539837754 Thu, 18 Oct 2018 04:42:34 UTC
-RESULT: setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=119942 costETH=0.000239884 costUSD=0.04777769628 @ ETH/USD=199.17 gasPrice=2 gwei block=757 txIx=0 txId=0xdf23cdd22aed67bd6a06c604d704567003b1d30cb9f9a16f4a33806164ab99d3 @ 1539837756 Thu, 18 Oct 2018 04:42:36 UTC
-RESULT: setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=187323 costETH=0.000374646 costUSD=0.07461824382 @ ETH/USD=199.17 gasPrice=2 gwei block=759 txIx=0 txId=0x242a861f2bd4835cad12db3ef0f637180147cab3b03b8e6b33d97115652eb400 @ 1539837758 Thu, 18 Oct 2018 04:42:38 UTC
-RESULT: setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=120315 costETH=0.00024063 costUSD=0.0479262771 @ ETH/USD=199.17 gasPrice=2 gwei block=761 txIx=0 txId=0x89f3458530440343f77ba940e920c6f19029a75c4a905d31fce86ad64c8ba0c0 @ 1539837760 Thu, 18 Oct 2018 04:42:40 UTC
-RESULT: setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=120289 costETH=0.000240578 costUSD=0.04791592026 @ ETH/USD=199.17 gasPrice=2 gwei block=763 txIx=0 txId=0xabef337f6c3e31437f6974efbb8237f49d191461c99235ea4e3d5d5ff34e85a4 @ 1539837762 Thu, 18 Oct 2018 04:42:42 UTC
-RESULT: setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=169623 costETH=0.000339246 costUSD=0.06756762582 @ ETH/USD=199.17 gasPrice=2 gwei block=765 txIx=0 txId=0x667417e6c4e3ee392b04f58a8191c11ef99869ea253a410265a8d035b9146c17 @ 1539837764 Thu, 18 Oct 2018 04:42:44 UTC
-RESULT: setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=112642 costETH=0.000225284 costUSD=0.04486981428 @ ETH/USD=199.17 gasPrice=2 gwei block=767 txIx=0 txId=0xff151200e6a6df8e78d1bb2a735c98b3910c79b79ae39092004ebc6252e066a0 @ 1539837766 Thu, 18 Oct 2018 04:42:46 UTC
-RESULT: setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=124395 costETH=0.00024879 costUSD=0.0495515043 @ ETH/USD=199.17 gasPrice=2 gwei block=769 txIx=0 txId=0x409fac5e48f0a14f0c2e54a544703addc4d3101ffa717026a02068ba7d3560e4 @ 1539837768 Thu, 18 Oct 2018 04:42:48 UTC
-RESULT: setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=120315 costETH=0.00024063 costUSD=0.0479262771 @ ETH/USD=199.17 gasPrice=2 gwei block=771 txIx=0 txId=0x1a40f926aa5d4a6976c899305dc1538f1bf45e94763c3e654493d292244fcf04 @ 1539837770 Thu, 18 Oct 2018 04:42:50 UTC
-RESULT: setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=188036 costETH=0.000376072 costUSD=0.07490226024 @ ETH/USD=199.17 gasPrice=2 gwei block=773 txIx=0 txId=0x3a2bf2f438ba7b6a961a7fff41bd819aa669506db61c50d799f3b2e657df84e3 @ 1539837772 Thu, 18 Oct 2018 04:42:52 UTC
-RESULT: setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=120649 costETH=0.000241298 costUSD=0.04805932266 @ ETH/USD=199.17 gasPrice=2 gwei block=775 txIx=0 txId=0x315931d9bbd7937349147009f9470385b61c3ed88d2bf7ea79c491a2af258214 @ 1539837774 Thu, 18 Oct 2018 04:42:54 UTC
-RESULT: setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=161158 costETH=0.000322316 costUSD=0.06419567772 @ ETH/USD=199.17 gasPrice=2 gwei block=777 txIx=0 txId=0x5275fea2256909c273af705f6f7e2a54482e2198817d416e9f8fc39cfa4bcde2 @ 1539837776 Thu, 18 Oct 2018 04:42:56 UTC
-RESULT: setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=120623 costETH=0.000241246 costUSD=0.04804896582 @ ETH/USD=199.17 gasPrice=2 gwei block=779 txIx=0 txId=0x5f7ada7777aff43958c794aea29c8b4fe146f19a56ba9eacf1584ae39c9573f2 @ 1539837778 Thu, 18 Oct 2018 04:42:58 UTC
-RESULT: setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=188030 costETH=0.00037606 costUSD=0.0748998702 @ ETH/USD=199.17 gasPrice=2 gwei block=781 txIx=0 txId=0x269e30781691df2d20d4fc7701473714c5acef1099b048a5e775c87703db00f5 @ 1539837780 Thu, 18 Oct 2018 04:43:00 UTC
-2788335
+undefined
 > 
 undefined
 > 
-RESULT: totalGasUsedInsert=2788335
+... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+......... 
+......... 
+...... 
+......... 
+......... 
+...... 
+... 
+... 
+RESULT: setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=99413 costETH=0.000198826 costUSD=0.03960017442 @ ETH/USD=199.17 gasPrice=2 gwei block=177408 txIx=0 txId=0xb74673d853e6f5d0d5f24eb1de2d861ae3e3cad5ca3e0deba66aa1ffb3e30bf8 @ 1540108667 Sun, 21 Oct 2018 07:57:47 UTC
+99413
+> 
 undefined
 > 
-RESULT: averageGasUsedInsert=139416.75
+RESULT: totalGasUsedInsert=99413
+undefined
+> 
+RESULT: minGasUsedInsert=0
+undefined
+> 
+RESULT: averageGasUsedInsert=49706.5
+undefined
+> 
+RESULT: maxGasUsedInsert=99413
 undefined
 > 
 RESULT: 
@@ -708,35 +546,658 @@ undefined
 > 
 > 
 RESULT: --------------------------------------------------------------------------------
-RESULT: testRedBlackTree.root=7
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=18
+RESULT: testRedBlackTree.last=28
+RESULT: --------------------------------------------------------------------------------
+RESULT: [47m[k18 p0 l0 r28 black][0m
+RESULT:     [41m[k28 p18 l0 r0 red][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+RESULT: ---------- Test Basics - [Two Items] ----------
+RESULT: PASS [Two Items] test.root() should return 18
+RESULT: PASS [Two Items] test.first() should return 18
+RESULT: PASS [Two Items] test.last() should return 28
+RESULT: PASS [Two Items] test.next(12) should return 0
+RESULT: PASS [Two Items] test.next(18) should return 28
+RESULT: PASS [Two Items] test.next(28) should return 0
+RESULT: PASS [Two Items] test.prev(18) should return 0
+RESULT: PASS [Two Items] test.prev(28) should return 18
+RESULT: PASS [Two Items] test.exists(18) should return true
+RESULT: PASS [Two Items] test.getNode(18) should return ["18","0","0","28",false]
+RESULT: PASS [Two Items] test.parent(18) should return 0
+RESULT: PASS [Two Items] test.parent(28) should return 18
+RESULT: PASS [Two Items] test.grandparent(18) should return 0
+RESULT: PASS [Two Items] test.sibling(18) should return 0
+RESULT: PASS [Two Items] test.uncle(18) should return 0
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Data #3 -----
+undefined
+> 
+RESULT: insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+undefined
+> 
+... 
+... 
+... 
+... 
+3
+> 
+... 
+undefined
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=17
+RESULT: testRedBlackTree.last=28
+RESULT: --------------------------------------------------------------------------------
+RESULT:     [41m[k17 p18 l0 r0 red][0m
+RESULT: [47m[k18 p0 l17 r28 black][0m
+RESULT:     [41m[k28 p18 l0 r0 red][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+... 
+RESULT: PASS Insert Data #3 - test.insert(17)
+1
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+......... 
+......... 
+...... 
+......... 
+......... 
+...... 
+... 
+... 
+RESULT: setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=99439 costETH=0.000198878 costUSD=0.03961053126 @ ETH/USD=199.17 gasPrice=2 gwei block=177411 txIx=0 txId=0x347aba5d6b995f163af67fedb409447dfd25bd3f4fd91bfa44d110f5931f2164 @ 1540108670 Sun, 21 Oct 2018 07:57:50 UTC
+99439
+> 
+undefined
+> 
+RESULT: totalGasUsedInsert=99439
+undefined
+> 
+RESULT: minGasUsedInsert=0
+undefined
+> 
+RESULT: averageGasUsedInsert=33146.33333333333333333333
+undefined
+> 
+RESULT: maxGasUsedInsert=99439
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=17
+RESULT: testRedBlackTree.last=28
+RESULT: --------------------------------------------------------------------------------
+RESULT:     [41m[k17 p18 l0 r0 red][0m
+RESULT: [47m[k18 p0 l17 r28 black][0m
+RESULT:     [41m[k28 p18 l0 r0 red][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+RESULT: ---------- Test Basics - [Three Items] ----------
+RESULT: PASS [Three Items] test.root() should return 18
+RESULT: PASS [Three Items] test.first() should return 17
+RESULT: PASS [Three Items] test.last() should return 28
+RESULT: PASS [Three Items] test.next(12) should return 0
+RESULT: PASS [Three Items] test.next(17) should return 18
+RESULT: PASS [Three Items] test.next(18) should return 28
+RESULT: PASS [Three Items] test.prev(18) should return 17
+RESULT: PASS [Three Items] test.prev(28) should return 18
+RESULT: PASS [Three Items] test.exists(18) should return true
+RESULT: PASS [Three Items] test.getNode(18) should return ["18","0","17","28",false]
+RESULT: PASS [Three Items] test.parent(18) should return 0
+RESULT: PASS [Three Items] test.parent(28) should return 18
+RESULT: PASS [Three Items] test.grandparent(18) should return 0
+RESULT: PASS [Three Items] test.sibling(18) should return 0
+RESULT: PASS [Three Items] test.sibling(17) should return 28
+RESULT: PASS [Three Items] test.sibling(28) should return 17
+RESULT: PASS [Three Items] test.uncle(18) should return 0
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Data #4 -----
+undefined
+> 
+RESULT: insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+undefined
+> 
+... 
+... 
+... 
+... 
+32
+> 
+... 
+undefined
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
 RESULT: testRedBlackTree.first=1
-RESULT: testRedBlackTree.last=20
+RESULT: testRedBlackTree.last=32
 RESULT: --------------------------------------------------------------------------------
-RESULT:             [41m[k1 p2 l0 r0 red][0m
-RESULT:         [k2 p3 l1 r0 black]
-RESULT:     [k3 p7 l2 r5 black]
-RESULT:             [41m[k4 p5 l0 r0 red][0m
-RESULT:         [k5 p3 l4 r6 black]
-RESULT:             [41m[k6 p5 l0 r0 red][0m
-RESULT: [k7 p0 l3 r15 black]
-RESULT:                 [41m[k8 p9 l0 r0 red][0m
-RESULT:             [k9 p11 l8 r10 black]
-RESULT:                 [41m[k10 p9 l0 r0 red][0m
-RESULT:         [41m[k11 p15 l9 r13 red][0m
-RESULT:                 [41m[k12 p13 l0 r0 red][0m
-RESULT:             [k13 p11 l12 r14 black]
-RESULT:                 [41m[k14 p13 l0 r0 red][0m
-RESULT:     [k15 p7 l11 r18 black]
-RESULT:             [k16 p18 l0 r17 black]
+RESULT:                 [41m[k1 p2 l0 r0 red][0m
+RESULT:             [47m[k2 p4 l1 r3 black][0m
+RESULT:                 [41m[k3 p2 l0 r0 red][0m
+RESULT:         [47m[k4 p7 l2 r5 black][0m
+RESULT:             [47m[k5 p4 l0 r6 black][0m
+RESULT:                 [41m[k6 p5 l0 r0 red][0m
+RESULT:     [41m[k7 p18 l4 r14 red][0m
+RESULT:                 [47m[k8 p10 l0 r9 black][0m
+RESULT:                     [41m[k9 p8 l0 r0 red][0m
+RESULT:             [41m[k10 p14 l8 r12 red][0m
+RESULT:                     [41m[k11 p12 l0 r0 red][0m
+RESULT:                 [47m[k12 p10 l11 r13 black][0m
+RESULT:                     [41m[k13 p12 l0 r0 red][0m
+RESULT:         [47m[k14 p7 l10 r16 black][0m
+RESULT:                 [41m[k15 p16 l0 r0 red][0m
+RESULT:             [47m[k16 p14 l15 r17 black][0m
 RESULT:                 [41m[k17 p16 l0 r0 red][0m
-RESULT:         [41m[k18 p15 l16 r20 red][0m
-RESULT:                 [41m[k19 p20 l0 r0 red][0m
-RESULT:             [k20 p18 l19 r0 black]
+RESULT: [47m[k18 p0 l7 r28 black][0m
+RESULT:                 [47m[k19 p21 l0 r20 black][0m
+RESULT:                     [41m[k20 p19 l0 r0 red][0m
+RESULT:             [41m[k21 p23 l19 r22 red][0m
+RESULT:                 [47m[k22 p21 l0 r0 black][0m
+RESULT:         [47m[k23 p28 l21 r25 black][0m
+RESULT:                 [47m[k24 p25 l0 r0 black][0m
+RESULT:             [41m[k25 p23 l24 r26 red][0m
+RESULT:                 [47m[k26 p25 l0 r27 black][0m
+RESULT:                     [41m[k27 p26 l0 r0 red][0m
+RESULT:     [41m[k28 p18 l23 r31 red][0m
+RESULT:             [47m[k29 p31 l0 r30 black][0m
+RESULT:                 [41m[k30 p29 l0 r0 red][0m
+RESULT:         [47m[k31 p28 l29 r32 black][0m
+RESULT:             [47m[k32 p31 l0 r0 black][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+undefined
+> 
+> 
+... 
+... 
+... 
+RESULT: PASS Insert Data #4 - test.insert(32)
+RESULT: PASS Insert Data #4 - test.insert(7)
+RESULT: PASS Insert Data #4 - test.insert(5)
+RESULT: PASS Insert Data #4 - test.insert(21)
+RESULT: PASS Insert Data #4 - test.insert(14)
+RESULT: PASS Insert Data #4 - test.insert(10)
+RESULT: PASS Insert Data #4 - test.insert(3)
+RESULT: PASS Insert Data #4 - test.insert(23)
+RESULT: PASS Insert Data #4 - test.insert(16)
+RESULT: PASS Insert Data #4 - test.insert(24)
+RESULT: PASS Insert Data #4 - test.insert(4)
+RESULT: PASS Insert Data #4 - test.insert(29)
+RESULT: PASS Insert Data #4 - test.insert(8)
+RESULT: PASS Insert Data #4 - test.insert(26)
+RESULT: PASS Insert Data #4 - test.insert(12)
+RESULT: PASS Insert Data #4 - test.insert(2)
+RESULT: PASS Insert Data #4 - test.insert(22)
+RESULT: PASS Insert Data #4 - test.insert(11)
+RESULT: PASS Insert Data #4 - test.insert(1)
+RESULT: PASS Insert Data #4 - test.insert(31)
+RESULT: PASS Insert Data #4 - test.insert(19)
+RESULT: PASS Insert Data #4 - test.insert(30)
+RESULT: PASS Insert Data #4 - test.insert(9)
+RESULT: PASS Insert Data #4 - test.insert(13)
+RESULT: PASS Insert Data #4 - test.insert(15)
+RESULT: PASS Insert Data #4 - test.insert(6)
+RESULT: PASS Insert Data #4 - test.insert(20)
+RESULT: PASS Insert Data #4 - test.insert(25)
+RESULT: PASS Insert Data #4 - test.insert(27)
+1
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+...... 
+...... 
+......... 
+......... 
+...... 
+......... 
+......... 
+...... 
+... 
+... 
+RESULT: setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=87976 costETH=0.000175952 costUSD=0.03504435984 @ ETH/USD=199.17 gasPrice=2 gwei block=177413 txIx=0 txId=0x0bde75e1ad81a4d48e2090d67156ca20db280fe2650233fe8d1dbaaf8b2d03f9 @ 1540108672 Sun, 21 Oct 2018 07:57:52 UTC
+RESULT: setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=99799 costETH=0.000199598 costUSD=0.03975393366 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=0 txId=0xf7329ae45beeb68db66d6edf66295f070d6b4e4858ad6b726db6da679309ad21 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=140684 costETH=0.000281368 costUSD=0.05604006456 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=1 txId=0x41d9e2649f906069c3d7d9aa31d81afc26f98a6fee3dcfc6c0b22bf1d8e9a383 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=99786 costETH=0.000199572 costUSD=0.03974875524 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=2 txId=0x338f3845ceff5704de29a3585853b3917bee7320e55551437d412e8f732bcc4b @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=103905 costETH=0.00020781 costUSD=0.0413895177 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=3 txId=0x25ef8b92ceb0b1e3a3d133ee321a4e7a2354ddb65cf47da92d77b7c3f4ad5850 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=141038 costETH=0.000282076 costUSD=0.05618107692 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=4 txId=0xe8b7e334811c7bdc79aead116bc53a10510a02145f8b233713be168770cf68d5 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=100159 costETH=0.000200318 costUSD=0.03989733606 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=5 txId=0x00921ced428a1b9307dee65d5c146dc801bb9a69898ae0201b38da378254123c @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=103884 costETH=0.000207768 costUSD=0.04138115256 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=6 txId=0xff6eb6474eddc899aa8c91783d0a345bed106c9b0f898655159f0d82febb4e39 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=92473 costETH=0.000184946 costUSD=0.03683569482 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=7 txId=0xe0f5be87683700d533b2a1f3c88959b4865b053b863699eb6f28b9b21f65e25d @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=141015 costETH=0.00028203 costUSD=0.0561719151 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=8 txId=0xeb41800eb0a6e2f2f802e1aa725295660540930dc3edc5d060aa9ec777c88ef9 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=167533 costETH=0.000335066 costUSD=0.06673509522 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=9 txId=0x980782ba242d66b62defd8528821297d682766345147614952fef7716caa6159 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=100133 costETH=0.000200266 costUSD=0.03988697922 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=10 txId=0xd0591fa3ae7c33a08d0c400b2d5a6599c7a4c3140d864579b80b525da872ad44 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=100506 costETH=0.000201012 costUSD=0.04003556004 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=11 txId=0x52a258494e76b2c5b3736dc199b954f2a112c0fe9f04a3d292783551f89d4e79 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=104226 costETH=0.000208452 costUSD=0.04151738484 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=12 txId=0xfd481a01340781ac9a55ef9f8e9fc4c801694f5317aa208dd6fbc65213989895 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=100480 costETH=0.00020096 costUSD=0.0400252032 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=13 txId=0x634bc4c10977dc62459a5e1fe7e26dc548ea74114dda5018b56836e5d7704d82 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=104283 costETH=0.000208566 costUSD=0.04154009022 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=14 txId=0x34ba275ad8b76457a2c4daa2443c3b599f0812281400cbc2736167d090978b66 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=100480 costETH=0.00020096 costUSD=0.0400252032 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=15 txId=0xca42582326bf967aa985d18d2127efeac3626be1503b414128c11a7b2764d38b @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[20] status=0x1 Success gas=1000000 gasUsed=108371 costETH=0.000216742 costUSD=0.04316850414 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=16 txId=0x0814a98a64915633476d8615277f8d50b01138b2d8b9a929133456a2fcdf327e @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[21] status=0x1 Success gas=1000000 gasUsed=141404 costETH=0.000282808 costUSD=0.05632686936 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=17 txId=0x6dbbe6a74e2f5f08924cfcc1847f2838f879dea0b22797105f082921c6eca805 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[22] status=0x1 Success gas=1000000 gasUsed=167514 costETH=0.000335028 costUSD=0.06672752676 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=18 txId=0x05e1690b1646012efc0bac7699b52c52b7ef311eef00d55a15156723db4cd056 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[23] status=0x1 Success gas=1000000 gasUsed=100506 costETH=0.000201012 costUSD=0.04003556004 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=19 txId=0xa7af12bc82b952c1eee2a7a3088046d5c2b42a46b0b128f774057b0eadbf2349 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[24] status=0x1 Success gas=1000000 gasUsed=104231 costETH=0.000208462 costUSD=0.04151937654 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=20 txId=0x0927048f8fdf1791e14188e8fdf13fad2efd4dfc70a0857fb4461f3eded631da @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[25] status=0x1 Success gas=1000000 gasUsed=100840 costETH=0.00020168 costUSD=0.0401686056 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=21 txId=0x5b6f38f530f21e324a87e41027872e8bc51449af0242661608077de85d88a27c @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[26] status=0x1 Success gas=1000000 gasUsed=100827 costETH=0.000201654 costUSD=0.04016342718 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=22 txId=0xf8f29b373e0e08e804b2cdf049128b28ae53fed81c1e8a6576505213e896cce0 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[27] status=0x1 Success gas=1000000 gasUsed=141385 costETH=0.00028277 costUSD=0.0563193009 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=23 txId=0x7f405dfa560023853ceeefb3d1442b5c641e59f2ac145f4129935fd06fa877f5 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[28] status=0x1 Success gas=1000000 gasUsed=100480 costETH=0.00020096 costUSD=0.0400252032 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=24 txId=0xc005d0a88f7b0718a899985136950c08902dd7de42e2b7abb82447e3f8f93714 @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[29] status=0x1 Success gas=1000000 gasUsed=108368 costETH=0.000216736 costUSD=0.04316730912 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=25 txId=0x9bd17418c528cebc7ea0db62fe795e851ee4d3ff894ac86238e211ec87ac6f6c @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[30] status=0x1 Success gas=1000000 gasUsed=167872 costETH=0.000335744 costUSD=0.06687013248 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=26 txId=0x0e1c7e91156f52cc3c6e1cdfffcb5a508b1522c5fd1e59b7590c3ae9292a7f3c @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+RESULT: setup_1Tx[31] status=0x1 Success gas=1000000 gasUsed=104573 costETH=0.000209146 costUSD=0.04165560882 @ ETH/USD=199.17 gasPrice=2 gwei block=177414 txIx=27 txId=0x8f2db15da68869ddfedcb8d3fec36047a98d97b95724abb61a9119c080d2fdbd @ 1540108673 Sun, 21 Oct 2018 07:57:53 UTC
+3334731
+> 
+undefined
+> 
+RESULT: totalGasUsedInsert=3334731
+undefined
+> 
+RESULT: minGasUsedInsert=0
+undefined
+> 
+RESULT: averageGasUsedInsert=104210.34375
+undefined
+> 
+RESULT: maxGasUsedInsert=167872
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=1
+RESULT: testRedBlackTree.last=32
+RESULT: --------------------------------------------------------------------------------
+RESULT:                 [41m[k1 p2 l0 r0 red][0m
+RESULT:             [47m[k2 p4 l1 r3 black][0m
+RESULT:                 [41m[k3 p2 l0 r0 red][0m
+RESULT:         [47m[k4 p7 l2 r5 black][0m
+RESULT:             [47m[k5 p4 l0 r6 black][0m
+RESULT:                 [41m[k6 p5 l0 r0 red][0m
+RESULT:     [41m[k7 p18 l4 r14 red][0m
+RESULT:                 [47m[k8 p10 l0 r9 black][0m
+RESULT:                     [41m[k9 p8 l0 r0 red][0m
+RESULT:             [41m[k10 p14 l8 r12 red][0m
+RESULT:                     [41m[k11 p12 l0 r0 red][0m
+RESULT:                 [47m[k12 p10 l11 r13 black][0m
+RESULT:                     [41m[k13 p12 l0 r0 red][0m
+RESULT:         [47m[k14 p7 l10 r16 black][0m
+RESULT:                 [41m[k15 p16 l0 r0 red][0m
+RESULT:             [47m[k16 p14 l15 r17 black][0m
+RESULT:                 [41m[k17 p16 l0 r0 red][0m
+RESULT: [47m[k18 p0 l7 r28 black][0m
+RESULT:                 [47m[k19 p21 l0 r20 black][0m
+RESULT:                     [41m[k20 p19 l0 r0 red][0m
+RESULT:             [41m[k21 p23 l19 r22 red][0m
+RESULT:                 [47m[k22 p21 l0 r0 black][0m
+RESULT:         [47m[k23 p28 l21 r25 black][0m
+RESULT:                 [47m[k24 p25 l0 r0 black][0m
+RESULT:             [41m[k25 p23 l24 r26 red][0m
+RESULT:                 [47m[k26 p25 l0 r27 black][0m
+RESULT:                     [41m[k27 p26 l0 r0 red][0m
+RESULT:     [41m[k28 p18 l23 r31 red][0m
+RESULT:             [47m[k29 p31 l0 r30 black][0m
+RESULT:                 [41m[k30 p29 l0 r0 red][0m
+RESULT:         [47m[k31 p28 l29 r32 black][0m
+RESULT:             [47m[k32 p31 l0 r0 black][0m
 RESULT: --------------------------------------------------------------------------------
 RESULT: 
 undefined
 > 
 RESULT: 
+undefined
+> 
+> 
+> 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+...... 
+...... 
+... 
+... 
+RESULT: ---------- Test Basics - [All 32 Items] ----------
+RESULT: PASS [All 32 Items] test.root() should return 18
+RESULT: PASS [All 32 Items] test.first() should return 1
+RESULT: PASS [All 32 Items] test.last() should return 32
+RESULT: PASS [All 32 Items] test.next(8) should return 9
+RESULT: PASS [All 32 Items] test.next(10) should return 11
+RESULT: PASS [All 32 Items] test.next(14) should return 15
+RESULT: PASS [All 32 Items] test.next(17) should return 18
+RESULT: PASS [All 32 Items] test.next(18) should return 19
+RESULT: PASS [All 32 Items] test.next(20) should return 21
+RESULT: PASS [All 32 Items] test.prev(18) should return 17
+RESULT: PASS [All 32 Items] test.exists(18) should return true
+RESULT: PASS [All 32 Items] test.getNode(18) should return ["18","0","7","28",false]
+RESULT: PASS [All 32 Items] test.parent(21) should return 23
+RESULT: PASS [All 32 Items] test.parent(23) should return 28
+RESULT: PASS [All 32 Items] test.grandparent(21) should return 28
+RESULT: PASS [All 32 Items] test.sibling(24) should return 26
+RESULT: PASS [All 32 Items] test.sibling(26) should return 24
+RESULT: PASS [All 32 Items] test.uncle(27) should return 24
+RESULT: 
+undefined
+> 
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+undefined
+> 
+RESULT: ----- Insert Data #5 - Duplicate -----
+undefined
+> 
+RESULT: insertData5_Message=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+undefined
+> 
+undefined
+> 
+... 
+undefined
+> 
+RESULT: --------------------------------------------------------------------------------
+RESULT: testRedBlackTree.root=18
+RESULT: testRedBlackTree.first=1
+RESULT: testRedBlackTree.last=32
+RESULT: --------------------------------------------------------------------------------
+RESULT:                 [41m[k1 p2 l0 r0 red][0m
+RESULT:             [47m[k2 p4 l1 r3 black][0m
+RESULT:                 [41m[k3 p2 l0 r0 red][0m
+RESULT:         [47m[k4 p7 l2 r5 black][0m
+RESULT:             [47m[k5 p4 l0 r6 black][0m
+RESULT:                 [41m[k6 p5 l0 r0 red][0m
+RESULT:     [41m[k7 p18 l4 r14 red][0m
+RESULT:         [47m[k14 p16 l0 r15 black][0m
+RESULT:             [41m[k15 p14 l0 r0 red][0m
+RESULT: [47m[k18 p0 l7 r28 black][0m
+RESULT:                 [47m[k19 p21 l0 r20 black][0m
+RESULT:                     [41m[k20 p19 l0 r0 red][0m
+RESULT:             [41m[k21 p23 l19 r22 red][0m
+RESULT:                 [47m[k22 p21 l0 r0 black][0m
+RESULT:         [47m[k23 p28 l21 r25 black][0m
+RESULT:                 [47m[k24 p25 l0 r0 black][0m
+RESULT:             [41m[k25 p23 l24 r26 red][0m
+RESULT:                 [47m[k26 p25 l0 r27 black][0m
+RESULT:                     [41m[k27 p26 l0 r0 red][0m
+RESULT:     [41m[k28 p18 l23 r31 red][0m
+RESULT:             [47m[k29 p31 l0 r30 black][0m
+RESULT:                 [41m[k30 p29 l0 r0 red][0m
+RESULT:         [47m[k31 p28 l29 r32 black][0m
+RESULT:             [47m[k32 p31 l0 r0 black][0m
+RESULT: --------------------------------------------------------------------------------
+RESULT: 
+undefined
+> 
+undefined
+> 
+> 
+RESULT: PASS Insert Data #5 - Duplicate - test.insert(14)
+1
+> 
+RESULT: insertData5_tx status=0x1 Success gas=1000000 gasUsed=100142 costETH=0.000200284 costUSD=0.03989056428 @ ETH/USD=199.17 gasPrice=2 gwei block=177419 txIx=0 txId=0xe13e136d88ae48071ee23c9dc3191475d38d763a62c7a671709762cbd2305099 @ 1540108678 Sun, 21 Oct 2018 07:57:58 UTC
+undefined
+> 
+RESULT: 
+undefined
+> 
+> 
+> 
+undefined
+> 
+undefined
+> 
+> 
+> 
+> 
+... 
+... 
+... 
+... 
+RESULT: ---------- PASS - no failures detected ----------
 undefined
 > 
 > 

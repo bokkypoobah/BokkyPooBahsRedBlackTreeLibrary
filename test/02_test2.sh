@@ -106,7 +106,7 @@ var setup_Message = "Setup";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setup_Message + " -----");
 // var items = [1, 6, 8, 11, 13, 15, 17, 22, 25, 27];
-var NUMBEROFITEMS = 100;
+var NUMBEROFITEMS = 1000;
 var BATCHSIZE = NUMBEROFITEMS / 4;
 var items = [];
 for (var i = 1; i <= NUMBEROFITEMS; i++) {

@@ -43,31 +43,31 @@ library BokkyPooBahsRedBlackTreeLibrary {
             _key = self.nodes[_key].right;
         }
     }
-    // TODO: Test
-    function next(Tree storage self, uint key) internal view returns (uint _key) {
-        require(key != SENTINEL);
-        if (self.nodes[key].right != SENTINEL) {
-            _key = treeMinimum(self, key);
+    function next(Tree storage self, uint x) internal view returns (uint y) {
+        require(x != SENTINEL);
+        if (self.nodes[x].right != SENTINEL) {
+            y = treeMinimum(self, self.nodes[x].right);
         } else {
-            _key = self.nodes[key].parent;
-            while (_key != SENTINEL && _key == self.nodes[_key].right) {
-                key = _key;
-                _key = self.nodes[key].parent;
+            y = self.nodes[x].parent;
+            while (y != SENTINEL && x == self.nodes[y].right) {
+                x = y;
+                y = self.nodes[y].parent;
             }
         }
+        return y;
     }
-    // TODO: Test
-    function prev(Tree storage self, uint key) internal view returns (uint _key) {
-        require(key != SENTINEL);
-        if (self.nodes[key].left != SENTINEL) {
-            _key = treeMaximum(self, key);
+    function prev(Tree storage self, uint x) internal view returns (uint y) {
+        require(x != SENTINEL);
+        if (self.nodes[x].left != SENTINEL) {
+            y = treeMaximum(self, self.nodes[x].left);
         } else {
-            _key = self.nodes[key].parent;
-            while (_key != SENTINEL && _key == self.nodes[_key].left) {
-                key = _key;
-                _key = self.nodes[key].parent;
+            y = self.nodes[x].parent;
+            while (y != SENTINEL && x == self.nodes[y].left) {
+                x = y;
+                y = self.nodes[y].parent;
             }
         }
+        return y;
     }
     function exists(Tree storage self, uint key) internal view returns (bool _exists) {
         require(key != SENTINEL);
@@ -83,12 +83,13 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    function getNode(Tree storage self, uint key) internal view returns (Node node) {
+    function getNode(Tree storage self, uint key) internal view returns (uint _ReturnKey, uint _parent, uint _left, uint _right, bool _red) {
         require(key != SENTINEL);
         uint _key = self.root;
         while (_key != SENTINEL) {
             if (key == _key) {
-                return self.nodes[key];
+                Node memory node = self.nodes[key];
+                return (key, node.parent, node.left, node.right, node.red);
             }
             if (key < _key) {
                 _key = self.nodes[_key].left;
@@ -97,17 +98,10 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    // TODO: Test
     function parent(Tree storage self, uint key) internal view returns (uint _parent) {
         require(key != SENTINEL);
         _parent = self.nodes[key].parent;
     }
-    // TODO: Test
-    function parentNode(Tree storage self, uint key) internal view returns (Node _parentNode) {
-        require(key != SENTINEL);
-        _parentNode = self.nodes[self.nodes[key].parent];
-    }
-    // TODO: Test
     function grandparent(Tree storage self, uint key) internal view returns (uint _grandparent) {
         require(key != SENTINEL);
         uint _parent = self.nodes[key].parent;
@@ -115,15 +109,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
             _grandparent = self.nodes[_parent].parent;
         }
     }
-    // TODO: Test
-    function grandparentNode(Tree storage self, uint key) internal view returns (Node _grandparentNode) {
-        require(key != SENTINEL);
-        uint _parent = self.nodes[key].parent;
-        if (_parent != SENTINEL) {
-            _grandparentNode = self.nodes[self.nodes[_parent].parent];
-        }
-    }
-    // TODO: Test
     function sibling(Tree storage self, uint key) internal view returns (uint _sibling) {
         require(key != SENTINEL);
         uint _parent = self.nodes[key].parent;
@@ -135,34 +120,12 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    // TODO: Test
-    function siblingNode(Tree storage self, uint key) internal view returns (Node _siblingNode) {
-        require(key != SENTINEL);
-        uint _parent = self.nodes[key].parent;
-        if (_parent != SENTINEL) {
-            if (key == self.nodes[_parent].left) {
-                _siblingNode = self.nodes[self.nodes[_parent].right];
-            } else {
-                _siblingNode = self.nodes[self.nodes[_parent].left];
-            }
-        }
-    }
-    // TODO: Test
     function uncle(Tree storage self, uint key) internal view returns (uint _uncle) {
         require(key != SENTINEL);
         uint _grandParent = grandparent(self, key);
         if (_grandParent != SENTINEL) {
             uint _parent = self.nodes[key].parent;
             _uncle = sibling(self, _parent);
-        }
-    }
-    // TODO: Test
-    function uncleNode(Tree storage self, uint key) internal view returns (Node _uncleNode) {
-        require(key != SENTINEL);
-        uint _grandParent = grandparent(self, key);
-        if (_grandParent != SENTINEL) {
-            uint _parent = self.nodes[key].parent;
-            _uncleNode = siblingNode(self, _parent);
         }
     }
 
@@ -230,6 +193,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         if (doFixup) {
             removeFixup(self, x);
             // TODO Check if required delete self.nodes[0];
+            // delete self.nodes[0];
         }
         delete self.nodes[y];
     }

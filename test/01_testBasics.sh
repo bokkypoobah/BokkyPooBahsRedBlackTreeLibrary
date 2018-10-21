@@ -8,9 +8,9 @@
 MODE=${1:-full}
 
 source settings
-echo "---------- Settings ----------" | tee $TEST2OUTPUT
-cat ./settings | tee -a $TEST2OUTPUT
-echo "" | tee -a $TEST2OUTPUT
+echo "---------- Settings ----------" | tee $TEST1OUTPUT
+cat ./settings | tee -a $TEST1OUTPUT
+echo "" | tee -a $TEST1OUTPUT
 
 CURRENTTIME=`date +%s`
 CURRENTTIMES=`date -r $CURRENTTIME -u`
@@ -19,9 +19,9 @@ START_DATE_S=`date -r $START_DATE -u`
 END_DATE=`echo "$CURRENTTIME+60*4" | bc`
 END_DATE_S=`date -r $END_DATE -u`
 
-printf "CURRENTTIME = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST2OUTPUT
-printf "START_DATE  = '$START_DATE' '$START_DATE_S'\n" | tee -a $TEST2OUTPUT
-printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST2OUTPUT
+printf "CURRENTTIME = '$CURRENTTIME' '$CURRENTTIMES'\n" | tee -a $TEST1OUTPUT
+printf "START_DATE  = '$START_DATE' '$START_DATE_S'\n" | tee -a $TEST1OUTPUT
+printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 
 # Make copy of SOL file and modify start and end times ---
 # `cp modifiedContracts/*.sol .`
@@ -32,26 +32,26 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST2OUTPUT
 #`perl -pi -e "s/endDate \= 1513872000;.*$/endDate \= $END_DATE; \/\/ $END_DATE_S/" $CROWDSALESOL`
 
 #DIFFS1=`diff $SOURCEDIR/$LIBSOL $LIBSOL`
-#echo "--- Differences $SOURCEDIR/$LIBSOL $LIBSOL ---" | tee -a $TEST2OUTPUT
-#echo "$DIFFS1" | tee -a $TEST2OUTPUT
+#echo "--- Differences $SOURCEDIR/$LIBSOL $LIBSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
 #DIFFS1=`diff $SOURCEDIR/$TESTSOL $TESTSOL`
-#echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST2OUTPUT
-#echo "$DIFFS1" | tee -a $TEST2OUTPUT
+#echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST1OUTPUT
+#echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-solc_0.4.25 --version | tee -a $TEST2OUTPUT
+solc_0.4.25 --version | tee -a $TEST1OUTPUT
 
 # echo "var libOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
 echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
 
-../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST2OUTPUT
+../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST1OUTPUT
 
 if [ "$MODE" = "compile" ]; then
   echo "Compiling only"
   exit 1;
 fi
 
-geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT
+geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$TESTRAWJS");
 loadScript("functions.js");
 
@@ -175,7 +175,8 @@ if ("$MODE" == "full") {
 var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
-var NUMBEROFITEMS = 32;
+// var NUMBEROFITEMS = 32;
+var NUMBEROFITEMS = 200;
 var BATCHSIZE = NUMBEROFITEMS / 4;
 var insertItems = [];
 var removeItems = [];
@@ -508,10 +509,10 @@ if ("$MODE" == "full") {
 
 
 // -----------------------------------------------------------------------------
-var insertData4_Message = "Insert Data #3";
+var insertData4_Message = "Insert Data #4";
 // -----------------------------------------------------------------------------
-console.log("RESULT: ----- " + insertData3_Message + " -----");
-console.log("RESULT: insertData4_Message=" + JSON.stringify(insertItems));
+console.log("RESULT: ----- " + insertData4_Message + " -----");
+console.log("RESULT: insertItems=" + JSON.stringify(insertItems));
 for (var i = 3; i < insertItems.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
@@ -524,7 +525,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 3; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData3_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData4_Message + " - test.insert(" + item + ")");
 }
 var minGasUsedInsert = new BigNumber(0);
 var maxGasUsedInsert = new BigNumber(0);
@@ -601,23 +602,48 @@ if ("$MODE" == "full") {
   if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " test.getNode(18) should return " + NODE18728RESULT)) {
     failureDetected = true;
   }
-  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+  if (!assert(test.parent(21) == "23", section + " test.parent(21) should return 23")) {
     failureDetected = true;
   }
-  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+  if (!assert(test.parent(23) == "28", section + " test.parent(23) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+  if (!assert(test.grandparent(21) == "28", section + " test.grandparent(21) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+  if (!assert(test.sibling(24) == "26", section + " test.sibling(24) should return 26")) {
     failureDetected = true;
   }
-  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+  if (!assert(test.sibling(26) == "24", section + " test.sibling(26) should return 24")) {
+    failureDetected = true;
+  }
+  if (!assert(test.uncle(27) == "24", section + " test.uncle(27) should return 24")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
 }
+
+
+
+// -----------------------------------------------------------------------------
+var insertData5_Message = "Insert Data #5 - Duplicate";
+// -----------------------------------------------------------------------------
+console.log("RESULT: ----- " + insertData5_Message + " -----");
+console.log("RESULT: insertData5_Message=" + JSON.stringify(insertItems));
+var insertData5_tx = test.insert(14, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
+while (txpool.status.pending > 0) {
+}
+printTestRedBlackTreeContractDetails();
+// printBalances();
+
+failIfTxStatusError(insertData5_tx, insertData5_Message + " - test.insert(14)");
+printTxData("insertData5_tx", insertData5_tx);
+console.log("RESULT: ");
+
+
+// printTestRedBlackTreeContractDetails();
+// console.log("RESULT: ");
+
 
 
 if (!failureDetected) {
@@ -861,8 +887,8 @@ printTestRedBlackTreeContractDetails();
 
 
 EOF
-grep "DATA: " $TEST2OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
+grep "DATA: " $TEST1OUTPUT | sed "s/DATA: //" > $DEPLOYMENTDATA
 cat $DEPLOYMENTDATA
-grep "RESULT: " $TEST2OUTPUT | sed "s/RESULT: //" > $TEST2RESULTS
-cat $TEST2RESULTS
-grep average $TEST2RESULTS
+grep "RESULT: " $TEST1OUTPUT | sed "s/RESULT: //" > $TEST1RESULTS
+cat $TEST1RESULTS
+grep average $TEST1RESULTS
