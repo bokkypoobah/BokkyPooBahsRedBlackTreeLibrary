@@ -24,12 +24,19 @@ library BokkyPooBahsRedBlackTreeLibrary {
     struct Tree {
         uint root;
         mapping(uint => Node) nodes;
+        bool initialised;
     }
 
     uint private constant SENTINEL = 0;
 
     event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
+    function init(Tree storage self) internal {
+        require(!self.initialised);
+        self.root = SENTINEL;
+        self.nodes[SENTINEL] = Node(SENTINEL, SENTINEL, SENTINEL, false);
+        self.initialised = true;
+    }
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
         while (_key != SENTINEL && self.nodes[_key].left != SENTINEL) {
@@ -96,6 +103,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
                 _key = self.nodes[_key].right;
             }
         }
+        return (SENTINEL, SENTINEL, SENTINEL, SENTINEL, false);
     }
     function parent(Tree storage self, uint key) internal view returns (uint _parent) {
         require(key != SENTINEL);
@@ -160,7 +168,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint x;
         uint y;
 
-        // z cannot be the root && parent cannot be non-zero
+        // z can be root OR z is not root && parent cannot be non-zero
         require(z == self.root || (z != self.root && self.nodes[z].parent != 0));
 
         if (self.nodes[z].left == SENTINEL || self.nodes[z].right == SENTINEL) {
@@ -197,13 +205,13 @@ library BokkyPooBahsRedBlackTreeLibrary {
             self.nodes[y].red = self.nodes[z].red;
             (y, z) = (z, y);
         }
-        emit Log("remove", "before doFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
         if (doFixup) {
-            emit Log("remove", "before removeFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
             removeFixup(self, x);
-            emit Log("remove", "after removeFixup", x, self.nodes[x].parent, self.nodes[x].left, self.nodes[x].right, self.nodes[x].red);
-            // TODO Check if required delete self.nodes[0];
-            // delete self.nodes[0];
+        }
+        emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
+        emit Log("remove", "before delete self.nodes[SENTINEL]", SENTINEL, self.nodes[SENTINEL].parent, self.nodes[SENTINEL].left, self.nodes[SENTINEL].right, self.nodes[SENTINEL].red);
+        if (self.nodes[SENTINEL].parent != SENTINEL) {
+            delete self.nodes[SENTINEL];
         }
         delete self.nodes[y];
     }

@@ -540,7 +540,7 @@ for (var i = 3; i < tx.length; i++) {
   totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
 var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
-console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
+// console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
 console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
 console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
 console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
@@ -671,6 +671,7 @@ for (var i = 0; i < removeItems.length; i++) {
       console.log("RESULT: comparison OK");
     } else {
       console.log("RESULT: comparison ERROR !!!!!!!!!!!!!!");
+      failureDetected = true;
     }
     printTestRedBlackTreeContractDetails();
   }
@@ -702,7 +703,7 @@ for (var i = 0; i < removeItems.length; i++) {
   totalGasUsedRemove = totalGasUsedRemove.add(gasUsed);
 }
 var averageGasUsedRemove = totalGasUsedRemove.div(removeItems.length);
-console.log("RESULT: totalGasUsedRemove=" + totalGasUsedRemove);
+// console.log("RESULT: totalGasUsedRemove=" + totalGasUsedRemove);
 console.log("RESULT: minGasUsedRemove=" + minGasUsedRemove);
 console.log("RESULT: averageGasUsedRemove=" + averageGasUsedRemove);
 console.log("RESULT: maxGasUsedRemove=" + maxGasUsedRemove);
