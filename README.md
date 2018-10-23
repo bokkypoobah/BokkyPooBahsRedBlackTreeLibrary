@@ -154,6 +154,9 @@ https://www.geeksforgeeks.org/red-black-tree-set-3-delete-2/
 
 <br />
 
+Thanks to [Solidified](https://solidified.io/) for the 3 minor issues they picked up at the Web3 Summit.
+
+
 Enjoy!
 
 (c) BokkyPooBah / Bok Consulting Pty Ltd - Oct 16 2018. The MIT Licence.

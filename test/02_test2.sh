@@ -238,9 +238,9 @@ for (var i = 0; i < tx.length; i++) {
 }
 // var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
 // console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
-// console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
-// console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
-// console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
+console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
+console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
+console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
 console.log("RESULT: ");
 
 printTestRedBlackTreeContractDetails();
