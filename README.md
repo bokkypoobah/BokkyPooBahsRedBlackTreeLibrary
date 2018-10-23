@@ -91,7 +91,7 @@ function remove(Tree storage self, uint z) internal;
 The main algorithm is listed in [Algorithms for Red Black Tree Operations
 (from CLRS text)](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html).
 
-There is one complication with the algorithm above in the function `RB-Delete-Fixup` in the line `then key[z] := key[y]` replaced with the algorithm in [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/a/11328289).
+There is one complication with the algorithm above in the function `RB-Delete` in the line `then key[z] := key[y]` replaced with the algorithm in [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/a/11328289).
 
 
 <br />
