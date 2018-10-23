@@ -10,35 +10,11 @@ This library uses an iterative (rather than recursive) Red-Black Tree to maintai
 
 A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
-But wtf is a [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 20, inserted in the order `[15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13]`. The RBT algorithm maintains a self-balancing tree.
+What is a [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 32, inserted in the order `[15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13]`. The RBT algorithm maintains a self-balancing tree.
 
 <kbd><img src="docs/RedBlackTree1To32Random.png" /></kbd>
 
-
-The root node of the tree is 7, `k` represents the key numbers, `p` the parent, `l` the left node, `r` the right node, and the red-black colouring of each node is used to maintain the tree balance. Nodes with `l0 r0` are the leaves of the tree:
-
-```
-            [k1 p2 l0 r0 red]
-        [k2 p3 l1 r0 black]
-    [k3 p7 l2 r5 black]
-            [k4 p5 l0 r0 red]
-        [k5 p3 l4 r6 black]
-            [k6 p5 l0 r0 red]
-[k7 p0 l3 r15 black]
-                [k8 p9 l0 r0 red]
-            [k9 p11 l8 r10 black]
-                [k10 p9 l0 r0 red]
-        [k11 p15 l9 r13 red]
-                [k12 p13 l0 r0 red]
-            [k13 p11 l12 r14 black]
-                [k14 p13 l0 r0 red]
-    [k15 p7 l11 r18 black]
-            [k16 p18 l0 r17 black]
-                [k17 p16 l0 r0 red]
-        [k18 p15 l16 r20 red]
-                [k19 p20 l0 r0 red]
-            [k20 p18 l19 r0 black]
-```
+The root node of the tree is 18, `k` represents the key numbers, `p` the parent, `l` the left node, `r` the right node, and the red-black colouring of each node is used to maintain the tree balance. Nodes with `l0 r0` are the leaves of the tree:
 
 <br />
 
@@ -111,6 +87,12 @@ function remove(Tree storage self, uint z) internal;
 <hr />
 
 ## Algorithm
+
+The main algorithm is listed in [Algorithms for Red Black Tree Operations
+(from CLRS text)](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html).
+
+There is one complication with the algorithm above in the function `RB-Delete-Fixup` in the line `then key[z] := key[y]` replaced with the algorithm in [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/a/11328289).
+
 
 <br />
 

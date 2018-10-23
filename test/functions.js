@@ -296,7 +296,7 @@ function printAll(tree, node, spacing) {
       ansiStart = "\033[47m";
       ansiEnd = "\033[0m";
     }
-    console.log("RESULT: " + padding + ansiStart + "[k" + nodeData[0] + " p" + nodeData[1] + " l" + nodeData[2] + " r" + nodeData[3]  + " " + (nodeData[4] ? "red" : "black") + "]" + ansiEnd);
+    console.log("RESULT: " + padding + ansiStart + "[k" + nodeData[0] + " p" + nodeData[1] + " l" + nodeData[2] + " r" + nodeData[3]  /* + " " + (nodeData[4] ? "red" : "black") */ + "]" + ansiEnd);
   }
   if (rightNode != SENTINEL) {
     printAll(tree, rightNode, parseInt(spacing) + 1);

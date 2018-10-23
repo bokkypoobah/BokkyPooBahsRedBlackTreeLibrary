@@ -116,6 +116,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint _parent = self.nodes[key].parent;
         if (_parent != SENTINEL) {
             _grandparent = self.nodes[_parent].parent;
+        } else {
+            _grandparent = SENTINEL;
         }
     }
     function sibling(Tree storage self, uint key) internal view returns (uint _sibling) {
@@ -150,6 +152,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             } else {
                 if (z == x) {
                     duplicateFound = true;
+                    break;
                 }
                 x = self.nodes[x].right;
             }
