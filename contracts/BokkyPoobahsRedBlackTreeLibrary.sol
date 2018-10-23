@@ -1,11 +1,12 @@
 pragma solidity ^0.4.25;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's RedBlackTree Library v0.90
+// BokkyPooBah's Red-Black Tree Library v0.90
 //
-// A Solidity Red-Black Tree library to store and maintain a sorted data
-// structure in a Red-Black binary search tree, with O(log n) insert, remove
-// and search time (and gas, approximately)
+// A Solidity Red-Black Tree library to store and access a sorted list of
+// unsigned integer data in a binary search tree.
+// The Red-Black algorithm rebalances the binary search tree, resulting in
+// O(log n) insert, remove and search time (and ~gas)
 //
 // https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
 //
