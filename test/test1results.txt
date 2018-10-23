@@ -1,0 +1,680 @@
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.000000000000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Deployer
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+
+----- Deploy Test -----
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003381170000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003381170000000000           0.000000000000000000 Deployer
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
+ 6 0x35b7ae17fc9807cd85ccd869d55c08b46c313bb3        0.000000000000000000           0.000000000000000000 Test
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Deploy Test
+testTx status=0x1 Success gas=6000000 gasUsed=1690585 costETH=0.00338117 costUSD=0.6734276289 @ ETH/USD=199.17 gasPrice=2 gwei block=207 txIx=0 txId=0xf02f8df3e98f4f5736329eb448de3bbea7d44b5487d0987ca85b57a88a5272e1 @ 1540307326 Tue, 23 Oct 2018 15:08:46 UTC
+--------------------------------------------------------------------------------
+testRedBlackTree.root=0
+testRedBlackTree.first=0
+testRedBlackTree.last=0
+--------------------------------------------------------------------------------
+(empty)
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [Empty List] ----------
+PASS [Empty List] test.root() should return 0
+PASS [Empty List] test.first() should return 0
+PASS [Empty List] test.last() should return 0
+PASS [Empty List] test.next(123) should return 0
+PASS [Empty List] test.prev(123) should return 0
+PASS [Empty List] test.exists(123) should return false
+PASS [Empty List] test.getNode(123) should return ["0","0","0","0",false]
+PASS [Empty List] test.parent(123) should return 0
+PASS [Empty List] test.grandparent(123) should return 0
+PASS [Empty List] test.sibling(123) should return 0
+PASS [Empty List] test.uncle(123) should return 0
+
+----- Setup Data -----
+
+----- Insert Data #1 -----
+insertItems(First Item)=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=18
+testRedBlackTree.last=18
+--------------------------------------------------------------------------------
+[47m[k18 p0 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #1 - test.insert(18)
+setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=68459 costETH=0.000136918 costUSD=0.02726995806 @ ETH/USD=199.17 gasPrice=2 gwei block=209 txIx=0 txId=0x7787238b26d32e0406a26f3f8575387db19c223b309df9a62db6e82c852efca8 @ 1540307328 Tue, 23 Oct 2018 15:08:48 UTC
+
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=18
+testRedBlackTree.last=18
+--------------------------------------------------------------------------------
+[47m[k18 p0 l0 r0][0m
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [Single Item] ----------
+PASS [Single Item] test.root() should return 18
+PASS [Single Item] test.first() should return 18
+PASS [Single Item] test.last() should return 18
+PASS [Single Item] test.next(18) should return 0
+PASS [Single Item] test.prev(18) should return 0
+PASS [Single Item] test.exists(18) should return true
+PASS [Single Item] test.getNode(18) should return ["18","0","0","0",false]
+PASS [Single Item] test.parent(18) should return 0
+PASS [Single Item] test.grandparent(18) should return 0
+PASS [Single Item] test.sibling(18) should return 0
+PASS [Single Item] test.uncle(18) should return 0
+
+----- Insert Data #2 -----
+insertItems(Second Item)=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=18
+testRedBlackTree.last=28
+--------------------------------------------------------------------------------
+[47m[k18 p0 l0 r28][0m
+    [41m[k28 p18 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #2 - test.insert(28)
+setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=99472 costETH=0.000198944 costUSD=0.03962367648 @ ETH/USD=199.17 gasPrice=2 gwei block=211 txIx=0 txId=0xeeef535c1418979d988572e1ec4b3906971abe75fa9c46f67b84579b7c1660b9 @ 1540307330 Tue, 23 Oct 2018 15:08:50 UTC
+
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=18
+testRedBlackTree.last=28
+--------------------------------------------------------------------------------
+[47m[k18 p0 l0 r28][0m
+    [41m[k28 p18 l0 r0][0m
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [Two Items] ----------
+PASS [Two Items] test.root() should return 18
+PASS [Two Items] test.first() should return 18
+PASS [Two Items] test.last() should return 28
+PASS [Two Items] test.next(12) should return 0
+PASS [Two Items] test.next(18) should return 28
+PASS [Two Items] test.next(28) should return 0
+PASS [Two Items] test.prev(18) should return 0
+PASS [Two Items] test.prev(28) should return 18
+PASS [Two Items] test.exists(18) should return true
+PASS [Two Items] test.getNode(18) should return ["18","0","0","28",false]
+PASS [Two Items] test.parent(18) should return 0
+PASS [Two Items] test.parent(28) should return 18
+PASS [Two Items] test.grandparent(18) should return 0
+PASS [Two Items] test.sibling(18) should return 0
+PASS [Two Items] test.uncle(18) should return 0
+
+----- Insert Data #3 -----
+insertItems(Third Item)=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=17
+testRedBlackTree.last=28
+--------------------------------------------------------------------------------
+    [41m[k17 p18 l0 r0][0m
+[47m[k18 p0 l17 r28][0m
+    [41m[k28 p18 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #3 - test.insert(17)
+setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=99472 costETH=0.000198944 costUSD=0.03962367648 @ ETH/USD=199.17 gasPrice=2 gwei block=213 txIx=0 txId=0x3c750d271dcb5be99fe50b7a587188a23bf5939c88f9af7689876e4b04058d6a @ 1540307332 Tue, 23 Oct 2018 15:08:52 UTC
+
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=17
+testRedBlackTree.last=28
+--------------------------------------------------------------------------------
+    [41m[k17 p18 l0 r0][0m
+[47m[k18 p0 l17 r28][0m
+    [41m[k28 p18 l0 r0][0m
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [Three Items] ----------
+PASS [Three Items] test.root() should return 18
+PASS [Three Items] test.first() should return 17
+PASS [Three Items] test.last() should return 28
+PASS [Three Items] test.next(12) should return 0
+PASS [Three Items] test.next(17) should return 18
+PASS [Three Items] test.next(18) should return 28
+PASS [Three Items] test.prev(18) should return 17
+PASS [Three Items] test.prev(28) should return 18
+PASS [Three Items] test.exists(18) should return true
+PASS [Three Items] test.getNode(18) should return ["18","0","17","28",false]
+PASS [Three Items] test.parent(18) should return 0
+PASS [Three Items] test.parent(28) should return 18
+PASS [Three Items] test.grandparent(18) should return 0
+PASS [Three Items] test.sibling(18) should return 0
+PASS [Three Items] test.sibling(17) should return 28
+PASS [Three Items] test.sibling(28) should return 17
+PASS [Three Items] test.uncle(18) should return 0
+
+----- Insert Data #4 -----
+insertItems(Remaining 29 Items)=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=1
+testRedBlackTree.last=32
+--------------------------------------------------------------------------------
+                [41m[k1 p2 l0 r0][0m
+            [47m[k2 p4 l1 r3][0m
+                [41m[k3 p2 l0 r0][0m
+        [47m[k4 p7 l2 r5][0m
+            [47m[k5 p4 l0 r6][0m
+                [41m[k6 p5 l0 r0][0m
+    [41m[k7 p18 l4 r14][0m
+                [47m[k8 p10 l0 r9][0m
+                    [41m[k9 p8 l0 r0][0m
+            [41m[k10 p14 l8 r12][0m
+                    [41m[k11 p12 l0 r0][0m
+                [47m[k12 p10 l11 r13][0m
+                    [41m[k13 p12 l0 r0][0m
+        [47m[k14 p7 l10 r16][0m
+                [41m[k15 p16 l0 r0][0m
+            [47m[k16 p14 l15 r17][0m
+                [41m[k17 p16 l0 r0][0m
+[47m[k18 p0 l7 r28][0m
+                [47m[k19 p21 l0 r20][0m
+                    [41m[k20 p19 l0 r0][0m
+            [41m[k21 p23 l19 r22][0m
+                [47m[k22 p21 l0 r0][0m
+        [47m[k23 p28 l21 r25][0m
+                [47m[k24 p25 l0 r0][0m
+            [41m[k25 p23 l24 r26][0m
+                [47m[k26 p25 l0 r27][0m
+                    [41m[k27 p26 l0 r0][0m
+    [41m[k28 p18 l23 r31][0m
+            [47m[k29 p31 l0 r30][0m
+                [41m[k30 p29 l0 r0][0m
+        [47m[k31 p28 l29 r32][0m
+            [47m[k32 p31 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #4 - test.insert(32)
+PASS Insert Data #4 - test.insert(7)
+PASS Insert Data #4 - test.insert(5)
+PASS Insert Data #4 - test.insert(21)
+PASS Insert Data #4 - test.insert(14)
+PASS Insert Data #4 - test.insert(10)
+PASS Insert Data #4 - test.insert(3)
+PASS Insert Data #4 - test.insert(23)
+PASS Insert Data #4 - test.insert(16)
+PASS Insert Data #4 - test.insert(24)
+PASS Insert Data #4 - test.insert(4)
+PASS Insert Data #4 - test.insert(29)
+PASS Insert Data #4 - test.insert(8)
+PASS Insert Data #4 - test.insert(26)
+PASS Insert Data #4 - test.insert(12)
+PASS Insert Data #4 - test.insert(2)
+PASS Insert Data #4 - test.insert(22)
+PASS Insert Data #4 - test.insert(11)
+PASS Insert Data #4 - test.insert(1)
+PASS Insert Data #4 - test.insert(31)
+PASS Insert Data #4 - test.insert(19)
+PASS Insert Data #4 - test.insert(30)
+PASS Insert Data #4 - test.insert(9)
+PASS Insert Data #4 - test.insert(13)
+PASS Insert Data #4 - test.insert(15)
+PASS Insert Data #4 - test.insert(6)
+PASS Insert Data #4 - test.insert(20)
+PASS Insert Data #4 - test.insert(25)
+PASS Insert Data #4 - test.insert(27)
+setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=88061 costETH=0.000176122 costUSD=0.03507821874 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=0 txId=0x79b9d1227e81fedc2572fc02f01d72a99190f5916c582f6c78999ef4723b6852 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=99832 costETH=0.000199664 costUSD=0.03976707888 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=1 txId=0xe6db91ddf349b5847b613c30ea4ab82dfa46203fce3b45ae3292a5ccd2fce1f7 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=140717 costETH=0.000281434 costUSD=0.05605320978 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=2 txId=0xf78f0b013b1b900d849f4254c67e1950a3fe2b4a6145299f358aa86be7520072 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=99845 costETH=0.00019969 costUSD=0.0397722573 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=3 txId=0x081d9e505e14e3e99225ce941610d2469e49eb0d144501b10e81b5e05bdf027e @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=103964 costETH=0.000207928 costUSD=0.04141301976 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=4 txId=0xb79aeb80816c3a236e8fabf0ba885edb86115268d0a6ca6e276239ca7f142e2c @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=141097 costETH=0.000282194 costUSD=0.05620457898 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=5 txId=0x927c18bc3b3fb1b2bb04da4f41e69d1583aa948c45d52867d93b39309d9e77f1 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=100192 costETH=0.000200384 costUSD=0.03991048128 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=6 txId=0x0d1bd1bcf4892153498dd4abc1ddee81d7aaa3783e90bc267b8c224e79fef32b @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=103969 costETH=0.000207938 costUSD=0.04141501146 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=7 txId=0xed2f43ddcf1bc6474fc986cd022a750636e4c9a72020119a07393e97acb17699 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=92558 costETH=0.000185116 costUSD=0.03686955372 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=8 txId=0xacab69c3109dd01066e6633a0791601e94b5d8d41c3d1cff8314f077d72b6c64 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=141126 costETH=0.000282252 costUSD=0.05621613084 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=9 txId=0x10faa3749d5bdb1661e6415dc18344e9274a5994a814d1d70d1672c7f2e42e17 @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=167592 costETH=0.000335184 costUSD=0.06675859728 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=10 txId=0xbe0181dc9d24fa2e9d9aeed283268aad09ee75694cd926d2590601b67458bb7e @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=100218 costETH=0.000200436 costUSD=0.03992083812 @ ETH/USD=199.17 gasPrice=2 gwei block=215 txIx=11 txId=0x79a8d7036bfd6545f54f5877703e1fd830cde316ae997b3a4b7547f9eb7c535d @ 1540307334 Tue, 23 Oct 2018 15:08:54 UTC
+setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=100565 costETH=0.00020113 costUSD=0.0400590621 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=0 txId=0xafd2e872f53809f572d2f954993d122a3e7d8cef9e201f768794a1d0834392a0 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=104337 costETH=0.000208674 costUSD=0.04156160058 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=1 txId=0x9bdc9358154af7bca354af48ccb3133e7f8e4db477f5ca72eb6ff9e9ca8d7d3b @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=100565 costETH=0.00020113 costUSD=0.0400590621 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=2 txId=0xc6a7cfd9038ab0181c6c9ccd17f541171bddeff0b7dbb251110cd110a6833cd4 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=104316 costETH=0.000208632 costUSD=0.04155323544 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=3 txId=0xc6505dc2ece572b80d1e1cc5d8048298e8df9146b2be2b942ed2b919deaddfb6 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=100565 costETH=0.00020113 costUSD=0.0400590621 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=4 txId=0x075b9d14b49aa0ffe2036f88d0452f20eae89aa0f8013670c40da521d537d6e4 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[20] status=0x1 Success gas=1000000 gasUsed=108456 costETH=0.000216912 costUSD=0.04320236304 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=5 txId=0xe4f46c36ac4b0ea5760368079485b2e21d13f2560843c8aea63e7b23acec04f7 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[21] status=0x1 Success gas=1000000 gasUsed=141437 costETH=0.000282874 costUSD=0.05634001458 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=6 txId=0xaaedc4a3f19cab5b076fcf30b4306bf01b28076e52a943dff337073917ef82d1 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[22] status=0x1 Success gas=1000000 gasUsed=167625 costETH=0.00033525 costUSD=0.0667717425 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=7 txId=0x853c1d628467e14f249bb6c5a72b55866e5e9acac839fb18f0c152ab24f392c1 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[23] status=0x1 Success gas=1000000 gasUsed=100565 costETH=0.00020113 costUSD=0.0400590621 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=8 txId=0xbee22281b9405e066614daeac81956076ff284b0fdba517275a29a653814f871 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[24] status=0x1 Success gas=1000000 gasUsed=104342 costETH=0.000208684 costUSD=0.04156359228 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=9 txId=0x4f2f09402e77aa1a51926ceca354d346d01f71de23d11bb6d55d0385a3677cff @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[25] status=0x1 Success gas=1000000 gasUsed=100925 costETH=0.00020185 costUSD=0.0402024645 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=10 txId=0xd27e874c0c2c6b70470d0a3cdda1a7f8d42cdd429099e50be94755b1c97e2ff1 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[26] status=0x1 Success gas=1000000 gasUsed=100938 costETH=0.000201876 costUSD=0.04020764292 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=11 txId=0xbea7ec071c382824b4b298d71b235c57c67a63fb540700cc74b1dc1ae1be84c3 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[27] status=0x1 Success gas=1000000 gasUsed=141470 costETH=0.00028294 costUSD=0.0563531598 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=12 txId=0x5f83cc178a8620efa70d48a11f8e1a6d6b0bf45d435ac81b4970da1d29b4d501 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[28] status=0x1 Success gas=1000000 gasUsed=100565 costETH=0.00020113 costUSD=0.0400590621 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=13 txId=0xe855ade10ef247f76c2fdecf5df3ab039a4bca0ec4e14a827b3d09afc6bd4f99 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[29] status=0x1 Success gas=1000000 gasUsed=108453 costETH=0.000216906 costUSD=0.04320116802 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=14 txId=0x560dab7c8228a19031995dd1f70ae3c4a80e87f2f0750a3bb048dcb483e2b169 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[30] status=0x1 Success gas=1000000 gasUsed=167983 costETH=0.000335966 costUSD=0.06691434822 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=15 txId=0xd283595e36310fc5f72948f6c2da6c8ef25a158be9a0a7ecc9b4fac207996036 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+setup_1Tx[31] status=0x1 Success gas=1000000 gasUsed=104710 costETH=0.00020942 costUSD=0.0417101814 @ ETH/USD=199.17 gasPrice=2 gwei block=216 txIx=16 txId=0xfb482ff2d4335984fb9e277d8976ca52799c407aabc45ef9f1444627bc6e1221 @ 1540307335 Tue, 23 Oct 2018 15:08:55 UTC
+minGasUsedInsert=68459
+averageGasUsedInsert=112637.21875
+maxGasUsedInsert=167983
+
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=1
+testRedBlackTree.last=32
+--------------------------------------------------------------------------------
+                [41m[k1 p2 l0 r0][0m
+            [47m[k2 p4 l1 r3][0m
+                [41m[k3 p2 l0 r0][0m
+        [47m[k4 p7 l2 r5][0m
+            [47m[k5 p4 l0 r6][0m
+                [41m[k6 p5 l0 r0][0m
+    [41m[k7 p18 l4 r14][0m
+                [47m[k8 p10 l0 r9][0m
+                    [41m[k9 p8 l0 r0][0m
+            [41m[k10 p14 l8 r12][0m
+                    [41m[k11 p12 l0 r0][0m
+                [47m[k12 p10 l11 r13][0m
+                    [41m[k13 p12 l0 r0][0m
+        [47m[k14 p7 l10 r16][0m
+                [41m[k15 p16 l0 r0][0m
+            [47m[k16 p14 l15 r17][0m
+                [41m[k17 p16 l0 r0][0m
+[47m[k18 p0 l7 r28][0m
+                [47m[k19 p21 l0 r20][0m
+                    [41m[k20 p19 l0 r0][0m
+            [41m[k21 p23 l19 r22][0m
+                [47m[k22 p21 l0 r0][0m
+        [47m[k23 p28 l21 r25][0m
+                [47m[k24 p25 l0 r0][0m
+            [41m[k25 p23 l24 r26][0m
+                [47m[k26 p25 l0 r27][0m
+                    [41m[k27 p26 l0 r0][0m
+    [41m[k28 p18 l23 r31][0m
+            [47m[k29 p31 l0 r30][0m
+                [41m[k30 p29 l0 r0][0m
+        [47m[k31 p28 l29 r32][0m
+            [47m[k32 p31 l0 r0][0m
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [All 32 Items] ----------
+PASS [All 32 Items] test.root() should return 18
+PASS [All 32 Items] test.first() should return 1
+PASS [All 32 Items] test.last() should return 32
+PASS [All 32 Items] test.next(8) should return 9
+PASS [All 32 Items] test.next(10) should return 11
+PASS [All 32 Items] test.next(14) should return 15
+PASS [All 32 Items] test.next(17) should return 18
+PASS [All 32 Items] test.next(18) should return 19
+PASS [All 32 Items] test.next(20) should return 21
+PASS [All 32 Items] test.prev(18) should return 17
+PASS [All 32 Items] test.exists(18) should return true
+PASS [All 32 Items] test.getNode(18) should return ["18","0","7","28",false]
+PASS [All 32 Items] test.parent(21) should return 23
+PASS [All 32 Items] test.parent(23) should return 28
+PASS [All 32 Items] test.grandparent(21) should return 28
+PASS [All 32 Items] test.sibling(24) should return 26
+PASS [All 32 Items] test.sibling(26) should return 24
+PASS [All 32 Items] test.uncle(27) should return 24
+
+----- Insert Data #5 - Cannot Insert Duplicate -----
+insertData5_Message=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=1
+testRedBlackTree.last=32
+--------------------------------------------------------------------------------
+                [41m[k1 p2 l0 r0][0m
+            [47m[k2 p4 l1 r3][0m
+                [41m[k3 p2 l0 r0][0m
+        [47m[k4 p7 l2 r5][0m
+            [47m[k5 p4 l0 r6][0m
+                [41m[k6 p5 l0 r0][0m
+    [41m[k7 p18 l4 r14][0m
+                [47m[k8 p10 l0 r9][0m
+                    [41m[k9 p8 l0 r0][0m
+            [41m[k10 p14 l8 r12][0m
+                    [41m[k11 p12 l0 r0][0m
+                [47m[k12 p10 l11 r13][0m
+                    [41m[k13 p12 l0 r0][0m
+        [47m[k14 p7 l10 r16][0m
+                [41m[k15 p16 l0 r0][0m
+            [47m[k16 p14 l15 r17][0m
+                [41m[k17 p16 l0 r0][0m
+[47m[k18 p0 l7 r28][0m
+                [47m[k19 p21 l0 r20][0m
+                    [41m[k20 p19 l0 r0][0m
+            [41m[k21 p23 l19 r22][0m
+                [47m[k22 p21 l0 r0][0m
+        [47m[k23 p28 l21 r25][0m
+                [47m[k24 p25 l0 r0][0m
+            [41m[k25 p23 l24 r26][0m
+                [47m[k26 p25 l0 r27][0m
+                    [41m[k27 p26 l0 r0][0m
+    [41m[k28 p18 l23 r31][0m
+            [47m[k29 p31 l0 r30][0m
+                [41m[k30 p29 l0 r0][0m
+        [47m[k31 p28 l29 r32][0m
+            [47m[k32 p31 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #5 - Cannot Insert Duplicate - test.insert(14)
+insertData5_tx status=0x0 Failure gas=1000000 gasUsed=22926 costETH=0.000045852 costUSD=0.00913234284 @ ETH/USD=199.17 gasPrice=2 gwei block=220 txIx=0 txId=0x4f4091db1f2ce596c30e0546cd0ad4ef3a2427019d142be04768c8c1bf9c0a91 @ 1540307339 Tue, 23 Oct 2018 15:08:59 UTC
+
+----- Remove Data #1 - Cannot Remove Non-Existent Key -----
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=1
+testRedBlackTree.last=32
+--------------------------------------------------------------------------------
+                [41m[k1 p2 l0 r0][0m
+            [47m[k2 p4 l1 r3][0m
+                [41m[k3 p2 l0 r0][0m
+        [47m[k4 p7 l2 r5][0m
+            [47m[k5 p4 l0 r6][0m
+                [41m[k6 p5 l0 r0][0m
+    [41m[k7 p18 l4 r14][0m
+                [47m[k8 p10 l0 r9][0m
+                    [41m[k9 p8 l0 r0][0m
+            [41m[k10 p14 l8 r12][0m
+                    [41m[k11 p12 l0 r0][0m
+                [47m[k12 p10 l11 r13][0m
+                    [41m[k13 p12 l0 r0][0m
+        [47m[k14 p7 l10 r16][0m
+                [41m[k15 p16 l0 r0][0m
+            [47m[k16 p14 l15 r17][0m
+                [41m[k17 p16 l0 r0][0m
+[47m[k18 p0 l7 r28][0m
+                [47m[k19 p21 l0 r20][0m
+                    [41m[k20 p19 l0 r0][0m
+            [41m[k21 p23 l19 r22][0m
+                [47m[k22 p21 l0 r0][0m
+        [47m[k23 p28 l21 r25][0m
+                [47m[k24 p25 l0 r0][0m
+            [41m[k25 p23 l24 r26][0m
+                [47m[k26 p25 l0 r27][0m
+                    [41m[k27 p26 l0 r0][0m
+    [41m[k28 p18 l23 r31][0m
+            [47m[k29 p31 l0 r30][0m
+                [41m[k30 p29 l0 r0][0m
+        [47m[k31 p28 l29 r32][0m
+            [47m[k32 p31 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Remove Data #1 - Cannot Remove Non-Existent Key - test.remove(114)
+removeData1_tx status=0x0 Failure gas=1000000 gasUsed=22486 costETH=0.000044972 costUSD=0.00895707324 @ ETH/USD=199.17 gasPrice=2 gwei block=222 txIx=0 txId=0x6802893ab748ba0541c318f317261c676019809c3875fe5e04801be4d1b7f4b9 @ 1540307341 Tue, 23 Oct 2018 15:09:01 UTC
+
+----- Remove Data #2 -----
+removeItems=[4,14,25,32,2,30,16,31,6,26,18,22,28,23,12,15,19,27,7,13,29,11,3,5,17,1,24,20,9,8,21,10]
+removing 4
+removing 14
+removing 25
+removing 32
+removing 2
+removing 30
+removing 16
+removing 31
+expected=[1,10,11,12,13,15,17,18,19,20,21,22,23,24,26,27,28,29,3,5,6,7,8,9]
+result=[1,10,11,12,13,15,17,18,19,20,21,22,23,24,26,27,28,29,3,5,6,7,8,9]
+comparison OK
+--------------------------------------------------------------------------------
+testRedBlackTree.root=18
+testRedBlackTree.first=1
+testRedBlackTree.last=29
+Log 0 #224 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 1 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 2 #224 "remove", "before delete self.nodes[0]",  key=0 p=16 l=0 r=0 black
+Log 3 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=16 l=0 r=0 black
+Log 4 #224 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 5 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 6 #224 "remove", "before delete self.nodes[0]",  key=0 p=31 l=0 r=0 black
+Log 7 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=31 l=0 r=0 black
+Log 8 #224 "remove", "before delete self.nodes[0]",  key=0 p=3 l=0 r=0 black
+Log 9 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=3 l=0 r=0 black
+Log 10 #224 "remove", "before delete self.nodes[0]",  key=0 p=31 l=0 r=0 black
+Log 11 #224 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=31 l=0 r=0 black
+Log 12 #225 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 13 #225 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 14 #225 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 15 #225 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+--------------------------------------------------------------------------------
+                [41m[k1 p3 l0 r0][0m
+            [47m[k3 p5 l1 r0][0m
+        [47m[k5 p7 l3 r6][0m
+            [47m[k6 p5 l0 r0][0m
+    [41m[k7 p18 l5 r15][0m
+                [47m[k8 p10 l0 r9][0m
+                    [41m[k9 p8 l0 r0][0m
+            [41m[k10 p15 l8 r12][0m
+                    [41m[k11 p12 l0 r0][0m
+                [47m[k12 p10 l11 r13][0m
+                    [41m[k13 p12 l0 r0][0m
+        [47m[k15 p7 l10 r17][0m
+            [47m[k17 p15 l0 r0][0m
+[47m[k18 p0 l7 r23][0m
+            [47m[k19 p21 l0 r20][0m
+                [41m[k20 p19 l0 r0][0m
+        [47m[k21 p23 l19 r22][0m
+            [47m[k22 p21 l0 r0][0m
+    [41m[k23 p18 l21 r28][0m
+                [47m[k24 p26 l0 r0][0m
+            [41m[k26 p28 l24 r27][0m
+                [47m[k27 p26 l0 r0][0m
+        [47m[k28 p23 l26 r29][0m
+            [47m[k29 p28 l0 r0][0m
+--------------------------------------------------------------------------------
+
+removing 6
+removing 26
+removing 18
+removing 22
+removing 28
+removing 23
+removing 12
+removing 15
+expected=[1,10,11,13,17,19,20,21,24,27,29,3,5,7,8,9]
+result=[1,10,11,13,17,19,20,21,24,27,29,3,5,7,8,9]
+comparison OK
+--------------------------------------------------------------------------------
+testRedBlackTree.root=19
+testRedBlackTree.first=1
+testRedBlackTree.last=29
+Log 0 #228 "remove", "before delete self.nodes[0]",  key=0 p=5 l=0 r=0 black
+Log 1 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=5 l=0 r=0 black
+Log 2 #228 "remove", "before delete self.nodes[0]",  key=0 p=27 l=0 r=0 black
+Log 3 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=27 l=0 r=0 black
+Log 4 #228 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 5 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 6 #228 "remove", "before delete self.nodes[0]",  key=0 p=21 l=0 r=0 black
+Log 7 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=21 l=0 r=0 black
+Log 8 #228 "remove", "before delete self.nodes[0]",  key=0 p=29 l=0 r=0 black
+Log 9 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=29 l=0 r=0 black
+Log 10 #228 "remove", "before delete self.nodes[0]",  key=0 p=27 l=0 r=0 black
+Log 11 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=27 l=0 r=0 black
+Log 12 #228 "remove", "before delete self.nodes[0]",  key=0 p=13 l=0 r=0 black
+Log 13 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=13 l=0 r=0 black
+Log 14 #228 "remove", "before delete self.nodes[0]",  key=0 p=17 l=0 r=0 black
+Log 15 #228 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=17 l=0 r=0 black
+--------------------------------------------------------------------------------
+            [47m[k1 p3 l0 r0][0m
+        [47m[k3 p7 l1 r5][0m
+            [47m[k5 p3 l0 r0][0m
+    [41m[k7 p19 l3 r10][0m
+            [47m[k8 p10 l0 r9][0m
+                [41m[k9 p8 l0 r0][0m
+        [47m[k10 p7 l8 r13][0m
+                [47m[k11 p13 l0 r0][0m
+            [41m[k13 p10 l11 r17][0m
+                [47m[k17 p13 l0 r0][0m
+[47m[k19 p0 l7 r24][0m
+            [41m[k20 p21 l0 r0][0m
+        [47m[k21 p24 l20 r0][0m
+    [47m[k24 p19 l21 r27][0m
+        [47m[k27 p24 l0 r29][0m
+            [41m[k29 p27 l0 r0][0m
+--------------------------------------------------------------------------------
+
+removing 19
+removing 27
+removing 7
+removing 13
+removing 29
+removing 11
+removing 3
+removing 5
+expected=[1,10,17,20,21,24,8,9]
+result=[1,10,17,20,21,24,8,9]
+comparison OK
+--------------------------------------------------------------------------------
+testRedBlackTree.root=10
+testRedBlackTree.first=1
+testRedBlackTree.last=24
+Log 0 #231 "remove", "before delete self.nodes[0]",  key=0 p=21 l=0 r=0 black
+Log 1 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=21 l=0 r=0 black
+Log 2 #231 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 3 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 4 #231 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 5 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+Log 6 #231 "remove", "before delete self.nodes[0]",  key=0 p=17 l=0 r=0 black
+Log 7 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=17 l=0 r=0 black
+Log 8 #231 "remove", "before delete self.nodes[0]",  key=0 p=24 l=0 r=0 black
+Log 9 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=24 l=0 r=0 black
+Log 10 #231 "remove", "before delete self.nodes[0]",  key=0 p=17 l=0 r=0 black
+Log 11 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=17 l=0 r=0 black
+Log 12 #231 "remove", "before delete self.nodes[0]",  key=0 p=5 l=0 r=0 black
+Log 13 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=5 l=0 r=0 black
+Log 14 #231 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 15 #231 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+--------------------------------------------------------------------------------
+        [47m[k1 p8 l0 r0][0m
+    [47m[k8 p10 l1 r9][0m
+        [47m[k9 p8 l0 r0][0m
+[47m[k10 p0 l8 r20][0m
+        [47m[k17 p20 l0 r0][0m
+    [47m[k20 p10 l17 r24][0m
+            [41m[k21 p24 l0 r0][0m
+        [47m[k24 p20 l21 r0][0m
+--------------------------------------------------------------------------------
+
+removing 17
+removing 1
+removing 24
+removing 20
+removing 9
+removing 8
+removing 21
+removing 10
+expected=[]
+result=[]
+comparison OK
+--------------------------------------------------------------------------------
+testRedBlackTree.root=0
+testRedBlackTree.first=0
+testRedBlackTree.last=0
+Log 0 #233 "remove", "before delete self.nodes[0]",  key=0 p=20 l=0 r=0 black
+Log 1 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=20 l=0 r=0 black
+Log 2 #233 "remove", "before delete self.nodes[0]",  key=0 p=8 l=0 r=0 black
+Log 3 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=8 l=0 r=0 black
+Log 4 #233 "remove", "before delete self.nodes[0]",  key=0 p=21 l=0 r=0 black
+Log 5 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=21 l=0 r=0 black
+Log 6 #233 "remove", "before delete self.nodes[0]",  key=0 p=21 l=0 r=0 black
+Log 7 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=21 l=0 r=0 black
+Log 8 #233 "remove", "before delete self.nodes[0]",  key=0 p=8 l=0 r=0 black
+Log 9 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=8 l=0 r=0 black
+Log 10 #233 "remove", "before delete self.nodes[0]",  key=0 p=10 l=0 r=0 black
+Log 11 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=10 l=0 r=0 black
+Log 12 #233 "remove", "before delete self.nodes[0]",  key=0 p=10 l=0 r=0 black
+Log 13 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=10 l=0 r=0 black
+Log 14 #233 "remove", "before delete self.nodes[0]",  key=0 p=0 l=0 r=0 black
+Log 15 #233 "remove", "before delete self.nodes[SENTINEL]",  key=0 p=0 l=0 r=0 black
+--------------------------------------------------------------------------------
+(empty)
+--------------------------------------------------------------------------------
+
+PASS Remove Data #2 - test.remove(4)
+PASS Remove Data #2 - test.remove(14)
+PASS Remove Data #2 - test.remove(25)
+PASS Remove Data #2 - test.remove(32)
+PASS Remove Data #2 - test.remove(2)
+PASS Remove Data #2 - test.remove(30)
+PASS Remove Data #2 - test.remove(16)
+PASS Remove Data #2 - test.remove(31)
+PASS Remove Data #2 - test.remove(6)
+PASS Remove Data #2 - test.remove(26)
+PASS Remove Data #2 - test.remove(18)
+PASS Remove Data #2 - test.remove(22)
+PASS Remove Data #2 - test.remove(28)
+PASS Remove Data #2 - test.remove(23)
+PASS Remove Data #2 - test.remove(12)
+PASS Remove Data #2 - test.remove(15)
+PASS Remove Data #2 - test.remove(19)
+PASS Remove Data #2 - test.remove(27)
+PASS Remove Data #2 - test.remove(7)
+PASS Remove Data #2 - test.remove(13)
+PASS Remove Data #2 - test.remove(29)
+PASS Remove Data #2 - test.remove(11)
+PASS Remove Data #2 - test.remove(3)
+PASS Remove Data #2 - test.remove(5)
+PASS Remove Data #2 - test.remove(17)
+PASS Remove Data #2 - test.remove(1)
+PASS Remove Data #2 - test.remove(24)
+PASS Remove Data #2 - test.remove(20)
+PASS Remove Data #2 - test.remove(9)
+PASS Remove Data #2 - test.remove(8)
+PASS Remove Data #2 - test.remove(21)
+PASS Remove Data #2 - test.remove(10)
+tx[0] status=0x1 Success gas=1000000 gasUsed=63623 costETH=0.000127246 costUSD=0.02534358582 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=0 txId=0x028dc2b1811a04376e67e1e66683691beced13b90aac5b32c53123f37950ab4a @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[1] status=0x1 Success gas=1000000 gasUsed=84343 costETH=0.000168686 costUSD=0.03359719062 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=1 txId=0xda1a866c1daebe2d1ffd9765118f71fc44f9df5be0297b19b917729d2b998577 @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[2] status=0x1 Success gas=1000000 gasUsed=69305 costETH=0.00013861 costUSD=0.0276069537 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=2 txId=0x8bde391b08ee52a386fc396a72fe477612055103592ecd9c8ca6ca3ca6f7dc6b @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[3] status=0x1 Success gas=1000000 gasUsed=129279 costETH=0.000258558 costUSD=0.05149699686 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=3 txId=0xcc0b6aa242b4f55d7c54353a0c0cfe41a5aa1dbd9750695267faa3feec2def32 @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[4] status=0x1 Success gas=1000000 gasUsed=78081 costETH=0.000156162 costUSD=0.03110278554 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=4 txId=0xc40d83701cd32a417bc37d3908459aeb576e16e3d943a538175f009ba22bffbb @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[5] status=0x1 Success gas=1000000 gasUsed=157763 costETH=0.000315526 costUSD=0.06284331342 @ ETH/USD=199.17 gasPrice=2 gwei block=224 txIx=5 txId=0x704a9ca9188d632107acfbd57eb75b3e04145b9bdf514171c75a7131947516be @ 1540307343 Tue, 23 Oct 2018 15:09:03 UTC
+tx[6] status=0x1 Success gas=1000000 gasUsed=35384 costETH=0.000070768 costUSD=0.01409486256 @ ETH/USD=199.17 gasPrice=2 gwei block=225 txIx=0 txId=0x597de4c59cd6c0763ddf52be8e58542aad97c3f52cf4d531f95eeaec24690154 @ 1540307344 Tue, 23 Oct 2018 15:09:04 UTC
+tx[7] status=0x1 Success gas=1000000 gasUsed=35534 costETH=0.000071068 costUSD=0.01415461356 @ ETH/USD=199.17 gasPrice=2 gwei block=225 txIx=1 txId=0xf9f54b74b65c8b191a934e1f8668cad5325941d0c2b60c29e5deae66684157d0 @ 1540307344 Tue, 23 Oct 2018 15:09:04 UTC
+tx[8] status=0x1 Success gas=1000000 gasUsed=92220 costETH=0.00018444 costUSD=0.0367349148 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=0 txId=0xa762c9bd1d68a9e1303f84bea8e834a7fcfba528da32b66c3188d94267e5f426 @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[9] status=0x1 Success gas=1000000 gasUsed=107132 costETH=0.000214264 costUSD=0.04267496088 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=1 txId=0x1c421c66c0aecdb5cb380ab7552bb3259a77f8db37912ac1d59fbe358e38967d @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[10] status=0x1 Success gas=1000000 gasUsed=63939 costETH=0.000127878 costUSD=0.02546946126 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=2 txId=0x5073f6164295e780ddb4ba953a4bbbfad21dee6f370123ad03278fbf48a7d526 @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[11] status=0x1 Success gas=1000000 gasUsed=92453 costETH=0.000184906 costUSD=0.03682772802 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=3 txId=0x68e9b1e8be1bc47e928f18ecd055d912c960e71ee7917f157e16494e9815c748 @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[12] status=0x1 Success gas=1000000 gasUsed=130069 costETH=0.000260138 costUSD=0.05181168546 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=4 txId=0x68696fceab3e141ce62e4e2efbafb125cbe8758490f5c925f10ca0a1d4891c5f @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[13] status=0x1 Success gas=1000000 gasUsed=107742 costETH=0.000215484 costUSD=0.04291794828 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=5 txId=0xaef919079c5f021d309521a02a4428e54bed9e4654e5bd953ce3f6d960dc0fdb @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[14] status=0x1 Success gas=1000000 gasUsed=78068 costETH=0.000156136 costUSD=0.03109760712 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=6 txId=0x7b4facef50027020e8091f227602f7432ae9aa5ab229e87bc47761b6e5b38a35 @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[15] status=0x1 Success gas=1000000 gasUsed=172533 costETH=0.000345066 costUSD=0.06872679522 @ ETH/USD=199.17 gasPrice=2 gwei block=228 txIx=7 txId=0x5ccce7ca5cc692e83ebbc7da85491d53df8b35f79e33a8889099e02192e2f04b @ 1540307347 Tue, 23 Oct 2018 15:09:07 UTC
+tx[16] status=0x1 Success gas=1000000 gasUsed=84199 costETH=0.000168398 costUSD=0.03353982966 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=0 txId=0x3a1d134da9b3beeaf071e91e60a087f6586fcd6907358d17bcefb5e9e963e377 @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[17] status=0x1 Success gas=1000000 gasUsed=35384 costETH=0.000070768 costUSD=0.01409486256 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=1 txId=0xfe7de3931c3fedeba1c313eb3e9e2a6e84dba297fd6e659cec80abafc3ca5a6e @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[18] status=0x1 Success gas=1000000 gasUsed=69621 costETH=0.000139242 costUSD=0.02773282914 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=2 txId=0x7fe5ca977a1afd8bf5f41488b03c2d01bcffb4d98b10397c2a3736fad8bb3cba @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[19] status=0x1 Success gas=1000000 gasUsed=107119 costETH=0.000214238 costUSD=0.04266978246 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=3 txId=0x64c5538932183704b378bdf725aa8b2b5eb4aa232ed205664475a4616b939f67 @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[20] status=0x1 Success gas=1000000 gasUsed=134527 costETH=0.000269054 costUSD=0.05358748518 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=4 txId=0x025b0207f4b1fabf3e403743c83bd92d51c685cff550516a9a8097558c157817 @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[21] status=0x1 Success gas=1000000 gasUsed=50120 costETH=0.00010024 costUSD=0.0199648008 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=5 txId=0xd94bf24dd59a38e163b98f173d8ec9b06133d218a64c12870942b235f5607ded @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[22] status=0x1 Success gas=1000000 gasUsed=200087 costETH=0.000400174 costUSD=0.07970265558 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=6 txId=0x9170c2b336782dec0788a1aa1397815be22caad253e07876c6e971cde2e20eaf @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[23] status=0x1 Success gas=1000000 gasUsed=35540 costETH=0.00007108 costUSD=0.0141570036 @ ETH/USD=199.17 gasPrice=2 gwei block=231 txIx=7 txId=0xaa22d6b47b27defc85842693074b4264f3b2c9584b9c86c732f37713f766e06c @ 1540307350 Tue, 23 Oct 2018 15:09:10 UTC
+tx[24] status=0x1 Success gas=1000000 gasUsed=129290 costETH=0.00025858 costUSD=0.0515013786 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=0 txId=0xdef7c1704a6e3bda44d1d039a66748009c544a4ed0aa3b0d5217013b9c91bc06 @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[25] status=0x1 Success gas=1000000 gasUsed=107179 costETH=0.000214358 costUSD=0.04269368286 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=1 txId=0xf7a4c1aac0ee62707e9cff917b323fe98ebfc1f68457a5266a48712ea84f1bef @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[26] status=0x1 Success gas=1000000 gasUsed=69277 costETH=0.000138554 costUSD=0.02759580018 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=2 txId=0xf0b17beb462c88d217b3134d520d818304c137ad0deb5fa2d0a5ba62715321d2 @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[27] status=0x1 Success gas=1000000 gasUsed=50120 costETH=0.00010024 costUSD=0.0199648008 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=3 txId=0xf0861d7211e4e44d85b5909053dc277ccadf95aebe7ad2f144a9f4024d902348 @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[28] status=0x1 Success gas=1000000 gasUsed=50113 costETH=0.000100226 costUSD=0.01996201242 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=4 txId=0x2a8b38b6d08469ae989be1294adcb94b8e6b89686649426529f571a0d4764eba @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[29] status=0x1 Success gas=1000000 gasUsed=84003 costETH=0.000168006 costUSD=0.03346175502 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=5 txId=0xc5a100d4b5074fe835396be694af3b6b9db75b49b515803247c5fef4d657be4e @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[30] status=0x1 Success gas=1000000 gasUsed=50113 costETH=0.000100226 costUSD=0.01996201242 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=6 txId=0xbb268fd45b8d2215607eba035eb4dc587a05297a4d8817c9d9bfb0c118865ed3 @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+tx[31] status=0x1 Success gas=1000000 gasUsed=54561 costETH=0.000109122 costUSD=0.02173382874 @ ETH/USD=199.17 gasPrice=2 gwei block=233 txIx=7 txId=0xa8e493200a8b5abb3177897d8706eb9bdb5d45cea9ad46dbe5f837c28f0a4128 @ 1540307352 Tue, 23 Oct 2018 15:09:12 UTC
+minGasUsedRemove=35384
+averageGasUsedRemove=87772.53125
+maxGasUsedRemove=200087
+
+---------- PASS - no failures detected ----------

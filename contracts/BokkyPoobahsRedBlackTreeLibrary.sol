@@ -139,6 +139,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         if (_grandParent != SENTINEL) {
             uint _parent = self.nodes[key].parent;
             _uncle = sibling(self, _parent);
+        } else {
+            _uncle = SENTINEL;
         }
     }
 

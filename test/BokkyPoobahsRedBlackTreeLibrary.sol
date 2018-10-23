@@ -139,6 +139,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         if (_grandParent != SENTINEL) {
             uint _parent = self.nodes[key].parent;
             _uncle = sibling(self, _parent);
+        } else {
+            _uncle = SENTINEL;
         }
     }
 
@@ -216,6 +218,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             removeFixup(self, x);
         }
         // Below `delete self.nodes[SENTINEL]` may not be necessary
+        // TODO - Remove after testing
         emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
         emit Log("remove", "before delete self.nodes[SENTINEL]", SENTINEL, self.nodes[SENTINEL].parent, self.nodes[SENTINEL].left, self.nodes[SENTINEL].right, self.nodes[SENTINEL].red);
         if (self.nodes[SENTINEL].parent != SENTINEL) {
