@@ -129,6 +129,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
             } else {
                 _sibling = self.nodes[_parent].left;
             }
+        } else {
+            _sibling = SENTINEL;
         }
     }
     function uncle(Tree storage self, uint key) internal view returns (uint _uncle) {
@@ -173,8 +175,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint x;
         uint y;
 
-        // z can be root OR z is not root && parent cannot be non-zero
-        require(z == self.root || (z != self.root && self.nodes[z].parent != 0));
+        // z can be root OR z is not root && parent cannot be the SENTINEL
+        require(z == self.root || (z != self.root && self.nodes[z].parent != SENTINEL));
 
         if (self.nodes[z].left == SENTINEL || self.nodes[z].right == SENTINEL) {
             y = z;
@@ -214,6 +216,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             removeFixup(self, x);
         }
         // Below `delete self.nodes[SENTINEL]` may not be necessary
+        // TODO - Remove after testing
         emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
         emit Log("remove", "before delete self.nodes[SENTINEL]", SENTINEL, self.nodes[SENTINEL].parent, self.nodes[SENTINEL].left, self.nodes[SENTINEL].right, self.nodes[SENTINEL].red);
         if (self.nodes[SENTINEL].parent != SENTINEL) {

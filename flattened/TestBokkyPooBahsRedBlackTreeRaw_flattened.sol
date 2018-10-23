@@ -117,6 +117,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint _parent = self.nodes[key].parent;
         if (_parent != SENTINEL) {
             _grandparent = self.nodes[_parent].parent;
+        } else {
+            _grandparent = SENTINEL;
         }
     }
     function sibling(Tree storage self, uint key) internal view returns (uint _sibling) {
@@ -128,6 +130,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
             } else {
                 _sibling = self.nodes[_parent].left;
             }
+        } else {
+            _sibling = SENTINEL;
         }
     }
     function uncle(Tree storage self, uint key) internal view returns (uint _uncle) {
@@ -151,6 +155,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             } else {
                 if (z == x) {
                     duplicateFound = true;
+                    break;
                 }
                 x = self.nodes[x].right;
             }
@@ -171,8 +176,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint x;
         uint y;
 
-        // z can be root OR z is not root && parent cannot be non-zero
-        require(z == self.root || (z != self.root && self.nodes[z].parent != 0));
+        // z can be root OR z is not root && parent cannot be the SENTINEL
+        require(z == self.root || (z != self.root && self.nodes[z].parent != SENTINEL));
 
         if (self.nodes[z].left == SENTINEL || self.nodes[z].right == SENTINEL) {
             y = z;
