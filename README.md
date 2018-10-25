@@ -10,6 +10,11 @@ This library uses an iterative (rather than recursive) Red-Black Tree to maintai
 
 A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
+From [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree):
+
+<kbd><img src="https://en.wikipedia.org/wiki/File:Red-black_tree_example.svg" /></kbd>
+
+
 What is a [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 32, inserted in the order `[15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13]`. The RBT algorithm maintains a self-balancing tree.
 
 <kbd><img src="docs/RedBlackTree1To32Random.png" /></kbd>
