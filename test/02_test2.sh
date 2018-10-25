@@ -176,7 +176,7 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 400;
+var NUMBEROFITEMS = 16;
 var BATCHSIZE = NUMBEROFITEMS / 4;
 var insertItems = [];
 var removeItems = [];
@@ -236,7 +236,7 @@ for (var i = 0; i < tx.length; i++) {
   }
   totalGasUsedInsert = totalGasUsedInsert.add(eth.getTransactionReceipt(tx[i]).gasUsed);
 }
-// var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
+var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
 // console.log("RESULT: totalGasUsedInsert=" + totalGasUsedInsert);
 console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
 console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
