@@ -2,7 +2,7 @@
 
 Status: **Work in progress. Tidying, testing, documenting before getting audits - don't use yet**
 
-A gas-efficient Solidity data structure to maintain a sorted index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas).
+A gas-efficient Solidity library using the Red-Black binary search tree algorithm to help you maintain a sorted index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas).
 
 This library will store `uint`s (equivalent to `uint256`) as the key. Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
 
@@ -113,20 +113,33 @@ TODO:
 
 The following number of items were inserted in random order
 
+The following number of items were inserted in sequential order
+
+Items | Ins Min | Ins Avg     | Ins Max | Rem Min | Rem Avg   | Rem Max
+-----:| -------:| -----------:| -------:| -------:| ---------:| -------:
+1     | 68459   | 68459       | 68459   | 44835   | 44835     | 44835
+5     | 68459   | 99166.2     | 140002  | 30521   | 48024.4   | 74259
+10    | 68459   | 118401.5    | 167610  | 30671   | 71973.5   | 119593
+50    | 68459   | 124688.32   | 182637  | 30067   | 82894.66  | 213514
+100   | 68459   | 123377.19   | 190137  | 30521   | 79761.56  | 191060
+500   | 68459   | 124567.396  | 191240  | 30521   | 80108.078 | 261153
+
+<br />
 
 ### Worst Case
 
 The following number of items were inserted in sequential order
 
-Items | Ins Min | Ins Avg    | Ins Max | Rem Min | Rem Avg   | Rem Max
------:| -------:| ----------:| -------:| -------:| ---------:| -------:
-1     | 68459   | 68459      | 68459   | 44835   | 44835     | 44835
-5     | 68459   | 107349.4   | 140753  | 29918   | 56072.4   | 86075
-10    | 68459   | 116513     | 149588  | 30067   | 75757.2   | 119064
-50    | 68459   | 137949.4   | 158598  | 30067   | 86001.76  | 213537
-100   | 68459   | 142906.91  | 163103  | 30521   | 87266.18  | 218371
-500   | 68459   | 149290.434 | 191089  | 30521   | 86199.74  | 266556
-1000  | 68459   | 150802.324 | 208341  | 29950   | 87266.115 | 287889
+Items | Ins Min | Ins Avg     | Ins Max | Rem Min | Rem Avg   | Rem Max
+-----:| -------:| -----------:| -------:| -------:| ---------:| -------:
+1     | 68459   | 68459       | 68459   | 44835   | 44835     | 44835
+5     | 68459   | 107349.4    | 140753  | 29918   | 56072.4   | 86075
+10    | 68459   | 116513      | 149588  | 30067   | 75757.2   | 119064
+50    | 68459   | 137949.4    | 158598  | 30067   | 86001.76  | 213537
+100   | 68459   | 142906.91   | 163103  | 30521   | 87266.18  | 218371
+500   | 68459   | 149290.434  | 191089  | 30521   | 86199.74  | 266556
+1000  | 68459   | 150802.324  | 208341  | 29950   | 87266.115 | 287889
+5000  | 68459   | 153263.3122 | 242846  | 30521   | 88335.6862 | 310295
 
 <br />
 
