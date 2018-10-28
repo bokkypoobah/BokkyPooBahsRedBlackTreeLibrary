@@ -50,8 +50,8 @@ contract TestBokkyPooBahsRedBlackTreeRaw {
     function parent(uint key) public view returns (uint _parent) {
         _parent = tree.parent(key);
     }
-    function grandparent(uint key) public view returns (uint _parent) {
-        _parent = tree.grandparent(key);
+    function grandparent(uint key) public view returns (uint _grandparent) {
+        _grandparent = tree.grandparent(key);
     }
     function sibling(uint key) public view returns (uint _parent) {
         _parent = tree.sibling(key);

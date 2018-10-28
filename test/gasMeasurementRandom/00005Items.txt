@@ -1,0 +1,127 @@
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.000000000000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433        0.000000000000000000           0.000000000000000000 Deployer
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+
+----- Deploy Test -----
+ # Account                                             EtherBalanceChange                          Token Name
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003131456000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003131456000000000           0.000000000000000000 Deployer
+ 2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
+ 3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
+ 4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
+ 5 0xa55a151eb00fded1634d27d1127b4be4627079ea        0.000000000000000000           0.000000000000000000 User3
+ 6 0xdaa8d42388d66368ff0371167aec1f0633c58f71        0.000000000000000000           0.000000000000000000 Test
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+                                                                                    0.000000000000000000 Total Token Balances
+-- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
+
+PASS Deploy Test
+testTx status=0x1 Success gas=6000000 gasUsed=1565728 costETH=0.003131456 costUSD=0.62369209152 @ ETH/USD=199.17 gasPrice=2 gwei block=7386 txIx=0 txId=0x1ad0ce36758b0418ce777ccd267ded64923c544073bf86130079454931ec3a3f @ 1540734095 Sun, 28 Oct 2018 13:41:35 UTC
+--------------------------------------------------------------------------------
+testRedBlackTree.root=0
+testRedBlackTree.first=0
+testRedBlackTree.last=0
+--------------------------------------------------------------------------------
+(empty)
+--------------------------------------------------------------------------------
+
+
+---------- Test Basics - [Empty List] ----------
+PASS [Empty List] test.root() should return 0
+PASS [Empty List] test.first() should return 0
+PASS [Empty List] test.last() should return 0
+PASS [Empty List] test.next(123) should return 0
+PASS [Empty List] test.prev(123) should return 0
+PASS [Empty List] test.exists(123) should return false
+PASS [Empty List] test.getNode(123) should return ["0","0","0","0",false]
+PASS [Empty List] test.parent(123) should return 0
+PASS [Empty List] test.grandparent(123) should return 0
+PASS [Empty List] test.sibling(123) should return 0
+PASS [Empty List] test.uncle(123) should return 0
+
+----- Setup Data -----
+
+----- Insert Data #1 -----
+insertItems(First Item)=[1,3,4,2,5]
+--------------------------------------------------------------------------------
+testRedBlackTree.root=3
+testRedBlackTree.first=1
+testRedBlackTree.last=5
+--------------------------------------------------------------------------------
+    [47m[k1 p3 l0 r2][0m
+        [41m[k2 p1 l0 r0][0m
+[47m[k3 p0 l1 r4][0m
+    [47m[k4 p3 l0 r5][0m
+        [41m[k5 p4 l0 r0][0m
+--------------------------------------------------------------------------------
+
+PASS Insert Data #1 - test.insert(1)
+PASS Insert Data #1 - test.insert(3)
+PASS Insert Data #1 - test.insert(4)
+PASS Insert Data #1 - test.insert(2)
+PASS Insert Data #1 - test.insert(5)
+setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=68459 costETH=0.000136918 costUSD=0.02726995806 @ ETH/USD=199.17 gasPrice=2 gwei block=7388 txIx=0 txId=0x20ebc187971db1e458b285033695ad30f7beddc42819ee19e5256a5ae1c4fc85 @ 1540734097 Sun, 28 Oct 2018 13:41:37 UTC
+setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=99472 costETH=0.000198944 costUSD=0.03962367648 @ ETH/USD=199.17 gasPrice=2 gwei block=7388 txIx=1 txId=0x14a7546f4f932aa44fe9d354aeba74e17c319d15ebf434ffde9d8e0e12332b23 @ 1540734097 Sun, 28 Oct 2018 13:41:37 UTC
+setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=140002 costETH=0.000280004 costUSD=0.05576839668 @ ETH/USD=199.17 gasPrice=2 gwei block=7388 txIx=2 txId=0x76a51cec7809d5e4c2188868e45b28cbe01d4e5a64eeb7e76c70631be20d046d @ 1540734097 Sun, 28 Oct 2018 13:41:37 UTC
+setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=88053 costETH=0.000176106 costUSD=0.03507503202 @ ETH/USD=199.17 gasPrice=2 gwei block=7388 txIx=3 txId=0x99bc632ee9197269e395d4d5f7a46709bcd7b83f0f44a35ec424ae606c62e91a @ 1540734097 Sun, 28 Oct 2018 13:41:37 UTC
+setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=99845 costETH=0.00019969 costUSD=0.0397722573 @ ETH/USD=199.17 gasPrice=2 gwei block=7388 txIx=4 txId=0xe374b84b44e3856f6f7fb6bdb5354259d06c8eebf1e0c7f3b2fb50006c8da0f5 @ 1540734097 Sun, 28 Oct 2018 13:41:37 UTC
+minGasUsedInsert=68459
+averageGasUsedInsert=99166.2
+maxGasUsedInsert=140002
+
+--------------------------------------------------------------------------------
+testRedBlackTree.root=3
+testRedBlackTree.first=1
+testRedBlackTree.last=5
+--------------------------------------------------------------------------------
+    [47m[k1 p3 l0 r2][0m
+        [41m[k2 p1 l0 r0][0m
+[47m[k3 p0 l1 r4][0m
+    [47m[k4 p3 l0 r5][0m
+        [41m[k5 p4 l0 r0][0m
+--------------------------------------------------------------------------------
+
+
+----- Remove Data #2 -----
+removeItems=[4,2,5,1,3]
+removing 4
+removing 2
+removing 5
+removing 1
+removing 3
+expected=[]
+result=[]
+comparison OK
+--------------------------------------------------------------------------------
+testRedBlackTree.root=0
+testRedBlackTree.first=0
+testRedBlackTree.last=0
+--------------------------------------------------------------------------------
+(empty)
+--------------------------------------------------------------------------------
+
+PASS Remove Data #2 - test.remove(4)
+PASS Remove Data #2 - test.remove(2)
+PASS Remove Data #2 - test.remove(5)
+PASS Remove Data #2 - test.remove(1)
+PASS Remove Data #2 - test.remove(3)
+tx[0] status=0x1 Success gas=1000000 gasUsed=30521 costETH=0.000061042 costUSD=0.01215773514 @ ETH/USD=199.17 gasPrice=2 gwei block=7390 txIx=0 txId=0xff5fb7719b78e43e044eb04eaffa71a37338626900af3e75de9753d854e4a479 @ 1540734099 Sun, 28 Oct 2018 13:41:39 UTC
+tx[1] status=0x1 Success gas=1000000 gasUsed=45250 costETH=0.0000905 costUSD=0.018024885 @ ETH/USD=199.17 gasPrice=2 gwei block=7390 txIx=1 txId=0xfa8f6785f6b8c8b037213047546bf0065f0c7c30288bc7f88d0cca62728273be @ 1540734099 Sun, 28 Oct 2018 13:41:39 UTC
+tx[2] status=0x1 Success gas=1000000 gasUsed=74259 costETH=0.000148518 costUSD=0.02958033006 @ ETH/USD=199.17 gasPrice=2 gwei block=7390 txIx=2 txId=0xf17ea2c9730c95e994fe014a454326fc784895e98c09934b4327001a018c2c39 @ 1540734099 Sun, 28 Oct 2018 13:41:39 UTC
+tx[3] status=0x1 Success gas=1000000 gasUsed=45257 costETH=0.000090514 costUSD=0.01802767338 @ ETH/USD=199.17 gasPrice=2 gwei block=7390 txIx=3 txId=0xa5f87db6e77d5cb90c91ae0f9bb9b2eca6d5f8dbfb29583cb428a61518896729 @ 1540734099 Sun, 28 Oct 2018 13:41:39 UTC
+tx[4] status=0x1 Success gas=1000000 gasUsed=44835 costETH=0.00008967 costUSD=0.0178595739 @ ETH/USD=199.17 gasPrice=2 gwei block=7390 txIx=4 txId=0x4600e9c1082797faef3adcf84edcc60806d4a8519fc723910afb676bbc233e28 @ 1540734099 Sun, 28 Oct 2018 13:41:39 UTC
+minGasUsedRemove=30521
+averageGasUsedRemove=48024.4
+maxGasUsedRemove=74259
+
+---------- PASS - no failures detected ----------

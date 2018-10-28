@@ -176,18 +176,20 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 16;
-var BATCHSIZE = NUMBEROFITEMS / 4;
+var NUMBEROFITEMS = 5000;
+var BATCHSIZE = NUMBEROFITEMS / 2;
 var insertItems = [];
 var removeItems = [];
 for (var i = 1; i <= NUMBEROFITEMS; i++) {
     insertItems.push(i);
     removeItems.push(i);
 }
-// insertItems = shuffle(insertItems);
+insertItems = shuffle(insertItems);
 // insertItems=[18,28,17,32,7,5,21,14,10,3,23,16,24,4,29,8,26,12,2,22,11,1,31,19,30,9,13,15,6,20,25,27];
 // TEST next, prev insertItems=[20,22,4,8,12,10,14];
 // insertItems=[20,22,4,8,12,10,14];
+// Wikipedia Red-Black Tree - https://en.wikipedia.org/wiki/Red%E2%80%93black_tree
+// insertItems=[13,8,17,11,15,22,25,27,1,6];
 removeItems = shuffle(removeItems);
 // removeItems=[4,14,25,32,2,30,16,31,6,26,18,22,28,23,12,15,19,27,7,13,29,11,3,5,17,1,24,20,9,8,21,10];
 // console.log("RESULT: insertItems=" + JSON.stringify(insertItems));

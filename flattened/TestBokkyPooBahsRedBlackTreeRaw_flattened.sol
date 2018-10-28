@@ -220,8 +220,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         }
         // Below `delete self.nodes[SENTINEL]` may not be necessary
         // TODO - Remove after testing
-        emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
-        emit Log("remove", "before delete self.nodes[SENTINEL]", SENTINEL, self.nodes[SENTINEL].parent, self.nodes[SENTINEL].left, self.nodes[SENTINEL].right, self.nodes[SENTINEL].red);
+        // emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
+        // emit Log("remove", "before delete self.nodes[SENTINEL]", SENTINEL, self.nodes[SENTINEL].parent, self.nodes[SENTINEL].left, self.nodes[SENTINEL].right, self.nodes[SENTINEL].red);
         if (self.nodes[SENTINEL].parent != SENTINEL) {
             delete self.nodes[SENTINEL];
         }
@@ -443,8 +443,8 @@ contract TestBokkyPooBahsRedBlackTreeRaw {
     function parent(uint key) public view returns (uint _parent) {
         _parent = tree.parent(key);
     }
-    function grandparent(uint key) public view returns (uint _parent) {
-        _parent = tree.grandparent(key);
+    function grandparent(uint key) public view returns (uint _grandparent) {
+        _grandparent = tree.grandparent(key);
     }
     function sibling(uint key) public view returns (uint _parent) {
         _parent = tree.sibling(key);
