@@ -10,7 +10,7 @@ This library uses an iterative (rather than recursive) Red-Black Tree to maintai
 
 A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
 
-From [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree):
+From Wikipedia's [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) page, the following Red-Black tree was created by inserting the items `[13,8,17,11,15,22,25,27,1,6]`:
 
 <kbd><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_example.svg" /></kbd>
 
@@ -108,6 +108,25 @@ There is one complication with the algorithm above in the function `RB-Delete` i
 TODO:
 
 * [ ] Min, Max, Average for 10, 100, 1000, 10000 entries
+
+### Average Case
+
+The following number of items were inserted in random order
+
+
+### Worst Case
+
+The following number of items were inserted in sequential order
+
+Items | Ins Min | Ins Avg    | Ins Max | Rem Min | Rem Avg   | Rem Max
+-----:| -------:| ----------:| -------:| -------:| ---------:| -------:
+1     | 68459   | 68459      | 68459   | 44835   | 44835     | 44835
+5     | 68459   | 107349.4   | 140753  | 29918   | 56072.4   | 86075
+10    | 68459   | 116513     | 149588  | 30067   | 75757.2   | 119064
+50    | 68459   | 137949.4   | 158598  | 30067   | 86001.76  | 213537
+100   | 68459   | 142906.91  | 163103  | 30521   | 87266.18  | 218371
+500   | 68459   | 149290.434 | 191089  | 30521   | 86199.74  | 266556
+1000  | 68459   | 150802.324 | 208341  | 29950   | 87266.115 | 287889
 
 <br />
 
