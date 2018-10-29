@@ -176,8 +176,8 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 5000;
-var BATCHSIZE = NUMBEROFITEMS / 2;
+var NUMBEROFITEMS = 10000;
+var BATCHSIZE = NUMBEROFITEMS / 1;
 var insertItems = [];
 var removeItems = [];
 for (var i = 1; i <= NUMBEROFITEMS; i++) {
@@ -243,9 +243,6 @@ var averageGasUsedInsert = totalGasUsedInsert.div(tx.length);
 console.log("RESULT: minGasUsedInsert=" + minGasUsedInsert);
 console.log("RESULT: averageGasUsedInsert=" + averageGasUsedInsert);
 console.log("RESULT: maxGasUsedInsert=" + maxGasUsedInsert);
-console.log("RESULT: ");
-
-printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 
 
