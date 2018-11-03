@@ -203,10 +203,10 @@ function first() internal;
 
 Returns the smallest key in the tree.
 
-Return Value | Condition
-:----------- |:--------
-{first key}  | Tree has at least one key
-`SENTINEL`   | Tree empty
+Return Value  | Condition
+:------------ |:--------
+_{first key}_ | Tree has at least one key
+`SENTINEL`    | Tree empty
 
 <br />
 
@@ -220,7 +220,7 @@ Returns the largest key in the tree.
 
 Return Value | Condition
 :----------- |:--------
-{last key}   | Tree has at least one key
+_{last key}_ | Tree has at least one key
 `SENTINEL`   | Tree empty
 
 <br />
@@ -235,7 +235,7 @@ Returns the next key in the tree with a value larger than `x`.
 
 Return Value | Condition
 :----------- |:--------
-{next key}   | There exists a key with a value larger than the `x` key
+_{next key}_ | There exists a key with a value larger than the `x` key
 `SENTINEL`   | Tree empty
 `SENTINEL`   | `x` is not an existing key in the tree
 `SENTINEL`   | `x` is the only key in the tree
@@ -253,7 +253,7 @@ Returns the previous key in the tree with a value smaller than `x`.
 
 Return Value | Condition
 :----------- |:--------
-{prev key}   | There exists a key with a value smaller than the `x` key
+_{prev key}_ | There exists a key with a value smaller than the `x` key
 `SENTINEL`   | Tree empty
 `SENTINEL`   | `x` is not an existing key in the tree
 `SENTINEL`   | `x` is the only element in the tree
