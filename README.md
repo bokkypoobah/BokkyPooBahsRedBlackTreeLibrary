@@ -2,7 +2,11 @@
 
 Status: **Work in progress. Documenting before getting further testing and review - don't use yet**
 
-A gas-efficient Solidity library using the Red-Black binary search tree algorithm to help you maintain a sorted `uint` key index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas). Note that the key of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
+A gas-efficient Solidity library using the iterative (rather than recursive) Red-Black binary search tree algorithm to help you maintain a sorted `uint` key index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas). Note that the key of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
+
+Inserting an element into am empty tree costs 68,459 gas. Inserting an element into a tree with 9,999 elements costs 127,210 gas, on average. Removing an element from a tree with a single element costs 44,835 gas. Removing an element from a tree with 10,000 elements cost 81,486 gas, on average.
+
+An important use-case for this library is to maintain a sorted on-chain order book in decentralised exchange smart contracts, providing a provably fair order matching algorithm.
 
 <br />
 
@@ -16,8 +20,6 @@ A gas-efficient Solidity library using the Red-Black binary search tree algorith
   * [Red-Black Tree With Random Insertion](#red-black-tree-with-random-insertion)
   * [Red-Black Tree With Sequential Insertion](#red-black-tree-with-sequential-insertion)
   * [Gas Cost](#gas-cost)
-  * [Use Case](#use-case)
-  * [Other Notes](#other-notes)
 * [History](#history)
 * [Deployment](#deployment)
 * [Questions And Answers](#questions-and-answers)
@@ -98,7 +100,7 @@ The longest path is 8 levels deep: (8 black), (16 red), (20 black), (24 red), (2
 
 #### Average Case
 
-The following number of items were inserted in sequential order into a red-black tree:
+The following table shows the minimum, average and maximum gas cost for the insertion of items in a **random** order and removal of items from a red-black tree:
 
 Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 ------:| -------:| --------:| -------:| -------:| -------:| -------:
@@ -115,7 +117,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 
 #### Worst Case
 
-The following number of items were inserted in sequential order into a red-black tree:
+The following table shows the minimum, average and maximum gas cost for the insertion of items in a **sequential** order and removal of items from a red-black tree:
 
 Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 ------:| -------:| --------:| -------:| -------:| -------:| -------:
@@ -131,22 +133,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 
 <br />
 
-### Use Case
-
-An important use-case for this library is to maintain a sorted on-chain order book in decentralised exchange smart contracts.
-
-<br />
-
-### Other Notes
-
-This library uses an iterative (rather than recursive) red-black tree algorithm to maintain the sorted keys.
-
-<br />
-
-<hr />
-
 If you find this library useful for your project, **especially commercial projects**, please donate to [0xb6dAC2C5A0222f6794265249ACE15568B750c2d1](https://etherscan.io/address/0xb6dAC2C5A0222f6794265249ACE15568B750c2d1). I hope to cover my cost of getting this library independently audited.
-
 
 <br />
 
@@ -175,6 +162,8 @@ This library has been designed to be automatically compiled into your Ethereum S
 ## Functions
 
 See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) (or the [flattened](flattened/TestBokkyPooBahsRedBlackTree_flattened.sol) version) for an example contract that uses this library.
+
+The function parameter `Tree storage self` has been omitted in the documentation below, as Solidity automatically injects the library data structure in place of this first parameter.
 
 ### insert
 
