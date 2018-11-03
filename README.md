@@ -4,7 +4,7 @@ Status: **Work in progress. Documenting before getting further testing and revie
 
 A gas-efficient Solidity library using the iterative (rather than recursive) Red-Black binary search tree algorithm to help you maintain a sorted `uint` key index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas). Note that the key of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
 
-Inserting an element into am empty tree costs 68,459 gas. Inserting an element into a tree with 9,999 elements costs 127,210 gas, on average. Removing an element from a tree with a single element costs 44,835 gas. Removing an element from a tree with 10,000 elements cost 81,486 gas, on average.
+Inserting a key into an empty tree costs 68,459 gas. Inserting a key into a tree with 9,999 keys costs 127,210 gas on average. Removing an element from a tree with a single key costs 44,835 gas. Removing a key from a tree with 10,000 keys cost 81,486 gas on average.
 
 An important use-case for this library is to maintain a sorted on-chain order book in decentralised exchange smart contracts, providing a provably fair order matching algorithm.
 
@@ -458,4 +458,4 @@ Thanks to [Solidified](https://solidified.io/) for the 3 minor issues they picke
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Nov 03 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Nov· 03 2018. The MIT Licence.
