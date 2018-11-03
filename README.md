@@ -12,13 +12,15 @@ The [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) binar
 
 <kbd><img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Binary_search_tree.svg" /></kbd>
 
+The binary search tree provides easy access to the *first*, *previous*, *next* and *last* elements.
+
 <br />
 
 ### Red-Black Binary Search Tree
 
 The regular binary search tree can become unbalanced. Inserting the keys into the binary search tree in sequential order will result in the tree resembling a linked-list.
 
-From Wikipedia:
+The red-black algorithm maintains a red or black colouring for each node in the tree. And from Wikipedia:
 
 > In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:
 >
