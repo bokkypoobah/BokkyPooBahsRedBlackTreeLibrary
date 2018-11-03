@@ -6,6 +6,8 @@ A gas-efficient Solidity library using the Red-Black binary search tree algorith
 
 <br />
 
+<hr />
+
 ### Binary Search Tree
 
 The [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) binary search tree is a self-rebalancing [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree). Following is a diagram of a binary search tree.
@@ -20,7 +22,7 @@ The binary search tree provides easy access to the *first*, *previous*, *next* a
 
 The regular binary search tree can become unbalanced. Inserting the keys into the binary search tree in sequential order will result in the tree resembling a linked-list.
 
-The red-black algorithm maintains a red or black colouring for each node in the tree. And from Wikipedia:
+The red-black algorithm maintains a red or black colouring for each node in the tree. And from [Wikipedia](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree):
 
 > In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:
 >

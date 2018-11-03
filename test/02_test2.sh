@@ -176,7 +176,7 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 10000;
+var NUMBEROFITEMS = 32;
 var BATCHSIZE = NUMBEROFITEMS / 1;
 var insertItems = [];
 var removeItems = [];
