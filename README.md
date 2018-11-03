@@ -295,33 +295,99 @@ Returns the node information if `key` exists in the tree. All `uint` values will
 
 ### parent
 
+```javascript
+function parent(uint key) internal view returns (uint _parent);
+```
+
+Returns the parent of `key`.
+
+Return Value   | Condition
+:------------- |:--------
+_{parent key}_ | `key` has a parent, when there are more than one item in the tree
+`SENTINEL`     | Tree is empty
+`SENTINEL`     | `key` is not an existing key in the tree
+`SENTINEL`     | `key` is the only element in the tree
+
 <br />
 
 ### grandparent
+
+```javascript
+function grandparent(uint key) internal view returns (uint _grandparent);
+```
+
+Returns the grandparent of `key`.
+
+Return Value        | Condition
+:------------------ |:--------
+_{grandparent key}_ | `key` has a parent that has a parent
+`SENTINEL`          | Tree is empty
+`SENTINEL`          | `key` is not an existing key in the tree
+`SENTINEL`          | `key` does not have a parent, or the parent does not have a parent
 
 <br />
 
 ### sibling
 
+```javascript
+function sibling(uint key) internal view returns (uint _sibling);
+```
+
+Returns the sibling of `key`.
+
+Return Value    | Condition
+:-------------- |:--------
+_{sibling key}_ | `key` has a sibling
+`SENTINEL`      | Tree is empty
+`SENTINEL`      | `key` is not an existing key in the tree
+`SENTINEL`      | `key` does not have a sibling
+
 <br />
 
 ### uncle
+
+```javascript
+function uncle(uint key) internal view returns (uint _uncle);
+```
+
+Returns the uncle of `key`.
+
+Return Value  | Condition
+:------------ |:--------
+_{uncle key}_ | `key` has an uncle
+`SENTINEL`    | Tree is empty
+`SENTINEL`    | `key` is not an existing key in the tree
+`SENTINEL`    | `key` does not have an uncle
 
 <br />
 
 ### insert
 
 ```javascript
-function insert(Tree storage self, uint z) internal;
+function insert(uint z) internal;
 ```
+
+Insert the key `z` into the tree.
+
+Transaction | Condition
+:---------- |:--------
+_success_   | The key `z` has been successfully inserted into the tree
+_failure_   | The key `z` already exists in the tree
 
 <br />
 
 ### remove
 
 ```javascript
-function remove(Tree storage self, uint z) internal;
+function remove(uint z) internal;
 ```
+
+Remove the key `z` from the tree.
+
+Transaction | Condition
+:---------- |:--------
+_success_   | The key `z` has been successfully removed from the tree
+_failure_   | The key `z` does exist in the tree
 
 <br />
 
@@ -392,4 +458,4 @@ Thanks to [Solidified](https://solidified.io/) for the 3 minor issues they picke
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Oct 16 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Nov 03 2018. The MIT Licence.

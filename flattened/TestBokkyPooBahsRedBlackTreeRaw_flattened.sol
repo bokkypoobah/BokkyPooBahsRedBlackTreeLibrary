@@ -396,6 +396,10 @@ library BokkyPooBahsRedBlackTreeLibrary {
 }
 
 // ----------------------------------------------------------------------------
+// End - BokkyPooBah's Red-Black Tree Library
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
 // BokkyPooBah's Red-Black Tree Library v0.90 - Contract for testing
 //
 // A Solidity Red-Black Tree library to store and access a sorted list of

@@ -393,3 +393,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         self.nodes[x].red = false;
     }
 }
+
+// ----------------------------------------------------------------------------
+// End - BokkyPooBah's Red-Black Tree Library
+// ----------------------------------------------------------------------------
