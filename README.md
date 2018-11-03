@@ -409,16 +409,12 @@ Note that this algorithm is designed to work with memory pointers to the node da
 
 ## Testing
 
-TODO:
-
-* [x] Test random insertions 1, 10, 100, 1000, 10000
+* [x] Test random insertions and deletions of 1, 10, 100, 1000 and 10000 keys
+* [x] Test the insert function, including inserting a duplicate key
+* [x] Test the `remove` function, including removing a non-existent key
 * [x] Test the `view` functions, including what happens when a non-existent key is passed
-* [ ] Delete a non-existent key
-* [ ] Insert a duplicate key
-* [ ] Test random insertions and deletions
+* [x] Test sequential insertions
 * [ ] Test repeated random insertions and deletions
-* [ ] Test adding sequentially increasing and decreasing keys
-* [ ] Test whether `nodes[0]` is used now (was used when the algorithm was not quite working correctly)
 
 <br />
 
