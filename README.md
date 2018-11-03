@@ -24,6 +24,12 @@ An important use-case for this library is to maintain a sorted on-chain order bo
 * [Deployment](#deployment)
 * [Questions And Answers](#questions-and-answers)
 * [Functions](#functions)
+  * [init](#init)
+  * [root](#root)
+  * [first](#first)
+  * [last](#last)
+  * [next](#next)
+  * [prev](#prev)
   * [insert](#insert)
   * [remove](#remove)
 * [Testing](#testing)
@@ -98,7 +104,7 @@ The longest path is 8 levels deep: (8 black), (16 red), (20 black), (24 red), (2
 
 ### Gas Cost
 
-#### Average Case
+#### Average Case - Random Insert
 
 The following table shows the minimum, average and maximum gas cost for the insertion of items in a **random** order and removal of items from a red-black tree:
 
@@ -115,7 +121,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 10,000 | 68,523   | 127,210 | 208,293 | 30,099  | 81,486  | 307,296
 <br />
 
-#### Worst Case
+#### Worst Case - Sequential Insert
 
 The following table shows the minimum, average and maximum gas cost for the insertion of items in a **sequential** order and removal of items from a red-black tree:
 
@@ -163,7 +169,97 @@ This library has been designed to be automatically compiled into your Ethereum S
 
 See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) (or the [flattened](flattened/TestBokkyPooBahsRedBlackTree_flattened.sol) version) for an example contract that uses this library.
 
-The function parameter `Tree storage self` has been omitted in the documentation below, as Solidity automatically injects the library data structure in place of this first parameter.
+Notes:
+
+* The function parameter `Tree storage self` has been omitted in the documentation below, as Solidity automatically injects the library data structure in place of this first parameter
+* There is a constant `SENTINEL` that is set to 0 in the library source code by default
+
+<br />
+
+### init
+
+```javascript
+function init() internal
+```
+
+Call this function from your contract constructor to initialises some data. Note that this is really only necessary when `SENTINEL` is non-0.
+
+<br />
+
+### root
+```javascript
+function root() internal;
+```
+
+Returns the root of the tree, or `SENTINEL` is the tree is empty
+
+<br />
+
+### first
+
+```javascript
+function first() internal;
+```
+
+Returns the smallest key in the tree.
+
+Return Value | Condition
+:----------- |:--------
+{first key}  | Tree has at least one key
+`SENTINEL`   | Tree empty
+
+<br />
+
+### last
+
+```javascript
+function last() internal;
+```
+
+Returns the largest key in the tree.
+
+Return Value | Condition
+:----------- |:--------
+{last key}   | Tree has at least one key
+`SENTINEL`   | Tree empty
+
+<br />
+
+### next
+
+```javascript
+function next(uint x) internal view returns (uint y);
+```
+
+Returns the next key in the tree with a value larger than `x`.
+
+Return Value | Condition
+:----------- |:--------
+{next key}   | There exists a key with a value larger than the `x` key
+`SENTINEL`   | Tree empty
+`SENTINEL`   | `x` is not an existing key in the tree
+`SENTINEL`   | `x` is the only key in the tree
+`SENTINEL`   | `x` is the last key in the tree
+
+<br />
+
+### prev
+
+```javascript
+function prev(uint x) internal view returns (uint y);
+```
+
+Returns the previous key in the tree with a value smaller than `x`.
+
+Return Value | Condition
+:----------- |:--------
+{prev key}   | There exists a key with a value smaller than the `x` key
+`SENTINEL`   | Tree empty
+`SENTINEL`   | `x` is not an existing key in the tree
+`SENTINEL`   | `x` is the only element in the tree
+`SENTINEL`   | `x` is the last element in the tree
+
+<br />
 
 ### insert
 
@@ -201,12 +297,12 @@ Note that this algorithm is designed to work with memory pointers to the node da
 
 TODO:
 
-* [ ] Test random insertions 10, 1000, 10000
+* [x] Test random insertions 1, 10, 100, 1000, 10000
+* [x] Test the `view` functions, including what happens when a non-existent key is passed
+* [ ] Delete a non-existent key
+* [ ] Insert a duplicate key
 * [ ] Test random insertions and deletions
 * [ ] Test repeated random insertions and deletions
-* [ ] Test the `view` functions, including what happens when a non-existent key is passed
-* [ ] Test deleting a non-existent key
-* [ ] Insert duplicate
 * [ ] Test adding sequentially increasing and decreasing keys
 * [ ] Test whether `nodes[0]` is used now (was used when the algorithm was not quite working correctly)
 
