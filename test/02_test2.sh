@@ -42,7 +42,7 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST2OUTPUT
 solc_0.4.25 --version | tee -a $TEST2OUTPUT
 
 # echo "var libOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
-echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
+echo "var testRawOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
 
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST2OUTPUT
 
@@ -55,11 +55,11 @@ geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST2OUTPUT
 loadScript("$TESTRAWJS");
 loadScript("functions.js");
 
-var testAbi = JSON.parse(testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].abi);
-var testBin = "0x" + testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].bin;
+var testRawAbi = JSON.parse(testRawOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].abi);
+var testRawBin = "0x" + testRawOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].bin;
 
-// console.log("DATA: testAbi=" + JSON.stringify(testAbi));
-// console.log("DATA: testBin=" + JSON.stringify(testBin));
+// console.log("DATA: testRawAbi=" + JSON.stringify(testRawAbi));
+// console.log("DATA: testRawBin=" + JSON.stringify(testRawBin));
 
 
 unlockAccounts("$PASSWORD");
@@ -71,23 +71,23 @@ console.log("RESULT: ");
 var deployTestMessage = "Deploy Test";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + deployTestMessage + " -----");
-var testContract = web3.eth.contract(testAbi);
-// console.log(JSON.stringify(testContract));
-var testTx = null;
-var testAddress = null;
-var test = testContract.new({from: deployer, data: testBin, gas: 6000000, gasPrice: defaultGasPrice},
+var testRawContract = web3.eth.contract(testRawAbi);
+// console.log(JSON.stringify(testRawContract));
+var testRawTx = null;
+var testRawAddress = null;
+var testRaw = testRawContract.new({from: deployer, data: testRawBin, gas: 6000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        testTx = contract.transactionHash;
+        testRawTx = contract.transactionHash;
       } else {
-        testAddress = contract.address;
-        addAccount(testAddress, "Test");
-        console.log("DATA: var testAddress=\"" + testAddress + "\";");
-        console.log("DATA: var testAbi=" + JSON.stringify(testAbi) + ";");
-        console.log("DATA: var test=eth.contract(testAbi).at(testAddress);");
-        addTestRedBlackTreeContractAddressAndAbi(testAddress, testAbi);
-        console.log("DATA: testAddress=" + testAddress);
+        testRawAddress = contract.address;
+        addAccount(testRawAddress, "TestRaw");
+        console.log("DATA: var testRawAddress=\"" + testRawAddress + "\";");
+        console.log("DATA: var testRawAbi=" + JSON.stringify(testRawAbi) + ";");
+        console.log("DATA: var testRaw=eth.contract(testRawAbi).at(testRawAddress);");
+        addTestRedBlackTreeContractAddressAndAbi(testRawAddress, testRawAbi);
+        console.log("DATA: testRawAddress=" + testRawAddress);
       }
     }
   }
@@ -95,8 +95,8 @@ var test = testContract.new({from: deployer, data: testBin, gas: 6000000, gasPri
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(testTx, deployTestMessage);
-printTxData("testTx", testTx);
+failIfTxStatusError(testRawTx, deployTestMessage);
+printTxData("testRawTx", testRawTx);
 printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 
@@ -111,60 +111,60 @@ var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false]";
 if ("$MODE" == "full") {
   section = "[Empty List]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "0", section + " test.root() should return 0")) {
+  if (!assert(testRaw.root() == "0", section + " testRaw.root() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "0", section + " test.first() should return 0")) {
+  if (!assert(testRaw.first() == "0", section + " testRaw.first() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "0", section + " test.last() should return 0")) {
+  if (!assert(testRaw.last() == "0", section + " testRaw.last() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.next(123) == "0", section + " test.next(123) should return 0")) {
+  if (!assert(testRaw.next(123) == "0", section + " testRaw.next(123) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(123) == "0", section + " test.prev(123) should return 0")) {
+  if (!assert(testRaw.prev(123) == "0", section + " testRaw.prev(123) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(123) == false, section + " test.exists(123) should return false")) {
+  if (!assert(testRaw.exists(123) == false, section + " testRaw.exists(123) should return false")) {
     failureDetected = true;
   }
 
-  var nodeResult = test.getNode(123);
+  var nodeResult = testRaw.getNode(123);
   // console.log("RESULT: nodeResult=" + nodeResult);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.getNode(123) should return " + NULLNODERESULT)) {
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.getNode(123) should return " + NULLNODERESULT)) {
     failureDetected = true;
   }
 
-  if (!assert(test.parent(123) == "0", section + " test.parent(123) should return 0")) {
+  if (!assert(testRaw.parent(123) == "0", section + " testRaw.parent(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.parentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.parentNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.parentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.parentNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.grandparent(123) == "0", section + " test.grandparent(123) should return 0")) {
+  if (!assert(testRaw.grandparent(123) == "0", section + " testRaw.grandparent(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.grandparentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.grandparentNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.grandparentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.grandparentNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.sibling(123) == "0", section + " test.sibling(123) should return 0")) {
+  if (!assert(testRaw.sibling(123) == "0", section + " testRaw.sibling(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.siblingNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.siblingNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.siblingNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.siblingNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.uncle(123) == "0", section + " test.uncle(123) should return 0")) {
+  if (!assert(testRaw.uncle(123) == "0", section + " testRaw.uncle(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.uncleNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.uncleNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.uncleNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.uncleNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
   console.log("RESULT: ");
@@ -206,7 +206,7 @@ var tx = [];
 for (var i = 0; i < insertItems.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -215,7 +215,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 0; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData1_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData1_Message + " - testRaw.insert(" + item + ")");
 }
 var minGasUsedInsert = new BigNumber(0);
 var maxGasUsedInsert = new BigNumber(0);
@@ -257,13 +257,13 @@ var tx = [];
 for (var i = 0; i < removeItems.length; i++) {
   var item = removeItems[i];
   console.log("RESULT: removing " + item);
-  tx.push(test.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
   expected = listMinusItem(expected, item);
   if ((i + 1) % BATCHSIZE == 0) {
     while (txpool.status.pending > 0) {
     }
     console.log("RESULT: expected=" + JSON.stringify(expected));
-    var result = treeAsList(test);
+    var result = treeAsList(testRaw);
     console.log("RESULT: result=" + JSON.stringify(result));
     if (JSON.stringify(expected) == JSON.stringify(result)) {
       console.log("RESULT: comparison OK");
@@ -277,7 +277,7 @@ for (var i = 0; i < removeItems.length; i++) {
 
 for (var i = 0; i < removeItems.length; i++) {
   var item = removeItems[i];
-  failIfTxStatusError(tx[i], removeData2_Message + " - test.remove(" + item + ")");
+  failIfTxStatusError(tx[i], removeData2_Message + " - testRaw.remove(" + item + ")");
 }
 var minGasUsedRemove = new BigNumber(0);
 var maxGasUsedRemove = new BigNumber(0);

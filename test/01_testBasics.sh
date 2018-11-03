@@ -41,8 +41,8 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 
 solc_0.4.25 --version | tee -a $TEST1OUTPUT
 
-# echo "var libOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
-echo "var testOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
+echo "var testRawOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
+# echo "var testRawOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
 
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST1OUTPUT
 
@@ -55,11 +55,11 @@ geth --verbosity 3 attach $GETHATTACHPOINT << EOF | tee -a $TEST1OUTPUT
 loadScript("$TESTRAWJS");
 loadScript("functions.js");
 
-var testAbi = JSON.parse(testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].abi);
-var testBin = "0x" + testOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].bin;
+var testRawAbi = JSON.parse(testRawOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].abi);
+var testRawBin = "0x" + testRawOutput.contracts["$TESTRAWSOL:TestBokkyPooBahsRedBlackTreeRaw"].bin;
 
-// console.log("DATA: testAbi=" + JSON.stringify(testAbi));
-// console.log("DATA: testBin=" + JSON.stringify(testBin));
+// console.log("DATA: testRawAbi=" + JSON.stringify(testRawAbi));
+// console.log("DATA: testRawBin=" + JSON.stringify(testRawBin));
 
 
 unlockAccounts("$PASSWORD");
@@ -71,23 +71,23 @@ console.log("RESULT: ");
 var deployTestMessage = "Deploy Test";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + deployTestMessage + " -----");
-var testContract = web3.eth.contract(testAbi);
-// console.log(JSON.stringify(testContract));
-var testTx = null;
-var testAddress = null;
-var test = testContract.new({from: deployer, data: testBin, gas: 6000000, gasPrice: defaultGasPrice},
+var testRawContract = web3.eth.contract(testRawAbi);
+// console.log(JSON.stringify(testRawContract));
+var testRawTx = null;
+var testRawAddress = null;
+var testRaw = testRawContract.new({from: deployer, data: testRawBin, gas: 6000000, gasPrice: defaultGasPrice},
   function(e, contract) {
     if (!e) {
       if (!contract.address) {
-        testTx = contract.transactionHash;
+        testRawTx = contract.transactionHash;
       } else {
-        testAddress = contract.address;
-        addAccount(testAddress, "Test");
-        console.log("DATA: var testAddress=\"" + testAddress + "\";");
-        console.log("DATA: var testAbi=" + JSON.stringify(testAbi) + ";");
-        console.log("DATA: var test=eth.contract(testAbi).at(testAddress);");
-        addTestRedBlackTreeContractAddressAndAbi(testAddress, testAbi);
-        console.log("DATA: testAddress=" + testAddress);
+        testRawAddress = contract.address;
+        addAccount(testRawAddress, "TestRaw");
+        console.log("DATA: var testRawAddress=\"" + testRawAddress + "\";");
+        console.log("DATA: var testRawAbi=" + JSON.stringify(testRawAbi) + ";");
+        console.log("DATA: var testRaw=eth.contract(testRawAbi).at(testRawAddress);");
+        addTestRedBlackTreeContractAddressAndAbi(testRawAddress, testRawAbi);
+        console.log("DATA: testRawAddress=" + testRawAddress);
       }
     }
   }
@@ -95,8 +95,8 @@ var test = testContract.new({from: deployer, data: testBin, gas: 6000000, gasPri
 while (txpool.status.pending > 0) {
 }
 printBalances();
-failIfTxStatusError(testTx, deployTestMessage);
-printTxData("testTx", testTx);
+failIfTxStatusError(testRawTx, deployTestMessage);
+printTxData("testRawTx", testRawTx);
 printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 
@@ -111,60 +111,66 @@ var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false]";
 if ("$MODE" == "full") {
   section = "[Empty List]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "0", section + " test.root() should return 0")) {
+  if (!assert(testRaw.root() == "0", section + " testRaw.root() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "0", section + " test.first() should return 0")) {
+  if (!assert(testRaw.first() == "0", section + " testRaw.first() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "0", section + " test.last() should return 0")) {
+  if (!assert(testRaw.last() == "0", section + " testRaw.last() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.next(123) == "0", section + " test.next(123) should return 0")) {
+  if (!assert(testRaw.next(0) == "0", section + " testRaw.next(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(123) == "0", section + " test.prev(123) should return 0")) {
+  if (!assert(testRaw.next(123) == "0", section + " testRaw.next(123) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(123) == false, section + " test.exists(123) should return false")) {
+  if (!assert(testRaw.prev(0) == "0", section + " testRaw.prev(0) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(testRaw.prev(123) == "0", section + " testRaw.prev(123) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(testRaw.exists(123) == false, section + " testRaw.exists(123) should return false")) {
     failureDetected = true;
   }
 
-  var nodeResult = test.getNode(123);
+  var nodeResult = testRaw.getNode(123);
   // console.log("RESULT: nodeResult=" + nodeResult);
-  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.getNode(123) should return " + NULLNODERESULT)) {
+  if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.getNode(123) should return " + NULLNODERESULT)) {
     failureDetected = true;
   }
 
-  if (!assert(test.parent(123) == "0", section + " test.parent(123) should return 0")) {
+  if (!assert(testRaw.parent(123) == "0", section + " testRaw.parent(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.parentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.parentNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.parentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.parentNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.grandparent(123) == "0", section + " test.grandparent(123) should return 0")) {
+  if (!assert(testRaw.grandparent(123) == "0", section + " testRaw.grandparent(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.grandparentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.grandparentNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.grandparentNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.grandparentNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.sibling(123) == "0", section + " test.sibling(123) should return 0")) {
+  if (!assert(testRaw.sibling(123) == "0", section + " testRaw.sibling(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.siblingNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.siblingNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.siblingNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.siblingNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
 
-  if (!assert(test.uncle(123) == "0", section + " test.uncle(123) should return 0")) {
+  if (!assert(testRaw.uncle(123) == "0", section + " testRaw.uncle(123) should return 0")) {
     failureDetected = true;
   }
-  // var nodeResult = test.uncleNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " test.uncleNode(123) should return " + NULLNODERESULT)) {
+  // var nodeResult = testRaw.uncleNode(123);
+  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.uncleNode(123) should return " + NULLNODERESULT)) {
   //   failureDetected = true;
   // }
   console.log("RESULT: ");
@@ -204,7 +210,7 @@ var tx = [];
 for (var i = 0; i < 1; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -213,7 +219,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 0; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData1_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData1_Message + " - testRaw.insert(" + item + ")");
 }
 var minGasUsedInsert = new BigNumber(0);
 var maxGasUsedInsert = new BigNumber(0);
@@ -250,40 +256,46 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Single Item]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "18", section + " test.first() should return 18")) {
+  if (!assert(testRaw.first() == "18", section + " testRaw.first() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "18", section + " test.last() should return 18")) {
+  if (!assert(testRaw.last() == "18", section + " testRaw.last() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.next(18) == "0", section + " test.next(18) should return 0")) {
+  if (!assert(testRaw.next(0) == "0", section + " testRaw.next(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+  if (!assert(testRaw.next(18) == "0", section + " testRaw.next(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+  if (!assert(testRaw.prev(0) == "0", section + " testRaw.prev(0) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(testRaw.prev(18) == "0", section + " testRaw.prev(18) should return 0")) {
+    failureDetected = true;
+  }
+  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE18ONLYRESULT = "[\"18\",\"0\",\"0\",\"0\",false]";
-  var nodeResult = test.getNode(18);
-  if (!assert(JSON.stringify(nodeResult) == NODE18ONLYRESULT, section + " test.getNode(18) should return " + NODE18ONLYRESULT)) {
+  var nodeResult = testRaw.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE18ONLYRESULT, section + " testRaw.getNode(18) should return " + NODE18ONLYRESULT)) {
     failureDetected = true;
   }
-  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
@@ -298,7 +310,7 @@ console.log("RESULT: insertItems(Second Item)=" + JSON.stringify(insertItems));
 for (var i = 1; i < 2; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -307,7 +319,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 1; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData2_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData2_Message + " - testRaw.insert(" + item + ")");
 }
 for (var i = 1; i < tx.length; i++) {
   var item = insertItems[i];
@@ -341,52 +353,52 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Two Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "18", section + " test.first() should return 18")) {
+  if (!assert(testRaw.first() == "18", section + " testRaw.first() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "28", section + " test.last() should return 28")) {
+  if (!assert(testRaw.last() == "28", section + " testRaw.last() should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+  if (!assert(testRaw.next(12) == "0", section + " testRaw.next(12) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+  if (!assert(testRaw.next(18) == "28", section + " testRaw.next(18) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.next(28) == "0", section + " test.next(28) should return 0")) {
+  if (!assert(testRaw.next(28) == "0", section + " testRaw.next(28) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(18) == "0", section + " test.prev(18) should return 0")) {
+  if (!assert(testRaw.prev(18) == "0", section + " testRaw.prev(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(28) == "18", section + " test.prev(28) should return 18")) {
+  if (!assert(testRaw.prev(28) == "18", section + " testRaw.prev(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE1828RESULT = "[\"18\",\"0\",\"0\",\"28\",false]";
-  var nodeResult = test.getNode(18);
-  if (!assert(JSON.stringify(nodeResult) == NODE1828RESULT, section + " test.getNode(18) should return " + NODE1828RESULT)) {
+  var nodeResult = testRaw.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE1828RESULT, section + " testRaw.getNode(18) should return " + NODE1828RESULT)) {
     failureDetected = true;
   }
-  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+  if (!assert(testRaw.parent(28) == "18", section + " testRaw.parent(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
@@ -401,7 +413,7 @@ console.log("RESULT: insertItems(Third Item)=" + JSON.stringify(insertItems));
 for (var i = 2; i < 3; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -410,7 +422,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 2; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData3_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData3_Message + " - testRaw.insert(" + item + ")");
 }
 for (var i = 2; i < tx.length; i++) {
   var item = insertItems[i];
@@ -444,58 +456,58 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Three Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "17", section + " test.first() should return 17")) {
+  if (!assert(testRaw.first() == "17", section + " testRaw.first() should return 17")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "28", section + " test.last() should return 28")) {
+  if (!assert(testRaw.last() == "28", section + " testRaw.last() should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.next(12) == "0", section + " test.next(12) should return 0")) {
+  if (!assert(testRaw.next(12) == "0", section + " testRaw.next(12) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.next(17) == "18", section + " test.next(17) should return 18")) {
+  if (!assert(testRaw.next(17) == "18", section + " testRaw.next(17) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.next(18) == "28", section + " test.next(18) should return 28")) {
+  if (!assert(testRaw.next(18) == "28", section + " testRaw.next(18) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(18) == "17", section + " test.prev(18) should return 17")) {
+  if (!assert(testRaw.prev(18) == "17", section + " testRaw.prev(18) should return 17")) {
     failureDetected = true;
   }
-  if (!assert(test.prev(28) == "18", section + " test.prev(28) should return 18")) {
+  if (!assert(testRaw.prev(28) == "18", section + " testRaw.prev(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
-  var nodeResult = test.getNode(18);
-  if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " test.getNode(18) should return " + NODE181728RESULT)) {
+  var nodeResult = testRaw.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " testRaw.getNode(18) should return " + NODE181728RESULT)) {
     failureDetected = true;
   }
-  if (!assert(test.parent(18) == "0", section + " test.parent(18) should return 0")) {
+  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.parent(28) == "18", section + " test.parent(28) should return 18")) {
+  if (!assert(testRaw.parent(28) == "18", section + " testRaw.parent(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.grandparent(18) == "0", section + " test.grandparent(18) should return 0")) {
+  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(18) == "0", section + " test.sibling(18) should return 0")) {
+  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(17) == "28", section + " test.sibling(17) should return 28")) {
+  if (!assert(testRaw.sibling(17) == "28", section + " testRaw.sibling(17) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(28) == "17", section + " test.sibling(28) should return 17")) {
+  if (!assert(testRaw.sibling(28) == "17", section + " testRaw.sibling(28) should return 17")) {
     failureDetected = true;
   }
-  if (!assert(test.uncle(18) == "0", section + " test.uncle(18) should return 0")) {
+  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
@@ -510,7 +522,7 @@ console.log("RESULT: insertItems(Remaining 29 Items)=" + JSON.stringify(insertIt
 for (var i = 3; i < insertItems.length; i++) {
   var item = insertItems[i];
   var itemValue = parseInt(item) + 10000;
-  tx.push(test.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.insert(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
 }
 while (txpool.status.pending > 0) {
 }
@@ -519,7 +531,7 @@ printTestRedBlackTreeContractDetails();
 
 for (var i = 3; i < tx.length; i++) {
   var item = insertItems[i];
-  failIfTxStatusError(tx[i], insertData4_Message + " - test.insert(" + item + ")");
+  failIfTxStatusError(tx[i], insertData4_Message + " - testRaw.insert(" + item + ")");
 }
 for (var i = 3; i < tx.length; i++) {
   var item = insertItems[i];
@@ -553,62 +565,62 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[All 32 Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(test.root() == "18", section + " test.root() should return 18")) {
+  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.first() == "1", section + " test.first() should return 1")) {
+  if (!assert(testRaw.first() == "1", section + " testRaw.first() should return 1")) {
     failureDetected = true;
   }
-  if (!assert(test.last() == "32", section + " test.last() should return 32")) {
+  if (!assert(testRaw.last() == "32", section + " testRaw.last() should return 32")) {
     failureDetected = true;
   }
-  if (!assert(test.next(8) == "9", section + " test.next(8) should return 9")) {
+  if (!assert(testRaw.next(8) == "9", section + " testRaw.next(8) should return 9")) {
     failureDetected = true;
   }
-  if (!assert(test.next(10) == "11", section + " test.next(10) should return 11")) {
+  if (!assert(testRaw.next(10) == "11", section + " testRaw.next(10) should return 11")) {
     failureDetected = true;
   }
-  if (!assert(test.next(14) == "15", section + " test.next(14) should return 15")) {
+  if (!assert(testRaw.next(14) == "15", section + " testRaw.next(14) should return 15")) {
     failureDetected = true;
   }
-  if (!assert(test.next(17) == "18", section + " test.next(17) should return 18")) {
+  if (!assert(testRaw.next(17) == "18", section + " testRaw.next(17) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(test.next(18) == "19", section + " test.next(18) should return 19")) {
+  if (!assert(testRaw.next(18) == "19", section + " testRaw.next(18) should return 19")) {
     failureDetected = true;
   }
-  if (!assert(test.next(20) == "21", section + " test.next(20) should return 21")) {
+  if (!assert(testRaw.next(20) == "21", section + " testRaw.next(20) should return 21")) {
     failureDetected = true;
   }
 
-  if (!assert(test.prev(18) == "17", section + " test.prev(18) should return 17")) {
+  if (!assert(testRaw.prev(18) == "17", section + " testRaw.prev(18) should return 17")) {
     failureDetected = true;
   }
-  if (!assert(test.exists(18) == true, section + " test.exists(18) should return true")) {
+  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE18728RESULT = "[\"18\",\"0\",\"7\",\"28\",false]";
-  var nodeResult = test.getNode(18);
-  if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " test.getNode(18) should return " + NODE18728RESULT)) {
+  var nodeResult = testRaw.getNode(18);
+  if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " testRaw.getNode(18) should return " + NODE18728RESULT)) {
     failureDetected = true;
   }
-  if (!assert(test.parent(21) == "23", section + " test.parent(21) should return 23")) {
+  if (!assert(testRaw.parent(21) == "23", section + " testRaw.parent(21) should return 23")) {
     failureDetected = true;
   }
-  if (!assert(test.parent(23) == "28", section + " test.parent(23) should return 28")) {
+  if (!assert(testRaw.parent(23) == "28", section + " testRaw.parent(23) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.grandparent(21) == "28", section + " test.grandparent(21) should return 28")) {
+  if (!assert(testRaw.grandparent(21) == "28", section + " testRaw.grandparent(21) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(24) == "26", section + " test.sibling(24) should return 26")) {
+  if (!assert(testRaw.sibling(24) == "26", section + " testRaw.sibling(24) should return 26")) {
     failureDetected = true;
   }
-  if (!assert(test.sibling(26) == "24", section + " test.sibling(26) should return 24")) {
+  if (!assert(testRaw.sibling(26) == "24", section + " testRaw.sibling(26) should return 24")) {
     failureDetected = true;
   }
-  if (!assert(test.uncle(27) == "24", section + " test.uncle(27) should return 24")) {
+  if (!assert(testRaw.uncle(27) == "24", section + " testRaw.uncle(27) should return 24")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
@@ -620,12 +632,12 @@ var insertData5_Message = "Insert Data #5 - Cannot Insert Duplicate";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + insertData5_Message + " -----");
 console.log("RESULT: insertData5_Message=" + JSON.stringify(insertItems));
-var insertData5_tx = test.insert(14, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
+var insertData5_tx = testRaw.insert(14, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printTestRedBlackTreeContractDetails();
 // printBalances();
-passIfTxStatusError(insertData5_tx, insertData5_Message + " - test.insert(14)");
+passIfTxStatusError(insertData5_tx, insertData5_Message + " - testRaw.insert(14)");
 printTxData("insertData5_tx", insertData5_tx);
 console.log("RESULT: ");
 
@@ -634,12 +646,12 @@ console.log("RESULT: ");
 var removeData1_Message = "Remove Data #1 - Cannot Remove Non-Existent Key";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + removeData1_Message + " -----");
-var removeData1_tx = test.remove(114, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
+var removeData1_tx = testRaw.remove(114, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice});
 while (txpool.status.pending > 0) {
 }
 printTestRedBlackTreeContractDetails();
 // printBalances();
-passIfTxStatusError(removeData1_tx, removeData1_Message + " - test.remove(114)");
+passIfTxStatusError(removeData1_tx, removeData1_Message + " - testRaw.remove(114)");
 printTxData("removeData1_tx", removeData1_tx);
 console.log("RESULT: ");
 
@@ -659,13 +671,13 @@ var tx = [];
 for (var i = 0; i < removeItems.length; i++) {
   var item = removeItems[i];
   console.log("RESULT: removing " + item);
-  tx.push(test.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
+  tx.push(testRaw.remove(item, {from: deployer, gas: 1000000, gasPrice: defaultGasPrice}));
   expected = listMinusItem(expected, item);
   if ((i + 1) % BATCHSIZE == 0) {
     while (txpool.status.pending > 0) {
     }
     console.log("RESULT: expected=" + JSON.stringify(expected));
-    var result = treeAsList(test);
+    var result = treeAsList(testRaw);
     console.log("RESULT: result=" + JSON.stringify(result));
     if (JSON.stringify(expected) == JSON.stringify(result)) {
       console.log("RESULT: comparison OK");
@@ -679,7 +691,7 @@ for (var i = 0; i < removeItems.length; i++) {
 
 for (var i = 0; i < removeItems.length; i++) {
   var item = removeItems[i];
-  failIfTxStatusError(tx[i], removeData2_Message + " - test.remove(" + item + ")");
+  failIfTxStatusError(tx[i], removeData2_Message + " - testRaw.remove(" + item + ")");
 }
 var minGasUsedRemove = new BigNumber(0);
 var maxGasUsedRemove = new BigNumber(0);

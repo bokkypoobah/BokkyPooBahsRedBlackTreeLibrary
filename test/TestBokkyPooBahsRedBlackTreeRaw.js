@@ -1,4 +1,4 @@
-var testOutput={
+var testRawOutput={
   "contracts" : 
   {
     "BokkyPooBahsRedBlackTreeLibrary.sol:BokkyPooBahsRedBlackTreeLibrary" : 
