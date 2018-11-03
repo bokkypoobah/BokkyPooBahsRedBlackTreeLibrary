@@ -423,8 +423,7 @@ As the nodes are stored as elements in a Solidity *mapping* data structure, [Ite
 ## References
 
 * [Red–black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) - Wikipedia
-* [Algorithms for Red Black Tree Operations
-(from CLRS text)](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html)
+* [Algorithms for Red Black Tree Operations](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html) - from *Introduction to Algorithms* by Cormen, Leiserson, Rivest and Stein.
 * [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/questions/3758356/iterative-algorithm-for-red-black-tree)
 * [Laboratory Module 6 - Red-Black Trees](http://software.ucv.ro/~mburicea/lab8ASD.pdf) - Mihail Buricea. A copy has been saved to [docs/lab8ASD.pdf](docs/lab8ASD.pdf)
 * https://www.cs.dartmouth.edu/~thc/cs10/lectures/0519/0519.html
