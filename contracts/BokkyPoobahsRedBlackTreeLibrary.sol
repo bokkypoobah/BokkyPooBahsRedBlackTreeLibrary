@@ -91,7 +91,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    function getNode(Tree storage self, uint key) internal view returns (uint _ReturnKey, uint _parent, uint _left, uint _right, bool _red) {
+    function getNode(Tree storage self, uint key) internal view returns (uint _returnKey, uint _parent, uint _left, uint _right, bool _red) {
         require(key != SENTINEL);
         uint _key = self.root;
         while (_key != SENTINEL) {
