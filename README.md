@@ -30,6 +30,12 @@ An important use-case for this library is to maintain a sorted on-chain order bo
   * [last](#last)
   * [next](#next)
   * [prev](#prev)
+  * [exists](#exists)
+  * [getNode](#getnode)
+  * [parent](#parent)
+  * [grandparent](#grandparent)
+  * [sibling](#sibling)
+  * [uncle](#uncle)
   * [insert](#insert)
   * [remove](#remove)
 * [Testing](#testing)
@@ -258,6 +264,48 @@ _{prev key}_ | There exists a key with a value smaller than the `x` key
 `SENTINEL`   | `x` is not an existing key in the tree
 `SENTINEL`   | `x` is the only element in the tree
 `SENTINEL`   | `x` is the last element in the tree
+
+<br />
+
+### exists
+
+```javascript
+function exists(uint key) internal view returns (bool _exists);
+```
+
+Returns _true_ if the key exists in the tree, _false_ otherwise.
+
+Return Value | Condition
+:----------- |:--------
+_true_       | `key` is an existing key in the tree
+_false_      | Tree empty
+_false_      | `key` is not an existing key in the tree
+
+<br />
+
+### getNode
+
+```javascript
+function getNode(uint key) internal view returns (uint _returnKey, uint _parent, uint _left, uint _right, bool _red);
+```
+
+Returns the node information if `key` exists in the tree. All `uint` values will be set to `SENTINEL` if `key` does not exist in the tree.
+
+<br />
+
+### parent
+
+<br />
+
+### grandparent
+
+<br />
+
+### sibling
+
+<br />
+
+### uncle
 
 <br />
 
