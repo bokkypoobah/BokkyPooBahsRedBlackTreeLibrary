@@ -437,7 +437,7 @@ As the nodes are stored as elements in a Solidity *mapping* data structure, [Ite
 
 <br />
 
-Thanks to [Solidified](https://solidified.io/) for the 3 minor issues they picked up at the Web3 Summit.
+Thanks to [James Zaki](https://github.com/jzaki) and [Solidified](https://solidified.io/) for the 3 minor issues they picked up at the Web3 Summit.
 
 
 Enjoy!
