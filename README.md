@@ -1,18 +1,49 @@
 # BokkyPooBahs Red-Black Tree Library
 
-Status: **Work in progress. Tidying, testing, documenting before getting audits - don't use yet**
+Status: **Work in progress. Documenting before getting further testing and review - don't use yet**
 
-A gas-efficient Solidity library using the Red-Black binary search tree algorithm to help you maintain a sorted index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas).
+A gas-efficient Solidity library using the Red-Black binary search tree algorithm to help you maintain a sorted `uint` key index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas). Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
 
-This library will store `uint`s (equivalent to `uint256`) as the key. Note that the value of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
+<br />
 
-This library uses an iterative (rather than recursive) Red-Black Tree to maintain the sorted keys.
+### Binary Search Tree
 
-A use-case for this library is to maintain a sorted on-chain decentralise exchange order book.
+The [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) binary search tree is a self-rebalancing [binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree). Following is a diagram of a binary search tree.
+
+<kbd><img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Binary_search_tree.svg" /></kbd>
+
+<br />
+
+### Red-Black Binary Search Tree
+
+The regular binary search tree can become unbalanced. Inserting the keys into the binary search tree in sequential order will result in the tree resembling a linked-list.
+
+From Wikipedia:
+
+> In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:
+>
+> * Each node is either red or black.
+> * The root is black. This rule is sometimes omitted. Since the root can always be changed from red to black, but not necessarily vice versa, this rule has little effect on analysis.
+> * All leaves (NIL) are black.
+> * If a node is red, then both its children are black.
+> * Every path from a given node to any of its descendant NIL nodes contains the same number of black nodes.
+
+When an element is inserted into or removed from a red-black tree, the binary search tree is rebalanced to satisfy the red-black rules.
 
 From Wikipedia's [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) page, the following Red-Black tree was created by inserting the items `[13,8,17,11,15,22,25,27,1,6]`:
 
 <kbd><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Red-black_tree_example.svg" /></kbd>
+
+A property of the red-black tree is that the path from the root to the farthest leaf is no more than twice as long as the path from the root to the nearest leaf. The shortest path has all black nodes and the longest path alternate between red and black nodes.
+
+This library uses an iterative (rather than recursive) red-black tree algorithm to maintain the sorted keys.
+
+<br />
+
+### Use Case
+
+An important use-case for this library is to maintain a sorted on-chain order book in decentralised exchange smart contracts.
+
 
 
 What is a [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)? Following is a representation of Red-Black binary search tree of a randomise list of entries from 1 to 32, inserted in the order `[15,14,20,3,7,10,11,16,18,2,4,5,8,19,1,9,12,6,17,13]`. The RBT algorithm maintains a self-balancing tree.
