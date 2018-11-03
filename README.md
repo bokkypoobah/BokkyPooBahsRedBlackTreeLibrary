@@ -1,4 +1,4 @@
-# BokkyPooBahs Red-Black Tree Library
+# BokkyPooBahs Red-Black Binary Search Tree Library
 
 Status: **Work in progress. Documenting before getting further testing and review - don't use yet**
 
@@ -196,10 +196,13 @@ function remove(Tree storage self, uint z) internal;
 
 ## Algorithm
 
-The main algorithm is listed in [Algorithms for Red Black Tree Operations
+The main Red-Black binary search tree algorithm is listed in [Algorithms for Red Black Tree Operations
 (from CLRS text)](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html).
 
-There is one complication with the algorithm above in the function `RB-Delete` in the line `then key[z] := key[y]` replaced with the algorithm in [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/a/11328289).
+Note that this algorithm is designed to work with memory pointers to the node data. The rebalancing process after the removal of an item from the tree may result in a swapping of data values between nodes.
+
+
+ As the nodes are stored as elements in a Solidity *mapping* data structure, [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/a/11328289) provides an alternative algorithm to perform this swapping. In particular, the function `RB-Delete` in the main Red-Black algorithm will need the line `then key[z] := key[y]` replaced with the alternative swapping algorithm.
 
 <br />
 
