@@ -26,6 +26,9 @@ An important use-case for this library is to maintain a sorted on-chain order bo
 * [Functions](#functions)
   * [init](#init)
   * [root](#root)
+  * [inserted](#inserted)
+  * [removed](#removed)
+  * [count](#count)
   * [first](#first)
   * [last](#last)
   * [next](#next)
@@ -194,17 +197,44 @@ Call this function from your contract constructor to initialises some data. Note
 
 ### root
 ```javascript
-function root() internal;
+function root() internal view returns (uint _key);
 ```
 
-Returns the root of the tree, or `SENTINEL` is the tree is empty
+Returns the root of the tree, or `SENTINEL` is the tree is empty.
+
+<br />
+
+### inserted
+```javascript
+function inserted() internal view returns (uint _inserted);
+```
+
+Number of keys inserted into the tree.
+
+<br />
+
+### removed
+```javascript
+function removed() internal view returns (uint _removed);
+```
+
+Number of keys removed from the tree.
+
+<br />
+
+### count
+```javascript
+function count() internal view returns (uint _count);
+```
+
+Number of items in the tree.
 
 <br />
 
 ### first
 
 ```javascript
-function first() internal;
+function first() internal view returns (uint _key);
 ```
 
 Returns the smallest key in the tree.
@@ -219,7 +249,7 @@ _{first key}_ | Tree has at least one key
 ### last
 
 ```javascript
-function last() internal;
+function last() internal view returns (uint _key);
 ```
 
 Returns the largest key in the tree.

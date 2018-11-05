@@ -40,6 +40,9 @@ library BokkyPooBahsRedBlackTreeLibrary {
         self.nodes[SENTINEL] = Node(SENTINEL, SENTINEL, SENTINEL, false);
         self.initialised = true;
     }
+    function count(Tree storage self) internal view returns (uint _count) {
+        return self.inserted >= self.removed ? self.inserted - self.removed: 0;
+    }
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
         while (_key != SENTINEL && self.nodes[_key].left != SENTINEL) {
@@ -144,9 +147,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
         } else {
             _uncle = SENTINEL;
         }
-    }
-    function count(Tree storage self) internal view returns (uint _count) {
-        return self.inserted >= self.removed ? self.inserted - self.removed: 0;
     }
 
     function insert(Tree storage self, uint z) internal {
