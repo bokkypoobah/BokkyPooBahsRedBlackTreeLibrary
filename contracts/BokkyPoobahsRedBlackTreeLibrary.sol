@@ -26,6 +26,8 @@ library BokkyPooBahsRedBlackTreeLibrary {
         uint root;
         mapping(uint => Node) nodes;
         bool initialised;
+        uint inserted;
+        uint removed;
     }
 
     uint private constant SENTINEL = 0;
@@ -143,6 +145,9 @@ library BokkyPooBahsRedBlackTreeLibrary {
             _uncle = SENTINEL;
         }
     }
+    function count(Tree storage self) internal view returns (uint _count) {
+        return self.inserted >= self.removed ? self.inserted - self.removed: 0;
+    }
 
     function insert(Tree storage self, uint z) internal {
         require(z != SENTINEL);
@@ -171,6 +176,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             self.nodes[y].right = z;
         }
         insertFixup(self, z);
+        self.inserted++;
     }
     function remove(Tree storage self, uint z) internal {
         require(z != SENTINEL);
@@ -225,6 +231,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
             delete self.nodes[SENTINEL];
         }
         delete self.nodes[y];
+        self.removed++;
     }
 
     function treeMinimum(Tree storage self, uint key) private view returns (uint) {
