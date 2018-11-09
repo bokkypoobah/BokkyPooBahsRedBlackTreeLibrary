@@ -14,7 +14,6 @@ pragma solidity ^0.4.25;
 //
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
 // ----------------------------------------------------------------------------
-
 library BokkyPooBahsRedBlackTreeLibrary {
     struct Node {
         uint parent;
@@ -401,7 +400,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
         self.nodes[x].red = false;
     }
 }
-
 // ----------------------------------------------------------------------------
 // End - BokkyPooBah's Red-Black Tree Library
 // ----------------------------------------------------------------------------
