@@ -14,8 +14,8 @@
 ----- Deploy Test -----
  # Account                                             EtherBalanceChange                          Token Name
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
- 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003229660000000000           0.000000000000000000 Miner
- 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003229660000000000           0.000000000000000000 Deployer
+ 0 0xa00af22d07c87d96eeeb0ed583f8f6ac7812827e        0.003226980000000000           0.000000000000000000 Miner
+ 1 0xa11aae29840fbb5c86e6fd4cf809eba183aef433       -0.003226980000000000           0.000000000000000000 Deployer
  2 0xa22ab8a9d641ce77e06d98b7d7065d324d3d6976        0.000000000000000000           0.000000000000000000 Wallet
  3 0xa33a6c312d9ad0e0f2e95541beed0cc081621fd0        0.000000000000000000           0.000000000000000000 User1
  4 0xa44a08d3f6933c69212114bb66e2df1813651844        0.000000000000000000           0.000000000000000000 User2
@@ -26,7 +26,7 @@
 -- ------------------------------------------ --------------------------- ------------------------------ ---------------------------
 
 PASS Deploy Test
-testRawTx status=0x1 Success gas=6000000 gasUsed=1614830 costETH=0.00322966 costUSD=0.6432513822 @ ETH/USD=199.17 gasPrice=2 gwei block=17 txIx=0 txId=0x486d7946785814e9f3986d36fe4b9fa7096407cf2e1bd28980701d1e664a55a4 @ 1541740982 Fri, 09 Nov 2018 05:23:02 UTC
+testRawTx status=0x1 Success gas=6000000 gasUsed=1613490 costETH=0.00322698 costUSD=0.6427176066 @ ETH/USD=199.17 gasPrice=2 gwei block=19 txIx=0 txId=0x94f0d2e538a3c7652a7cc3e7cf5d749698d194655d447cc5dfb90a7dbcba432b @ 1543209314 Mon, 26 Nov 2018 05:15:14 UTC
 --------------------------------------------------------------------------------
 testRedBlackTree.root=0
 testRedBlackTree.first=0
@@ -70,7 +70,7 @@ testRedBlackTree.count=1
 --------------------------------------------------------------------------------
 
 PASS Insert Data #1 - testRaw.insert(18)
-setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=88741 costETH=0.000177482 costUSD=0.03534908994 @ ETH/USD=199.17 gasPrice=2 gwei block=19 txIx=0 txId=0x59890da600d8849d86424fbfb4127ae0365ebdd3714407d58dc6588dfd640eb5 @ 1541740984 Fri, 09 Nov 2018 05:23:04 UTC
+setup_1Tx[0] status=0x1 Success gas=1000000 gasUsed=88741 costETH=0.000177482 costUSD=0.03534908994 @ ETH/USD=199.17 gasPrice=2 gwei block=21 txIx=0 txId=0x59890da600d8849d86424fbfb4127ae0365ebdd3714407d58dc6588dfd640eb5 @ 1543209316 Mon, 26 Nov 2018 05:15:16 UTC
 
 --------------------------------------------------------------------------------
 testRedBlackTree.root=18
@@ -114,7 +114,7 @@ testRedBlackTree.count=2
 --------------------------------------------------------------------------------
 
 PASS Insert Data #2 - testRaw.insert(28)
-setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=104754 costETH=0.000209508 costUSD=0.04172770836 @ ETH/USD=199.17 gasPrice=2 gwei block=21 txIx=0 txId=0xcda2bac396e295c069670885edd424618f2ab1cee7a9cb8aabbbf9f41bee819a @ 1541740986 Fri, 09 Nov 2018 05:23:06 UTC
+setup_1Tx[1] status=0x1 Success gas=1000000 gasUsed=104754 costETH=0.000209508 costUSD=0.04172770836 @ ETH/USD=199.17 gasPrice=2 gwei block=23 txIx=0 txId=0xcda2bac396e295c069670885edd424618f2ab1cee7a9cb8aabbbf9f41bee819a @ 1543209318 Mon, 26 Nov 2018 05:15:18 UTC
 
 --------------------------------------------------------------------------------
 testRedBlackTree.root=18
@@ -162,7 +162,7 @@ testRedBlackTree.count=3
 --------------------------------------------------------------------------------
 
 PASS Insert Data #3 - testRaw.insert(17)
-setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=104754 costETH=0.000209508 costUSD=0.04172770836 @ ETH/USD=199.17 gasPrice=2 gwei block=23 txIx=0 txId=0xb427808b9a5cb55c834998dbcf931c951f46afc141dd63bbed6ffb73224c1960 @ 1541740988 Fri, 09 Nov 2018 05:23:08 UTC
+setup_1Tx[2] status=0x1 Success gas=1000000 gasUsed=104754 costETH=0.000209508 costUSD=0.04172770836 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=0 txId=0xb427808b9a5cb55c834998dbcf931c951f46afc141dd63bbed6ffb73224c1960 @ 1543209320 Mon, 26 Nov 2018 05:15:20 UTC
 
 --------------------------------------------------------------------------------
 testRedBlackTree.root=18
@@ -270,35 +270,35 @@ PASS Insert Data #4 - testRaw.insert(6)
 PASS Insert Data #4 - testRaw.insert(20)
 PASS Insert Data #4 - testRaw.insert(25)
 PASS Insert Data #4 - testRaw.insert(27)
-setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=93343 costETH=0.000186686 costUSD=0.03718225062 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=0 txId=0xe6609a792785acea480c8af53f4e47f3e67575b483fdca1c61c40ba173f60db0 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=105114 costETH=0.000210228 costUSD=0.04187111076 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=1 txId=0x5170fab7f98a16d91aad5e75ea620d66962f9654c0a0ad5c1e850504b0264970 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=145999 costETH=0.000291998 costUSD=0.05815724166 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=2 txId=0x881b51ba171a7d453280e9025ce500723e3c0b7462dc3b9c64bf730ca097fb03 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=105127 costETH=0.000210254 costUSD=0.04187628918 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=3 txId=0x75d95de2dee2dbf687c308e246fd8e4db08fb8bf396c444feebd7e98d7d6fc86 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=109246 costETH=0.000218492 costUSD=0.04351705164 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=4 txId=0x4b118fd2c6cc82bbe1b1779f2cbe96f9f50ec280c60fb5299a6c17b8916280d4 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=146379 costETH=0.000292758 costUSD=0.05830861086 @ ETH/USD=199.17 gasPrice=2 gwei block=25 txIx=5 txId=0xa87aad017104052b1c22ec36a9608c341382d4d3294c2b312b29ef0c3b619b56 @ 1541740990 Fri, 09 Nov 2018 05:23:10 UTC
-setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=105474 costETH=0.000210948 costUSD=0.04201451316 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=0 txId=0xebd4800efff1eeb277d58b5cc85496410d8768be8b43bf5bb0e90565675230d5 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=109251 costETH=0.000218502 costUSD=0.04351904334 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=1 txId=0xbac7919796ff06b42ddf3d1bcd9dd49f2f7414a97cc6cbdd5d2433f153184861 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=97840 costETH=0.00019568 costUSD=0.0389735856 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=2 txId=0x3b8e5b59786c49f9ee1bc4299836360a138e9f9144d0fc4b1808d804d331dc32 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=146408 costETH=0.000292816 costUSD=0.05832016272 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=3 txId=0x9c8f449ebdad93dedbd6109eee0febd1a1177b54068760d36584981dac309acf @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=172874 costETH=0.000345748 costUSD=0.06886262916 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=4 txId=0x6e7c58a1e0861028b0a8c92345ca89438e96d9d6ef1490ef5fd3cb6c5cd33a01 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=105500 costETH=0.000211 costUSD=0.04202487 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=5 txId=0x77be4ab327ce46ce4355a28bd1a3dd0dca9082f7b9de9f5786df79724f716cd8 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=6 txId=0x5002997ffd9f72f16aea8e210aac775502d1307558d60b637fbe3b95877ba4ab @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=109619 costETH=0.000219238 costUSD=0.04366563246 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=7 txId=0xd0da43483708f68ab9aaf8318bcd9b745df45acfb8e6c656b3a86edce08a57fc @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=8 txId=0x3bbbbf612552ad8cd345fdbbe34f90f713824e3b648aebd0efae2fb1baf70655 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=109598 costETH=0.000219196 costUSD=0.04365726732 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=9 txId=0x979c940ce164fb77389b7dc5e49c1e0efcd9146f796cd89f5abea5a3bdcf155c @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=10 txId=0x6eb3867964f2d0ae56f0e180417ce21b77a6cb5c8a25e0101062ee76a6fd386b @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[20] status=0x1 Success gas=1000000 gasUsed=113738 costETH=0.000227476 costUSD=0.04530639492 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=11 txId=0x8c7376678c8ed149bb9e0a1d501f3b0bb1f1f9e1256eb09e2a6529717c4f5a3d @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[21] status=0x1 Success gas=1000000 gasUsed=146719 costETH=0.000293438 costUSD=0.05844404646 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=12 txId=0xf37b955e7e2da26a40af8df3fda4a5ced2ae024276bb68a4ef9a4a95bd22547d @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[22] status=0x1 Success gas=1000000 gasUsed=172907 costETH=0.000345814 costUSD=0.06887577438 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=13 txId=0xb3ab3d3558b7f12196fe4c23b460af362aaae43798cab455f3ecbe0c84bd4484 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[23] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=14 txId=0x2cbf8e5d6405bcf733fe27ca00af6752151d3e56766b51781e80761ecbd83966 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[24] status=0x1 Success gas=1000000 gasUsed=109624 costETH=0.000219248 costUSD=0.04366762416 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=15 txId=0xf1eb40bd87d445f2a3624c00379f8ebfd0184c88dbd7d6a43606800e9cd25624 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[25] status=0x1 Success gas=1000000 gasUsed=106207 costETH=0.000212414 costUSD=0.04230649638 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=16 txId=0x4aa94d4cca02b4604ee623c7aee0798edafaf159a442aefdf9c338e8c403ca37 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[26] status=0x1 Success gas=1000000 gasUsed=106220 costETH=0.00021244 costUSD=0.0423116748 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=17 txId=0x07966ecc33502554237869649518d2ac6fef410fa632498116f407543c1db88d @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[27] status=0x1 Success gas=1000000 gasUsed=146752 costETH=0.000293504 costUSD=0.05845719168 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=18 txId=0xcf7f8522716c2d81b72dcc884c9e03b6c4582a4aa6186267e2382bee6ffc5196 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[28] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=19 txId=0x1cb7dcd0d06ffa5bb4d9f27229363328fc7a3f19328f648b3e9c2b00389866f2 @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[29] status=0x1 Success gas=1000000 gasUsed=113735 costETH=0.00022747 costUSD=0.0453051999 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=20 txId=0x58714f87dda288a14115091277556b71fb5defd65f92fe4913432999830ec6ce @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[30] status=0x1 Success gas=1000000 gasUsed=173265 costETH=0.00034653 costUSD=0.0690183801 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=21 txId=0x9afabd26fc3e11c10ffcd7128fe01f5e5803771ff8375c53fda6fafc9e0908af @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
-setup_1Tx[31] status=0x1 Success gas=1000000 gasUsed=109992 costETH=0.000219984 costUSD=0.04381421328 @ ETH/USD=199.17 gasPrice=2 gwei block=26 txIx=22 txId=0x1083a2dceab459724e5b241c9fcf2022e7c29b1e8290f2bf6251693289ba9edb @ 1541740991 Fri, 09 Nov 2018 05:23:11 UTC
+setup_1Tx[3] status=0x1 Success gas=1000000 gasUsed=93343 costETH=0.000186686 costUSD=0.03718225062 @ ETH/USD=199.17 gasPrice=2 gwei block=27 txIx=0 txId=0xe6609a792785acea480c8af53f4e47f3e67575b483fdca1c61c40ba173f60db0 @ 1543209322 Mon, 26 Nov 2018 05:15:22 UTC
+setup_1Tx[4] status=0x1 Success gas=1000000 gasUsed=105114 costETH=0.000210228 costUSD=0.04187111076 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=0 txId=0x5170fab7f98a16d91aad5e75ea620d66962f9654c0a0ad5c1e850504b0264970 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[5] status=0x1 Success gas=1000000 gasUsed=145999 costETH=0.000291998 costUSD=0.05815724166 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=1 txId=0x881b51ba171a7d453280e9025ce500723e3c0b7462dc3b9c64bf730ca097fb03 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[6] status=0x1 Success gas=1000000 gasUsed=105127 costETH=0.000210254 costUSD=0.04187628918 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=2 txId=0x75d95de2dee2dbf687c308e246fd8e4db08fb8bf396c444feebd7e98d7d6fc86 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[7] status=0x1 Success gas=1000000 gasUsed=109246 costETH=0.000218492 costUSD=0.04351705164 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=3 txId=0x4b118fd2c6cc82bbe1b1779f2cbe96f9f50ec280c60fb5299a6c17b8916280d4 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[8] status=0x1 Success gas=1000000 gasUsed=146379 costETH=0.000292758 costUSD=0.05830861086 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=4 txId=0xa87aad017104052b1c22ec36a9608c341382d4d3294c2b312b29ef0c3b619b56 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[9] status=0x1 Success gas=1000000 gasUsed=105474 costETH=0.000210948 costUSD=0.04201451316 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=5 txId=0xebd4800efff1eeb277d58b5cc85496410d8768be8b43bf5bb0e90565675230d5 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[10] status=0x1 Success gas=1000000 gasUsed=109251 costETH=0.000218502 costUSD=0.04351904334 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=6 txId=0xbac7919796ff06b42ddf3d1bcd9dd49f2f7414a97cc6cbdd5d2433f153184861 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[11] status=0x1 Success gas=1000000 gasUsed=97840 costETH=0.00019568 costUSD=0.0389735856 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=7 txId=0x3b8e5b59786c49f9ee1bc4299836360a138e9f9144d0fc4b1808d804d331dc32 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[12] status=0x1 Success gas=1000000 gasUsed=146408 costETH=0.000292816 costUSD=0.05832016272 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=8 txId=0x9c8f449ebdad93dedbd6109eee0febd1a1177b54068760d36584981dac309acf @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[13] status=0x1 Success gas=1000000 gasUsed=172874 costETH=0.000345748 costUSD=0.06886262916 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=9 txId=0x6e7c58a1e0861028b0a8c92345ca89438e96d9d6ef1490ef5fd3cb6c5cd33a01 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[14] status=0x1 Success gas=1000000 gasUsed=105500 costETH=0.000211 costUSD=0.04202487 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=10 txId=0x77be4ab327ce46ce4355a28bd1a3dd0dca9082f7b9de9f5786df79724f716cd8 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[15] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=11 txId=0x5002997ffd9f72f16aea8e210aac775502d1307558d60b637fbe3b95877ba4ab @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[16] status=0x1 Success gas=1000000 gasUsed=109619 costETH=0.000219238 costUSD=0.04366563246 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=12 txId=0xd0da43483708f68ab9aaf8318bcd9b745df45acfb8e6c656b3a86edce08a57fc @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[17] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=13 txId=0x3bbbbf612552ad8cd345fdbbe34f90f713824e3b648aebd0efae2fb1baf70655 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[18] status=0x1 Success gas=1000000 gasUsed=109598 costETH=0.000219196 costUSD=0.04365726732 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=14 txId=0x979c940ce164fb77389b7dc5e49c1e0efcd9146f796cd89f5abea5a3bdcf155c @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[19] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=15 txId=0x6eb3867964f2d0ae56f0e180417ce21b77a6cb5c8a25e0101062ee76a6fd386b @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[20] status=0x1 Success gas=1000000 gasUsed=113738 costETH=0.000227476 costUSD=0.04530639492 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=16 txId=0x8c7376678c8ed149bb9e0a1d501f3b0bb1f1f9e1256eb09e2a6529717c4f5a3d @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[21] status=0x1 Success gas=1000000 gasUsed=146719 costETH=0.000293438 costUSD=0.05844404646 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=17 txId=0xf37b955e7e2da26a40af8df3fda4a5ced2ae024276bb68a4ef9a4a95bd22547d @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[22] status=0x1 Success gas=1000000 gasUsed=172907 costETH=0.000345814 costUSD=0.06887577438 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=18 txId=0xb3ab3d3558b7f12196fe4c23b460af362aaae43798cab455f3ecbe0c84bd4484 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[23] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=19 txId=0x2cbf8e5d6405bcf733fe27ca00af6752151d3e56766b51781e80761ecbd83966 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[24] status=0x1 Success gas=1000000 gasUsed=109624 costETH=0.000219248 costUSD=0.04366762416 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=20 txId=0xf1eb40bd87d445f2a3624c00379f8ebfd0184c88dbd7d6a43606800e9cd25624 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[25] status=0x1 Success gas=1000000 gasUsed=106207 costETH=0.000212414 costUSD=0.04230649638 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=21 txId=0x4aa94d4cca02b4604ee623c7aee0798edafaf159a442aefdf9c338e8c403ca37 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[26] status=0x1 Success gas=1000000 gasUsed=106220 costETH=0.00021244 costUSD=0.0423116748 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=22 txId=0x07966ecc33502554237869649518d2ac6fef410fa632498116f407543c1db88d @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[27] status=0x1 Success gas=1000000 gasUsed=146752 costETH=0.000293504 costUSD=0.05845719168 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=23 txId=0xcf7f8522716c2d81b72dcc884c9e03b6c4582a4aa6186267e2382bee6ffc5196 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[28] status=0x1 Success gas=1000000 gasUsed=105847 costETH=0.000211694 costUSD=0.04216309398 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=24 txId=0x1cb7dcd0d06ffa5bb4d9f27229363328fc7a3f19328f648b3e9c2b00389866f2 @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[29] status=0x1 Success gas=1000000 gasUsed=113735 costETH=0.00022747 costUSD=0.0453051999 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=25 txId=0x58714f87dda288a14115091277556b71fb5defd65f92fe4913432999830ec6ce @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[30] status=0x1 Success gas=1000000 gasUsed=173265 costETH=0.00034653 costUSD=0.0690183801 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=26 txId=0x9afabd26fc3e11c10ffcd7128fe01f5e5803771ff8375c53fda6fafc9e0908af @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
+setup_1Tx[31] status=0x1 Success gas=1000000 gasUsed=109992 costETH=0.000219984 costUSD=0.04381421328 @ ETH/USD=199.17 gasPrice=2 gwei block=28 txIx=27 txId=0x1083a2dceab459724e5b241c9fcf2022e7c29b1e8290f2bf6251693289ba9edb @ 1543209323 Mon, 26 Nov 2018 05:15:23 UTC
 minGasUsedInsert=88741
 averageGasUsedInsert=118387.96875
 maxGasUsedInsert=173265
@@ -411,7 +411,7 @@ testRedBlackTree.count=32
 --------------------------------------------------------------------------------
 
 PASS Insert Data #5 - Cannot Insert Duplicate - testRaw.insert(14)
-insertData5_tx status=0x0 Failure gas=1000000 gasUsed=22992 costETH=0.000045984 costUSD=0.00915863328 @ ETH/USD=199.17 gasPrice=2 gwei block=30 txIx=0 txId=0x88aad29dd34beebd69527883ed69564cc93250e22fcb2d6a9a30788941c73411 @ 1541740995 Fri, 09 Nov 2018 05:23:15 UTC
+insertData5_tx status=0x0 Failure gas=1000000 gasUsed=22992 costETH=0.000045984 costUSD=0.00915863328 @ ETH/USD=199.17 gasPrice=2 gwei block=33 txIx=0 txId=0x88aad29dd34beebd69527883ed69564cc93250e22fcb2d6a9a30788941c73411 @ 1543209328 Mon, 26 Nov 2018 05:15:28 UTC
 
 ----- Remove Data #1 - Cannot Remove Non-Existent Key -----
 --------------------------------------------------------------------------------
@@ -457,7 +457,7 @@ testRedBlackTree.count=32
 --------------------------------------------------------------------------------
 
 PASS Remove Data #1 - Cannot Remove Non-Existent Key - testRaw.remove(114)
-removeData1_tx status=0x0 Failure gas=1000000 gasUsed=22552 costETH=0.000045104 costUSD=0.00898336368 @ ETH/USD=199.17 gasPrice=2 gwei block=33 txIx=0 txId=0x5d50aa60ebb86382c4ff60717f88a140cff8112214d368931ab72a1d10966688 @ 1541740998 Fri, 09 Nov 2018 05:23:18 UTC
+removeData1_tx status=0x0 Failure gas=1000000 gasUsed=22552 costETH=0.000045104 costUSD=0.00898336368 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=0 txId=0x5d50aa60ebb86382c4ff60717f88a140cff8112214d368931ab72a1d10966688 @ 1543209331 Mon, 26 Nov 2018 05:15:31 UTC
 
 ----- Remove Data #2 -----
 removeItems=[4,14,25,32,2,30,16,31,6,26,18,22,28,23,12,15,19,27,7,13,29,11,3,5,17,1,24,20,9,8,21,10]
@@ -626,38 +626,38 @@ PASS Remove Data #2 - testRaw.remove(9)
 PASS Remove Data #2 - testRaw.remove(8)
 PASS Remove Data #2 - testRaw.remove(21)
 PASS Remove Data #2 - testRaw.remove(10)
-tx[0] status=0x1 Success gas=1000000 gasUsed=74208 costETH=0.000148416 costUSD=0.02956001472 @ ETH/USD=199.17 gasPrice=2 gwei block=35 txIx=0 txId=0x61f5444932d7f41d7fd09897f1e81f8d3cbb6f78ea8f50e83c5c6226c50e3092 @ 1541741000 Fri, 09 Nov 2018 05:23:20 UTC
-tx[1] status=0x1 Success gas=1000000 gasUsed=82136 costETH=0.000164272 costUSD=0.03271805424 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=0 txId=0x59c0efd86962a8c1d56cf29985769d92a73e1597125b225abc5be569ec65c68f @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[2] status=0x1 Success gas=1000000 gasUsed=67098 costETH=0.000134196 costUSD=0.02672781732 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=1 txId=0xa22460c1790419df45a6d2b8c0197f08233384e12abe9b8a8602ba7bc0fda38a @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[3] status=0x1 Success gas=1000000 gasUsed=124864 costETH=0.000249728 costUSD=0.04973832576 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=2 txId=0x36e309ac845ef04354d226a0689cd45f9bb308fb2ae625924f9667a9a82e7d0b @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[4] status=0x1 Success gas=1000000 gasUsed=74333 costETH=0.000148666 costUSD=0.02960980722 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=3 txId=0x8ee79355ff4e6d6a560c74759ecadc2e9d56d584d17fe6b6e5c137b18cc91e0f @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[5] status=0x1 Success gas=1000000 gasUsed=153348 costETH=0.000306696 costUSD=0.06108464232 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=4 txId=0xecd889674facf32b8c6bc6ab689b7dbb304a747e653ae888673468e5ee127bed @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[6] status=0x1 Success gas=1000000 gasUsed=33177 costETH=0.000066354 costUSD=0.01321572618 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=5 txId=0x4bd1f47fede7a336bf2b0d99e31036c1b5a8612f26e5f7a4f45153f82fa00b8e @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[7] status=0x1 Success gas=1000000 gasUsed=33326 costETH=0.000066652 costUSD=0.01327507884 @ ETH/USD=199.17 gasPrice=2 gwei block=36 txIx=6 txId=0x69e4f873eef4d240387bdf1ef63245adeaa2397068c90ddd9e0b1c98efead21f @ 1541741001 Fri, 09 Nov 2018 05:23:21 UTC
-tx[8] status=0x1 Success gas=1000000 gasUsed=87805 costETH=0.00017561 costUSD=0.0349762437 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=0 txId=0xb367f03a45a136e841df66bbf6f25c77e03892a724d06ca8c4b7b8707610fea1 @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[9] status=0x1 Success gas=1000000 gasUsed=102717 costETH=0.000205434 costUSD=0.04091628978 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=1 txId=0x7a06c70f0ffa0ea72a888b908d69f41f7e000fb3ca492305b6ea984e9225a6ee @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[10] status=0x1 Success gas=1000000 gasUsed=59762 costETH=0.000119524 costUSD=0.02380559508 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=2 txId=0x575a91b8545be6429009f73df510f5e1149ca697d0c9b8f58f21b16376313436 @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[11] status=0x1 Success gas=1000000 gasUsed=88038 costETH=0.000176076 costUSD=0.03506905692 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=3 txId=0x6e28447e9cbd43507d09b7111cebc36b183796c54b3e7a95d9b6a1c828ee1989 @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[12] status=0x1 Success gas=1000000 gasUsed=125654 costETH=0.000251308 costUSD=0.05005301436 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=4 txId=0xa8cb4a32eb3eb791bf3057bdd98fb9a53d887fe5fb9effe5d7c58243d9596f3b @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[13] status=0x1 Success gas=1000000 gasUsed=103327 costETH=0.000206654 costUSD=0.04115927718 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=5 txId=0x04e0e7a85234f84e1da323e880321d08e48302f769edec2f8c03cbb6d7dfb880 @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[14] status=0x1 Success gas=1000000 gasUsed=74327 costETH=0.000148654 costUSD=0.02960741718 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=6 txId=0xbf327fb200a9d2a9914c7a38d296ef3c66fae29a3f6080d147901be80814a952 @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[15] status=0x1 Success gas=1000000 gasUsed=168118 costETH=0.000336236 costUSD=0.06696812412 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=7 txId=0xf0154cafb0ebf55b85a5dae58c35d36be5b547325603285c255669de70351cbd @ 1541741004 Fri, 09 Nov 2018 05:23:24 UTC
-tx[16] status=0x1 Success gas=1000000 gasUsed=81991 costETH=0.000163982 costUSD=0.03266029494 @ ETH/USD=199.17 gasPrice=2 gwei block=41 txIx=0 txId=0x76d30b58293c8156860197a4ef83042aa1387e7afea5b9890906b8d5eb7b350f @ 1541741006 Fri, 09 Nov 2018 05:23:26 UTC
-tx[17] status=0x1 Success gas=1000000 gasUsed=33177 costETH=0.000066354 costUSD=0.01321572618 @ ETH/USD=199.17 gasPrice=2 gwei block=41 txIx=1 txId=0x6a978f8d248d1afab1a36d1c161eb5446c3fea28ce9a5f953d4ca0b3c6a39fec @ 1541741006 Fri, 09 Nov 2018 05:23:26 UTC
-tx[18] status=0x1 Success gas=1000000 gasUsed=67413 costETH=0.000134826 costUSD=0.02685329442 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=0 txId=0xd3e87cb46f3fe4c44df9d37fac643ccade172f1b936d27aa3d29c2bdfde0b020 @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[19] status=0x1 Success gas=1000000 gasUsed=102704 costETH=0.000205408 costUSD=0.04091111136 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=1 txId=0x19268a190f392539d7d0c7b422a4a4f6999a25601605e2098d0dc89bc3521b1b @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[20] status=0x1 Success gas=1000000 gasUsed=130112 costETH=0.000260224 costUSD=0.05182881408 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=2 txId=0xcc3a4ad12c3a4bcf747507f07b7be89fb882467592e7e08b2fd3a207e29a0153 @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[21] status=0x1 Success gas=1000000 gasUsed=47912 costETH=0.000095824 costUSD=0.01908526608 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=3 txId=0x93a1ea84536f9bf0aa55379949046cc953531a19b17a91176a5292f6b4826f89 @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[22] status=0x1 Success gas=1000000 gasUsed=195672 costETH=0.000391344 costUSD=0.07794398448 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=4 txId=0xdb8197c75f38b351d43d5ec417195ff6daed4275abbebe6cc35b2da27f99330d @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[23] status=0x1 Success gas=1000000 gasUsed=33333 costETH=0.000066666 costUSD=0.01327786722 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=5 txId=0xc08cb1a4c250f9dfaf90d03838842a7cb1822c992fcbbbc32027d1e713149e63 @ 1541741007 Fri, 09 Nov 2018 05:23:27 UTC
-tx[24] status=0x1 Success gas=1000000 gasUsed=124875 costETH=0.00024975 costUSD=0.0497427075 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=0 txId=0x893d6c2410f3281adfab0d3986a3cc0b52316f4e9beecb328cceee4672eab7ac @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[25] status=0x1 Success gas=1000000 gasUsed=102764 costETH=0.000205528 costUSD=0.04093501176 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=1 txId=0xe520debc8cf1dcf36af2222a497b73d0d63958698d830f651bee0356e0dfda45 @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[26] status=0x1 Success gas=1000000 gasUsed=64862 costETH=0.000129724 costUSD=0.02583712908 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=2 txId=0xd5c0d047e59123d02bcdb9b9a11d21ed221d20db4531d172368b45c6cb212d00 @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[27] status=0x1 Success gas=1000000 gasUsed=47912 costETH=0.000095824 costUSD=0.01908526608 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=3 txId=0x26e18bb36e1b65cc7c60aae57485e6b31d9efa34a47d8d950eadccafab515a07 @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[28] status=0x1 Success gas=1000000 gasUsed=47906 costETH=0.000095812 costUSD=0.01908287604 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=4 txId=0x31f226b8f6064fd81a7d35a7dc8b571e58c6d2d4f37b6de232a433fde26f946a @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[29] status=0x1 Success gas=1000000 gasUsed=79588 costETH=0.000159176 costUSD=0.03170308392 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=5 txId=0x92889c2bba485a6d11c2fd888b0fd30d9532e8e10e14930953d68533e185b698 @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[30] status=0x1 Success gas=1000000 gasUsed=47906 costETH=0.000095812 costUSD=0.01908287604 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=6 txId=0x44bafdee5aab96d4492539ace3515932e8c61dc075c635cf25cc01861a3b6782 @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
-tx[31] status=0x1 Success gas=1000000 gasUsed=50146 costETH=0.000100292 costUSD=0.01997515764 @ ETH/USD=199.17 gasPrice=2 gwei block=44 txIx=7 txId=0x0c13383a7b94f99ec4e5befb83bf9a4f6ac1845c5f444ef3b238004ef29168dd @ 1541741009 Fri, 09 Nov 2018 05:23:29 UTC
+tx[0] status=0x1 Success gas=1000000 gasUsed=74208 costETH=0.000148416 costUSD=0.02956001472 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=0 txId=0x61f5444932d7f41d7fd09897f1e81f8d3cbb6f78ea8f50e83c5c6226c50e3092 @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[1] status=0x1 Success gas=1000000 gasUsed=82136 costETH=0.000164272 costUSD=0.03271805424 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=1 txId=0x59c0efd86962a8c1d56cf29985769d92a73e1597125b225abc5be569ec65c68f @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[2] status=0x1 Success gas=1000000 gasUsed=67098 costETH=0.000134196 costUSD=0.02672781732 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=2 txId=0xa22460c1790419df45a6d2b8c0197f08233384e12abe9b8a8602ba7bc0fda38a @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[3] status=0x1 Success gas=1000000 gasUsed=124864 costETH=0.000249728 costUSD=0.04973832576 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=3 txId=0x36e309ac845ef04354d226a0689cd45f9bb308fb2ae625924f9667a9a82e7d0b @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[4] status=0x1 Success gas=1000000 gasUsed=74333 costETH=0.000148666 costUSD=0.02960980722 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=4 txId=0x8ee79355ff4e6d6a560c74759ecadc2e9d56d584d17fe6b6e5c137b18cc91e0f @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[5] status=0x1 Success gas=1000000 gasUsed=153348 costETH=0.000306696 costUSD=0.06108464232 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=5 txId=0xecd889674facf32b8c6bc6ab689b7dbb304a747e653ae888673468e5ee127bed @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[6] status=0x1 Success gas=1000000 gasUsed=33177 costETH=0.000066354 costUSD=0.01321572618 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=6 txId=0x4bd1f47fede7a336bf2b0d99e31036c1b5a8612f26e5f7a4f45153f82fa00b8e @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[7] status=0x1 Success gas=1000000 gasUsed=33326 costETH=0.000066652 costUSD=0.01327507884 @ ETH/USD=199.17 gasPrice=2 gwei block=39 txIx=7 txId=0x69e4f873eef4d240387bdf1ef63245adeaa2397068c90ddd9e0b1c98efead21f @ 1543209334 Mon, 26 Nov 2018 05:15:34 UTC
+tx[8] status=0x1 Success gas=1000000 gasUsed=87805 costETH=0.00017561 costUSD=0.0349762437 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=0 txId=0xb367f03a45a136e841df66bbf6f25c77e03892a724d06ca8c4b7b8707610fea1 @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[9] status=0x1 Success gas=1000000 gasUsed=102717 costETH=0.000205434 costUSD=0.04091628978 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=1 txId=0x7a06c70f0ffa0ea72a888b908d69f41f7e000fb3ca492305b6ea984e9225a6ee @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[10] status=0x1 Success gas=1000000 gasUsed=59762 costETH=0.000119524 costUSD=0.02380559508 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=2 txId=0x575a91b8545be6429009f73df510f5e1149ca697d0c9b8f58f21b16376313436 @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[11] status=0x1 Success gas=1000000 gasUsed=88038 costETH=0.000176076 costUSD=0.03506905692 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=3 txId=0x6e28447e9cbd43507d09b7111cebc36b183796c54b3e7a95d9b6a1c828ee1989 @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[12] status=0x1 Success gas=1000000 gasUsed=125654 costETH=0.000251308 costUSD=0.05005301436 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=4 txId=0xa8cb4a32eb3eb791bf3057bdd98fb9a53d887fe5fb9effe5d7c58243d9596f3b @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[13] status=0x1 Success gas=1000000 gasUsed=103327 costETH=0.000206654 costUSD=0.04115927718 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=5 txId=0x04e0e7a85234f84e1da323e880321d08e48302f769edec2f8c03cbb6d7dfb880 @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[14] status=0x1 Success gas=1000000 gasUsed=74327 costETH=0.000148654 costUSD=0.02960741718 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=6 txId=0xbf327fb200a9d2a9914c7a38d296ef3c66fae29a3f6080d147901be80814a952 @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[15] status=0x1 Success gas=1000000 gasUsed=168118 costETH=0.000336236 costUSD=0.06696812412 @ ETH/USD=199.17 gasPrice=2 gwei block=42 txIx=7 txId=0xf0154cafb0ebf55b85a5dae58c35d36be5b547325603285c255669de70351cbd @ 1543209337 Mon, 26 Nov 2018 05:15:37 UTC
+tx[16] status=0x1 Success gas=1000000 gasUsed=81991 costETH=0.000163982 costUSD=0.03266029494 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=0 txId=0x76d30b58293c8156860197a4ef83042aa1387e7afea5b9890906b8d5eb7b350f @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[17] status=0x1 Success gas=1000000 gasUsed=33177 costETH=0.000066354 costUSD=0.01321572618 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=1 txId=0x6a978f8d248d1afab1a36d1c161eb5446c3fea28ce9a5f953d4ca0b3c6a39fec @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[18] status=0x1 Success gas=1000000 gasUsed=67413 costETH=0.000134826 costUSD=0.02685329442 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=2 txId=0xd3e87cb46f3fe4c44df9d37fac643ccade172f1b936d27aa3d29c2bdfde0b020 @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[19] status=0x1 Success gas=1000000 gasUsed=102704 costETH=0.000205408 costUSD=0.04091111136 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=3 txId=0x19268a190f392539d7d0c7b422a4a4f6999a25601605e2098d0dc89bc3521b1b @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[20] status=0x1 Success gas=1000000 gasUsed=130112 costETH=0.000260224 costUSD=0.05182881408 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=4 txId=0xcc3a4ad12c3a4bcf747507f07b7be89fb882467592e7e08b2fd3a207e29a0153 @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[21] status=0x1 Success gas=1000000 gasUsed=47912 costETH=0.000095824 costUSD=0.01908526608 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=5 txId=0x93a1ea84536f9bf0aa55379949046cc953531a19b17a91176a5292f6b4826f89 @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[22] status=0x1 Success gas=1000000 gasUsed=195672 costETH=0.000391344 costUSD=0.07794398448 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=6 txId=0xdb8197c75f38b351d43d5ec417195ff6daed4275abbebe6cc35b2da27f99330d @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[23] status=0x1 Success gas=1000000 gasUsed=33333 costETH=0.000066666 costUSD=0.01327786722 @ ETH/USD=199.17 gasPrice=2 gwei block=45 txIx=7 txId=0xc08cb1a4c250f9dfaf90d03838842a7cb1822c992fcbbbc32027d1e713149e63 @ 1543209340 Mon, 26 Nov 2018 05:15:40 UTC
+tx[24] status=0x1 Success gas=1000000 gasUsed=124875 costETH=0.00024975 costUSD=0.0497427075 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=0 txId=0x893d6c2410f3281adfab0d3986a3cc0b52316f4e9beecb328cceee4672eab7ac @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[25] status=0x1 Success gas=1000000 gasUsed=102764 costETH=0.000205528 costUSD=0.04093501176 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=1 txId=0xe520debc8cf1dcf36af2222a497b73d0d63958698d830f651bee0356e0dfda45 @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[26] status=0x1 Success gas=1000000 gasUsed=64862 costETH=0.000129724 costUSD=0.02583712908 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=2 txId=0xd5c0d047e59123d02bcdb9b9a11d21ed221d20db4531d172368b45c6cb212d00 @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[27] status=0x1 Success gas=1000000 gasUsed=47912 costETH=0.000095824 costUSD=0.01908526608 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=3 txId=0x26e18bb36e1b65cc7c60aae57485e6b31d9efa34a47d8d950eadccafab515a07 @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[28] status=0x1 Success gas=1000000 gasUsed=47906 costETH=0.000095812 costUSD=0.01908287604 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=4 txId=0x31f226b8f6064fd81a7d35a7dc8b571e58c6d2d4f37b6de232a433fde26f946a @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[29] status=0x1 Success gas=1000000 gasUsed=79588 costETH=0.000159176 costUSD=0.03170308392 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=5 txId=0x92889c2bba485a6d11c2fd888b0fd30d9532e8e10e14930953d68533e185b698 @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[30] status=0x1 Success gas=1000000 gasUsed=47906 costETH=0.000095812 costUSD=0.01908287604 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=6 txId=0x44bafdee5aab96d4492539ace3515932e8c61dc075c635cf25cc01861a3b6782 @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
+tx[31] status=0x1 Success gas=1000000 gasUsed=50146 costETH=0.000100292 costUSD=0.01997515764 @ ETH/USD=199.17 gasPrice=2 gwei block=47 txIx=7 txId=0x0c13383a7b94f99ec4e5befb83bf9a4f6ac1845c5f444ef3b238004ef29168dd @ 1543209342 Mon, 26 Nov 2018 05:15:42 UTC
 minGasUsedRemove=33177
 averageGasUsedRemove=84703.46875
 maxGasUsedRemove=195672
