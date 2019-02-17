@@ -21,6 +21,7 @@ An important use-case for this library is to maintain a sorted on-chain order bo
   * [Red-Black Tree With Sequential Insertion](#red-black-tree-with-sequential-insertion)
   * [Gas Cost](#gas-cost)
 * [History](#history)
+* [Bug Bounty Scope And Donations](#bug-bounty-scope-and-donations)
 * [Deployment](#deployment)
 * [Questions And Answers](#questions-and-answers)
 * [Functions](#functions)
