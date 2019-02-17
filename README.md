@@ -161,7 +161,7 @@ Details of the bug bounty program for this project can be found at [BokkyPooBah'
 
 The scope of the bug bounty for this project follows:
 
-* [contracts/BokkyPooBahsRedBlackTreeLibrary.sol](contracts/BokkyPooBahsRedBlackTreeLibrary.sol)
+* [contracts/BokkyPoobahsRedBlackTreeLibrary.sol](contracts/BokkyPoobahsRedBlackTreeLibrary.sol)
 
 <br />
 
