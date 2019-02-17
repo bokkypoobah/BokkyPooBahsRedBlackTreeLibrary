@@ -1,3 +1,9 @@
+<kbd><img src="images/PrincessLeiaPeachExpelsARainbowBigBang-RBT-940x198.png" /></kbd>
+
+<br />
+
+<hr />
+
 # BokkyPooBahs Red-Black Binary Search Tree Library
 
 Status: **Currently being tested and bug bounty open. Don't use in production without an audit, yet.**
@@ -155,6 +161,16 @@ If you find this library useful for your project, **especially commercial projec
 
 <hr />
 
+## History
+
+Version             | Date         | Notes
+:------------------ |:------------ |:---------------------------------------
+v0.90-pre-release   | Feb 17 2019  | Bug bounty added
+
+<br />
+
+<hr />
+
 ## Bug Bounty Scope And Donations
 
 Details of the bug bounty program for this project can be found at [BokkyPooBah's Hall Of Fame And Bug Bounties](https://github.com/bokkypoobah/BokkyPooBahsHallOfFameAndBugBounties). Please consider [donating](https://github.com/bokkypoobah/BokkyPooBahsHallOfFameAndBugBounties#donations) to support the bug bounty, and the development and maintenance of decentralised applications.
@@ -162,16 +178,6 @@ Details of the bug bounty program for this project can be found at [BokkyPooBah'
 The scope of the bug bounty for this project follows:
 
 * [contracts/BokkyPoobahsRedBlackTreeLibrary.sol](contracts/BokkyPoobahsRedBlackTreeLibrary.sol)
-
-<br />
-
-<hr />
-
-## History
-
-Version             | Date         | Notes
-:------------------ |:------------ |:---------------------------------------
-v0.90-pre-release   | Feb 17 2019  | Bug bounty added
 
 <br />
 
