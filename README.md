@@ -1,6 +1,6 @@
 # BokkyPooBahs Red-Black Binary Search Tree Library
 
-Status: **Work in progress. Documenting before getting further testing and review - don't use yet**
+Status: **Currently being tested and bug bounty open. Don't use in production without an audit, yet.**
 
 A gas-efficient Solidity library using the iterative (rather than recursive) Red-Black binary search tree algorithm to help you maintain a sorted `uint` key index for your data. Insertions, deletions and searches are in **O(log n)** time (and ~gas). Note that the key of 0 is prohibited. Use the sorted keys as indices to your mapping tables of data to access your data in sorted order.
 
@@ -154,7 +154,23 @@ If you find this library useful for your project, **especially commercial projec
 
 <hr />
 
+## Bug Bounty Scope And Donations
+
+Details of the bug bounty program for this project can be found at [BokkyPooBah's Hall Of Fame And Bug Bounties](https://github.com/bokkypoobah/BokkyPooBahsHallOfFameAndBugBounties). Please consider [donating](https://github.com/bokkypoobah/BokkyPooBahsHallOfFameAndBugBounties#donations) to support the bug bounty, and the development and maintenance of decentralised applications.
+
+The scope of the bug bounty for this project follows:
+
+* [contracts/BokkyPooBahsRedBlackTreeLibrary.sol](contracts/BokkyPooBahsRedBlackTreeLibrary.sol)
+
+<br />
+
+<hr />
+
 ## History
+
+Version             | Date         | Notes
+:------------------ |:------------ |:---------------------------------------
+v0.90-pre-release   | Feb 17 2019  | Bug bounty added
 
 <br />
 
