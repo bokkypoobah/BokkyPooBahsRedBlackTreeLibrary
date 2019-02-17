@@ -484,6 +484,7 @@ As the nodes are stored as elements in a Solidity *mapping* data structure, [Ite
 * https://www.csee.umbc.edu/courses/undergraduate/341/fall13/section3/lectures/10-Red-Black-Trees.pdf
 * http://cseweb.ucsd.edu/~kube/cls/100/Lectures/lec7/lec7.pdf
 * https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/
+* https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
 
 <br />
 
