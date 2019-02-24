@@ -24,7 +24,6 @@ contract TestBokkyPooBahsRedBlackTreeRaw {
     event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     constructor() public {
-        tree.init();
     }
     function root() public view returns (uint _key) {
         _key = tree.root;

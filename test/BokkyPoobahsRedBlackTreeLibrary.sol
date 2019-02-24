@@ -24,19 +24,12 @@ library BokkyPooBahsRedBlackTreeLibrary {
     struct Tree {
         uint root;
         mapping(uint => Node) nodes;
-        bool initialised;
     }
 
     uint private constant SENTINEL = 0;
 
     event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
-    function init(Tree storage self) internal {
-        require(!self.initialised);
-        self.root = SENTINEL;
-        self.nodes[SENTINEL] = Node(SENTINEL, SENTINEL, SENTINEL, false);
-        self.initialised = true;
-    }
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
         while (_key != SENTINEL && self.nodes[_key].left != SENTINEL) {
