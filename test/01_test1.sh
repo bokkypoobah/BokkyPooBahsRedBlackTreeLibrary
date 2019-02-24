@@ -39,10 +39,10 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 #echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST1OUTPUT
 #echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-solc_0.4.25 --version | tee -a $TEST1OUTPUT
+solc_0.5.4 --version | tee -a $TEST1OUTPUT
 
-echo "var testRawOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
-# echo "var testRawOutput=`solc_0.4.25 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
+echo "var testRawOutput=`solc_0.5.4 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
+# echo "var testRawOutput=`solc_0.5.4 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
 
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST1OUTPUT
 

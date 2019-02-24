@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity ^0.5.4;
 
 
 // ----------------------------------------------------------------------------
@@ -12,7 +12,7 @@ pragma solidity ^0.4.25;
 // https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
 //
 //
-// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018. The MIT Licence.
+// Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2019. The MIT Licence.
 // ----------------------------------------------------------------------------
 library BokkyPooBahsRedBlackTreeLibrary {
     struct Node {
