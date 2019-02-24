@@ -149,59 +149,52 @@ library BokkyPooBahsRedBlackTreeLibrary {
         }
         insertFixup(self, key);
     }
-    function remove(Tree storage self, uint z) internal {
-        require(z != EMPTY);
-        uint x;
-        uint y;
+    function remove(Tree storage self, uint key) internal {
+        require(key != EMPTY);
+        uint probe;
+        uint cursor;
 
-        // z can be root OR z is not root && parent cannot be the EMPTY
-        require(z == self.root || (z != self.root && self.nodes[z].parent != EMPTY));
+        // key can be root OR key is not root && parent cannot be the EMPTY
+        require(key == self.root || (key != self.root && self.nodes[key].parent != EMPTY));
 
-        if (self.nodes[z].left == EMPTY || self.nodes[z].right == EMPTY) {
-            y = z;
+        if (self.nodes[key].left == EMPTY || self.nodes[key].right == EMPTY) {
+            cursor = key;
         } else {
-            y = self.nodes[z].right;
-            while (self.nodes[y].left != EMPTY) {
-                y = self.nodes[y].left;
+            cursor = self.nodes[key].right;
+            while (self.nodes[cursor].left != EMPTY) {
+                cursor = self.nodes[cursor].left;
             }
         }
-        if (self.nodes[y].left != EMPTY) {
-            x = self.nodes[y].left;
+        if (self.nodes[cursor].left != EMPTY) {
+            probe = self.nodes[cursor].left;
         } else {
-            x = self.nodes[y].right;
+            probe = self.nodes[cursor].right;
         }
-        uint yParent = self.nodes[y].parent;
-        self.nodes[x].parent = yParent;
+        uint yParent = self.nodes[cursor].parent;
+        self.nodes[probe].parent = yParent;
         if (yParent != EMPTY) {
-            if (y == self.nodes[yParent].left) {
-                self.nodes[yParent].left = x;
+            if (cursor == self.nodes[yParent].left) {
+                self.nodes[yParent].left = probe;
             } else {
-                self.nodes[yParent].right = x;
+                self.nodes[yParent].right = probe;
             }
         } else {
-            self.root = x;
+            self.root = probe;
         }
-        bool doFixup = !self.nodes[y].red;
-        if (y != z) {
-            replaceParent(self, y, z);
-            self.nodes[y].left = self.nodes[z].left;
-            self.nodes[self.nodes[y].left].parent = y;
-            self.nodes[y].right = self.nodes[z].right;
-            self.nodes[self.nodes[y].right].parent = y;
-            self.nodes[y].red = self.nodes[z].red;
-            (y, z) = (z, y);
+        bool doFixup = !self.nodes[cursor].red;
+        if (cursor != key) {
+            replaceParent(self, cursor, key);
+            self.nodes[cursor].left = self.nodes[key].left;
+            self.nodes[self.nodes[cursor].left].parent = cursor;
+            self.nodes[cursor].right = self.nodes[key].right;
+            self.nodes[self.nodes[cursor].right].parent = cursor;
+            self.nodes[cursor].red = self.nodes[key].red;
+            (cursor, key) = (key, cursor);
         }
         if (doFixup) {
-            removeFixup(self, x);
+            removeFixup(self, probe);
         }
-        // Below `delete self.nodes[EMPTY]` may not be necessary
-        // TODO - Remove after testing
-        // emit Log("remove", "before delete self.nodes[0]", 0, self.nodes[0].parent, self.nodes[0].left, self.nodes[0].right, self.nodes[0].red);
-        // emit Log("remove", "before delete self.nodes[EMPTY]", EMPTY, self.nodes[EMPTY].parent, self.nodes[EMPTY].left, self.nodes[EMPTY].right, self.nodes[EMPTY].red);
-        if (self.nodes[EMPTY].parent != EMPTY) {
-            delete self.nodes[EMPTY];
-        }
-        delete self.nodes[y];
+        delete self.nodes[cursor];
     }
 
     function treeMinimum(Tree storage self, uint key) private view returns (uint) {
