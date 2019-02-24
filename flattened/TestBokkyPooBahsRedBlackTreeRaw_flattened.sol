@@ -58,7 +58,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
                 cursor = self.nodes[cursor].parent;
             }
         }
-        return cursor;
     }
     function prev(Tree storage self, uint target) internal view returns (uint cursor) {
         require(target != EMPTY);
@@ -71,7 +70,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
                 cursor = self.nodes[cursor].parent;
             }
         }
-        return cursor;
     }
     function exists(Tree storage self, uint key) internal view returns (bool) {
         if (key != EMPTY) {
@@ -151,11 +149,9 @@ library BokkyPooBahsRedBlackTreeLibrary {
     }
     function remove(Tree storage self, uint key) internal {
         require(key != EMPTY);
+        require(exists(self, key));
         uint probe;
         uint cursor;
-
-        // key can be root OR key is not root && parent cannot be the EMPTY
-        require(key == self.root || (key != self.root && self.nodes[key].parent != EMPTY));
 
         if (self.nodes[key].left == EMPTY || self.nodes[key].right == EMPTY) {
             cursor = key;
@@ -249,44 +245,44 @@ library BokkyPooBahsRedBlackTreeLibrary {
         self.nodes[key].parent = cursor;
     }
 
-    function insertFixup(Tree storage self, uint z) private {
-        uint y;
+    function insertFixup(Tree storage self, uint key) private {
+        uint cursor;
 
-        while (z != self.root && self.nodes[self.nodes[z].parent].red) {
-            uint zParent = self.nodes[z].parent;
-            if (zParent == self.nodes[self.nodes[zParent].parent].left) {
-                y = self.nodes[self.nodes[zParent].parent].right;
-                if (self.nodes[y].red) {
-                    self.nodes[zParent].red = false;
-                    self.nodes[y].red = false;
-                    self.nodes[self.nodes[zParent].parent].red = true;
-                    z = self.nodes[zParent].parent;
+        while (key != self.root && self.nodes[self.nodes[key].parent].red) {
+            uint keyParent = self.nodes[key].parent;
+            if (keyParent == self.nodes[self.nodes[keyParent].parent].left) {
+                cursor = self.nodes[self.nodes[keyParent].parent].right;
+                if (self.nodes[cursor].red) {
+                    self.nodes[keyParent].red = false;
+                    self.nodes[cursor].red = false;
+                    self.nodes[self.nodes[keyParent].parent].red = true;
+                    key = self.nodes[keyParent].parent;
                 } else {
-                    if (z == self.nodes[zParent].right) {
-                      z = zParent;
-                      rotateLeft(self, z);
+                    if (key == self.nodes[keyParent].right) {
+                      key = keyParent;
+                      rotateLeft(self, key);
                     }
-                    zParent = self.nodes[z].parent;
-                    self.nodes[zParent].red = false;
-                    self.nodes[self.nodes[zParent].parent].red = true;
-                    rotateRight(self, self.nodes[zParent].parent);
+                    keyParent = self.nodes[key].parent;
+                    self.nodes[keyParent].red = false;
+                    self.nodes[self.nodes[keyParent].parent].red = true;
+                    rotateRight(self, self.nodes[keyParent].parent);
                 }
             } else {
-                y = self.nodes[self.nodes[zParent].parent].left;
-                if (self.nodes[y].red) {
-                    self.nodes[zParent].red = false;
-                    self.nodes[y].red = false;
-                    self.nodes[self.nodes[zParent].parent].red = true;
-                    z = self.nodes[zParent].parent;
+                cursor = self.nodes[self.nodes[keyParent].parent].left;
+                if (self.nodes[cursor].red) {
+                    self.nodes[keyParent].red = false;
+                    self.nodes[cursor].red = false;
+                    self.nodes[self.nodes[keyParent].parent].red = true;
+                    key = self.nodes[keyParent].parent;
                 } else {
-                    if (z == self.nodes[zParent].left) {
-                      z = zParent;
-                      rotateRight(self, z);
+                    if (key == self.nodes[keyParent].left) {
+                      key = keyParent;
+                      rotateRight(self, key);
                     }
-                    zParent = self.nodes[z].parent;
-                    self.nodes[zParent].red = false;
-                    self.nodes[self.nodes[zParent].parent].red = true;
-                    rotateLeft(self, self.nodes[zParent].parent);
+                    keyParent = self.nodes[key].parent;
+                    self.nodes[keyParent].red = false;
+                    self.nodes[self.nodes[keyParent].parent].red = true;
+                    rotateLeft(self, self.nodes[keyParent].parent);
                 }
             }
         }
@@ -306,61 +302,61 @@ library BokkyPooBahsRedBlackTreeLibrary {
             }
         }
     }
-    function removeFixup(Tree storage self, uint x) private {
-        uint w;
-        while (x != self.root && !self.nodes[x].red) {
-            uint xParent = self.nodes[x].parent;
-            if (x == self.nodes[xParent].left) {
-                w = self.nodes[xParent].right;
-                if (self.nodes[w].red) {
-                    self.nodes[w].red = false;
-                    self.nodes[xParent].red = true;
-                    rotateLeft(self, xParent);
-                    w = self.nodes[xParent].right;
+    function removeFixup(Tree storage self, uint key) private {
+        uint cursor;
+        while (key != self.root && !self.nodes[key].red) {
+            uint keyParent = self.nodes[key].parent;
+            if (key == self.nodes[keyParent].left) {
+                cursor = self.nodes[keyParent].right;
+                if (self.nodes[cursor].red) {
+                    self.nodes[cursor].red = false;
+                    self.nodes[keyParent].red = true;
+                    rotateLeft(self, keyParent);
+                    cursor = self.nodes[keyParent].right;
                 }
-                if (!self.nodes[self.nodes[w].left].red && !self.nodes[self.nodes[w].right].red) {
-                    self.nodes[w].red = true;
-                    x = xParent;
+                if (!self.nodes[self.nodes[cursor].left].red && !self.nodes[self.nodes[cursor].right].red) {
+                    self.nodes[cursor].red = true;
+                    key = keyParent;
                 } else {
-                    if (!self.nodes[self.nodes[w].right].red) {
-                        self.nodes[self.nodes[w].left].red = false;
-                        self.nodes[w].red = true;
-                        rotateRight(self, w);
-                        w = self.nodes[xParent].right;
+                    if (!self.nodes[self.nodes[cursor].right].red) {
+                        self.nodes[self.nodes[cursor].left].red = false;
+                        self.nodes[cursor].red = true;
+                        rotateRight(self, cursor);
+                        cursor = self.nodes[keyParent].right;
                     }
-                    self.nodes[w].red = self.nodes[xParent].red;
-                    self.nodes[xParent].red = false;
-                    self.nodes[self.nodes[w].right].red = false;
-                    rotateLeft(self, xParent);
-                    x = self.root;
+                    self.nodes[cursor].red = self.nodes[keyParent].red;
+                    self.nodes[keyParent].red = false;
+                    self.nodes[self.nodes[cursor].right].red = false;
+                    rotateLeft(self, keyParent);
+                    key = self.root;
                 }
             } else {
-                w = self.nodes[xParent].left;
-                if (self.nodes[w].red) {
-                    self.nodes[w].red = false;
-                    self.nodes[xParent].red = true;
-                    rotateRight(self, xParent);
-                    w = self.nodes[xParent].left;
+                cursor = self.nodes[keyParent].left;
+                if (self.nodes[cursor].red) {
+                    self.nodes[cursor].red = false;
+                    self.nodes[keyParent].red = true;
+                    rotateRight(self, keyParent);
+                    cursor = self.nodes[keyParent].left;
                 }
-                if (!self.nodes[self.nodes[w].right].red && !self.nodes[self.nodes[w].left].red) {
-                    self.nodes[w].red = true;
-                    x = xParent;
+                if (!self.nodes[self.nodes[cursor].right].red && !self.nodes[self.nodes[cursor].left].red) {
+                    self.nodes[cursor].red = true;
+                    key = keyParent;
                 } else {
-                    if (!self.nodes[self.nodes[w].left].red) {
-                        self.nodes[self.nodes[w].right].red = false;
-                        self.nodes[w].red = true;
-                        rotateLeft(self, w);
-                        w = self.nodes[xParent].left;
+                    if (!self.nodes[self.nodes[cursor].left].red) {
+                        self.nodes[self.nodes[cursor].right].red = false;
+                        self.nodes[cursor].red = true;
+                        rotateLeft(self, cursor);
+                        cursor = self.nodes[keyParent].left;
                     }
-                    self.nodes[w].red = self.nodes[xParent].red;
-                    self.nodes[xParent].red = false;
-                    self.nodes[self.nodes[w].left].red = false;
-                    rotateRight(self, xParent);
-                    x = self.root;
+                    self.nodes[cursor].red = self.nodes[keyParent].red;
+                    self.nodes[keyParent].red = false;
+                    self.nodes[self.nodes[cursor].left].red = false;
+                    rotateRight(self, keyParent);
+                    key = self.root;
                 }
             }
         }
-        self.nodes[x].red = false;
+        self.nodes[key].red = false;
     }
 }
 // ----------------------------------------------------------------------------
