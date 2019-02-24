@@ -316,30 +316,30 @@ Returns the node information if `key` exists in the tree. All `uint` values will
 ### insert
 
 ```javascript
-function insert(uint z) internal;
+function insert(uint key) internal;
 ```
 
-Insert the key `z` into the tree.
+Insert the key `key` into the tree.
 
 Transaction | Condition
 :---------- |:--------
-_success_   | The key `z` has been successfully inserted into the tree
-_failure_   | The key `z` already exists in the tree
+_success_   | The key `key` has been successfully inserted into the tree
+_failure_   | The key `key` already exists in the tree
 
 <br />
 
 ### remove
 
 ```javascript
-function remove(uint z) internal;
+function remove(uint key) internal;
 ```
 
-Remove the key `z` from the tree.
+Remove the key `key` from the tree.
 
 Transaction | Condition
 :---------- |:--------
-_success_   | The key `z` has been successfully removed from the tree
-_failure_   | The key `z` does exist in the tree
+_success_   | The key `key` has been successfully removed from the tree
+_failure_   | The key `key` does exist in the tree
 
 <br />
 
