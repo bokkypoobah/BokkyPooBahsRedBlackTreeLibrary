@@ -32,14 +32,18 @@ library BokkyPooBahsRedBlackTreeLibrary {
 
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
-        while (_key != SENTINEL && self.nodes[_key].left != SENTINEL) {
-            _key = self.nodes[_key].left;
+        if (_key != SENTINEL) {
+            while (self.nodes[_key].left != SENTINEL) {
+                _key = self.nodes[_key].left;
+            }
         }
     }
     function last(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
-        while (_key != SENTINEL && self.nodes[_key].right != SENTINEL) {
-            _key = self.nodes[_key].right;
+        if (_key != SENTINEL) {
+            while (self.nodes[_key].right != SENTINEL) {
+                _key = self.nodes[_key].right;
+            }
         }
     }
     function next(Tree storage self, uint x) internal view returns (uint y) {
