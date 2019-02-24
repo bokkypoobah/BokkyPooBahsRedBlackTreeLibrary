@@ -33,19 +33,12 @@ An important use-case for this library is to maintain a sorted on-chain order bo
 * [Functions](#functions)
   * [init](#init)
   * [root](#root)
-  * [inserted](#inserted)
-  * [removed](#removed)
-  * [count](#count)
   * [first](#first)
   * [last](#last)
   * [next](#next)
   * [prev](#prev)
   * [exists](#exists)
   * [getNode](#getnode)
-  * [parent](#parent)
-  * [grandparent](#grandparent)
-  * [sibling](#sibling)
-  * [uncle](#uncle)
   * [insert](#insert)
   * [remove](#remove)
 * [Testing](#testing)
@@ -166,6 +159,7 @@ If you find this library useful for your project, **especially commercial projec
 Version             | Date         | Notes
 :------------------ |:------------ |:---------------------------------------
 v0.90-pre-release   | Feb 17 2019  | Bug bounty added
+v1.0 pre-release a  | Feb 25 2019  | Suggestions from #1
 
 <br />
 
@@ -224,33 +218,6 @@ function root() internal view returns (uint _key);
 ```
 
 Returns the root of the tree, or `SENTINEL` is the tree is empty.
-
-<br />
-
-### inserted
-```javascript
-function inserted() internal view returns (uint _inserted);
-```
-
-Number of keys inserted into the tree.
-
-<br />
-
-### removed
-```javascript
-function removed() internal view returns (uint _removed);
-```
-
-Number of keys removed from the tree.
-
-<br />
-
-### count
-```javascript
-function count() internal view returns (uint _count);
-```
-
-Number of items in the tree.
 
 <br />
 
@@ -346,74 +313,6 @@ Returns the node information if `key` exists in the tree. All `uint` values will
 
 <br />
 
-### parent
-
-```javascript
-function parent(uint key) internal view returns (uint _parent);
-```
-
-Returns the parent of `key`.
-
-Return Value   | Condition
-:------------- |:--------
-_{parent key}_ | `key` has a parent, when there are more than one item in the tree
-`SENTINEL`     | Tree is empty
-`SENTINEL`     | `key` is not an existing key in the tree
-`SENTINEL`     | `key` is the only element in the tree
-
-<br />
-
-### grandparent
-
-```javascript
-function grandparent(uint key) internal view returns (uint _grandparent);
-```
-
-Returns the grandparent of `key`.
-
-Return Value        | Condition
-:------------------ |:--------
-_{grandparent key}_ | `key` has a parent that has a parent
-`SENTINEL`          | Tree is empty
-`SENTINEL`          | `key` is not an existing key in the tree
-`SENTINEL`          | `key` does not have a parent, or the parent does not have a parent
-
-<br />
-
-### sibling
-
-```javascript
-function sibling(uint key) internal view returns (uint _sibling);
-```
-
-Returns the sibling of `key`.
-
-Return Value    | Condition
-:-------------- |:--------
-_{sibling key}_ | `key` has a sibling
-`SENTINEL`      | Tree is empty
-`SENTINEL`      | `key` is not an existing key in the tree
-`SENTINEL`      | `key` does not have a sibling
-
-<br />
-
-### uncle
-
-```javascript
-function uncle(uint key) internal view returns (uint _uncle);
-```
-
-Returns the uncle of `key`.
-
-Return Value  | Condition
-:------------ |:--------
-_{uncle key}_ | `key` has an uncle
-`SENTINEL`    | Tree is empty
-`SENTINEL`    | `key` is not an existing key in the tree
-`SENTINEL`    | `key` does not have an uncle
-
-<br />
-
 ### insert
 
 ```javascript
@@ -495,4 +394,4 @@ Thanks to [James Zaki](https://github.com/jzaki) and [Solidified](https://solidi
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Nov 03 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Feb 25 2018. The MIT Licence.
