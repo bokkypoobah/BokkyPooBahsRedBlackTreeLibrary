@@ -142,37 +142,6 @@ if ("$MODE" == "full") {
     failureDetected = true;
   }
 
-  if (!assert(testRaw.parent(123) == "0", section + " testRaw.parent(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.parentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.parentNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.grandparent(123) == "0", section + " testRaw.grandparent(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.grandparentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.grandparentNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.sibling(123) == "0", section + " testRaw.sibling(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.siblingNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.siblingNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.uncle(123) == "0", section + " testRaw.uncle(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.uncleNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.uncleNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
   console.log("RESULT: ");
 }
 
@@ -286,18 +255,6 @@ if ("$MODE" == "full") {
   if (!assert(JSON.stringify(nodeResult) == NODE18ONLYRESULT, section + " testRaw.getNode(18) should return " + NODE18ONLYRESULT)) {
     failureDetected = true;
   }
-  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
-    failureDetected = true;
-  }
   console.log("RESULT: ");
 }
 
@@ -386,21 +343,6 @@ if ("$MODE" == "full") {
   if (!assert(JSON.stringify(nodeResult) == NODE1828RESULT, section + " testRaw.getNode(18) should return " + NODE1828RESULT)) {
     failureDetected = true;
   }
-  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.parent(28) == "18", section + " testRaw.parent(28) should return 18")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
-    failureDetected = true;
-  }
   console.log("RESULT: ");
 }
 
@@ -487,27 +429,6 @@ if ("$MODE" == "full") {
   var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
   var nodeResult = testRaw.getNode(18);
   if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " testRaw.getNode(18) should return " + NODE181728RESULT)) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.parent(18) == "0", section + " testRaw.parent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.parent(28) == "18", section + " testRaw.parent(28) should return 18")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.grandparent(18) == "0", section + " testRaw.grandparent(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(18) == "0", section + " testRaw.sibling(18) should return 0")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(17) == "28", section + " testRaw.sibling(17) should return 28")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(28) == "17", section + " testRaw.sibling(28) should return 17")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.uncle(18) == "0", section + " testRaw.uncle(18) should return 0")) {
     failureDetected = true;
   }
   console.log("RESULT: ");
@@ -603,24 +524,6 @@ if ("$MODE" == "full") {
   var NODE18728RESULT = "[\"18\",\"0\",\"7\",\"28\",false]";
   var nodeResult = testRaw.getNode(18);
   if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " testRaw.getNode(18) should return " + NODE18728RESULT)) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.parent(21) == "23", section + " testRaw.parent(21) should return 23")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.parent(23) == "28", section + " testRaw.parent(23) should return 28")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.grandparent(21) == "28", section + " testRaw.grandparent(21) should return 28")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(24) == "26", section + " testRaw.sibling(24) should return 26")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.sibling(26) == "24", section + " testRaw.sibling(26) should return 24")) {
-    failureDetected = true;
-  }
-  if (!assert(testRaw.uncle(27) == "24", section + " testRaw.uncle(27) should return 24")) {
     failureDetected = true;
   }
   console.log("RESULT: ");

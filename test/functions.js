@@ -364,9 +364,7 @@ function printTestRedBlackTreeContractDetails() {
     i = 0;
     logEvents.watch(function (error, result) {
       console.log("RESULT: Log " + i++ + " #" + result.blockNumber + " \"" + result.args.where +
-        "\", \"" + result.args.action + "\", " +
-        " key=" + result.args.key + " p=" + result.args.parent + " l=" + result.args.left +
-        " r=" + result.args.right + " " + (result.args.red ? "red" : "black"));
+        "\", \"" + " key=" + result.args.key + " value=" + result.args.value);
     });
     logEvents.stopWatching();
 

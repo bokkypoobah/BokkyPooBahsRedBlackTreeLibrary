@@ -1,12 +1,11 @@
 pragma solidity ^0.5.4;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's Red-Black Tree Library v0.90
+// BokkyPooBah's Red-Black Tree Library v1.00-rc1
 //
-// A Solidity Red-Black Tree library to store and access a sorted list of
-// unsigned integer data in a binary search tree.
-// The Red-Black algorithm rebalances the binary search tree, resulting in
-// O(log n) insert, remove and search time (and ~gas)
+// A Solidity Red-Black Tree binary search library to store and access a sorted
+// list of unsigned integer data. The Red-Black algorithm rebalances the binary
+// search tree, resulting in O(log n) insert, remove and search time (and ~gas)
 //
 // https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary
 //
@@ -14,6 +13,7 @@ pragma solidity ^0.5.4;
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2019. The MIT Licence.
 // ----------------------------------------------------------------------------
 library BokkyPooBahsRedBlackTreeLibrary {
+
     struct Node {
         uint parent;
         uint left;
@@ -27,8 +27,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
     }
 
     uint private constant EMPTY = 0;
-
-    event Log(string where, string action, uint key, uint parent, uint left, uint right, bool red);
 
     function first(Tree storage self) internal view returns (uint _key) {
         _key = self.root;
@@ -85,42 +83,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
     function getNode(Tree storage self, uint key) internal view returns (uint _returnKey, uint _parent, uint _left, uint _right, bool _red) {
         require(exists(self, key));
         return(key, self.nodes[key].parent, self.nodes[key].left, self.nodes[key].right, self.nodes[key].red);
-    }
-    function parent(Tree storage self, uint key) internal view returns (uint _parent) {
-        require(key != EMPTY);
-        _parent = self.nodes[key].parent;
-    }
-    function grandparent(Tree storage self, uint key) internal view returns (uint _grandparent) {
-        require(key != EMPTY);
-        uint _parent = self.nodes[key].parent;
-        if (_parent != EMPTY) {
-            _grandparent = self.nodes[_parent].parent;
-        } else {
-            _grandparent = EMPTY;
-        }
-    }
-    function sibling(Tree storage self, uint key) internal view returns (uint _sibling) {
-        require(key != EMPTY);
-        uint _parent = self.nodes[key].parent;
-        if (_parent != EMPTY) {
-            if (key == self.nodes[_parent].left) {
-                _sibling = self.nodes[_parent].right;
-            } else {
-                _sibling = self.nodes[_parent].left;
-            }
-        } else {
-            _sibling = EMPTY;
-        }
-    }
-    function uncle(Tree storage self, uint key) internal view returns (uint _uncle) {
-        require(key != EMPTY);
-        uint _grandParent = grandparent(self, key);
-        if (_grandParent != EMPTY) {
-            uint _parent = self.nodes[key].parent;
-            _uncle = sibling(self, _parent);
-        } else {
-            _uncle = EMPTY;
-        }
     }
 
     function insert(Tree storage self, uint key) internal {
