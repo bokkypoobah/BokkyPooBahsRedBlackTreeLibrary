@@ -292,6 +292,32 @@ _false_      | `key` is not an existing key in the tree
 
 <br />
 
+### isEmpty
+
+```javascript
+function isEmpty(uint key) internal pure returns (bool);
+```
+
+Returns _true_ if the key exists in the tree, _false_ otherwise.
+
+Return Value | Condition
+:----------- |:--------
+_true_       | `key` is an existing key in the tree
+_false_      | Tree empty
+_false_      | `key` is not an existing key in the tree
+
+<br />
+
+### getEmpty
+
+```javascript
+function getEmpty() internal pure returns (uint);
+```
+
+Returns the value of the EMPTY variable
+
+<br />
+
 ### getNode
 
 ```javascript
