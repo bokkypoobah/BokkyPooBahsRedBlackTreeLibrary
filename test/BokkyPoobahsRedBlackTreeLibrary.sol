@@ -209,43 +209,43 @@ library BokkyPooBahsRedBlackTreeLibrary {
         return key;
     }
 
-    function rotateLeft(Tree storage self, uint x) private {
-        uint y = self.nodes[x].right;
-        uint _parent = self.nodes[x].parent;
-        uint yLeft = self.nodes[y].left;
-        self.nodes[x].right = yLeft;
-        if (yLeft != EMPTY) {
-            self.nodes[yLeft].parent = x;
+    function rotateLeft(Tree storage self, uint key) private {
+        uint cursor = self.nodes[key].right;
+        uint keyParent = self.nodes[key].parent;
+        uint cursorLeft = self.nodes[cursor].left;
+        self.nodes[key].right = cursorLeft;
+        if (cursorLeft != EMPTY) {
+            self.nodes[cursorLeft].parent = key;
         }
-        self.nodes[y].parent = _parent;
-        if (_parent == EMPTY) {
-            self.root = y;
-        } else if (x == self.nodes[_parent].left) {
-            self.nodes[_parent].left = y;
+        self.nodes[cursor].parent = keyParent;
+        if (keyParent == EMPTY) {
+            self.root = cursor;
+        } else if (key == self.nodes[keyParent].left) {
+            self.nodes[keyParent].left = cursor;
         } else {
-            self.nodes[_parent].right = y;
+            self.nodes[keyParent].right = cursor;
         }
-        self.nodes[y].left = x;
-        self.nodes[x].parent = y;
+        self.nodes[cursor].left = key;
+        self.nodes[key].parent = cursor;
     }
-    function rotateRight(Tree storage self, uint x) private {
-        uint y = self.nodes[x].left;
-        uint _parent = self.nodes[x].parent;
-        uint yRight = self.nodes[y].right;
-        self.nodes[x].left = yRight;
-        if (yRight != EMPTY) {
-            self.nodes[yRight].parent = x;
+    function rotateRight(Tree storage self, uint key) private {
+        uint cursor = self.nodes[key].left;
+        uint keyParent = self.nodes[key].parent;
+        uint cursorRight = self.nodes[cursor].right;
+        self.nodes[key].left = cursorRight;
+        if (cursorRight != EMPTY) {
+            self.nodes[cursorRight].parent = key;
         }
-        self.nodes[y].parent = _parent;
-        if (_parent == EMPTY) {
-            self.root = y;
-        } else if (x == self.nodes[_parent].right) {
-            self.nodes[_parent].right = y;
+        self.nodes[cursor].parent = keyParent;
+        if (keyParent == EMPTY) {
+            self.root = cursor;
+        } else if (key == self.nodes[keyParent].right) {
+            self.nodes[keyParent].right = cursor;
         } else {
-            self.nodes[_parent].left = y;
+            self.nodes[keyParent].left = cursor;
         }
-        self.nodes[y].right = x;
-        self.nodes[x].parent = y;
+        self.nodes[cursor].right = key;
+        self.nodes[key].parent = cursor;
     }
 
     function insertFixup(Tree storage self, uint z) private {
