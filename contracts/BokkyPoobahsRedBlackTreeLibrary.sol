@@ -76,35 +76,14 @@ library BokkyPooBahsRedBlackTreeLibrary {
         return y;
     }
     function exists(Tree storage self, uint key) internal view returns (bool) {
-        require(key != SENTINEL);
-        uint _key = self.root;
-        while (_key != SENTINEL) {
-            if (key == _key) {
-                return true;
-            }
-            if (key < _key) {
-                _key = self.nodes[_key].left;
-            } else {
-                _key = self.nodes[_key].right;
-            }
+        if (key != SENTINEL) {
+            return (key == self.root) || (self.nodes[key].parent != SENTINEL);
         }
         return false;
     }
     function getNode(Tree storage self, uint key) internal view returns (uint _returnKey, uint _parent, uint _left, uint _right, bool _red) {
-        require(key != SENTINEL);
-        uint _key = self.root;
-        while (_key != SENTINEL) {
-            if (key == _key) {
-                Node memory node = self.nodes[key];
-                return (key, node.parent, node.left, node.right, node.red);
-            }
-            if (key < _key) {
-                _key = self.nodes[_key].left;
-            } else {
-                _key = self.nodes[_key].right;
-            }
-        }
-        return (SENTINEL, SENTINEL, SENTINEL, SENTINEL, false);
+        require(exists(self, key));
+        return(key, self.nodes[key].parent, self.nodes[key].left, self.nodes[key].right, self.nodes[key].red);
     }
     function parent(Tree storage self, uint key) internal view returns (uint _parent) {
         require(key != SENTINEL);
