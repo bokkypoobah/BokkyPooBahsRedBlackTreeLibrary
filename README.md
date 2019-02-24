@@ -31,7 +31,6 @@ An important use-case for this library is to maintain a sorted on-chain order bo
 * [Deployment](#deployment)
 * [Questions And Answers](#questions-and-answers)
 * [Functions](#functions)
-  * [init](#init)
   * [root](#root)
   * [first](#first)
   * [last](#last)
@@ -198,17 +197,7 @@ See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBl
 Notes:
 
 * The function parameter `Tree storage self` has been omitted in the documentation below, as Solidity automatically injects the library data structure in place of this first parameter
-* There is a constant `SENTINEL` that is set to 0 in the library source code by default
-
-<br />
-
-### init
-
-```javascript
-function init() internal
-```
-
-Call this function from your contract constructor to initialises some data. Note that this is really only necessary when `SENTINEL` is non-0.
+* There is a constant `EMPTY` that is set to 0 in the library source code by default
 
 <br />
 
@@ -217,7 +206,7 @@ Call this function from your contract constructor to initialises some data. Note
 function root() internal view returns (uint _key);
 ```
 
-Returns the root of the tree, or `SENTINEL` is the tree is empty.
+Returns the root of the tree, or `EMPTY` is the tree is empty.
 
 <br />
 
@@ -232,7 +221,7 @@ Returns the smallest key in the tree.
 Return Value  | Condition
 :------------ |:--------
 _{first key}_ | Tree has at least one key
-`SENTINEL`    | Tree empty
+`EMPTY`       | Tree empty
 
 <br />
 
@@ -247,7 +236,7 @@ Returns the largest key in the tree.
 Return Value | Condition
 :----------- |:--------
 _{last key}_ | Tree has at least one key
-`SENTINEL`   | Tree empty
+`EMPTY`      | Tree empty
 
 <br />
 
@@ -262,10 +251,10 @@ Returns the next key in the tree with a value larger than `x`.
 Return Value | Condition
 :----------- |:--------
 _{next key}_ | There exists a key with a value larger than the `x` key
-`SENTINEL`   | Tree empty
-`SENTINEL`   | `x` is not an existing key in the tree
-`SENTINEL`   | `x` is the only key in the tree
-`SENTINEL`   | `x` is the last key in the tree
+`EMPTY`      | Tree empty
+`EMPTY`      | `x` is not an existing key in the tree
+`EMPTY`      | `x` is the only key in the tree
+`EMPTY`      | `x` is the last key in the tree
 
 <br />
 
@@ -280,10 +269,10 @@ Returns the previous key in the tree with a value smaller than `x`.
 Return Value | Condition
 :----------- |:--------
 _{prev key}_ | There exists a key with a value smaller than the `x` key
-`SENTINEL`   | Tree empty
-`SENTINEL`   | `x` is not an existing key in the tree
-`SENTINEL`   | `x` is the only element in the tree
-`SENTINEL`   | `x` is the last element in the tree
+`EMPTY`      | Tree empty
+`EMPTY`      | `x` is not an existing key in the tree
+`EMPTY`      | `x` is the only element in the tree
+`EMPTY`      | `x` is the last element in the tree
 
 <br />
 
@@ -309,7 +298,7 @@ _false_      | `key` is not an existing key in the tree
 function getNode(uint key) internal view returns (uint _returnKey, uint _parent, uint _left, uint _right, bool _red);
 ```
 
-Returns the node information if `key` exists in the tree. All `uint` values will be set to `SENTINEL` if `key` does not exist in the tree.
+Returns the node information if `key` exists in the tree. All `uint` values will be set to `EMPTY` if `key` does not exist in the tree.
 
 <br />
 
@@ -323,8 +312,8 @@ Insert the key `key` into the tree.
 
 Transaction | Condition
 :---------- |:--------
-_success_   | The key `key` has been successfully inserted into the tree
-_failure_   | The key `key` already exists in the tree
+_success_   | `key` has been successfully inserted into the tree
+_failure_   | `key` already exists in the tree
 
 <br />
 
@@ -338,8 +327,8 @@ Remove the key `key` from the tree.
 
 Transaction | Condition
 :---------- |:--------
-_success_   | The key `key` has been successfully removed from the tree
-_failure_   | The key `key` does exist in the tree
+_success_   | `key` has been successfully removed from the tree
+_failure_   | `key` does exist in the tree
 
 <br />
 
@@ -390,6 +379,8 @@ As the nodes are stored as elements in a Solidity *mapping* data structure, [Ite
 <br />
 
 Thanks to [James Zaki](https://github.com/jzaki) and [Solidified](https://solidified.io/) for the 3 minor issues they picked up at the Web3 Summit.
+
+And thanks to [Rob Hitchens](https://github.com/rob-Hitchens) for the [suggestions](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1).
 
 
 Enjoy!
