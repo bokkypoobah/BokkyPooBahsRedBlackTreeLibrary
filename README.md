@@ -159,7 +159,7 @@ If you find this library useful for your project, **especially commercial projec
 Version             | Date         | Notes
 :------------------ |:------------ |:---------------------------------------
 v0.90-pre-release   | Feb 17 2019  | Bug bounty added
-v1.0 pre-release a  | Feb 25 2019  | Suggestions from #1
+v1.0 pre-release a  | Feb 25 2019  | Incorporated suggestions from [Rob Hitchens](https://github.com/rob-Hitchens)
 
 <br />
 
