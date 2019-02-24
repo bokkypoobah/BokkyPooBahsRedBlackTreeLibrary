@@ -356,9 +356,6 @@ function printTestRedBlackTreeContractDetails() {
     console.log("RESULT: testRedBlackTree.root=" + contract.root());
     console.log("RESULT: testRedBlackTree.first=" + contract.first());
     console.log("RESULT: testRedBlackTree.last=" + contract.last());
-    console.log("RESULT: testRedBlackTree.inserted=" + contract.inserted());
-    console.log("RESULT: testRedBlackTree.removed=" + contract.removed());
-    console.log("RESULT: testRedBlackTree.count=" + contract.count());
 
     var latestBlock = eth.blockNumber;
     var i;

@@ -30,15 +30,6 @@ contract TestBokkyPooBahsRedBlackTree {
     function root() public view returns (uint _key) {
         _key = tree.root;
     }
-    function inserted() public view returns (uint _inserted) {
-        _inserted = tree.inserted;
-    }
-    function removed() public view returns (uint _removed) {
-        _removed = tree.removed;
-    }
-    function count() public view returns (uint _count) {
-        _count = tree.count();
-    }
     function first() public view returns (uint _key) {
         _key = tree.first();
     }
