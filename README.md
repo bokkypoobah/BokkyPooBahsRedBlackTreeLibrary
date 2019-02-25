@@ -143,10 +143,8 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 100    | 68,913   | 143,145 | 163,297 | 29,827  | 63,540  | 174,178
 500    | 68,913   | 149,417 | 191,134 | 29,859  | 66,239  | 219,978
 1,000  | 68,913   | 150,878 | 208,360 | 29,859  | 66,774  | 243,154
-5,000  | 68,913   | 153,263 | 242,846 | 30,521  | 88,336  | 310,295
+5,000  | 68,913   | 153,219 | 242,813 | 29,859  | 67,276  | 304,485
 10,000 | 68,913   | 154,113 | 260,099 | 29,950  | 88,003  | 333,443
-
-5000
 
 10000
 
@@ -203,7 +201,7 @@ Any smart contract where you need to maintain a sorted list of unsigned integers
 
 This library was designed to be a "simple" component to be used in your smart contracts. If you need to store additional data, for example a key/value pair, add this functionality into your smart contract. Here are the main fragments of code from [contracts/TestBokkyPoobahsRedBlackTree.sol](TestBokkyPoobahsRedBlackTree.sol):
 
-<javascript>
+```javascript
 contract TestBokkyPooBahsRedBlackTree {
     using BokkyPooBahsRedBlackTreeLibrary for BokkyPooBahsRedBlackTreeLibrary.Tree;
 
@@ -223,19 +221,17 @@ contract TestBokkyPooBahsRedBlackTree {
     }
 
     function insert(uint _key, uint _value) public {
-        require(!tree.exists(_key));
         tree.insert(_key);
         values[_key] = _value;
         emit Log("insert", _key, _value);
     }
     function remove(uint _key) public {
-        require(tree.exists(_key));
         tree.remove(_key);
         emit Log("remove", _key, values[_key]);
         delete values[_key];
     }
 }
-</javascript>
+```
 
 <br />
 
@@ -405,7 +401,7 @@ Remove the key `key` from the tree.
 Transaction | Condition
 :---------- |:--------
 _success_   | `key` has been successfully removed from the tree
-_failure_   | `key` does exist in the tree
+_failure_   | `key` does not exist in the tree
 
 <br />
 
