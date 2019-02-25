@@ -116,17 +116,18 @@ The longest path is 8 levels deep: (8 black), (16 red), (20 black), (24 red), (2
 
 The following table shows the minimum, average and maximum gas cost for the insertion of items in a **random** order and removal of items from a red-black tree:
 
-Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
-------:| -------:| --------:| -------:| -------:| -------:| -------:
-1      | 68,459   | 68,459  | 68,459  | 44,835  | 44,835  | 44,835
-5      | 68,459   | 99,166  | 140,002 | 30,521  | 48,024  | 74,259
-10     | 68,459   | 118,401 | 167,610 | 30,671  | 71,973  | 119,593
-50     | 68,459   | 124,688 | 182,637 | 30,067  | 82,894  | 213,514
-100    | 68,459   | 123,377 | 190,137 | 30,521  | 79,761  | 191,060
-500    | 68,459   | 124,567 | 191,240 | 30,521  | 80,108  | 261,153
-1,000  | 68,459   | 125,335 | 188,278 | 29,950  | 81,032  | 219,352
-5,000  | 68,523   | 127,270 | 196,563 | 30,521  | 81,972  | 283,499
-10,000 | 68,523   | 127,210 | 208,293 | 30,099  | 81,486  | 307,296
+Items  | Ins Min | Ins Avg | Ins Max | Rem Min | Rem Avg | Rem Max
+------:| -------:| -------:| -------:| -------:| -------:| -------:
+1      | 68,913  |  68,913 |  68,913 | 44,654  | 44,654  |  44,654
+5      | 68,913  |  99,588 | 140,404 | 29,827  | 40,891  |  56,405
+10     | 68,913  | 108,635 | 141,518 | 27,375  | 44,880  |  90,688
+50     | 68,913  | 121,753 | 182,645 | 27,375  | 64,977  | 179,109
+100    | 68,913  | 122,549 | 186,766 | 27,375  | 65,447  | 143,832
+500    | 68,913  | 124,790 | 191,559 | 27,375  | 66,629  | 215,994
+1,000  | 68,977  | 128,550 | 195,719 | 27,375  | 67,331  | 195,574
+5,000  | 68,977  | 127,029 | 200,233 | 27,375  | 66,966  | 258,858
+10,000 | 68,977  | 127,516 | 200,907 | 27,375  | 66,781  | 240,152
+
 <br />
 
 #### Worst Case - Sequential Insert
@@ -135,19 +136,19 @@ The following table shows the minimum, average and maximum gas cost for the inse
 
 Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 ------:| -------:| --------:| -------:| -------:| -------:| -------:
-1      | 68,459   | 68,459  | 68,459  | 44,835  | 44,835  | 44,835
-5      | 68,459   | 107,349 | 140,753 | 29,918  | 56,072  | 86,075
-10     | 68,459   | 116,513 | 149,588 | 30,067  | 75,757  | 119,064
-50     | 68,459   | 137,949 | 158,598 | 30,067  | 86,002  | 213,537
-100    | 68,459   | 142,907 | 163,103 | 30,521  | 87,266  | 218,371
-500    | 68,459   | 149,290 | 191,089 | 30,521  | 86,200  | 266,556
-1,000  | 68,459   | 150,802 | 208,341 | 29,950  | 87,266  | 287,889
-5,000  | 68,459   | 153,263 | 242,846 | 30,521  | 88,336  | 310,295
-10,000 | 68,459   | 154,113 | 260,099 | 29,950  | 88,003  | 333,443
+1      | 68,913   | 68,913  | 68,913  | 44,654  | 44,654  | 44,654
+5      | 68,913   | 107,761 | 141,129 | 29,827  | 44,883  | 80,922
+10     | 68,913   | 116,896 | 149,938 | 29,827  | 53,457  | 104,650
+50     | 68,913   | 138,234 | 158,844 | 29,827  | 61,485  | 151,002
+100    | 68,913   | 143,145 | 163,297 | 29,827  | 63,540  | 174,178
+500    | 68,913   | 149,417 | 191,134 | 29,859  | 66,239  | 219,978
+1,000  | 68,913   | 150,878 | 208,360 | 29,859  | 66,774  | 243,154
+5,000  | 68,913   | 153,263 | 242,846 | 30,521  | 88,336  | 310,295
+10,000 | 68,913   | 154,113 | 260,099 | 29,950  | 88,003  | 333,443
 
-<br />
+5000
 
-If you find this library useful for your project, **especially commercial projects**, please donate to [0xb6dAC2C5A0222f6794265249ACE15568B750c2d1](https://etherscan.io/address/0xb6dAC2C5A0222f6794265249ACE15568B750c2d1). I hope to cover my cost of getting this library independently audited.
+10000
 
 <br />
 
@@ -158,7 +159,7 @@ If you find this library useful for your project, **especially commercial projec
 Version             | Date         | Notes
 :------------------ |:------------ |:---------------------------------------
 v0.90-pre-release   | Feb 17 2019  | Bug bounty added
-v1.0 pre-release a  | Feb 25 2019  | Incorporated suggestions from [Rob Hitchens](https://github.com/rob-Hitchens)
+v1.0 pre-release-a  | Feb 25 2019  | Incorporated suggestions from [Rob Hitchens](https://github.com/rob-Hitchens)
 
 <br />
 
@@ -174,6 +175,12 @@ The scope of the bug bounty for this project follows:
 
 <br />
 
+Bounties awarded for this project:
+
+* Feb 25 2018 - [Rob Hitchens](https://github.com/rob-Hitchens) submitted a [set of performance and readability improvements](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) to this library.
+
+<br />
+
 <hr />
 
 ## Deployment
@@ -185,6 +192,50 @@ This library has been designed to be automatically compiled into your Ethereum S
 <hr />
 
 ## Questions And Answers
+
+### What would I use this library for?
+
+Any smart contract where you need to maintain a sorted list of unsigned integers. One major use case is for this RBT library to maintain a decentralised exchange orderbook, sorted by price.
+
+<br />
+
+### Why does this library only store unsigned integers, and not any additional data?
+
+This library was designed to be a "simple" component to be used in your smart contracts. If you need to store additional data, for example a key/value pair, add this functionality into your smart contract. Here are the main fragments of code from [contracts/TestBokkyPoobahsRedBlackTree.sol](TestBokkyPoobahsRedBlackTree.sol):
+
+<javascript>
+contract TestBokkyPooBahsRedBlackTree {
+    using BokkyPooBahsRedBlackTreeLibrary for BokkyPooBahsRedBlackTreeLibrary.Tree;
+
+    BokkyPooBahsRedBlackTreeLibrary.Tree tree;
+    mapping(uint => uint) values;
+
+    event Log(string where, uint key, uint value);
+
+    ...
+
+    function getNode(uint _key) public view returns (uint key, uint parent, uint left, uint right, bool red, uint value) {
+        if (tree.exists(_key)) {
+            BokkyPooBahsRedBlackTreeLibrary.Node memory node = tree.getNode(_key);
+            (key, parent, left, right, red) = (_key, node.parent, node.left, node.right, node.red);
+            value = values[_key];
+        }
+    }
+
+    function insert(uint _key, uint _value) public {
+        require(!tree.exists(_key));
+        tree.insert(_key);
+        values[_key] = _value;
+        emit Log("insert", _key, _value);
+    }
+    function remove(uint _key) public {
+        require(tree.exists(_key));
+        tree.remove(_key);
+        emit Log("remove", _key, values[_key]);
+        delete values[_key];
+    }
+}
+</javascript>
 
 <br />
 
