@@ -47,10 +47,10 @@ contract TestBokkyPooBahsRedBlackTreeRaw {
 
     function insert(uint _key) public {
         tree.insert(_key);
-        emit Log("insert", _key, 0);
+        // emit Log("insert", _key, 0);
     }
     function remove(uint _key) public {
         tree.remove(_key);
-        emit Log("remove", _key, 0);
+        // emit Log("remove", _key, 0);
     }
 }

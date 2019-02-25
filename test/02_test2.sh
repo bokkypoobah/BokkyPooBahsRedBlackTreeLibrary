@@ -135,38 +135,6 @@ if ("$MODE" == "full") {
   if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.getNode(123) should return " + NULLNODERESULT)) {
     failureDetected = true;
   }
-
-  if (!assert(testRaw.parent(123) == "0", section + " testRaw.parent(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.parentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.parentNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.grandparent(123) == "0", section + " testRaw.grandparent(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.grandparentNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.grandparentNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.sibling(123) == "0", section + " testRaw.sibling(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.siblingNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.siblingNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
-
-  if (!assert(testRaw.uncle(123) == "0", section + " testRaw.uncle(123) should return 0")) {
-    failureDetected = true;
-  }
-  // var nodeResult = testRaw.uncleNode(123);
-  // if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.uncleNode(123) should return " + NULLNODERESULT)) {
-  //   failureDetected = true;
-  // }
   console.log("RESULT: ");
 }
 
@@ -176,7 +144,7 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 32;
+var NUMBEROFITEMS = 50;
 var BATCHSIZE = NUMBEROFITEMS / 1;
 var insertItems = [];
 var removeItems = [];

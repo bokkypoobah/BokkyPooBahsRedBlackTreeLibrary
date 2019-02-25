@@ -2,7 +2,7 @@ pragma solidity ^0.5.4;
 
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's Red-Black Tree Library v1.00-rc1
+// BokkyPooBah's Red-Black Tree Library v1.0-pre-release-a
 //
 // A Solidity Red-Black Tree binary search library to store and access a sorted
 // list of unsigned integer data. The Red-Black algorithm rebalances the binary
@@ -114,7 +114,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
         require(exists(self, key));
         uint probe;
         uint cursor;
-
         if (self.nodes[key].left == EMPTY || self.nodes[key].right == EMPTY) {
             cursor = key;
         } else {
@@ -370,10 +369,10 @@ contract TestBokkyPooBahsRedBlackTreeRaw {
 
     function insert(uint _key) public {
         tree.insert(_key);
-        emit Log("insert", _key, 0);
+        // emit Log("insert", _key, 0);
     }
     function remove(uint _key) public {
         tree.remove(_key);
-        emit Log("remove", _key, 0);
+        // emit Log("remove", _key, 0);
     }
 }
