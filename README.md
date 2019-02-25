@@ -197,9 +197,11 @@ Any smart contract where you need to maintain a sorted list of unsigned integers
 
 <br />
 
-### Why does this library only store unsigned integers, and not any additional data?
+### Why does this library only store unsigned integers and not any additional data?
 
-This library was designed to be a "simple" component to be used in your smart contracts. If you need to store additional data, for example a key/value pair, add this functionality into your smart contract. Here are the main fragments of code from [contracts/TestBokkyPoobahsRedBlackTree.sol](TestBokkyPoobahsRedBlackTree.sol):
+This library was designed to be a simple component to be used within your smart contract project.
+
+Store any additional data, e.g., key/value pairs, by adding the functionality into your smart contract. Sample code from [contracts/TestBokkyPoobahsRedBlackTree.sol](TestBokkyPoobahsRedBlackTree.sol) follows:
 
 ```javascript
 contract TestBokkyPooBahsRedBlackTree {
