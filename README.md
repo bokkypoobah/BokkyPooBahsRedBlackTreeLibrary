@@ -112,6 +112,12 @@ The longest path is 8 levels deep: (8 black), (16 red), (20 black), (24 red), (2
 
 ### Gas Cost
 
+<kbd><img src="images/GasStatistics.png" /></kbd>
+
+Data and chart - [docs/GasStatistics.xlsx](docs/GasStatistics.xlsx).
+
+<br />
+
 #### Average Case - Random Insert
 
 The following table shows the minimum, average and maximum gas cost for the insertion of items in a **random** order and removal of items from a red-black tree:
