@@ -98,7 +98,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
                 probe = self.nodes[probe].right;
             }
         }
-        self.nodes[key] = Node(cursor, EMPTY, EMPTY, true);
+        self.nodes[key] = Node({parent: cursor, left: EMPTY, right: EMPTY, red: true});
         if (cursor == EMPTY) {
             self.root = key;
         } else if (key < cursor) {

@@ -144,9 +144,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 500    | 68,913   | 149,417 | 191,134 | 29,859  | 66,239  | 219,978
 1,000  | 68,913   | 150,878 | 208,360 | 29,859  | 66,774  | 243,154
 5,000  | 68,913   | 153,219 | 242,813 | 29,859  | 67,276  | 304,485
-10,000 | 68,913   | 154,113 | 260,099 | 29,950  | 88,003  | 333,443
-
-10000
+10,000 | 68,913   | 154,017 | 260,040 | 29,859  | 67,352  | 327,661
 
 <br />
 
@@ -157,7 +155,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 Version             | Date         | Notes
 :------------------ |:------------ |:---------------------------------------
 v0.90-pre-release   | Feb 17 2019  | Bug bounty added
-v1.0 pre-release-a  | Feb 25 2019  | Incorporated suggestions from [Rob Hitchens](https://github.com/rob-Hitchens)
+v1.0 pre-release-a  | Feb 25 2019  | Incorporated [suggestions](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) from [Rob Hitchens](https://github.com/rob-Hitchens)
 
 <br />
 
@@ -234,6 +232,12 @@ contract TestBokkyPooBahsRedBlackTree {
     }
 }
 ```
+
+<br />
+
+### Can duplicate entries be inserted?
+
+No
 
 <br />
 

@@ -51,13 +51,11 @@ contract TestBokkyPooBahsRedBlackTree {
     }
 
     function insert(uint _key, uint _value) public {
-        require(!tree.exists(_key));
         tree.insert(_key);
         values[_key] = _value;
         emit Log("insert", _key, _value);
     }
     function remove(uint _key) public {
-        require(tree.exists(_key));
         tree.remove(_key);
         emit Log("remove", _key, values[_key]);
         delete values[_key];
