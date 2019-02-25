@@ -201,7 +201,7 @@ Any smart contract where you need to maintain a sorted list of unsigned integers
 
 This library was designed to be a simple component to be used within your smart contract project.
 
-Store any additional data, e.g., key/value pairs, by adding the functionality into your smart contract. Sample code from [contracts/TestBokkyPoobahsRedBlackTree.sol](TestBokkyPoobahsRedBlackTree.sol) follows:
+Store any additional data, e.g., key/value pairs, by adding the functionality into your smart contract. Sample code from [contracts/TestBokkyPoobahsRedBlackTree.sol](contracts/TestBokkyPoobahsRedBlackTree.sol) follows:
 
 ```javascript
 contract TestBokkyPooBahsRedBlackTree {
