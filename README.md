@@ -464,6 +464,7 @@ As the nodes are stored as elements in a Solidity *mapping* data structure, [Ite
 ## References
 
 * [Red-black tree visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
+* [RBTree Animation](http://www.cs.armstrong.edu/liang/animation/web/RBTree.html)
 * [Red–black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) - Wikipedia
 * [Algorithms for Red Black Tree Operations](http://www.cse.yorku.ca/~aaw/Sotirios/RedBlackTreeAlgorithm.html) - from *Introduction to Algorithms* by Cormen, Leiserson, Rivest and Stein.
 * [Iterative Algorithm for Red-Black Tree](https://stackoverflow.com/questions/3758356/iterative-algorithm-for-red-black-tree)

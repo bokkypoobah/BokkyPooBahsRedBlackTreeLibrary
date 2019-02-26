@@ -144,8 +144,8 @@ var setupData1_Message = "Setup Data";
 // -----------------------------------------------------------------------------
 console.log("RESULT: ----- " + setupData1_Message + " -----");
 // var NUMBEROFITEMS = 32;
-var NUMBEROFITEMS = 100;
-var BATCHSIZE = NUMBEROFITEMS / 1;
+var NUMBEROFITEMS = 32;
+var BATCHSIZE = 1; // NUMBEROFITEMS / 1;
 var insertItems = [];
 var removeItems = [];
 for (var i = 1; i <= NUMBEROFITEMS; i++) {
