@@ -70,10 +70,7 @@ library BokkyPooBahsRedBlackTreeLibrary {
         }
     }
     function exists(Tree storage self, uint key) internal view returns (bool) {
-        if (key != EMPTY) {
-            return (key == self.root) || (self.nodes[key].parent != EMPTY);
-        }
-        return false;
+        return (key != EMPTY) && ((key == self.root) || (self.nodes[key].parent != EMPTY));
     }
     function isEmpty(uint key) internal pure returns (bool) {
         return key == EMPTY;
@@ -208,7 +205,6 @@ library BokkyPooBahsRedBlackTreeLibrary {
 
     function insertFixup(Tree storage self, uint key) private {
         uint cursor;
-
         while (key != self.root && self.nodes[self.nodes[key].parent].red) {
             uint keyParent = self.nodes[key].parent;
             if (keyParent == self.nodes[self.nodes[keyParent].parent].left) {
