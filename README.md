@@ -14,7 +14,7 @@ Inserting a key into an empty tree costs 68,459 gas. Inserting a key into a tree
 
 An important use-case for this library is to maintain a sorted on-chain order book in decentralised exchange smart contracts, providing a provably fair order matching algorithm.
 
-Check out the online [Red-black tree visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html) tool to see animations of the Red-Black tree insertions and rebalancing.
+Check out the online [Red-black tree visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html) tool- type in some 4 digit numbers and press Insert or Delete to see the insertions and rebalances animated.
 
 <br />
 
