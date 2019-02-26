@@ -118,7 +118,7 @@ Following is a chart with the minimum, average and maximum gas cost for insertio
 
 <kbd><img src="images/GasStatistics.png" /></kbd>
 
-Data and chart - [docs/GasStatistics.xlsx](docs/GasStatistics.xlsx).
+Data and chart - [docs/GasStatistics.xlsx](docs/GasStatistics.xlsx). These statistics have been generated using the [test/02_test2.sh](test/02_test2.sh) script with the results logged in [test/test2results.txt](test/test2results.txt) - the parameters `NUMBEROFITEMS`, `BATCHSIZE` were varied for the results with different number of items, and the `insertItems = shuffle(insertItems);` and `removeItems = shuffle(removeItems);` commented out for sequential insertions.
 
 <br />
 
