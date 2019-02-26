@@ -247,7 +247,13 @@ contract TestBokkyPooBahsRedBlackTree {
 
 <br />
 
-### Can duplicate entries be inserted?
+### Why can't I use 0 as a key?
+
+This library has been configured with the `EMPTY` marker set to '0'. This can be set to non-0, but you will have to add some additional functionality - you can get an idea of the functionality you will need to add back from an [older version of the library](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/blob/ec14da41099853aadf56f46f97052664217067f2/contracts/BokkyPoobahsRedBlackTreeLibrary.sol). Search for `init(...)` and the last line of `getNode(...)`. Please test carefully!
+
+<br />
+
+### Can duplicate keys be inserted?
 
 No
 
