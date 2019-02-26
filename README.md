@@ -263,7 +263,7 @@ No
 
 ## Functions
 
-See [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) (or the [flattened](flattened/TestBokkyPooBahsRedBlackTree_flattened.sol) version) for an example contract that uses this library.
+See [contracts/TestBokkyPoobahsRedBlackTree.sol](contracts/TestBokkyPoobahsRedBlackTree.sol) (or the [flattened](flattened/TestBokkyPooBahsRedBlackTree_flattened.sol) version) for an example contract that uses this library.
 
 Notes:
 
