@@ -181,7 +181,7 @@ Details of the bug bounty program for this project can be found at [BokkyPooBah'
 
 The scope of the bug bounty for this project follows:
 
-* [contracts/BokkyPoobahsRedBlackTreeLibrary.sol](contracts/BokkyPoobahsRedBlackTreeLibrary.sol)
+* [contracts/BokkyPooBahsRedBlackTreeLibrary.sol](contracts/BokkyPooBahsRedBlackTreeLibrary.sol)
 
 <br />
 
@@ -213,7 +213,7 @@ Any smart contract where you need to maintain a sorted list of unsigned integers
 
 This library was designed to be a simple component to be used within your smart contract project.
 
-Store any additional data, e.g., key/value pairs, by adding the functionality into your smart contract. Sample code from [contracts/TestBokkyPoobahsRedBlackTree.sol](contracts/TestBokkyPoobahsRedBlackTree.sol) follows:
+Store any additional data, e.g., key/value pairs, by adding the functionality into your smart contract. Sample code from [contracts/TestBokkyPooBahsRedBlackTree.sol](contracts/TestBokkyPooBahsRedBlackTree.sol) follows:
 
 ```javascript
 contract TestBokkyPooBahsRedBlackTree {
