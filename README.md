@@ -169,7 +169,7 @@ Items  | Ins Min | Ins Avg  | Ins Max | Rem Min | Rem Avg | Rem Max
 Version             | Date         | Notes
 :------------------ |:------------ |:---------------------------------------
 v0.90-pre-release   | Feb 17 2019  | Bug bounty added
-v1.0 pre-release-a  | Feb 25 2019  | Incorporated [suggestions](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) from [Rob Hitchens](https://github.com/rob-Hitchens)
+v1.0 pre-release-a  | Mar 8 2019   | Incorporated [suggestions](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) from [Rob Hitchens](https://github.com/rob-Hitchens)
 
 <br />
 
@@ -187,7 +187,7 @@ The scope of the bug bounty for this project follows:
 
 Bounties awarded for this project:
 
-* Feb 25 2018 - [Rob Hitchens](https://github.com/rob-Hitchens) submitted a [set of performance and readability improvements](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) to this library.
+* Feb 25 2018 - [Rob Hitchens](https://github.com/rob-Hitchens) submitted a [set of performance and readability improvements](https://github.com/bokkypoobah/BokkyPooBahsRedBlackTreeLibrary/pull/1) to this library and has been awarded [5 ETH](https://etherscan.io/tx/0xdaeef0feb190cd19220d5e7a88d64348c05d9fe146ba4c43fc784261697c4a88).
 
 <br />
 
@@ -486,4 +486,4 @@ And thanks to [Rob Hitchens](https://github.com/rob-Hitchens) for the [suggestio
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Feb 26 2018. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Mar 8 2019. The MIT Licence.
