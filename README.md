@@ -16,6 +16,8 @@ An important use-case for this library is to maintain a sorted on-chain order bo
 
 Check out the online [Red-black tree visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html) tool- type in some 4 digit numbers and press Insert or Delete to see the insertions and rebalances animated.
 
+See also [Hitchen's Order Statistics Tree](https://github.com/rob-Hitchens/OrderStatisticsTree), an extension built from this library.
+
 <br />
 
 <hr />
