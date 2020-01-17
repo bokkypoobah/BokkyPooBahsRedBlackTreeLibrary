@@ -39,9 +39,9 @@ printf "END_DATE    = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 #echo "--- Differences $SOURCEDIR/$TESTSOL $TESTSOL ---" | tee -a $TEST1OUTPUT
 #echo "$DIFFS1" | tee -a $TEST1OUTPUT
 
-solc_0.5.4 --version | tee -a $TEST1OUTPUT
+solc_0.6.0 --version | tee -a $TEST1OUTPUT
 
-echo "var testRawOutput=`solc_0.5.4 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
+echo "var testRawOutput=`solc_0.6.0 --optimize --pretty-json --combined-json abi,bin,interface $TESTRAWSOL`;" > $TESTRAWJS
 # echo "var testRawOutput=`solc_0.5.4 --optimize --pretty-json --combined-json abi,bin,interface $LIBSOL`;" > $LIBJS
 
 ../scripts/solidityFlattener.pl --contractsdir=../contracts --mainsol=$TESTRAWSOL --outputsol=$TESTRAWFLATTENED --verbose | tee -a $TEST1OUTPUT
@@ -100,7 +100,6 @@ printTxData("testRawTx", testRawTx);
 printTestRedBlackTreeContractDetails();
 console.log("RESULT: ");
 
-
 var failureDetected = false;
 var expected;
 var result;
@@ -111,32 +110,32 @@ var NULLNODERESULT = "[\"0\",\"0\",\"0\",\"0\",false]";
 if ("$MODE" == "full") {
   section = "[Empty List]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(testRaw.root() == "0", section + " testRaw.root() should return 0")) {
+  if (!assert(testRaw.root.call() == "0", section + " testRaw.root() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.first() == "0", section + " testRaw.first() should return 0")) {
+  if (!assert(testRaw.first.call() == "0", section + " testRaw.first() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.last() == "0", section + " testRaw.last() should return 0")) {
+  if (!assert(testRaw.last.call() == "0", section + " testRaw.last() should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(0) == "0", section + " testRaw.next(0) should return 0")) {
+  if (!assert(testRaw.next.call(0) == "0", section + " testRaw.next(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(123) == "0", section + " testRaw.next(123) should return 0")) {
+  if (!assert(testRaw.next.call(123) == "0", section + " testRaw.next(123) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(0) == "0", section + " testRaw.prev(0) should return 0")) {
+  if (!assert(testRaw.prev.call(0) == "0", section + " testRaw.prev(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(123) == "0", section + " testRaw.prev(123) should return 0")) {
+  if (!assert(testRaw.prev.call(123) == "0", section + " testRaw.prev(123) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.exists(123) == false, section + " testRaw.exists(123) should return false")) {
+  if (!assert(testRaw.exists.call(123) == false, section + " testRaw.exists(123) should return false")) {
     failureDetected = true;
   }
 
-  var nodeResult = testRaw.getNode(123);
+  var nodeResult = testRaw.getNode.call(123);
   // console.log("RESULT: nodeResult=" + nodeResult);
   if (!assert(JSON.stringify(nodeResult) == NULLNODERESULT, section + " testRaw.getNode(123) should return " + NULLNODERESULT)) {
     failureDetected = true;
@@ -225,33 +224,33 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Single Item]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
+  if (!assert(testRaw.root.call() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.first() == "18", section + " testRaw.first() should return 18")) {
+  if (!assert(testRaw.first.call() == "18", section + " testRaw.first() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.last() == "18", section + " testRaw.last() should return 18")) {
+  if (!assert(testRaw.last.call() == "18", section + " testRaw.last() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(0) == "0", section + " testRaw.next(0) should return 0")) {
+  if (!assert(testRaw.next.call(0) == "0", section + " testRaw.next(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(18) == "0", section + " testRaw.next(18) should return 0")) {
+  if (!assert(testRaw.next.call(18) == "0", section + " testRaw.next(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(0) == "0", section + " testRaw.prev(0) should return 0")) {
+  if (!assert(testRaw.prev.call(0) == "0", section + " testRaw.prev(0) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(18) == "0", section + " testRaw.prev(18) should return 0")) {
+  if (!assert(testRaw.prev.call(18) == "0", section + " testRaw.prev(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
+  if (!assert(testRaw.exists.call(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE18ONLYRESULT = "[\"18\",\"0\",\"0\",\"0\",false]";
-  var nodeResult = testRaw.getNode(18);
+  var nodeResult = testRaw.getNode.call(18);
   if (!assert(JSON.stringify(nodeResult) == NODE18ONLYRESULT, section + " testRaw.getNode(18) should return " + NODE18ONLYRESULT)) {
     failureDetected = true;
   }
@@ -310,36 +309,36 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Two Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
+  if (!assert(testRaw.root.call() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.first() == "18", section + " testRaw.first() should return 18")) {
+  if (!assert(testRaw.first.call() == "18", section + " testRaw.first() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.last() == "28", section + " testRaw.last() should return 28")) {
+  if (!assert(testRaw.last.call() == "28", section + " testRaw.last() should return 28")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(12) == "0", section + " testRaw.next(12) should return 0")) {
+  if (!assert(testRaw.next.call(12) == "0", section + " testRaw.next(12) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(18) == "28", section + " testRaw.next(18) should return 28")) {
+  if (!assert(testRaw.next.call(18) == "28", section + " testRaw.next(18) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(28) == "0", section + " testRaw.next(28) should return 0")) {
+  if (!assert(testRaw.next.call(28) == "0", section + " testRaw.next(28) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(18) == "0", section + " testRaw.prev(18) should return 0")) {
+  if (!assert(testRaw.prev.call(18) == "0", section + " testRaw.prev(18) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(28) == "18", section + " testRaw.prev(28) should return 18")) {
+  if (!assert(testRaw.prev.call(28) == "18", section + " testRaw.prev(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
+  if (!assert(testRaw.exists.call(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE1828RESULT = "[\"18\",\"0\",\"0\",\"28\",false]";
-  var nodeResult = testRaw.getNode(18);
+  var nodeResult = testRaw.getNode.call(18);
   if (!assert(JSON.stringify(nodeResult) == NODE1828RESULT, section + " testRaw.getNode(18) should return " + NODE1828RESULT)) {
     failureDetected = true;
   }
@@ -398,36 +397,36 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[Three Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
+  if (!assert(testRaw.root.call() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.first() == "17", section + " testRaw.first() should return 17")) {
+  if (!assert(testRaw.first.call() == "17", section + " testRaw.first() should return 17")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.last() == "28", section + " testRaw.last() should return 28")) {
+  if (!assert(testRaw.last.call() == "28", section + " testRaw.last() should return 28")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(12) == "0", section + " testRaw.next(12) should return 0")) {
+  if (!assert(testRaw.next.call(12) == "0", section + " testRaw.next(12) should return 0")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(17) == "18", section + " testRaw.next(17) should return 18")) {
+  if (!assert(testRaw.next.call(17) == "18", section + " testRaw.next(17) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(18) == "28", section + " testRaw.next(18) should return 28")) {
+  if (!assert(testRaw.next.call(18) == "28", section + " testRaw.next(18) should return 28")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(18) == "17", section + " testRaw.prev(18) should return 17")) {
+  if (!assert(testRaw.prev.call(18) == "17", section + " testRaw.prev(18) should return 17")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.prev(28) == "18", section + " testRaw.prev(28) should return 18")) {
+  if (!assert(testRaw.prev.call(28) == "18", section + " testRaw.prev(28) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
+  if (!assert(testRaw.exists.call(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE181728RESULT = "[\"18\",\"0\",\"17\",\"28\",false]";
-  var nodeResult = testRaw.getNode(18);
+  var nodeResult = testRaw.getNode.call(18);
   if (!assert(JSON.stringify(nodeResult) == NODE181728RESULT, section + " testRaw.getNode(18) should return " + NODE181728RESULT)) {
     failureDetected = true;
   }
@@ -486,43 +485,43 @@ console.log("RESULT: ");
 if ("$MODE" == "full") {
   section = "[All 32 Items]";
   console.log("RESULT: ---------- Test Basics - " + section + " ----------");
-  if (!assert(testRaw.root() == "18", section + " testRaw.root() should return 18")) {
+  if (!assert(testRaw.root.call() == "18", section + " testRaw.root() should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.first() == "1", section + " testRaw.first() should return 1")) {
+  if (!assert(testRaw.first.call() == "1", section + " testRaw.first() should return 1")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.last() == "32", section + " testRaw.last() should return 32")) {
+  if (!assert(testRaw.last.call() == "32", section + " testRaw.last() should return 32")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(8) == "9", section + " testRaw.next(8) should return 9")) {
+  if (!assert(testRaw.next.call(8) == "9", section + " testRaw.next(8) should return 9")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(10) == "11", section + " testRaw.next(10) should return 11")) {
+  if (!assert(testRaw.next.call(10) == "11", section + " testRaw.next(10) should return 11")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(14) == "15", section + " testRaw.next(14) should return 15")) {
+  if (!assert(testRaw.next.call(14) == "15", section + " testRaw.next(14) should return 15")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(17) == "18", section + " testRaw.next(17) should return 18")) {
+  if (!assert(testRaw.next.call(17) == "18", section + " testRaw.next(17) should return 18")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(18) == "19", section + " testRaw.next(18) should return 19")) {
+  if (!assert(testRaw.next.call(18) == "19", section + " testRaw.next(18) should return 19")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.next(20) == "21", section + " testRaw.next(20) should return 21")) {
+  if (!assert(testRaw.next.call(20) == "21", section + " testRaw.next(20) should return 21")) {
     failureDetected = true;
   }
 
-  if (!assert(testRaw.prev(18) == "17", section + " testRaw.prev(18) should return 17")) {
+  if (!assert(testRaw.prev.call(18) == "17", section + " testRaw.prev(18) should return 17")) {
     failureDetected = true;
   }
-  if (!assert(testRaw.exists(18) == true, section + " testRaw.exists(18) should return true")) {
+  if (!assert(testRaw.exists.call(18) == true, section + " testRaw.exists(18) should return true")) {
     failureDetected = true;
   }
 
   var NODE18728RESULT = "[\"18\",\"0\",\"7\",\"28\",false]";
-  var nodeResult = testRaw.getNode(18);
+  var nodeResult = testRaw.getNode.call(18);
   if (!assert(JSON.stringify(nodeResult) == NODE18728RESULT, section + " testRaw.getNode(18) should return " + NODE18728RESULT)) {
     failureDetected = true;
   }

@@ -17,8 +17,8 @@
 # Requirements
 
 * The tests works on OS/X. Should work in Linux. May work in Windows with Cygwin
-* Geth/v1.8.23-stable-c9427004/darwin-amd64/go1.11.5 running with the Byzantium fork switched on
-* Solc 0.5.4+commit.9549d8ff.Darwin.appleclang
+* Geth/v1.9.9-stable-01744997/darwin-amd64/go1.13.5 running with the Byzantium fork switched on
+* Solc 0.6.0+commit.26b70077.Darwin.appleclang
 
 <br />
 

@@ -74,7 +74,7 @@ function printBalances() {
   accounts.forEach(function(e) {
     var etherBalanceBaseBlock = eth.getBalance(e, baseBlock);
     var etherBalance = web3.fromWei(eth.getBalance(e).minus(etherBalanceBaseBlock), "ether");
-    var tokenBalance = token == null ? new BigNumber(0) : token.balanceOf(e).shift(-decimals);
+    var tokenBalance = token == null ? new BigNumber(0) : token.balanceOf.call(e).shift(-decimals);
     totalTokenBalance = totalTokenBalance.add(tokenBalance);
     console.log("RESULT: " + pad2(i) + " " + e  + " " + pad(etherBalance) + " " + padToken(tokenBalance, decimals) + " " + accountNames[e]);
     i++;
@@ -278,7 +278,7 @@ function printAll(tree, node, spacing) {
   for (var i = 0; i < spacing * 2; i++) {
     padding = padding + "  ";
   }
-  var nodeData = tree.getNode(node);
+  var nodeData = tree.getNode.call(node);
   var leftNode = nodeData[2];
   var rightNode = nodeData[3];
   if (leftNode != SENTINEL) {
@@ -306,11 +306,11 @@ function printAll(tree, node, spacing) {
 
 function treeAsList(tree) {
   var result = [];
-  treeAsListWalker(tree, tree.root(), result);
+  treeAsListWalker(tree, tree.root.call(), result);
   return result.sort();
 }
 function treeAsListWalker(tree, node, result) {
-  var nodeData = tree.getNode(node);
+  var nodeData = tree.getNode.call(node);
   var leftNode = nodeData[2];
   var rightNode = nodeData[3];
   if (leftNode != SENTINEL) {
@@ -349,13 +349,13 @@ function addTestRedBlackTreeContractAddressAndAbi(address, testRedBlackTreeAbi) 
 
 var testRedBlackTreeFromBlock = 0;
 function printTestRedBlackTreeContractDetails() {
-  // console.log("RESULT: testRedBlackTreeContractAddress=" + testRedBlackTreeContractAddress);
+  console.log("RESULT: testRedBlackTreeContractAddress=" + testRedBlackTreeContractAddress);
   if (testRedBlackTreeContractAddress != null && testRedBlackTreeContractAbi != null) {
     var contract = eth.contract(testRedBlackTreeContractAbi).at(testRedBlackTreeContractAddress);
     console.log("RESULT: --------------------------------------------------------------------------------");
-    console.log("RESULT: testRedBlackTree.root=" + contract.root());
-    console.log("RESULT: testRedBlackTree.first=" + contract.first());
-    console.log("RESULT: testRedBlackTree.last=" + contract.last());
+    console.log("RESULT: testRedBlackTree.root=" + contract.root.call());
+    console.log("RESULT: testRedBlackTree.first=" + contract.first.call());
+    console.log("RESULT: testRedBlackTree.last=" + contract.last.call());
 
     var latestBlock = eth.blockNumber;
     var i;
@@ -371,7 +371,7 @@ function printTestRedBlackTreeContractDetails() {
     testRedBlackTreeFromBlock = latestBlock + 1;
   }
   console.log("RESULT: --------------------------------------------------------------------------------");
-  printAll(contract, contract.root(), 0);
+  printAll(contract, contract.root.call(), 0);
   console.log("RESULT: --------------------------------------------------------------------------------");
   console.log("RESULT: ");
 }

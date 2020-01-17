@@ -488,4 +488,4 @@ And thanks to [Rob Hitchens](https://github.com/rob-Hitchens) for the [suggestio
 
 Enjoy!
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd - Mar 8 2019. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd - Jan 18 2020. The MIT Licence.
